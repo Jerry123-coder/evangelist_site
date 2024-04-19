@@ -43,7 +43,7 @@ const NewsCard = () => {
                {/* Read Post Button */}
                <div 
                // onClick={() => {navigate('/programs/programDetails')}}
-               onClick={() => {navigate('/programDetails')}}
+               // onClick={() => {navigate('/programDetails')}}
                className="mt-5 w-full flex justify-center px-6 pb-4">
                     <a
                          href="" // Replace with the URL of the full blog post

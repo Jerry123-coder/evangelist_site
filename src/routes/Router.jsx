@@ -8,7 +8,7 @@ import Contact from '../pages/Contact.jsx'
 import Blog from '../pages/Blog.jsx'
 import Programs from '../pages/Programs.jsx'
 import Directory from '../pages/Directory.jsx'
-import ProgramDetails from '../pages/programDetails.jsx'
+// import ProgramDetails from '../pages/programDetails.jsx'
 import BlogDetails from '../pages/blogDetails.jsx'
 import DirectoryDetails from '../pages/DrectoryDetails.jsx'
 import Societies from '../pages/Societies.jsx'
@@ -29,7 +29,7 @@ export const Router = () => {
               {element: <Gallery />, path:'gallery'},
               {element: <Projects />, path:'projects'},
           //     {element: <ProgramDetails />, path:'programs/:programDetails'},
-              {element: <ProgramDetails />, path:'programDetails'},
+          //     {element: <ProgramDetails />, path:'programDetails'},
               {element: <Blog />, path:'blog'},
           //     {element: <BlogDetails />, path:'blog/:blogDetails'},
               {element: <Contact />, path:'contact'},
