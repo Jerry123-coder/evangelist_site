@@ -89,7 +89,7 @@ const Navbar = () => {
       </div>
       <div className="hidden lg:flex space-x-4">
         <button
-          onClick={() => navigate("/contact")}
+          onClick={() => navigate("/donate")}
           // className="bg-blue-500 hover:bg-blue-600 text-white border-1 border-[#A61D37] hover:scale-105 rounded-full py-[4px] border-none focus:outline-none transition-all duration-200 ease-in-out">Contact Us</button>
           className="w-[8rem] bg-blue-500 hover:bg-blue-600 text-white border-1 border-[#A61D37] hover:scale-105 rounded-full py-[4px] border-none focus:outline-none transition-all duration-200 ease-in-out gap-2 flex items-center justify-center"
         >

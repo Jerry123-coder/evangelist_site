@@ -14,6 +14,7 @@ import Directory from '../pages/Directory.jsx'
 import Societies from '../pages/Societies.jsx'
 import Gallery from '../pages/Gallery.jsx'
 import Projects from '../pages/Projects.jsx'
+import Donate from '../pages/Donate.jsx'
 
 
 export const Router = () => {
@@ -34,6 +35,7 @@ export const Router = () => {
           //     {element: <BlogDetails />, path:'blog/:blogDetails'},
               {element: <Contact />, path:'contact'},
               {element: <Directory />, path:'directory'},
+              {element: <Donate />, path:'donate'},
           //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
          ],
     },
