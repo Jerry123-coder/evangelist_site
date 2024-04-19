@@ -18,6 +18,8 @@ import { FaBible, FaCalendarAlt, FaChurch, FaUserClock } from "react-icons/fa";
 import { useRef, useState } from "react";
 import ProgramCard from "../components/ProgramCard";
 import NewsCard from "../components/NewsCard";
+import homeBg from '../assets/home-bg.jpg';
+import img1 from '../assets/img1.jpg';
 
 // import { GiBullseye } from 'react-icons'
 // import { FaMapLocationDot } from 'react-icons'
@@ -53,7 +55,7 @@ const Home = () => {
   };
 
   const static_bg = {
-    image: stn_image1,
+    image: homeBg,
     subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
     emphasis: " Ghana",
     maintext: "WELCOME HOME",
@@ -96,7 +98,7 @@ const Home = () => {
           }}
         >
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black opacity-80 h-full"></div>
+          <div className="absolute inset-0 bg-black opacity-70 h-full"></div>
 
           {/* Content */}
           <div className="text-white text-center z-10 w-[60rem] flex flex-col gap-5">
@@ -229,7 +231,7 @@ const Home = () => {
       <div
         className="relative flex flex-col lg:flex-row bg-cover bg-center  gap-5 w-screen  px-8 lg:px-[20rem] lg:p-[15rem] items-center justify-center"
         style={{
-          backgroundImage: `url(${statImage})`,
+          backgroundImage: `url(${img1})`,
         }}
       >
         {/* Dark overlay */}

@@ -13,6 +13,7 @@ import BlogDetails from '../pages/blogDetails.jsx'
 import DirectoryDetails from '../pages/DrectoryDetails.jsx'
 import Societies from '../pages/Societies.jsx'
 import Gallery from '../pages/Gallery.jsx'
+import Projects from '../pages/Projects.jsx'
 
 
 export const Router = () => {
@@ -26,6 +27,7 @@ export const Router = () => {
               {element: <Programs />, path:'programs'},
               {element: <Societies />, path:'societies'},
               {element: <Gallery />, path:'gallery'},
+              {element: <Projects />, path:'projects'},
           //     {element: <ProgramDetails />, path:'programs/:programDetails'},
               {element: <ProgramDetails />, path:'programDetails'},
               {element: <Blog />, path:'blog'},
