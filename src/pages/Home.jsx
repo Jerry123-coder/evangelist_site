@@ -91,14 +91,14 @@ const Home = () => {
       {/* <div key={index}> */}
       <div>
         <div
-          className={`h-[50rem] w-full bg-cover bg-center flex items-center justify-center overflow-hidden`}
+          className={` relative h-[50rem] w-full bg-cover bg-center flex items-center justify-center overflow-hidden`}
           style={{
             // backgroundImage: `url(${slide.image})`,
             backgroundImage: `url(${static_bg.image})`,
           }}
         >
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black opacity-70 h-full"></div>
+          <div className="absolute inset-0 bg-black opacity-60 h-[50rem]"></div>
 
           {/* Content */}
           <div className="text-white text-center z-10 w-[60rem] flex flex-col gap-5">
@@ -123,15 +123,9 @@ const Home = () => {
       {/* ))}
       </Slider> */}
 
-      <img src={imgBar} className="absolute top-[30rem]" />
+      <img src={imgBar} className="absolute top-[30rem] opacity-80" />
       <div className="flex flex-col lg:flex-row w-screen pt-[5rem] px-8 lg:px-[20rem]">
         <div className="hidden  lg:relative lg:flex w-full lg:w-1/2 h-[40rem] overflow-hidden">
-          {/* <img
-            // src={stanford}
-            alt="Your Image"
-            className="absolute top-[8rem] margin-x-auto  px-10 pt-10 object-cover"
-          /> */}
-
           <img
             src={thePastor}
             alt="Your Image"
@@ -420,7 +414,7 @@ const Home = () => {
         }}
       >
         {/* Dark overlay */}
-        <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
+        <div className="absolute z-2 inset-0 bg-black opacity-60"></div>
         <div className="text-white z-10 flex flex-col justify-center m-auto">
           {/* <div>St. John the Evangelist Catholic Church</div> */}
           <div className="text-4xl text-center w-full lg: mb-10 lg:mb-10 font-semibold flex items-center justify-center">Download Church E-Bulletin</div>
