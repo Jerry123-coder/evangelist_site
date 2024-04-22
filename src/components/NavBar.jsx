@@ -39,13 +39,14 @@
 
 // export default Navbar
 
-import React, { useState } from "react";
+import React,{ useState } from "react";
 import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from "../assets/evangelist_logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
+import './NavBar.css'
 
 const Navbar = () => {
   const location = useLocation();
@@ -61,24 +62,25 @@ const Navbar = () => {
     { id: 5, name: "Gallery", link: "gallery" },
     { id: 5, name: "Projects", link: "projects" },
     { id: 5, name: "Contact us", link: "contact" },
-    // { id: 6, name: 'Directory', link: 'directory' },
-    // { id: 7, name: 'Contact', link: 'contact' },
+
   ];
 
   return (
-    <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5 lg:px-[20rem] w-screen sticky shadow-md top-0 z-50">
+    <div className="flex flex-row items-center justify-center text-center bg-white py-5 w-screen sticky shadow-md top-0 z-50">
+      <div className="flex w-full justify-evenly">
+      
       <div className="logo">
         <Link to="">
           <img src={evangelistLogo} alt="" className="w-[10rem] lg:w-[15rem]" />
         </Link>
       </div>
-      <div className="hidden lg:flex space-x-10">
+      <div className="hidden lg:flex space-x-10  py-4">
         {menuItems.map((item) => (
           <Link to={item.link} key={item.id}>
             <p
               className={`${
                 "/" + item.link === location.pathname
-                  ? "text-blue-500"
+                  ? "text-blue-400 underline underline-offset-4"
                   : "text-black"
               } text-md font-semibold hover:scale-110 transition-all duration-200 ease-in-out`}
             >
@@ -86,21 +88,33 @@ const Navbar = () => {
             </p>
           </Link>
         ))}
-      </div>
-      <div className="hidden lg:flex space-x-4">
+
+
+        <div className="flex">
+  <input
+    type="search"
+    className="relative m-0 block flex-auto rounded-3xl border-2 border-solid border-#1f2937  px-5  font-normal leading-[1.6] outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3]  motion-reduce:transition-none bg-white text-black "
+    placeholder="Search"
+    aria-label="Search Bar"
+    id="exampleFormControlInput2"
+     />
+</div>
+         </div>
+           <div className="hidden lg:flex flex-col justify-center">
         <button
           onClick={() => navigate("/donate")}
-          // className="bg-blue-500 hover:bg-blue-600 text-white border-1 border-[#A61D37] hover:scale-105 rounded-full py-[4px] border-none focus:outline-none transition-all duration-200 ease-in-out">Contact Us</button>
-          className="w-[8rem] bg-blue-500 hover:bg-blue-600 text-white border-1 border-[#A61D37] hover:scale-105 rounded-full py-[4px] border-none focus:outline-none transition-all duration-200 ease-in-out gap-2 flex items-center justify-center"
+          className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white  hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
         >
           <span>Donate</span>
-          <span className="w-10">
+          <span className="w-5">
             <BiSolidDonateHeart />
           </span>
         </button>
       </div>
+     
+   
 
-      <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-300 ease-in">
+      <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-300 ease-in bg-black">
         {!isOpen ? (
           <div
             className="transition duration-400 ease-in-out"
@@ -118,7 +132,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      {/* <div className={`fixed inset-0 z-40  transform transition-transform duration-300 ease-in ${isOpen ? 'block' : 'hidden'}`}> */}
+
       <div
         className={` ${
           isOpen
@@ -150,9 +164,8 @@ const Navbar = () => {
         </ul>
       </div>
     </div>
-
-    // </div>
-  );
+    </div>
+ );
 };
 
 export default Navbar;
