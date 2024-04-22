@@ -22,23 +22,22 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="w-screen lg:h-[40vh]  bg-gradient-to-r from-blue-500 to-blue-800 py-10 px-8 lg:py-4 lg:px-[20rem] flex flex-col lg:flex-row gap-14 items-center justify-center">
-        <div className="lg:w-1/2 flex flex-col gap-3  lg:pr-32">
+      <div className="w-screen lg:h-[40vh]  bg-gradient-to-r from-blue-500 to-black py-10 px-8 lg:py-4  flex flex-col lg:flex-row gap-14 items-center justify-center">
+        <div className="lg:w-1/4 flex flex-col gap-3 ">
           <div className="w-full flex justify-center lg:justify-start">
             <Link to="">
-              <img src={evangelistLogo} alt="" className="w-[10rem] lg:w-[20rem]" />
+              <img src={evangelistLogo} alt="" className="w-[10rem] lg:w-[20rem] " />
             </Link>
           </div>
-          {/* <div className="text-white/80 text-sm font-light">The Stanford Institute for Innovation in Developing Economics – known as Stanford Seed – is a Stanford Graduate School of Business-led initiative that is working to end the cycle of global poverty. Stanford Seed partners with entrepreneurs in emerging markets to build thriving enterprises that transform lives.  */}
-      {/* </div> */}
+   
         </div>
-        <div className="lg:w-1/2 lg:pl-20 text-white/80 flex gap-20">
-          <div className="flex-1">
+        <div className="lg:w-1/2 lg:pl-20 text-white/80 flex gap-20   ">
+          <div className="flex-1 flex-col  ">
             <span className="flex-1 text-lg font-bold pb-10">Quick Links</span>
             <>
               {quickLinks.map((item) => (
                 <Link to={item.link} key={item.id}>
-                  <p className="font-light text-white  hover:font-bold transition-all duration-200 ease-in-out">
+                  <p className="flex flex-col font-light text-white  hover:font-bold transition-all duration-200 ease-in-out justify-between  h-[3rem]">
                     {item.name}
                   </p>
                 </Link>
@@ -50,7 +49,7 @@ const Footer = () => {
             <>
               {usefulLinks.map((item) => (
                 <Link to={item.link} key={item.id}>
-                  <p className="font-light text-white/80  hover:font-bold transition-all duration-200 ease-in-out">
+                  <p className="flex flex-col font-light text-white/80  hover:font-bold transition-all duration-1a00 ease-in-out  h-[3rem]">
                     {item.name}
                   </p>
                 </Link>
