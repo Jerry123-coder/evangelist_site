@@ -49,7 +49,7 @@ const Footer = () => {
             <>
               {usefulLinks.map((item) => (
                 <Link to={item.link} key={item.id}>
-                  <p className="flex flex-col font-light text-white/80  hover:font-bold transition-all duration-100 ease-in-out  h-[3rem]">
+                  <p className="flex flex-col font-light text-white/80  hover:font-bold transition-all duration-1a00 ease-in-out  h-[3rem]">
                     {item.name}
                   </p>
                 </Link>
