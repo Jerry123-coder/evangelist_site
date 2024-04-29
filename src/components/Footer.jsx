@@ -50,7 +50,7 @@ const Footer = () => {
           Copyright @ 2024
           </div>
         </div>
-        <div className="flex flex-col w-5/12 lg:w-[20rem] justify-between h-full">
+        <div className="flex flex-col w-5/12 lg:w-[20rem] justify-between h-full mr-10">
            <div className="flex flex-col h-full py-5">
             <div className="text-base flex justify-center text-xl">
             Subscribe To E-Bulletin
