@@ -3,62 +3,76 @@ import React from "react";
 import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from '../assets/evangelist_logo.png' 
 import { Link } from "react-router-dom";
+import mailLogo from '../assets/mail.svg'
+import ytLogo from '../assets/yt.svg'
+import fbLogo from '../assets/fb.png'
+import igLogo from '../assets/ig.png'
 
 const Footer = () => {
   const quickLinks = [
     { id: 1, name: "Home", link: "" },
     { id: 2, name: "About", link: "about" },
     { id: 3, name: "Programs", link: "programs" },
-    { id: 5, name: "Blog", link: "blog" },
+    { id: 5, name: "News", link: "blog" },
     // { id: 6, name: 'Contact', link: 'contact' },
   ];
 
   const usefulLinks = [
-    { id: 1, name: "Terms and Conditions", link: "" },
-    { id: 2, name: "Privacy Policy", link: "" },
-    { id: 3, name: "News", link: "blog" },
     { id: 5, name: "Contact", link: "contact" },
   ];
 
   return (
-    <div>
-      <div className="w-screen lg:h-[40vh]  bg-gradient-to-r from-blue-500 to-black py-10 px-8 lg:py-4  flex flex-col lg:flex-row gap-14 items-center justify-center">
-        <div className="lg:w-1/4 flex flex-col gap-3 ">
+    <div className="w-screen lg:h-[20vh] py-10 px-8 lg:py-4 flex bg-blue-800 to-black justify-evenly align-center w-full">
+      <div className="flex flex-col lg:flex-row justify-between  w-full items-evenly">
+        <div className="lg:w-1/4 flex flex-col">
           <div className="w-full flex justify-center lg:justify-start">
             <Link to="">
-              <img src={evangelistLogo} alt="" className="w-[10rem] lg:w-[20rem] " />
+              <img src={evangelistLogo} alt="" className="w-3/12 lg:w-[25rem] " />
             </Link>
+          </div>
+          <div className="text-black px-20 text-sm flex justify-center w-full">
+          Location 5th floor, 335 place 32 George Walker Bush Highway North Dzorwulu. Accra-Ghana
           </div>
    
         </div>
-        <div className="lg:w-1/2 lg:pl-20 text-white/80 flex gap-20   ">
-          <div className="flex-1 flex-col  ">
-            <span className="flex-1 text-lg font-bold pb-10">Quick Links</span>
-            <>
+        <div className="text-white/80 text-xl w-4/12 justify-evenly h-full flex flex-col">
+          <div className="flex justify-between flex-grow py-5">
               {quickLinks.map((item) => (
                 <Link to={item.link} key={item.id}>
-                  <p className="flex flex-col font-light text-white  hover:font-bold transition-all duration-200 ease-in-out justify-between  h-[3rem]">
+                  <p className="flex font-light text-white  hover:font-bold transition-all duration-200 ease-in-out justify-between ">
                     {item.name}
                   </p>
                 </Link>
               ))}
-            </>
           </div>
-          <div className="flex-1">
-            <span className="flex-1 text-lg font-bold pb-10">Useful Links</span>
-            <>
-              {usefulLinks.map((item) => (
-                <Link to={item.link} key={item.id}>
-                  <p className="flex flex-col font-light text-white/80  hover:font-bold transition-all duration-1a00 ease-in-out  h-[3rem]">
-                    {item.name}
-                  </p>
-                </Link>
-              ))}
-            </>
+
+          <div className="flex justify-center text-sm">
+          Copyright @ 2024
           </div>
         </div>
-        
+        <div className="flex flex-col w-5/12 lg:w-[20rem] justify-between h-full">
+           <div className="flex flex-col h-full py-5">
+            <div className="text-base flex justify-center text-xl">
+            Subscribe To E-Bulletin
+            </div>
+            <div className="flex justify-evenly mt-5 h-1/3">
+            <input className="bg-white text-black px-2"></input>
+            <button className="py-0 text-sm">Submit</button>
+            </div>
+          </div>
+          <div className="text-base flex justify-center w-full px-10">
+            Contact
+            <div className="flex justify-center w-full items-center gap-3">
+              <div><img src={mailLogo} className="lg:w-6"/></div>
+              <div><img src={ytLogo} className="lg:w-5"/></div>
+              <div><img src={fbLogo} className="lg:w-5"/></div>
+              <div><img src={igLogo} className="lg:w-5"/></div>
+              <div></div>
+            </div>
+          </div>
       </div>
+      </div>
+      
     </div>
   );
 };
