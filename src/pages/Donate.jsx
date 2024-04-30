@@ -11,7 +11,7 @@ const Donate = () => {
     }}>
        <div className="absolute  w-full lg:h-[50vh] bg-black bg-opacity-20 text-opacity-70 flex flex-col justify-center items-center text-white">
        <span className="text-2xl text-center w-full  mb-10 lg:mb-2 font-semibold opacity-75 capitalize">You can support</span>
-      <span className=" text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize mb-5"> church project and church activities here</span>
+      <span className=" text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize mb-5"> church projects and church activities here</span>
         {/* <h2 className="text-2xl font-semibold capitalize text-blue-300 ">
         You can support this church project and various other church activities here
         </h2> */}

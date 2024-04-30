@@ -123,18 +123,18 @@ const Home = () => {
       {/* ))}
       </Slider> */}
 
-      <img src={imgBar} className="absolute top-[30rem] opacity-80" />
+      <img src={imgBar} className="absolute top-[30rem] opacity-70" />
       <div className="flex flex-col lg:flex-row w-screen pt-[5rem] px-8 lg:px-[20rem]">
         <div className="hidden  lg:relative lg:flex w-full lg:w-1/2 h-[40rem] overflow-hidden">
           <img
             src={thePastor}
-            alt="Your Image"
+            alt="Image of Pastor"
             className=" px-10 pt-10 h-[50rem] object-cover overflow-hidden"
           />
         </div>
 
         <div className=" flex flex-col justify-center lg:justify-start items-center w-full lg:w-1/2 lg:pr-10 py-20">
-          <h3 className="text-3xl font-bold pb-5 lg:w-full text-yellow-200">
+          <h3 className="text-3xl font-bold pb-5 lg:w-full text-yellow-500">
             A Message From The Pastor
           </h3>
           <p className="flex flex-col text-xl mb-5">
@@ -154,11 +154,11 @@ const Home = () => {
               continue to richly bless you (Amen).
             </span>
           </p>
-          <div className=" flex flex-col lg:w-full text-yellow-200">
+          <div className=" flex flex-col lg:w-full text-yellow-500">
             <span className="font-bold text-lg">
               Very Rev. Fr. Edmund Donkor-Baine
             </span>
-            <span className="text-sm">Parish Priest</span>
+            <span className="text-sm ">Parish Priest</span>
           </div>
         </div>
       </div>
