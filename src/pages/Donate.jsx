@@ -1,5 +1,6 @@
 import React from "react";
 import { project1, project2, project3, project4, project5, } from ".";
+import './Donate.css'
 
 const Donate = () => {
   return (
@@ -10,22 +11,26 @@ const Donate = () => {
       backgroundPosition: 'center',
     }}>
        <div className="absolute  w-full lg:h-[50vh] bg-black bg-opacity-20 text-opacity-70 flex flex-col justify-center items-center text-white">
-       <span className="text-2xl text-center w-full  mb-10 lg:mb-2 font-semibold opacity-75 capitalize">You can support</span>
-      <span className=" text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize mb-5"> church projects and church activities here</span>
+       <span className="text-2xl text-center w-full  mb-10 lg:mb-2 font-semibold opacity-75 capitalize" style={{ WebkitTextStroke: '1px white' }}>You can support</span>
+       <div className="relative mt-3">
+      <span className="absolute inset-0 text-2xl text-white lg:text-left lg:text-5xl font-bold capitalize hover:text-opacity-100 hover:text-blue-300 hover:transition-all hover:duration-500 animate-polygon">Church projects and church activities here</span>
+      <span className="text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize text-transparent" style={{ WebkitTextStroke: '1px white' }}>Church projects and church activities here</span>
+</div>
+
         {/* <h2 className="text-2xl font-semibold capitalize text-blue-300 ">
         You can support this church project and various other church activities here
         </h2> */}
-        <p>Scroll for More Details</p>
+        <p className="mt-10" style={{ WebkitTextStroke: '1px white' }}>Scroll for More Details</p>
         {/* <button className="bg-blue-500 mt-5">CLick Here To Donate</button> */}
       </div>
   </div>
      
 
-      <div className="bg-gray-600 px-8 py-20 lg:px-[20rem] text-black">
+      <div className="px-8 py-20 lg:px-[20rem] ">
       <h2 className="text-4xl font-semibold mb-4">Donations To Support</h2>
       <hr className="border-gray-300 my-4" />
 
-      <div className="flex gap-12 w-full">
+      <div className="flex gap-12 w-full text-black">
         <div className="lg:w-1/2 bg-white p-8 rounded shadow-lg">
           <h2 className="text-3xl font-semibold mb-4">Parish Bank Accounts</h2>
           <hr className="border-gray-300 my-4" />
