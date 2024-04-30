@@ -134,7 +134,7 @@ const Home = () => {
         </div>
 
         <div className=" flex flex-col justify-center lg:justify-start items-center w-full lg:w-1/2 lg:pr-10 py-20">
-          <h3 className="text-3xl font-bold pb-5 lg:w-full ">
+          <h3 className="text-3xl font-bold pb-5 lg:w-full text-yellow-200">
             A Message From The Pastor
           </h3>
           <p className="flex flex-col text-xl mb-5">
@@ -154,7 +154,7 @@ const Home = () => {
               continue to richly bless you (Amen).
             </span>
           </p>
-          <div className=" flex flex-col lg:w-full">
+          <div className=" flex flex-col lg:w-full text-yellow-200">
             <span className="font-bold text-lg">
               Very Rev. Fr. Edmund Donkor-Baine
             </span>
