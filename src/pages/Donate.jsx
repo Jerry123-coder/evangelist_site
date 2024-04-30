@@ -73,7 +73,7 @@ const Donate = () => {
           </div>
         </div>
 
-        <div className="w-1/2 "> 
+        <div className="w-1/2 bg-white"> 
         <div className=" rounded shadow-lg">
           <div>
           <h2 className="text-3xl pt-8 pl-8 font-semibold mb-4">Mobile Money Account</h2>
