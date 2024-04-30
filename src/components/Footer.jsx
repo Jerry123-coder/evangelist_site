@@ -60,24 +60,24 @@ const Footer = () => {
             <button className="py-0 text-sm bg-black">Submit</button>
             </div>
           </div>
-          <div className="text-base flex justify-center w-full px-20">
+          <div className="text-base flex justify-center w-full px-10  items-end">
             Contact
-            <div className="flex w-full items-center gap-3 px-3">
+            <div className="flex w-full items-center gap-2 px-2 ">
               <div className="cursor-pointer">
               <a href="https://youtube.com/@stjohnadenta3396?si=krZXJDBWZ0e2joc8" target="_blank">
-                <img src={ytLogo} className="lg:w-4"/>
+                <img src={ytLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
                 </a>
                 </div>
 
               <div className="cursor-pointer">
               <a href="https://www.facebook.com/share/T8k93kDWK6DSmknt/?mibextid=LQQJ4d" target="_blank">
-                <img src={fbLogo} className="lg:w-4"/>
+                <img src={fbLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
                 </a>
                 </div>
               
               <div className="cursor-pointer">
               <a href="https://www.instagram.com/stjohntheevangelist_adenta?igsh=MTRzeTdoY3huOG95bg" target="_blank">
-                <img src={igLogo} className="lg:w-4"/>
+                <img src={igLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
                 </a>
                 </div>
               

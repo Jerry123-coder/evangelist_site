@@ -1,6 +1,7 @@
 import React from "react";
 import { project1, project2, project3, project4, project5, } from ".";
-import './Donate.css'
+
+import momo from "../assets/momo.jpg";
 
 const Donate = () => {
   return (
@@ -13,8 +14,8 @@ const Donate = () => {
        <div className="absolute  w-full lg:h-[50vh] bg-black bg-opacity-20 text-opacity-70 flex flex-col justify-center items-center text-white">
        <span className="text-2xl text-center w-full  mb-10 lg:mb-2 font-semibold opacity-75 capitalize" style={{ WebkitTextStroke: '1px white' }}>You can support</span>
        <div className="relative mt-3">
-      <span className="absolute inset-0 text-2xl text-white lg:text-left lg:text-5xl font-bold capitalize hover:text-opacity-100 hover:text-blue-300 hover:transition-all hover:duration-500 animate-polygon">Church projects and church activities here</span>
-      <span className="text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize text-transparent" style={{ WebkitTextStroke: '1px white' }}>Church projects and church activities here</span>
+      <span className="absolute inset-0 text-2xl text-white lg:text-left lg:text-5xl font-bold capitalize hover:text-opacity-100 hover:text-yellow-300 hover:transition-all hover:duration-500 animate-polygon">Church projects and church activities </span>
+      <span className="text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize text-transparent" style={{ WebkitTextStroke: '1px white' }}>Church projects and church activities </span>
 </div>
 
         {/* <h2 className="text-2xl font-semibold capitalize text-blue-300 ">
@@ -50,8 +51,33 @@ const Donate = () => {
             </div>
           </div>
         </div>
-        <div>
-          Image goes here
+
+        <div className="w-1/2 bg-white"> 
+        <div className=" rounded shadow-lg">
+          <div>
+          <h2 className="text-3xl pt-8 pl-8 font-semibold mb-4">Mobile Money Account</h2>
+          <hr className="border-gray-300 "/>
+          </div>
+
+          <div className="bg-blue-500">
+          <div>
+          <img src={momo}  />
+          </div>
+          
+          <div>
+          <div className="flex flex-col justify-between text-white px-4">
+          <h2 className="text-2xl font-semibold mb-4">
+            <span className="text-xl mr-5">Account Number:</span>0549583231</h2>
+            <h2 className="text-xl font-bold mb-4">
+            <span className="text-xl mr-4"> Name:</span>
+            <span>Rev. Fr. Edmund Donkor-Baine</span>
+            </h2>  
+          
+            </div>
+          </div>
+          </div>
+          </div>
+
         </div>
 
         {/* <div className="lg:w-1/2 bg-white p-8 rounded shadow-lg">
