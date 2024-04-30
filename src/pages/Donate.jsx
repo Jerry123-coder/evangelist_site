@@ -1,13 +1,34 @@
-import React from "react";
-import { project1, project2, project3, project4, project5, } from ".";
-
+import React, { useState, useEffect } from "react";
+import { project1, project2, project3, project4, project5} from ".";
+import scrollIcon from "../assets/scroll-down.gif";
+import scroll from "../assets/arrow.png";
 import momo from "../assets/momo.jpg";
 
+import home from "../assets/home-bg.jpg"
+// import evange from "../asset/evangelist_img1.jpg"
+
+
 const Donate = () => {
+  const images = [project1, project2, project3, project4, project5, home];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Function to update the background image
+  const updateBackgroundImage = () => {
+    const newIndex = (currentIndex + 1) % images.length; // Loop back to the first image when reaching the end
+    setCurrentIndex(newIndex);
+  };
+
+  // Use useEffect to run the updateBackgroundImage function at regular intervals
+  useEffect(() => {
+    const intervalId = setInterval(updateBackgroundImage, 10000); // Change image every 5 seconds
+    return () => clearInterval(intervalId); // Cleanup function to clear the interval when component unmounts
+  }, [currentIndex]);
+
+
   return (
     <div>
-    <div className="w-full lg:h-[50vh] bg-green-500 relative" style={{
-      backgroundImage: `url(${project3})`,
+    <div className="w-full lg:h-[50vh]  relative" style={{
+      backgroundImage: `url(${images[currentIndex]})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
@@ -21,8 +42,8 @@ const Donate = () => {
         {/* <h2 className="text-2xl font-semibold capitalize text-blue-300 ">
         You can support this church project and various other church activities here
         </h2> */}
-        <p className="mt-10" style={{ WebkitTextStroke: '1px white' }}>Scroll for More Details</p>
-        {/* <button className="bg-blue-500 mt-5">CLick Here To Donate</button> */}
+        <p className="mt-10 " style={{ WebkitTextStroke: '1px white' }}>Scroll for More Details</p>
+        <img src={scroll} alt="scroll" className=" mt-5 w-10"/>
       </div>
   </div>
      
@@ -52,7 +73,7 @@ const Donate = () => {
           </div>
         </div>
 
-        <div className="w-1/2 bg-white"> 
+        <div className="w-1/2 "> 
         <div className=" rounded shadow-lg">
           <div>
           <h2 className="text-3xl pt-8 pl-8 font-semibold mb-4">Mobile Money Account</h2>
