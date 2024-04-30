@@ -9,7 +9,7 @@ const Donate = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
-       <div className="absolute  w-full lg:h-[50vh] bg-black bg-opacity-20 text-opacity-70 flex flex-col justify-center items-center">
+       <div className="absolute  w-full lg:h-[50vh] bg-black bg-opacity-20 text-opacity-70 flex flex-col justify-center items-center text-white">
        <span className="text-2xl text-center w-full  mb-10 lg:mb-2 font-semibold opacity-75 capitalize">You can support</span>
       <span className=" text-2xl text-center lg:text-left lg:text-5xl font-bold capitalize mb-5"> church project and church activities here</span>
         {/* <h2 className="text-2xl font-semibold capitalize text-blue-300 ">
