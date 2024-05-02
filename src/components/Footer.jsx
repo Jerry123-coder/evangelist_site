@@ -4,9 +4,9 @@ import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from '../assets/evangelist_logo.png' 
 import { Link } from "react-router-dom";
 import mailLogo from '../assets/mail.svg'
-import ytLogo from '../assets/yt.svg'
-import fbLogo from '../assets/fb.png'
-import igLogo from '../assets/ig.png'
+import ytLogo from '../assets/youtube.png'
+import fbLogo from '../assets/facebook.png'
+import igLogo from '../assets/instagram.png'
 
 const Footer = () => {
   const quickLinks = [
@@ -56,18 +56,32 @@ const Footer = () => {
             <div className="text-base flex justify-center">
             Subscribe To E-Bulletin
             </div>
-            <div className="flex justify-evenly mt-5 h-1/3">
+            <div className="flex justify-evenly mt-2 h-1/3">
             <input className="bg-white text-black px-2"></input>
-            <button className="py-0 text-sm">Submit</button>
+            <button className="py-0 text-sm bg-black">Submit</button>
             </div>
           </div>
-          <div className="text-base flex justify-center w-full px-10">
+          <div className="text-base flex justify-center w-full px-10  items-end">
             Contact
-            <div className="flex justify-center w-full items-center gap-3">
-              <div><img src={mailLogo} className="lg:w-6"/></div>
-              <div><img src={ytLogo} className="lg:w-5"/></div>
-              <div><img src={fbLogo} className="lg:w-5"/></div>
-              <div><img src={igLogo} className="lg:w-5"/></div>
+            <div className="flex w-full items-center gap-2 px-2 ">
+              <div className="cursor-pointer">
+              <a href="https://youtube.com/@stjohnadenta3396?si=krZXJDBWZ0e2joc8" target="_blank">
+                <img src={ytLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
+                </a>
+                </div>
+
+              <div className="cursor-pointer">
+              <a href="https://www.facebook.com/share/T8k93kDWK6DSmknt/?mibextid=LQQJ4d" target="_blank">
+                <img src={fbLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
+                </a>
+                </div>
+              
+              <div className="cursor-pointer">
+              <a href="https://www.instagram.com/stjohntheevangelist_adenta?igsh=MTRzeTdoY3huOG95bg" target="_blank">
+                <img src={igLogo} className="lg:w-7 opacity-70 hover:opacity-100"/>
+                </a>
+                </div>
+              
               <div></div>
             </div>
           </div>

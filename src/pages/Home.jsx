@@ -128,7 +128,7 @@ const Home = () => {
         <div className="hidden  lg:relative lg:flex w-full lg:w-1/2 h-[40rem] overflow-hidden">
           <img
             src={thePastor}
-            alt="Your Image"
+            alt="Image of Pastor"
             className=" px-10 pt-10 h-[50rem] object-cover overflow-hidden invisible lg:visible"
           />
         </div>
@@ -159,7 +159,7 @@ const Home = () => {
             <span className="font-bold text-lg">
               Very Rev. Fr. Edmund Donkor-Baine
             </span>
-            <span className="text-sm">Parish Priest</span>
+            <span className="text-sm ">Parish Priest</span>
           </div>
         </div>
       </div>
