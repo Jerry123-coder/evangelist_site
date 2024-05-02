@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* shrink animation */
+@keyframes shrinkAnimation {
+  from {
+      transform: scale(2); /* Start with double the size */
+      opacity: 0; /* Start from transparent if you want */
+  }
+  to {
+      transform: scale(1); /* Scale down to the normal size */
+      opacity: 1; /* Fully visible */
+  }
+}
+
+.shrink {
+  animation: shrinkAnimation 3s ease-out forwards; /* Adjust time and easing according to your needs */
+  visibility: visible; /* Make sure the image is visible when the animation plays */
+}

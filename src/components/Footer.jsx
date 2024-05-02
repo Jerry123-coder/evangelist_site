@@ -22,21 +22,22 @@ const Footer = () => {
   ];
 
   return (
-    <div className="w-screen lg:h-[20vh] py-10 px-8 lg:py-4 flex bg-blue-800 to-black justify-evenly align-center w-full">
+    <div className=" lg:h-[20vh] py-10 px-8 lg:py-4 flex bg-blue-800 to-black justify-evenly align-center w-full">
       <div className="flex flex-col lg:flex-row justify-between  w-full items-evenly">
         <div className="lg:w-1/4 flex flex-col">
-          <div className="w-full flex justify-center lg:justify-start">
+          <div className="w-full flex mb-5 md:mb-0 lg:justify-start">
             <Link to="">
-              <img src={evangelistLogo} alt="" className="w-3/12 lg:w-[25rem] " />
+              <img src={evangelistLogo} alt="" className="w-[13rem] lg:w-[25rem] " />
             </Link>
           </div>
-          <div className="text-black px-20 text-sm flex justify-center w-full">
+          <div className="text-white md:px-20 text-sm flex justify-center w-full">
           Location 5th floor, 335 place 32 George Walker Bush Highway North Dzorwulu. Accra-Ghana
           </div>
    
         </div>
+        <div className="flex">
         <div className="text-white/80 text-xl w-4/12 justify-evenly h-full flex flex-col">
-          <div className="flex justify-between flex-grow py-5">
+          <div className="flex flex-col md:flex-row justify-between flex-grow py-5">
               {quickLinks.map((item) => (
                 <Link to={item.link} key={item.id}>
                   <p className="flex font-light text-white  hover:font-bold transition-all duration-200 ease-in-out justify-between ">
@@ -50,9 +51,9 @@ const Footer = () => {
           Copyright @ 2024
           </div>
         </div>
-        <div className="flex flex-col w-5/12 lg:w-[20rem] justify-between h-full mr-10">
+        <div className="flex flex-col w-5/12 lg:w-[20rem] justify-between h-full mr-10 invisible md:visible">
            <div className="flex flex-col h-full py-5">
-            <div className="text-base flex justify-center text-xl">
+            <div className="text-base flex justify-center">
             Subscribe To E-Bulletin
             </div>
             <div className="flex justify-evenly mt-5 h-1/3">
@@ -70,6 +71,7 @@ const Footer = () => {
               <div></div>
             </div>
           </div>
+      </div>
       </div>
       </div>
       

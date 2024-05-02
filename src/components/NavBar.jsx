@@ -67,11 +67,11 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-row items-center justify-center text-center bg-white py-5 w-screen sticky shadow-md top-0 z-50">
-      <div className="flex w-full justify-evenly">
+      <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
       
       <div className="logo">
         <Link to="">
-          <img src={evangelistLogo} alt="" className="w-[10rem] lg:w-[15rem]" />
+          <img src={evangelistLogo} alt="" className="w-[9rem] lg:w-[15rem] flex items-center" />
         </Link>
       </div>
       <div className="hidden lg:flex space-x-10  py-4">
@@ -114,10 +114,10 @@ const Navbar = () => {
      
    
 
-      <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-300 ease-in bg-black">
+      <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-200 ease-in items-center">
         {!isOpen ? (
           <div
-            className="transition duration-400 ease-in-out"
+            className="transition duration-400 ease-in-out text-black"
             onClick={() => setIsOpen(true)}
           >
             <AiOutlineMenu />
@@ -144,9 +144,14 @@ const Navbar = () => {
       <div
         className={`${
           isOpen ? "translate-x-full" : "translate-x-0"
-        } absolute top-0 left-[-20rem] h-screen w-[20rem] bg-[#A61D37] z-20 transform transition-transform duration-500 ease-in shadow-lg`}
+        } absolute top-0 left-[-30rem] h-screen w-[28rem] px-10 bg-blue-600 z-20 transform transition-transform duration-500 ease-in shadow-lg`}
       >
-        <ul className="py-10 mt-14">
+        <div className="flex w-full justify-end pt-5"> 
+          <AiOutlineClose 
+          onClick={() => setIsOpen(false)}
+          className="m-3 text-white text-xl"/>
+        </div>
+        <ul className="py-6 mt-10">
           {menuItems.map((item) => (
             <Link to={item.link} key={item.id}>
               <p
