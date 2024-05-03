@@ -15,6 +15,10 @@ export default {
             'clip-path': 'polygon(0 59%, 5% 71%, 24% 86%, 34% 71%, 41% 64%, 41% 46%, 51% 35%, 74% 21%, 89% 35%, 100% 42%, 100% 100%, 0 100%)',
           },
         },
+
+        'scroll':{
+          
+        }
       },
       animation: {
         polygon: 'animate 3s linear infinite',

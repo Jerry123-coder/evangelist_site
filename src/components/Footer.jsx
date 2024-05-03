@@ -25,7 +25,7 @@ const Footer = () => {
     <div className=" lg:h-[20vh] py-10 px-8 lg:py-4 flex bg-blue-800 to-black justify-evenly align-center w-full">
       <div className="flex flex-col lg:flex-row justify-between  w-full items-evenly">
         <div className="lg:w-1/4 flex flex-col">
-          <div className="w-full flex mb-5 md:mb-0 lg:justify-start">
+          <div className="w-full flex mb-5 md:mb-0 lg:justify-start lg:justify-center">
             <Link to="">
               <img src={evangelistLogo} alt="" className="w-[13rem] lg:w-[25rem] " />
             </Link>
@@ -33,8 +33,8 @@ const Footer = () => {
           <div className="text-white md:px-20 text-sm flex justify-center w-full">
           Location 5th floor, 335 place 32 George Walker Bush Highway North Dzorwulu. Accra-Ghana
           </div>
-   
         </div>
+        
         <div className="flex">
         <div className="text-white/80 text-xl w-4/12 justify-evenly h-full flex flex-col">
           <div className="flex flex-col md:flex-row justify-between flex-grow py-5">
@@ -82,7 +82,9 @@ const Footer = () => {
                 </a>
                 </div>
               
-              <div></div>
+              <div>
+                
+              </div>
             </div>
           </div>
       </div>

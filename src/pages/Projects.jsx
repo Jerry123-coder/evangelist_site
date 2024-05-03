@@ -64,7 +64,7 @@ const Projects = () => {
 <div>
     <div class="gallery-section mb-8">
   <h2 class="text-2xl font-bold mb-4">JHS Block Construction</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
     {/* <!-- Add your first set of 20 pictures here --> */} 
     <img src={project1} alt="Image 1" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
     <img src={project2} alt="Image 2" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
@@ -81,7 +81,7 @@ const Projects = () => {
 </div>
 
 <div class="gallery-section">
-  <h2 class="text-2xl font-bold mb-4">SHS Visitation</h2>
+  <h2 class="text-2xl font-bold mb-4">Gallery Section 2</h2>
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
     {/* <!-- Add your second set of 20 pictures here --> */}
     <img src="image21.jpg" alt="Image 21" class="w-full h-auto rounded-lg" />
