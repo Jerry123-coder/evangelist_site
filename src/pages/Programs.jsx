@@ -22,7 +22,7 @@ const Programs = () => {
   return (
 <>
     <div
-    className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
+    className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[10rem] md:h-[20rem] px-8 lg:px-[20rem] justify-between"
     style={{
       backgroundImage: `url(${statImage})`,
     }}
@@ -30,11 +30,11 @@ const Programs = () => {
     {/* Dark overlay */}
     <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
     <div className="text-white z-10 flex flex-col items-center">
-      <span className="text-2xl text-center w-full lg:text-left mb-10 lg:mb-2 font-semibold opacity-75">All You Need To Know About</span>
+      <span className="text-2xl text-center w-full lg:text-left mb-5 lg:mb-2 font-semibold opacity-75 pt-10">All You Need To Know About</span>
       <span className=" text-3xl text-center lg:text-left lg:text-6xl font-bold">Our Programs</span>
     </div>
   </div>
-  <div className="flex flex-col space-y-5 w-full pb- px-8 lg:px-[20rem] mb-16">
+  <div className="flex flex-col space-y-5 w-full pb- px-8 lg:px-[20rem] mb-10">
 
 <div className="border-b border-b-slate-300 my-10">
 <ul className="flex md:gap-16 justify-between md:justify-start">

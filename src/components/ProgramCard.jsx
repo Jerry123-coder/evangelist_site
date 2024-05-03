@@ -6,7 +6,7 @@ import image from "../assets/blog-pic.jpg";
 const ProgramCard = ({programme, title}) => {
     const navigate = useNavigate()
      return (
-          <div className="lg:max-w-sm rounded-2xl overflow-hidden shadow-lg pb-4 mt-10">
+          <div className="max-h-[30rem] lg:max-w-sm rounded-2xl overflow-hidden shadow-lg pb-4 mt-10">
                {/* Blog Image */}
                <div className="relative">
                     <img
