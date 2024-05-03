@@ -81,7 +81,7 @@ const Projects = () => {
 </div>
 
 <div class="gallery-section">
-  <h2 class="text-2xl font-bold mb-4">Gallery Section 2</h2>
+  <h2 class="text-2xl font-bold mb-4">SHS Visitation</h2>
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
     {/* <!-- Add your second set of 20 pictures here --> */}
     <img src="image21.jpg" alt="Image 21" class="w-full h-auto rounded-lg" />

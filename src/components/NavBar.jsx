@@ -60,13 +60,13 @@ const Navbar = () => {
     { id: 3, name: "Societies", link: "societies" },
     { id: 4, name: "Programs", link: "programs" },
     { id: 5, name: "Gallery", link: "gallery" },
-    { id: 5, name: "Projects", link: "projects" },
-    { id: 5, name: "Contact us", link: "contact" },
+    { id: 6, name: "Projects", link: "projects" },
+    { id: 7, name: "Contact us", link: "contact" },
 
   ];
 
   return (
-    <div className="flex flex-row items-center justify-center text-center bg-white py-5 w-screen sticky shadow-md top-0 z-50">
+    <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
       <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
       
       <div className="logo">
@@ -90,7 +90,7 @@ const Navbar = () => {
         ))}
 
 
-        <div className="flex">
+        {/* <div className="flex">
   <input
     type="search"
     className="relative m-0 block flex-auto rounded-3xl border-2 border-solid border-#1f2937  px-5  font-normal leading-[1.6] outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3]  motion-reduce:transition-none bg-white text-black "
@@ -98,7 +98,7 @@ const Navbar = () => {
     aria-label="Search Bar"
     id="exampleFormControlInput2"
      />
-</div>
+</div> */}
          </div>
            <div className="hidden lg:flex flex-col justify-center">
         <button

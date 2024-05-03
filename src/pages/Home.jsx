@@ -20,6 +20,10 @@ import ProgramCard from "../components/ProgramCard";
 import NewsCard from "../components/NewsCard";
 import homeBg from '../assets/home-bg.jpg';
 import img1 from '../assets/img1.jpg';
+import programme from '../assets/programme.jpg'
+import programme1 from '../assets/programme1.jpg'
+import programme2 from '../assets/programme2.jpg'
+import programme3 from '../assets/programme3.jpg'
 
 // import { GiBullseye } from 'react-icons'
 // import { FaMapLocationDot } from 'react-icons'
@@ -347,12 +351,12 @@ const Home = () => {
       <div 
          ref={newsContainerRef}
          onWheel={handleScroll}
-      className="flex invisible lg:visible lg:flex-row w-screen  py-20  gap-10 px-[5rem]">
+      className="flex flex-col w-screen  py-20  px-[5rem]">
        
-        <div className="text-2xl font-bold">Latest Updates</div>
+        <div className="text-2xl font-bold w-full">Latest Updates</div>
 
         <div className="flex w-full overflow-x-auto lg:flex-row gap-x-[2%] gap-y-8 px-0.5 py-10">
-        <div className="flex-shrink-0">
+        {/* <div className="flex-shrink-0">
           <NewsCard />
         </div>
         <div className="flex-shrink-0">
@@ -369,7 +373,12 @@ const Home = () => {
         </div>
         <div className="flex-shrink-0">
           <NewsCard />
-        </div>
+        </div> */}
+
+<ProgramCard programme={programme} title={'25th Anniversary'}/>
+<ProgramCard programme={programme1}  title={'Evangelist School Visitation'}/>
+<ProgramCard programme={programme2}  title={'Pentecost Novena'}/>
+<ProgramCard programme={programme3}  title={'Youth Quiz'}/>
       </div>
       </div>
 

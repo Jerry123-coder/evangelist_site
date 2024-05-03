@@ -2,6 +2,10 @@ import { useState } from "react";
 import statImage from "../assets/stn_image2.jpg";
 import BlogCard from "../components/BlogCard";
 import ProgramCard from "../components/ProgramCard";
+import programme from '../assets/programme.jpg'
+import programme1 from '../assets/programme1.jpg'
+import programme2 from '../assets/programme2.jpg'
+import programme3 from '../assets/programme3.jpg'
 
 const Programs = () => {
 
@@ -52,12 +56,11 @@ const Programs = () => {
 </ul>
 </div>
 <div className='flex flex-wrap justify-center lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-x-auto w-full  py-2 px-0.5'>
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
+<ProgramCard programme={programme} title={'25th Anniversary'}/>
+<ProgramCard programme={programme1}  title={'Evangelist School Visitation'}/>
+<ProgramCard programme={programme2}  title={'Pentecost Novena'}/>
+<ProgramCard programme={programme3}  title={'Youth Quiz'}/>
+
 </div>
 <div className="lg:w-full flex justify-center">
 {/* <div 
