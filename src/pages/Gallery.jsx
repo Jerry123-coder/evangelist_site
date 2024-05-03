@@ -26,9 +26,9 @@ const Gallery = () => {
   return (
     
     <div className='flex flex-col h-screen w-screen justify-center items-center font-bold text-4xl text-white/50 bg-slate-900'>
-        <div ref={animationContainer} />
-        <div>So sorry, page still under construction...</div>
-    </div>
+    <div ref={animationContainer} />
+    <div className="px-10 text-center md:text-left text-3xl">Sorry, page still under construction...</div>
+</div>
   )
 }
 
