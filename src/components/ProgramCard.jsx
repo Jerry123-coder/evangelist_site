@@ -36,9 +36,7 @@ const ProgramCard = ({programme, title}) => {
 
                     {/* Content/Summary */}
                     <p className="mt-1">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                         facilisi. Quisque dapibus nisi vitae mauris tincidunt, vel facilisis
-                         elit congue...
+                    Celebrate 25 years of faith and community on Sunday, August 4th, 2024, marking a quarter-century of shared blessings and growth.
                     </p>
                </div>
 

@@ -56,10 +56,10 @@ const Programs = () => {
 </ul>
 </div>
 <div className='flex flex-wrap justify-center lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-x-auto w-full  py-2 px-0.5'>
-<ProgramCard programme={programme} title={'25th Anniversary'}/>
-<ProgramCard programme={programme1}  title={'Evangelist School Visitation'}/>
-<ProgramCard programme={programme2}  title={'Pentecost Novena'}/>
-<ProgramCard programme={programme3}  title={'Youth Quiz'}/>
+<ProgramCard programme={programme} title={'25th Anniversary'} summary={'Celebrate 25 years of faith and community on Sunday, August 4th, 2024, marking a quarter-century of shared blessings and growth.'}/>
+<ProgramCard programme={programme1}  title={'Evangelist School Visitation'} summary={'Engage with our vibrant Youth Council as they embark on meaningful school visitations, fostering connections and spreading the message of hope and love.'}/>
+<ProgramCard programme={programme2}  title={'Pentecost Novena'} summary={''}/>
+<ProgramCard programme={programme3}  title={'Youth Quiz'} summary={''}/>
 
 </div>
 <div className="lg:w-full flex justify-center">
