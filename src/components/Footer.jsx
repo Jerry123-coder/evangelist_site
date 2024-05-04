@@ -31,7 +31,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="text-white md:px-20 text-sm flex justify-center w-full">
-          Location 5th floor, 335 place 32 George Walker Bush Highway North Dzorwulu. Accra-Ghana
+         26 Ntreh Street, Adenta Municipality
           </div>
         </div>
         
