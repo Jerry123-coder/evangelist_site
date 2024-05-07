@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import image from "../assets/blog-pic.jpg";
 
 
-const ProgramCard = ({programme, title}) => {
+const ProgramCard = ({programme, title, summary}) => {
     const navigate = useNavigate()
      return (
           <div className="max-h-[30rem] lg:max-w-sm rounded-2xl overflow-hidden shadow-lg pb-4 mt-10">
@@ -36,7 +36,7 @@ const ProgramCard = ({programme, title}) => {
 
                     {/* Content/Summary */}
                     <p className="mt-1">
-                    Celebrate 25 years of faith and community on Sunday, August 4th, 2024, marking a quarter-century of shared blessings and growth.
+                        {summary}
                     </p>
                </div>
 
