@@ -36,7 +36,7 @@ const ProgramCard = ({programme, title, summary}) => {
 
                     {/* Content/Summary */}
                     <p className="mt-1">
-                        {summary}
+                         {summary}
                     </p>
                </div>
 
