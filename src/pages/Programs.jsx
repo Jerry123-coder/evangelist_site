@@ -59,7 +59,7 @@ const Programs = () => {
 <ProgramCard programme={programme} title={'25th Anniversary'} summary={'Celebrate 25 years of faith and community on Sunday, August 4th, 2024, marking a quarter-century of shared blessings and growth.'}/>
 <ProgramCard programme={programme1}  title={'Evangelist School Visitation'} summary={'Engage with our vibrant Youth Council as they embark on meaningful school visitations, fostering connections and spreading the message of hope and love.'}/>
 <ProgramCard programme={programme2}  title={'Pentecost Novena'} summary={'Join us in prayer and reflection during the Pentecost novena, from May 10th to May 17th, 2017, as we seek the guidance and inspiration of the Holy Spirit.'}/>
-<ProgramCard programme={programme3}  title={'Youth Quiz'} summary={'Test your knowledge and camaraderie at the Youth Quiz on May 11th, 2024, a fun-filled event where learning and fellowship come together.'}/>
+<ProgramCard programme={programme3}  title={'Youth Quiz'} summary={' Test your knowledge and camaraderie at the Youth Quiz on May 11th, 2024, a fun-filled event where learning and fellowship come together.a'}/>
 
 </div>
 <div className="lg:w-full flex justify-center">
