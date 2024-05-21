@@ -5,15 +5,15 @@ import Footer from './Footer'
 
 const Container = () => {
      return (
-          <div className='w-screen max-w-[100vw] min-h-screen flex flex-col'>
+          <div className='relative w-screen max-w-[100vw] min-h-screen flex flex-col'>
                {/* Nav */}
                <Navbar />
                {/* Outlet */}
-               <div className="lg:min-h-[70vh]">
+               <div className="">
                     <Outlet />
                </div>
                {/* Footer */}
-               <Footer />
+               {/* <Footer /> */}
           </div>
      )
 }

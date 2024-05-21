@@ -96,7 +96,7 @@ const Home = () => {
       {/* <div key={index}> */}
       <div className="">
         <div
-          className={` relative h-screen  lg:h-screen w-full bg-cover bg-center flex items-center justify-center lg:overflow-hidden `}
+          className={` relative h-screen  lg:h-[100vh] w-full bg-cover bg-center flex items-center justify-center lg:overflow-hidden `}
           style={{
             // backgroundImage: `url(${slide.image})`,
             backgroundImage: `url(${static_bg.image})`,
@@ -132,14 +132,14 @@ const Home = () => {
 
       <img
         src={imgBar}
-        className="absolute top-[30rem] opacity-100 invisible lg:visible shrink"
+        className="absolute top-[30rem] -left-32 opacity-100 invisible lg:visible shrink"
       />
-      <div className="flex flex-col lg:flex-row w-screen lg:pt-[5rem] px-8 lg:px-[20rem]">
+      <div className="flex flex-col lg:flex-row h-[90vh] w-screen lg:pt-[3rem] px-8 lg:px-[10rem]">
         <div className="hidden  lg:relative lg:flex w-full lg:w-1/2 h-[40rem] overflow-hidden">
           <img
             src={thePastor}
             alt="Image of Pastor"
-            className=" px-10 pt-10 h-[50rem] object-cover overflow-hidden invisible lg:visible"
+            className=" px-10 pt-10 h-full object-cover overflow-hidden invisible lg:visible"
           />
         </div>
 
@@ -148,7 +148,7 @@ const Home = () => {
             <span>A Message From </span>
             <span>The Pastor</span>
           </h3>
-          <p className="flex flex-col text-xl mb-5 text-justify lg:text-left">
+          <p className="flex flex-col text-lg mb-5 text-justify lg:text-left">
             <span>
               I am delighted to warmly  welcome you to our homepage. You have
               come to the right place at the right time. Here, we are very
