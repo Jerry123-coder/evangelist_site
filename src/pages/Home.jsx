@@ -271,9 +271,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
             <div className="text-white z-10 flex flex-col items-center">
-               <a href="https://bible.usccb.org/daily-bible-reading" target="_blank" rel="noopener noreferrer">
               <div
                 className="w-full lg:w-[30rem] h-[8rem] lg:h-[15rem] bg-white rounded text-black flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer transition duration-200 ease-in hover:bg-yellow-500 hover:text-white"
                 onMouseEnter={() => setIsReadingHovered(true)}
@@ -292,21 +290,16 @@ const Home = () => {
                 </div>
                 <div>
                   {" "}
-               
                   <div className="text-xl lg:text-4xl font-bold">
                     Daily Reading
                   </div>
-              
-
                   <div className="text-sm lg:text-xl">
                     Access and meditate on the readings for today{" "}
                   </div>
                 </div>
               </div>
             </div>
-               </a>
           </div>
-       
 
           <div className="flex flex-col lg:flex-row gap-5">
             <div className="text-white z-10 flex flex-col items-center">
@@ -395,11 +388,14 @@ const Home = () => {
         <div className="flex-shrink-0">
           <NewsCard />
         </div> */}
-<ProgramCard programme={programme} title={'25th Anniversary'} summary={'Celebrate 25 years of faith and community on Sunday, August 4th, 2024, marking a quarter-century of shared blessings and growth.'}/>
-<ProgramCard programme={programme1}  title={'Evangelist School Visitation'} summary={'Engage with our vibrant Youth Council as they embark on meaningful school visitations, fostering connections and spreading the message of hope and love.'}/>
-<ProgramCard programme={programme2}  title={'Pentecost Novena'} summary={'Join us in prayer and reflection during the Pentecost novena, from May 10th to May 17th, 2017, as we seek the guidance and inspiration of the Holy Spirit.'}/>
-<ProgramCard programme={programme3}  title={'Youth Quiz'} summary={' Test your knowledge and camaraderie at the Youth Quiz on May 11th, 2024, a fun-filled event where learning and fellowship come together.'}/>
 
+          <ProgramCard programme={programme} title={"25th Anniversary"} />
+          <ProgramCard
+            programme={programme1}
+            title={"Evangelist School Visitation"}
+          />
+          <ProgramCard programme={programme2} title={"Pentecost Novena"} />
+          <ProgramCard programme={programme3} title={"Youth Quiz"} />
         </div>
       </div>
 
