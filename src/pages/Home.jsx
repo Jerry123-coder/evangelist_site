@@ -291,11 +291,11 @@ const Home = () => {
                 <div>
                   {" "}
               
+                 <a href="https://example.com" target="_blank" rel="noopener noreferrer">
                   <div className="text-xl lg:text-4xl font-bold">
-                      <a href="https://bible.usccb.org/daily-bible-reading" target="_blank" rel="noopener noreferrer">
-                        Daily Reading
-                      </a>
+                    Daily Reading
                   </div>
+                </a>
               
 
                   <div className="text-sm lg:text-xl">
