@@ -271,9 +271,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
-                 <a href="https://bible.usccb.org/daily-bible-reading" target="_blank" rel="noopener noreferrer">
+            
             <div className="text-white z-10 flex flex-col items-center">
+               <a href="https://bible.usccb.org/daily-bible-reading" target="_blank" rel="noopener noreferrer">
               <div
                 className="w-full lg:w-[30rem] h-[8rem] lg:h-[15rem] bg-white rounded text-black flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer transition duration-200 ease-in hover:bg-yellow-500 hover:text-white"
                 onMouseEnter={() => setIsReadingHovered(true)}
@@ -304,10 +304,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-               
+               </a>
           </div>
-            
-</a>
        
 
           <div className="flex flex-col lg:flex-row gap-5">
