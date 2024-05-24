@@ -304,8 +304,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+               </a>
           </div>
-        </a>
+       
 
           <div className="flex flex-col lg:flex-row gap-5">
             <div className="text-white z-10 flex flex-col items-center">
