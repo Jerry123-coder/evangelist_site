@@ -290,9 +290,12 @@ const Home = () => {
                 </div>
                 <div>
                   {" "}
+                <a href="https://bible.usccb.org/daily-bible-reading" target="_blank" rel="noopener noreferrer">
                   <div className="text-xl lg:text-4xl font-bold">
                     Daily Reading
                   </div>
+                </a>
+
                   <div className="text-sm lg:text-xl">
                     Access and meditate on the readings for today{" "}
                   </div>
