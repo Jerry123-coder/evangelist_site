@@ -271,7 +271,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            
             <div className="text-white z-10 flex flex-col items-center">
+               <a href="https://example.com" target="_blank" rel="noopener noreferrer">
               <div
                 className="w-full lg:w-[30rem] h-[8rem] lg:h-[15rem] bg-white rounded text-black flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer transition duration-200 ease-in hover:bg-yellow-500 hover:text-white"
                 onMouseEnter={() => setIsReadingHovered(true)}
@@ -290,12 +292,10 @@ const Home = () => {
                 </div>
                 <div>
                   {" "}
-              
-                 <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+               
                   <div className="text-xl lg:text-4xl font-bold">
                     Daily Reading
                   </div>
-                </a>
               
 
                   <div className="text-sm lg:text-xl">
@@ -304,6 +304,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+                </a>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-5">
