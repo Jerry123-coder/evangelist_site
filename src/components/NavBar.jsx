@@ -39,138 +39,311 @@
 
 // export default Navbar
 
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from "../assets/evangelist_logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import { IoIosArrowDown } from "react-icons/io";
+import { BiChurch, BiCalendar, BiGroup } from "react-icons/bi";
+
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
-import './NavBar.css'
+import "./NavBar.css";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
+  const dropdownMenus = {
+    ministries: [
+      { name: "Knights & Ladies of the Altar", link: "knights-ladies-altar" },
+      { name: "Ave Maria Choir", link: "ave-maria-choir" },
+      {
+        name: "St. John the Evangelist Choir",
+        link: "st-john-evangelist-choir",
+      },
+      { name: "Lectors", link: "lectors" },
+      { name: "Ushers", link: "ushers" },
+      {
+        name: "Extra ordinary ministers of the holy Eucharist",
+        link: "ministers-holy-eucharist",
+      },
+    ],
+   
+    councils: [
+      { name: "Christian sons", link: "christian-sons" },
+      { name: "Christian daughters", link: "christian-daughters" },
+      { name: "St.Theresa Roses", link: "st-theresa-roses" },
+      { name: "Knights of St.John international cadets", link: "ksji-cadets" },
+      { name: "Junior Auxiliary", link: "junior-auxiliary" },
+      { name: "Junior Marshallans", link: "junior-marshallans" },
+      { name: "Knights & Ladies of the Altar", link: "knights-ladies-altar" },
+      { name: "Word in Motion", link: "word-in-motion" },
+      {
+        name: "Catholic Youth Organization",
+        link: "catholic-youth-organization",
+      },
+    ],
+  };
   const menuItems = [
     { id: 1, name: "Home", link: "" },
     { id: 2, name: "About", link: "about" },
     { id: 3, name: "Societies", link: "societies" },
-    { id: 4, name: "Programmes", link: "programs" },
-    { id: 5, name: "Gallery", link: "gallery" },
-    { id: 6, name: "Projects", link: "projects" },
-    { id: 7, name: "Contact us", link: "contact" },
-
+    {
+      id: 4,
+      name: "Ministries",
+      link: "#",
+      hasDropdown: true,
+      dropdownKey: "ministries",
+    },
+ 
+    {
+      id: 5,
+      name: "Youth Councils",
+      link: "#",
+      hasDropdown: true,
+      dropdownKey: "councils",
+    },
+    { id: 7, name: "Gallery", link: "gallery" },
+    { id: 8, name: "Projects", link: "projects" },
+    { id: 9, name: "Contact us", link: "contact" },
   ];
 
+  const toggleDropdown = (key) => {
+    setActiveDropdown(activeDropdown === key ? null : key);
+  };
   return (
     <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
       <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
-      
-      <div className="logo">
-        <Link to="">
-          <img src={evangelistLogo} alt="" className="w-[9rem] lg:w-[15rem] flex items-center" />
-        </Link>
-      </div>
-      <div className="hidden lg:flex space-x-10  py-4">
-        {menuItems.map((item) => (
-          <Link to={item.link} key={item.id}>
-            <p
-              className={`${
-                "/" + item.link === location.pathname
-                  ? "text-blue-400 underline underline-offset-4"
-                  : "text-black"
-              } text-md font-semibold hover:scale-110 transition-all duration-200 ease-in-out`}
-            >
-              {item.name}
-            </p>
+        <div className="logo">
+          <Link to="">
+            <img
+              src={evangelistLogo}
+              alt=""
+              className="w-[9rem] lg:w-[15rem] flex items-center"
+            />
           </Link>
-        ))}
-
-
-        {/* <div className="flex">
-  <input
-    type="search"
-    className="relative m-0 block flex-auto rounded-3xl border-2 border-solid border-#1f2937  px-5  font-normal leading-[1.6] outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3]  motion-reduce:transition-none bg-white text-black "
-    placeholder="Search"
-    aria-label="Search Bar"
-    id="exampleFormControlInput2"
-     />
-</div> */}
-         </div>
-           <div className="hidden lg:flex flex-col justify-center">
-        <button
-          onClick={() => navigate("/donate")}
-          className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white  hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
-        >
-          <span>Donate</span>
-          <span className="w-5">
-            <BiSolidDonateHeart />
-          </span>
-        </button>
-      </div>
-     
-   
-
-      <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-200 ease-in items-center">
-        {!isOpen ? (
-          <div
-            className="transition duration-400 ease-in-out text-black"
-            onClick={() => setIsOpen(true)}
-          >
-            <AiOutlineMenu />
-          </div>
-        ) : (
-          <div
-            className="transition duration-400 ease-in-out"
-            onClick={() => setIsOpen(false)}
-          >
-            {" "}
-            <AiOutlineClose />{" "}
-          </div>
-        )}
-      </div>
-
-      <div
-        className={` ${
-          isOpen
-            ? "fixed inset-0 bg-black opacity-80 transition duration-400 ease-in-out"
-            : "hidden"
-        } `}
-        onClick={() => setIsOpen(false)}
-      ></div>
-      <div
-        className={`${
-          isOpen ? "translate-x-full" : "translate-x-0"
-        } absolute top-0 left-[-30rem] h-screen w-[28rem] px-10 bg-blue-600 z-20 transform transition-transform duration-500 ease-in shadow-lg`}
-      >
-        <div className="flex w-full justify-end pt-5"> 
-          <AiOutlineClose 
-          onClick={() => setIsOpen(false)}
-          className="m-3 text-white text-xl"/>
         </div>
-        <ul className="py-6 mt-10">
+        <div className="hidden lg:flex space-x-8">
           {menuItems.map((item) => (
-            <Link to={item.link} key={item.id}>
-              <p
-                onClick={() => setIsOpen(false)}
-                className={`${
-                  "/" + item.link === location.pathname
-                    ? "text-white"
-                    : "text-white/60"
-                } py-4 px-4 hover:bg-white/20 border-b-[1px] border-b-white/40 mx-8  cursor-pointer text-xl font-semibold hover:text-scale-110 transition duration-500 ease-in-out`}
-              >
-                {item.name}
-              </p>
-            </Link>
+            <div
+              key={item.id}
+              className="relative group"
+              onMouseEnter={() =>
+                item.hasDropdown && setActiveDropdown(item.dropdownKey)
+              }
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              {item.hasDropdown ? (
+                <div
+                  className="flex items-center justify-center py-2 cursor-pointer"
+                  onClick={() =>
+                    setActiveDropdown(
+                      activeDropdown === item.dropdownKey
+                        ? null
+                        : item.dropdownKey
+                    )
+                  }
+                >
+                  <p
+                    className={`${
+                      "/" + item.link === location.pathname
+                        ? "text-blue-500"
+                        : "text-black"
+                    } text-md font-semibold transition-all duration-200 ease-in-out flex items-center`}
+                  >
+                    {item.name}
+                    <IoIosArrowDown
+                      className={`ml-1 transition-transform duration-200 ${
+                        activeDropdown === item.dropdownKey ? "rotate-180" : ""
+                      }`}
+                    />
+                  </p>
+                </div>
+              ) : (
+                <Link to={item.link}>
+                  <p
+                    className={`${
+                      "/" + item.link === location.pathname
+                        ? "text-blue-500"
+                        : "text-black"
+                    } text-md font-semibold transition-all duration-200 ease-in-out py-2`}
+                  >
+                    {item.name}
+                  </p>
+                </Link>
+              )}
+
+              {item.hasDropdown && (
+                <div
+                  className={`absolute top-full left-0 mt-2 w-72 bg-gray-50 shadow-xl py-3 rounded-xl border-y-4 transition-all duration-300 ease-in-out transform origin-top 
+                  ${
+                    activeDropdown === item.dropdownKey
+                      ? "opacity-100 scale-y-100 visible"
+                      : "opacity-0 scale-y-0 invisible"
+                  }`}
+                >
+                  {/* Existing dropdown content */}
+                  <div className="absolute -top-3 left-3 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center">
+                    {item.dropdownKey === "ministries" && (
+                      <BiChurch className="text-blue-500" />
+                    )}
+                    {item.dropdownKey === "dayborn" && (
+                      <BiCalendar className="text-blue-500" />
+                    )}
+                    {item.dropdownKey === "councils" && (
+                      <BiGroup className="text-blue-500" />
+                    )}
+                  </div>
+                  {dropdownMenus[item.dropdownKey].map(
+                    (dropdownItem, index) => (
+                      <Link
+                        key={index}
+                        to={dropdownItem.link}
+                        className="block px-10 py-2 text-sm text-gray-700 rounded-xl bg-gray-50 hover:text-blue-500 transition-colors duration-150"
+                      >
+                        {dropdownItem.name}
+                      </Link>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
+        <div className="hidden lg:flex flex-col justify-center">
+          <button
+            onClick={() => navigate("/donate")}
+            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white  hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
+          >
+            <span>Donate</span>
+            <span className="w-5">
+              <BiSolidDonateHeart />
+            </span>
+          </button>
+        </div>
+        {/* Mobile Menu */}
+        <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-200 ease-in items-center">
+          {!isOpen ? (
+            <div
+              className="transition duration-400 ease-in-out text-black"
+              onClick={() => setIsOpen(true)}
+            >
+              <AiOutlineMenu />
+            </div>
+          ) : (
+            <div
+              className="transition duration-400 ease-in-out"
+              onClick={() => setIsOpen(false)}
+            >
+              <AiOutlineClose />
+            </div>
+          )}
+        </div>
+
+        <div
+          className={` ${
+            isOpen
+              ? "fixed inset-0 bg-black opacity-80 transition duration-400 ease-in-out"
+              : "hidden"
+          } `}
+          onClick={() => setIsOpen(false)}
+        ></div>
+
+        <div
+          className={`${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          } fixed top-0 right-0 h-screen w-[28rem] px-10 bg-blue-600 z-20 transform transition-transform duration-500 ease-in shadow-lg overflow-y-auto`}
+        >
+          <div className="flex w-full justify-end pt-5">
+            <AiOutlineClose
+              onClick={() => setIsOpen(false)}
+              className="m-3 text-white text-xl"
+            />
+          </div>
+
+          <ul className="py-6 mt-10">
+            {menuItems.map((item) => (
+              <div key={item.id} className="relative">
+                {item.hasDropdown ? (
+                  <div>
+                    <div
+                      onClick={() => toggleDropdown(item.dropdownKey)}
+                      className="flex justify-center items-center gap-3 py-4 px-4 hover:bg-white/20 border-b-[1px] border-b-white/40 mx-8 cursor-pointer"
+                    >
+                      <span
+                        className={`text-xl font-semibold ${
+                          "/" + item.link === location.pathname
+                            ? "text-white"
+                            : "text-white/60"
+                        }`}
+                      >
+                        {item.name}
+                      </span>
+                      <IoIosArrowDown
+                        className={`text-white transition-transform duration-300 ${
+                          activeDropdown === item.dropdownKey
+                            ? "rotate-180"
+                            : ""
+                        }`}
+                      />
+                    </div>
+
+                    {activeDropdown === item.dropdownKey && (
+                      <div className=" rounded-lg mx-8 my-2">
+                        {dropdownMenus[item.dropdownKey].map(
+                          (subItem, index) => (
+                            <Link
+                              key={index}
+                              to={subItem.link}
+                              onClick={() => setIsOpen(false)}
+                              className="block py-3 px-6 text-white/80 hover:border-y-2 hover:bg-white/20 hover:text-white transition-colors duration-200"
+                            >
+                              {subItem.name}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={item.link}
+                    onClick={() => setIsOpen(false)}
+                    className={`block py-4 px-4 hover:bg-white/20 border-b-[1px] border-b-white/40 mx-8 cursor-pointer text-xl font-semibold ${
+                      "/" + item.link === location.pathname
+                        ? "text-white"
+                        : "text-white/60"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+
+            {/* Donate button for mobile */}
+            <div className="mx-8 mt-6">
+              <button
+                onClick={() => {
+                  navigate("/donate");
+                  setIsOpen(false);
+                }}
+                className="w-full bg-white text-blue-600 hover:bg-blue-50 rounded-full py-3 flex items-center justify-center gap-2 transition-colors duration-200"
+              >
+                <span>Donate</span>
+                <BiSolidDonateHeart />
+              </button>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
-    </div>
- );
+  );
 };
 
 export default Navbar;

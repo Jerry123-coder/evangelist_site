@@ -272,7 +272,7 @@ const Home = () => {
               </div>
             </div>
             
-             <a
+             <div
                 href="https://bible.usccb.org/daily-bible-reading"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -306,7 +306,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-          </a>
+          </div>
+          
 
           <div className="flex flex-col lg:flex-row gap-5">
             <div className="text-white z-10 flex flex-col items-center">
