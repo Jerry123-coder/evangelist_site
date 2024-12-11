@@ -2,7 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 // import animation from '../assets/animation/'
 import lottie from "lottie-web";
 import animationData from "../assets/animation/data.json";
-import { ministries, societies, dayBorns } from "../data";
+import {
+  ministries,
+  societies,
+  dayBorns,
+  youthCouncil,
+  childrenMinistries,
+} from "../data";
 import { IoPersonAddSharp } from "react-icons/io5";
 import {
   FaAddressBook,
@@ -14,7 +20,13 @@ import {
 const Societies = () => {
   const animationContainer = useRef(null);
   const [isActive, setIsActive] = useState("Ave Maria Choir");
-  const items = ["Ministries", "Societies", "Day Borns"];
+  const items = [
+    "Ministries",
+    "Societies",
+    "Day Borns",
+    "Youth Council",
+    "Children Ministries",
+  ];
   const [category, setCategory] = useState("Ministries");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -76,6 +88,12 @@ const Societies = () => {
       case "Day Borns":
         firstItem = dayBorns[0];
         break;
+      case "Youth Council":
+        firstItem = youthCouncil[0];
+        break;
+      case "Children Ministries":
+        firstItem = childrenMinistries[0];
+        break;
       default:
         firstItem = ministries[0];
     }
@@ -93,6 +111,12 @@ const Societies = () => {
       break;
     case "Day Borns":
       currentItems = dayBorns;
+      break;
+    case "Youth Council":
+      currentItems = youthCouncil;
+      break;
+    case "Children Ministries":
+      currentItems = childrenMinistries;
       break;
     default:
       currentItems = ministries;
@@ -335,8 +359,7 @@ const Societies = () => {
                     // onClick={() => handleItemDisplay(item)}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className={`regular text-lg font-base rounded-md flex items-center justify-center gap-4  hover:text cursor-pointer duration-200 transition ease-in py-5  ${
-                      isActive === item.name &&
-                      "bg-blue-950 text-white rounded"
+                      isActive === item.name && "bg-blue-950 text-white rounded"
                     }`}
                   >
                     {item.name}
@@ -346,9 +369,11 @@ const Societies = () => {
                     {isMenuOpen && (
                       <div className="absolute top-[15rem] w-[96%] px-6 rounded-md">
                         {currentItems.map((item) => (
-                          <div className="bg-blue-950 text-center">
+                          <div
+                            key={item.name}
+                            className="bg-blue-950 text-center"
+                          >
                             <div
-                              key={item.name}
                               onClick={() => handleItemDisplay(item)}
                               className={`text-lg font-base flex pl-10 items-center bg-blue-950 hover:bg-blue-900/30 hover:text cursor-pointer duration-200 transition ease-in py-5  ${
                                 isActive === item.name &&
@@ -370,7 +395,7 @@ const Societies = () => {
             ))}
           </div>
 
-          <div className="w-full md:w-3/4 min-h-full bg-slate-100 md:pt-5">
+          <div className="w-full md:w-3/4 min-h-full bg-slate-100 md:pt-5 text-gray-900">
             <div className="hidden md:flex  w-full justify-between items-center border-b-2 border-slate-900/10 py-2 px-14">
               <span className="text-3xl">
                 {currentItems.map(

@@ -187,7 +187,7 @@ const Navbar = () => {
                       : "opacity-0 scale-y-0 invisible"
                   }`}
                 >
-                  {/* Existing dropdown content */}
+                  {/*  dropdown content */}
                   <div className="absolute -top-3 left-3 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center">
                     {item.dropdownKey === "ministries" && (
                       <BiChurch className="text-blue-500" />
