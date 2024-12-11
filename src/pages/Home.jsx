@@ -13,7 +13,7 @@ import Testimonial from "../components/Testimonial";
 import { useNavigate } from "react-router-dom";
 import imgBar from "../assets/imageBar.svg";
 import { FaBible, FaCalendarAlt, FaChurch, FaUserClock } from "react-icons/fa";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ProgramCard from "../components/ProgramCard";
 import NewsCard from "../components/NewsCard";
 import homeBg from "../assets/home-bg.jpg";
@@ -22,6 +22,8 @@ import programme from "../assets/programme.jpg";
 import programme1 from "../assets/programme1.jpg";
 import programme2 from "../assets/programme2.jpg";
 import programme3 from "../assets/programme3.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -31,43 +33,13 @@ const Home = () => {
   const [isCalenderHovered, setIsCalenderHovered] = useState(false);
   const newsContainerRef = useRef(null);
 
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const slideIn = {
-    hidden: { x: -100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.8 },
-    },
-  };
-
-  const cardHover = {
-    hover: {
-      scale: 1.05,
-      backgroundColor: "#FCD34D",
-      color: "white",
-      transition: { duration: 0.3 },
-    },
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   const handleBulletinDownload = () => {
     const pdfUrl =
@@ -88,96 +60,73 @@ const Home = () => {
   };
 
   return (
-    <motion.div initial="hidden" animate="visible">
+    <div>
       {/* Hero Section */}
-      <motion.div
-        className="relative h-screen lg:h-[100vh] w-full"
-        variants={fadeInUp}
-      >
-        <motion.div
+      <div className="relative h-screen lg:h-[100vh] w-full">
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${static_bg.image})` }}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1 }}
+          data-aos="zoom-in"
         >
           <div className="absolute inset-0 bg-black opacity-60"></div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="relative h-full flex items-center justify-center"
-          variants={staggerContainer}
-        >
-          <motion.div
-            className="text-white text-center z-10 w-[60rem] flex flex-col gap-5 p-8 lg:p-0"
-            variants={staggerContainer}
-          >
-            <motion.div
+        <div className="relative h-full flex items-center justify-center">
+          <div className="text-white text-center z-10 w-[60rem] flex flex-col gap-5 p-8 lg:p-0">
+            <div
               className="text-xs lg:text-2xl px-8 invisible lg:visible lg:mb-8 font-base"
-              variants={fadeInUp}
+              data-aos="fade-up"
+              data-aos-delay="200"
             >
               {static_bg.subtext}
-            </motion.div>
+            </div>
 
-            <motion.p
+            <p
               className="text-6xl lg:text-8xl font-bold w-full"
-              variants={fadeInUp}
+              data-aos="fade-up"
+              data-aos-delay="400"
             >
               {static_bg.maintext}
-            </motion.p>
+            </p>
 
-            <motion.div
+            <div
               className="flex space-x-10 justify-center mt-10"
-              variants={fadeInUp}
+              data-aos="fade-up"
+              data-aos-delay="600"
             >
-              <motion.button
-                className="bg-blue-500 w-[12rem] h-[3rem] text-lg text-white rounded-full"
-                whileHover={{ scale: 1.05, backgroundColor: "#3B82F6" }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="bg-blue-500 w-[12rem] h-[3rem] text-lg text-white rounded-full hover:scale-105 hover:bg-blue-600 transition-all duration-300">
                 I'm New Here
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Pastor Section */}
-      <motion.div
-        className="flex flex-col lg:flex-row h-[90vh] w-screen lg:pt-[3rem] px-8 lg:px-[10rem]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <motion.div
-          className="hidden lg:relative lg:flex w-full lg:w-1/2 h-[40rem]"
-          variants={slideIn}
+      <div className="flex flex-col lg:flex-row h-[90vh] w-screen lg:pt-[3rem] px-8 lg:px-[10rem]">
+        <div
+          className="hidden lg:relative lg:flex w-full lg:w-1/2 h-[40rem] z-30"
+          data-aos="fade-left"
         >
-          <motion.img
+          <img
             src={thePastor}
             alt="Image of Pastor"
-            className="px-10 pt-10 h-full object-cover z-30"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            className="px-10 pt-10 h-full object-cover "
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="flex flex-col justify-center lg:justify-start items-center w-full lg:w-1/2 lg:pr-10 py-20"
-          variants={fadeInUp}
-        >
-          <motion.h3
+        <div className="flex flex-col justify-center lg:justify-start items-center w-full lg:w-1/2 lg:pr-10 py-20">
+          <h3
             className="text-3xl uppercase lg:text-3xl font-bold pb-5 lg:w-full text-white text-center flex flex-col lg:flex-row"
-            variants={fadeInUp}
+            data-aos="fade-down"
           >
             <span>A Message From </span>
             <span> The Pastor</span>
-          </motion.h3>
-          <motion.p
+          </h3>
+          <p
             className="flex flex-col text-lg mb-5 text-justify lg:text-left"
-            variants={fadeInUp}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <span>
               I am delighted to warmly welcome you to our homepage. You have
@@ -190,86 +139,77 @@ const Home = () => {
               through our numerous materials and online resources, may the Lord
               continue to richly bless you (Amen).
             </span>
-          </motion.p>
-          <motion.div
+          </p>
+          <div
             className="flex flex-col lg:w-full text-slate-900"
-            variants={fadeInUp}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
-            <span className="font-bold text-lg">
+            <span className="font-bold text-lg text-white/40">
               Very Rev. Fr. Edmund Donkor-Baine
             </span>
-            <span className="text-sm">Parish Priest</span>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            <span className="text-sm text-white/40">Parish Priest</span>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Links Section */}
-      <motion.div
+      {/* Quick Links Section */}
+      <div
         className="relative bg-cover bg-center z-10 py-20"
         style={{ backgroundImage: `url(${img1})` }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black opacity-70"></div>
 
-        <motion.div
-          className="relative z-10 flex flex-col gap-10 p-8 justify-center items-center lg:px-[20rem]"
-          variants={staggerContainer}
-        >
-          <motion.div className="flex flex-col lg:flex-row gap-5">
+        <div className="relative z-10 flex flex-col gap-10 p-8 justify-center items-center lg:px-[20rem]">
+          <div className="flex flex-col lg:flex-row gap-5">
             {/* Church Activities Card */}
-            <motion.div className="w-full lg:w-[30rem]" variants={fadeInUp}>
-              <motion.div
-                className="h-[8rem] lg:h-[15rem] text-gray-950  bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer"
-                whileHover={cardHover.hover}
+            <div
+              className="w-full lg:w-[30rem]"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
+              <div
+                className="h-[8rem] lg:h-[15rem] text-gray-950 bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer hover:bg-yellow-400 hover:text-white transition-all duration-300"
                 onMouseEnter={() => setIsChurchHovered(true)}
                 onMouseLeave={() => setIsChurchHovered(false)}
               >
-                <motion.div
-                  animate={isChurchHovered ? { scale: 1.2 } : { scale: 1 }}
+                <div
                   className={`${
-                    isChurchHovered ? "animate-bounce" : "text-blue-500"
-                  } text-[3.8rem] lg:text-[5rem]`}
-                  style={{
-                    transform: isChurchHovered ? "scale(1.2)" : "scale(1)",
-                    transition: "transform 1s ease-in",
-                  }}
+                    isChurchHovered ? "scale-125 text-white" : "text-blue-500"
+                  } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
                   <FaChurch />
-                </motion.div>
+                </div>
                 <div>
-                  <div className="text-lg lg:text-4xl  font-bold">
+                  <div className="text-lg lg:text-4xl font-bold">
                     Parish Activities
                   </div>
                   <div className="text-s lg:text-xl">
                     Mass times, sacraments and other schedules
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Daily Reading Card */}
-            <motion.div className="w-full lg:w-[30rem]" variants={fadeInUp}>
-              <motion.div
-                className="h-[8rem] lg:h-[15rem] text-black bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer"
-                whileHover={cardHover.hover}
+            <div
+              className="w-full lg:w-[30rem]"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                className="h-[8rem] lg:h-[15rem] text-black bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer hover:bg-yellow-400 hover:text-white transition-all duration-300"
                 onMouseEnter={() => setIsReadingHovered(true)}
                 onMouseLeave={() => setIsReadingHovered(false)}
               >
-                <motion.div
-                  animate={isReadingHovered ? { scale: 1.2 } : { scale: 1 }}
+                <div
                   className={`${
-                    isReadingHovered ? "animate-bounce" : "text-blue-500"
-                  } text-[3.8rem] lg:text-[5rem]`}
-                  style={{
-                    transform: isReadingHovered ? "scale(1.2)" : "scale(1)",
-                    transition: "transform 1s ease-in",
-                  }}
+                    isReadingHovered ? "scale-125 text-white" : "text-blue-500"
+                  } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
                   <FaBible />
-                </motion.div>
+                </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
                     Daily Reading
@@ -278,31 +218,29 @@ const Home = () => {
                     Access and meditate on the readings for today
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              </div>
+            </div>
+          </div>
 
-          <motion.div className="flex flex-col lg:flex-row gap-5">
+          <div className="flex flex-col lg:flex-row gap-5">
             {/* Office Hours Card */}
-            <motion.div className="w-full lg:w-[30rem]" variants={fadeInUp}>
-              <motion.div
-                className="h-[8rem] lg:h-[15rem] text-gray-950 bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer"
-                whileHover={cardHover.hover}
+            <div
+              className="w-full lg:w-[30rem]"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div
+                className="h-[8rem] lg:h-[15rem] text-gray-950 bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer hover:bg-yellow-400 hover:text-white transition-all duration-300"
                 onMouseEnter={() => setIsOfficeHovered(true)}
                 onMouseLeave={() => setIsOfficeHovered(false)}
               >
-                <motion.div
-                  animate={isOfficeHovered ? { scale: 1.2 } : { scale: 1 }}
+                <div
                   className={`${
-                    isOfficeHovered ? "animate-bounce" : "text-blue-500"
-                  } text-[3.8rem] lg:text-[5rem]`}
-                  style={{
-                    transform: isOfficeHovered ? "scale(1.2)" : "scale(1)",
-                    transition: "transform 1s ease-in",
-                  }}
+                    isOfficeHovered ? "scale-125 text-white" : "text-blue-500"
+                  } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
                   <FaUserClock />
-                </motion.div>
+                </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
                     Office Hours
@@ -311,32 +249,27 @@ const Home = () => {
                     Learn more about parish working hours
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Parish Calendar Card */}
-            <motion.div
+            <div
               className="w-full lg:w-[30rem] text-black"
-              variants={fadeInUp}
+              data-aos="fade-up"
+              data-aos-delay="600"
             >
-              <motion.div
-                className="h-[8rem] lg:h-[15rem] bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer"
-                whileHover={cardHover.hover}
+              <div
+                className="h-[8rem] lg:h-[15rem] bg-white rounded flex items-center justify-center gap-8 px-5 lg:px-[3rem] cursor-pointer hover:bg-yellow-400 hover:text-white transition-all duration-300"
                 onMouseEnter={() => setIsCalenderHovered(true)}
                 onMouseLeave={() => setIsCalenderHovered(false)}
               >
-                <motion.div
-                  animate={isCalenderHovered ? { scale: 1.2 } : { scale: 1 }}
+                <div
                   className={`${
-                    isCalenderHovered ? "animate-bounce" : "text-blue-500"
-                  } text-[3.8rem] lg:text-[5rem]`}
-                  style={{
-                    transform: isCalenderHovered ? "scale(1.2)" : "scale(1)",
-                    transition: "transform 1s ease-in",
-                  }}
+                    isCalenderHovered ? "scale-125 text-white" : "text-blue-500"
+                  } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
                   <FaCalendarAlt />
-                </motion.div>
+                </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
                     Parish Calendar
@@ -345,94 +278,73 @@ const Home = () => {
                     Highlights of important dates for the year
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Latest Updates Section */}
-      <motion.div
+      <div
         ref={newsContainerRef}
         onWheel={handleScroll}
-        className="flex flex-col w-screen py-20 px-[2rem] md:px-[5rem]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
+        className="flex flex-col w-screen py-20 px-[2rem]  md:px-[5rem]"
       >
-        <motion.div className="text-2xl font-bold w-full" variants={fadeInUp}>
+        <div className="text-2xl font-bold w-full" data-aos="fade-up">
           Latest Updates
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="flex flex-wrap justify-center flex-col lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-x-auto w-full py-2 px-0.5"
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp}>
+        <div className="flex flex-wrap justify-center flex-col lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-hidden w-full py-2 px-0.5">
+          <div data-aos="fade-up" data-aos-delay="0">
             <ProgramCard programme={programme} title="25th Anniversary" />
-          </motion.div>
-          <motion.div variants={fadeInUp}>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
             <ProgramCard
               programme={programme1}
               title="Evangelist School Visitation"
             />
-          </motion.div>
-          <motion.div variants={fadeInUp}>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="400">
             <ProgramCard programme={programme2} title="Pentecost Novena" />
-          </motion.div>
-          <motion.div variants={fadeInUp}>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="600">
             <ProgramCard programme={programme3} title="Youth Quiz" />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
 
       {/* E-Bulletin Section */}
-      <motion.div
+      <div
         className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
         style={{ backgroundImage: `url(${statImage})` }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
       >
         <div className="absolute z-2 inset-0 bg-black opacity-60"></div>
 
-        <motion.div
+        <div
           className="text-white z-10 flex flex-col justify-center m-auto"
-          variants={fadeInUp}
+          data-aos="fade-up"
         >
-          <motion.div
-            className="text-xl md:text-4xl text-center w-full mb-5 lg:mb-10 font-semibold flex items-center justify-center"
-            variants={fadeInUp}
-          >
+          <div className="text-xl md:text-4xl text-center w-full mb-5 lg:mb-10 font-semibold flex items-center justify-center">
             Download Church E-Bulletin
-          </motion.div>
+          </div>
 
-          <motion.div
+          <button
             onClick={handleBulletinDownload}
-            className="w-full md:w-[30rem] h-[4rem] bg-blue-500 items-center flex  justify-center font-bold text-xl rounded-full cursor-pointer"
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "#FCD34D",
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.95 }}
+            className="w-full md:w-[30rem] h-[4rem] bg-blue-500 items-center flex justify-center font-bold text-xl rounded-full cursor-pointer hover:scale-105 hover:bg-yellow-400 transition-all duration-300"
           >
             Click here to download
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </button>
+        </div>
+      </div>
 
       {/* Floating Image Bar */}
-      <motion.img
+      <img
         src={imgBar}
         className="absolute top-[30rem] -left-32 opacity-100 invisible lg:visible shrink"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        data-aos="fade-right"
+        data-aos-delay="500"
       />
-    </motion.div>
+    </div>
   );
 };
 

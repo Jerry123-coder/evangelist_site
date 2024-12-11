@@ -59,21 +59,28 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const dropdownMenus = {
-    ministries: [
-      { name: "Knights & Ladies of the Altar", link: "knights-ladies-altar" },
-      { name: "Ave Maria Choir", link: "ave-maria-choir" },
-      {
-        name: "St. John the Evangelist Choir",
-        link: "st-john-evangelist-choir",
-      },
-      { name: "Lectors", link: "lectors" },
-      { name: "Ushers", link: "ushers" },
-      {
-        name: "Extra ordinary ministers of the holy Eucharist",
-        link: "ministers-holy-eucharist",
-      },
+    // ministries: [
+    //   { name: "Knights & Ladies of the Altar", link: "knights-ladies-altar" },
+    //   { name: "Ave Maria Choir", link: "ave-maria-choir" },
+    //   {
+    //     name: "St. John the Evangelist Choir",
+    //     link: "st-john-evangelist-choir",
+    //   },
+    //   { name: "Lectors", link: "lectors" },
+    //   { name: "Ushers", link: "ushers" },
+    //   {
+    //     name: "Extra ordinary ministers of the holy Eucharist",
+    //     link: "ministers-holy-eucharist",
+    //   },
+    // ],
+    about: [
+      { name: "History", link: "about" },
+      { name: "Clergy", link: "clergy" },
+      { name: "Parish Youth Council", link: "parish-youth-council" },
+      { name: "Parish Pastoral Council", link: "parish-pastoral-counci" },
     ],
-   
+
+
     councils: [
       { name: "Christian sons", link: "christian-sons" },
       { name: "Christian daughters", link: "christian-daughters" },
@@ -91,23 +98,24 @@ const Navbar = () => {
   };
   const menuItems = [
     { id: 1, name: "Home", link: "" },
-    { id: 2, name: "About", link: "about" },
+    { id: 2, name: "About Us", link: "#", dropdownKey: "about"   ,   hasDropdown: true,
+    },
     { id: 3, name: "Societies", link: "societies" },
-    {
-      id: 4,
-      name: "Ministries",
-      link: "#",
-      hasDropdown: true,
-      dropdownKey: "ministries",
-    },
- 
-    {
-      id: 5,
-      name: "Youth Councils",
-      link: "#",
-      hasDropdown: true,
-      dropdownKey: "councils",
-    },
+    // {
+    //   id: 4,
+    //   name: "Ministries",
+    //   link: "#",
+    //   hasDropdown: true,
+    //   dropdownKey: "ministries",
+    // },
+
+    // {
+    //   id: 5,
+    //   name: "Youth Councils",
+    //   link: "#",
+    //   hasDropdown: true,
+    //   dropdownKey: "councils",
+    // },
     { id: 7, name: "Gallery", link: "gallery" },
     { id: 8, name: "Projects", link: "projects" },
     { id: 9, name: "Contact us", link: "contact" },
