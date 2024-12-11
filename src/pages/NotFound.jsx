@@ -47,7 +47,6 @@ const NotFound = () => {
         <div ref={animationContainer} />
         <div>So sorry, page still under construction...</div>
       </div>
-      <Footer />
     </main>
   );
 };

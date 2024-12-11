@@ -15,6 +15,7 @@ import Societies from '../pages/Societies.jsx'
 import Gallery from '../pages/Gallery.jsx'
 import Projects from '../pages/Projects.jsx'
 import Donate from '../pages/Donate.jsx'
+import Clergy from '../pages/Clergy.jsx'
 
 
 export const Router = () => {
@@ -25,6 +26,8 @@ export const Router = () => {
          children: [
               {element: <Home />, index:true},
               {element: <About />, path:'about'},
+              {element: <Clergy />, path:'clergy'},
+
               {element: <Programs />, path:'programs'},
               {element: <Societies />, path:'societies'},
               {element: <Gallery />, path:'gallery'},
