@@ -76,8 +76,8 @@ const Navbar = () => {
     about: [
       { name: "History", link: "about" },
       { name: "Clergy", link: "clergy" },
+      { name: "Parish Pastoral Council", link: "parish-pastoral-council" },
       { name: "Parish Youth Council", link: "parish-youth-council" },
-      { name: "Parish Pastoral Council", link: "parish-pastoral-counci" },
     ],
 
 
