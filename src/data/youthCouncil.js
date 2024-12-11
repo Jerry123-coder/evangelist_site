@@ -1,11 +1,11 @@
 export const youthCouncil = [
     {
-      name: "Christian sons",
+      name: "Christian Sons Association",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Christian daughters",
+      name: "Christian Daughters Association",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
@@ -40,8 +40,8 @@ export const youthCouncil = [
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
       },
       {
-        name: "Catholic Youth Group",
+        name: "Catholic Youth Organization",
         details:
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
       },
-  ];
+  ].sort((a, b) => a.name.localeCompare(b.name));
