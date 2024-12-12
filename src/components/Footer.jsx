@@ -13,9 +13,10 @@ const Footer = () => {
     { id: 3, name: "Programs", link: "programs" },
     { id: 5, name: "News", link: "blog" },
   ];
+  // <div className="relative z-10 flex flex-col lg:flex-row min-h-screen py-6 lg:py-12 px-4 lg:px-8 overflow-x-hidden">
 
   return (
-    <footer className="bg-blue-800 py-8 px-4 lg:px-8 z-50">
+    <footer className="bg-blue-800 relative py-8 px-4 lg:px-8 z-50">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-4">
           {/* Logo and Address Section */}

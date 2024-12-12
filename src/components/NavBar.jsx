@@ -265,7 +265,7 @@ const Navbar = () => {
         <div
           className={`${
             isOpen ? "translate-x-0" : "translate-x-full"
-          } fixed top-0 right-0 h-screen w-[28rem] px-10 bg-blue-600 z-20 transform transition-transform duration-500 ease-in shadow-lg overflow-y-auto`}
+          } fixed top-0 right-0 h-screen w-full px-10 bg-blue-600 z-20 transform transition-transform duration-500 ease-in shadow-lg overflow-y-auto`}
         >
           <div className="flex w-full justify-end pt-5">
             <AiOutlineClose
