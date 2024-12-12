@@ -16,7 +16,10 @@ import Gallery from '../pages/Gallery.jsx'
 import Projects from '../pages/Projects.jsx'
 import Donate from '../pages/Donate.jsx'
 import Clergy from '../pages/Clergy.jsx'
-
+import ParishActivites from '../pages/ParishActivites.jsx'
+import ParishCalender from '../pages/ParishCalender.jsx'
+import DailyReadings from '../pages/DailyReadings.jsx'
+import OfficeHours from '../pages/OfficeHours.jsx'
 
 export const Router = () => {
   return useRoutes([
@@ -39,6 +42,12 @@ export const Router = () => {
               {element: <Contact />, path:'contact'},
               {element: <Directory />, path:'directory'},
               {element: <Donate />, path:'donate'},
+              {element: <ParishActivites />, path:'parish-activities'},
+              {element: <ParishCalender />, path:'parish-calender'},
+              {element: <DailyReadings />, path:'daily-reading'},
+              {element: <ParishCalender />, path:'parish-calender'},
+              {element: <OfficeHours />, path:'office-hours'},
+
           //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
          ],
     },

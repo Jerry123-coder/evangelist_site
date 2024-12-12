@@ -1,18 +1,20 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { Router } from './routes/Router'
-import Footer from './components/Footer.jsx'
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./routes/Router";
+import Footer from "./components/Footer.jsx";
+// import Navbar from "./components/Navbar.jsx";
 
 function App() {
-
-
   return (
     <BrowserRouter>
-      <Router />
-      <Footer/>
-
+      {/* <Navbar /> */}
+      <main>
+        {" "}
+        <Router />
+      </main>
+      <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

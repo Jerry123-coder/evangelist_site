@@ -23,6 +23,8 @@ import programme1 from "../assets/programme1.jpg";
 import programme2 from "../assets/programme2.jpg";
 import programme3 from "../assets/programme3.jpg";
 import AOS from "aos";
+import { Link } from "react-router-dom";
+
 import "aos/dist/aos.css";
 
 const Home = () => {
@@ -154,7 +156,6 @@ const Home = () => {
       </div>
 
       {/* Quick Links Section */}
-      {/* Quick Links Section */}
       <div
         className="relative bg-cover bg-center z-10 py-20"
         style={{ backgroundImage: `url(${img1})` }}
@@ -164,7 +165,7 @@ const Home = () => {
         <div className="relative z-10 flex flex-col gap-10 p-8 justify-center items-center lg:px-[20rem]">
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Church Activities Card */}
-            <div
+              <Link to={'/parish-activities'}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="0"
@@ -190,10 +191,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Daily Reading Card */}
-            <div
+            <Link to={'/daily-reading'}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="200"
@@ -219,12 +220,12 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Office Hours Card */}
-            <div
+            <Link to={'/office-hours'}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="400"
@@ -250,10 +251,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Parish Calendar Card */}
-            <div
+            <Link to={'/parish-calender'}
               className="w-full lg:w-[30rem] text-black"
               data-aos="fade-up"
               data-aos-delay="600"
@@ -279,7 +280,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
