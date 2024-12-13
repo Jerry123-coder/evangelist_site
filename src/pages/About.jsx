@@ -6,7 +6,7 @@ import dr from "../assets/dr.jpeg";
 
 const About = () => {
   return (
-    <div>
+    <div className="mb-5">
       <div
         className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
         style={{

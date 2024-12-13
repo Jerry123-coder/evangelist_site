@@ -36,10 +36,10 @@
 //   ];
 
 //   const contactInfo = [
-//     { icon: FaPhone, text: "Contact Us #", href: "tel:+1234567890" },
+//     { icon: FaPhone, text: "Contact US", href: "tel:+1234567890" },
 //     {
 //       icon: FaMapMarkerAlt,
-//       text: "UPSA Auditorium Madina, Accra",
+//       text: "St John the Evangelist Catholic Church, Adenta",
 //       href: "https://maps.google.com",
 //     },
 //   ];
@@ -189,10 +189,10 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: FaPhone, text: "Contact Us #", href: "tel:+1234567890" },
+    { icon: FaPhone, text: "Tel no: +233 xxxxxxxxxxxxx", href: "tel:+1234567890" },
     {
       icon: FaMapMarkerAlt,
-      text: "UPSA Auditorium Madina, Accra",
+      text: "St John the Evangelist Catholic Church, Adenta",
       href: "https://maps.google.com",
     },
   ];

@@ -105,19 +105,38 @@ const ParishActivities = () => {
 
   return (
     <main className="relative min-h-screen ">
-      {/* Background Image */}
-      <div className="fixed inset-0 z-0 ">
+        {/* Left Background Image */}
+   {/* Background Images */}
+   <div className="fixed inset-0 z-0 flex">
+        {/* Left Image */}
+        <div className="w-1/3 relative">
+          <img
+            src={STNLogo}
+            alt="Church Background Left"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+        
+      
+      </div>
+      {/* Right Background Image
+      <div className="fixed right-0 top-0 bottom-0 z-0 w-2/3">
         <img
           src={STNLogo}
-          alt="Church Background"
-          className="w-full h-full object-cover"
+          alt="Church Background Right"
+          className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20"></div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-10 flex flex-col lg:flex-row min-h-screen py-6 lg:py-12 mx-4 lg:px-8 overflow-x-hidden">
-        {/* Left Column */}
+      
+        {/* Left Column - Hidden on mobile */}
+        <section className="hidden lg:block lg:w-1/3"></section>
+  
+        {/* Center Column */}
         <section
           className="w-full lg:w-1/3 space-y-6 lg:space-y-14 mb-6 lg:mb-0"
           data-aos="fade-right"
@@ -187,9 +206,6 @@ const ParishActivities = () => {
             ))}
           </div>
         </section>
-
-        {/* Center Column - Hidden on mobile */}
-        <section className="hidden lg:block lg:w-1/3"></section>
 
         {/* Right Column */}
         <section
