@@ -291,8 +291,8 @@ const Societies = () => {
     //   </div>
     // </div>
 
-    <div>
-      <div className="relative hidden md:flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between">
+    <main>
+      <div className="relative hidden md:flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between ">
         {/* Dark overlay */}
         <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
         <div className="text-white z-10 flex flex-col items-center w-[65rem] m-auto">
@@ -492,7 +492,7 @@ const Societies = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

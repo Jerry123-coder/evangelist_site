@@ -35,9 +35,9 @@ const Footer = () => {
       {/* Email Subscription */}
       <div className="max-w-6xl mx-auto px-4 md:px-6 pt-8 md:pt-16 pb-4 md:pb-8 text-white">
         {/* Subscription Box */}
-        <div className="bg-blue-400/30 backdrop-blur-sm rounded-2xl md:rounded-full max-w-3xl mx-auto p-4 md:p-8 -mt-8 md:-mt-24 mb-4 md:mb-16">
+        <div className="bg-blue-400/30 backdrop-blur-sm rounded-2xl md:rounded-full max-w-3xl mx-auto p-4 md:p-6 -mt-8 md:-mt-24 mb-2">
           <div className="text-center">
-            <h2 className="text-lg md:text-2xl font-semibold mb-3 md:mb-4 text-white">
+            <h2 className="text-lg md:text-2xl font-semibold text-white">
               Get The Latest Updates
             </h2>
             <div className="flex flex-col gap-2 md:gap-3 w-full max-w-xl mx-auto">
@@ -54,10 +54,10 @@ const Footer = () => {
         </div>
 
         {/* Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-4">
           {/* Follow Us */}
           <div className="text-center sm:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4 ">
+            <h3 className="text-lg md:text-xl font-semibold mb-2">
               Follow Us
             </h3>
             <div className="flex gap-4 justify-center sm:justify-start">
@@ -78,8 +78,8 @@ const Footer = () => {
           </div>
 
           {/* Useful Links */}
-          <div className="text-center sm:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4 text-white">
+          <div className="hidden sm:block text-center sm:text-left">
+            <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">
               Useful Links
             </h3>
             <ul className="space-y-2 text-white text-sm md:text-base">
@@ -95,7 +95,7 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div className="text-center sm:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4">
+            <h3 className="text-lg md:text-xl font-semibold mb-2">
               Contact Us
             </h3>
             <div className="space-y-3  text-sm md:text-base">
