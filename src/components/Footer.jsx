@@ -162,7 +162,6 @@
 // };
 
 // export default Footer;
-
 import {
   FaInstagram,
   FaYoutube,
@@ -201,20 +200,20 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-blue-600 to-blue-500">
       {/* Email Subscription */}
-      <div className="max-w-6xl mx-auto px-4 md:px-6  md:pt-16 pb-4 md:pb-8 text-white">
+      <div className="max-w-5xl mx-auto px-3 md:px-4 md:pt-12 pb-3 md:pb-6 text-white">
         {/* Subscription Box */}
-        <div className="bg-blue-400/30 backdrop-blur-sm rounded-[50px] max-w-3xl mx-auto p-4 -mt-8 md:-mt-24 mb-8">
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <h2 className="text-xl md:text-2xl font-semibold text-white text-center md:text-left">
+        <div className="bg-blue-400/30 backdrop-blur-sm rounded-[40px] max-w-2xl mx-auto p-3 -mt-6 md:-mt-20 mb-6">
+          <div className="flex flex-col md:flex-row items-center gap-3">
+            <h2 className="text-lg md:text-xl font-semibold text-white text-center md:text-left">
               Get The Latest Updates
             </h2>
             <div className="flex-1 relative w-full">
               <input
                 type="email"
                 placeholder="Enter Email"
-                className="w-full px-6 py-3 rounded-full bg-black/20 border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 pr-32"
+                className="w-full px-4 py-2 rounded-full bg-black/20 border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 pr-28 text-sm"
               />
-              <button className="absolute right-1 top-1/2 -translate-y-1/2 px-6  bg-white text-blue-500 rounded-full font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap">
+              <button className="absolute right-1 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-white text-blue-500 rounded-full font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap text-sm">
                 SUBSCRIBE
               </button>
             </div>
@@ -222,11 +221,11 @@ const Footer = () => {
         </div>
 
         {/* Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Follow Us */}
           <div className="text-center md:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4">Follow Us</h3>
-            <div className="flex gap-4 justify-center md:justify-start">
+            <h3 className="text-base md:text-lg font-semibold mb-3">Follow Us</h3>
+            <div className="flex gap-3 justify-center md:justify-start">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 return (
@@ -234,9 +233,9 @@ const Footer = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="p-2 bg-white/10 rounded-full hover:bg-white/20 hover:text-yellow-500 transition-colors text-white"
+                    className="p-1.5 bg-white/10 rounded-full hover:bg-white/20 hover:text-yellow-500 transition-colors text-white"
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon className="w-4 h-4" />
                   </a>
                 );
               })}
@@ -245,15 +244,15 @@ const Footer = () => {
 
           {/* Useful Links */}
           <div className="block text-center md:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4 text-white">
+            <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
               Useful Links
             </h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
               {usefulLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.href}
-                  className="hover:underline text-white hover:text-yellow-500 text-sm md:text-base"
+                  className="hover:underline text-white hover:text-yellow-500 text-sm"
                 >
                   {link.title}
                 </a>
@@ -263,19 +262,17 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div className="text-center md:text-left">
-            <h3 className="text-lg md:text-xl font-semibold mb-4">
-              Contact Us
-            </h3>
-            <div className="space-y-3">
+            <h3 className="text-base md:text-lg font-semibold mb-3">Contact Us</h3>
+            <div className="space-y-2">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
                   <a
                     key={index}
                     href={info.href}
-                    className="flex items-center text-white hover:text-yellow-500 gap-2 justify-center md:justify-start hover:underline text-sm md:text-base"
+                    className="flex items-center text-white hover:text-yellow-500 gap-2 justify-center md:justify-start hover:underline text-sm"
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4" />
                     <span>{info.text}</span>
                   </a>
                 );
@@ -285,7 +282,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 pt-4 text-center text-xs md:text-sm text-white">
+        <div className="border-t border-white/10 pt-3 text-center text-xs text-white">
           <p>CE Airport City ©. All rights reserved.</p>
         </div>
       </div>
