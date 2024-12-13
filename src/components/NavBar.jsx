@@ -46,6 +46,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { BiChurch, BiCalendar, BiGroup } from "react-icons/bi";
+import { FaChurch } from "react-icons/fa6";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
@@ -197,15 +198,15 @@ const Navbar = () => {
                 >
                   {/*  dropdown content */}
                   <div className="absolute -top-3 left-3 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center">
-                    {item.dropdownKey === "ministries" && (
+                    {item.dropdownKey === "about" && (
                       <BiChurch className="text-blue-500" />
                     )}
-                    {item.dropdownKey === "dayborn" && (
+                    {/* {item.dropdownKey === "dayborn" && (
                       <BiCalendar className="text-blue-500" />
                     )}
                     {item.dropdownKey === "councils" && (
                       <BiGroup className="text-blue-500" />
-                    )}
+                    )} */}
                   </div>
                   {dropdownMenus[item.dropdownKey].map(
                     (dropdownItem, index) => (

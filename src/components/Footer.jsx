@@ -1,103 +1,124 @@
 import React from "react";
-import evangelistLogo from "../assets/evangelist_logo.png";
-import { Link } from "react-router-dom";
-import mailLogo from "../assets/mail.svg";
-import ytLogo from "../assets/youtube.png";
-import fbLogo from "../assets/facebook.png";
-import igLogo from "../assets/instagram.png";
+import {
+  FaInstagram,
+  FaYoutube,
+  FaFacebook,
+  FaTwitter,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const Footer = () => {
-  const quickLinks = [
-    { id: 1, name: "Home", link: "" },
-    { id: 2, name: "About", link: "about" },
-    { id: 3, name: "Programs", link: "programs" },
-    { id: 5, name: "News", link: "blog" },
+  const socialLinks = [
+    { icon: FaInstagram, href: "#instagram", label: "Instagram" },
+    { icon: FaYoutube, href: "#youtube", label: "Youtube" },
+    { icon: FaFacebook, href: "#facebook", label: "Facebook" },
+    { icon: FaTwitter, href: "#twitter", label: "Twitter" },
   ];
-  // <div className="relative z-10 flex flex-col lg:flex-row min-h-screen py-6 lg:py-12 px-4 lg:px-8 overflow-x-hidden">
+
+  const usefulLinks = [
+    { title: "Departments", href: "/departments" },
+    { title: "Home", href: "/" },
+    { title: "Churches", href: "/churches" },
+    { title: "Give", href: "/give" },
+    { title: "Join Us", href: "/join" },
+    { title: "Programs", href: "/programs" },
+  ];
+
+  const contactInfo = [
+    { icon: FaPhone, text: "Contact Us #", href: "tel:+1234567890" },
+    { icon: FaMapMarkerAlt, text: "UPSA Auditorium Madina, Accra", href: "https://maps.google.com" },
+  ];
 
   return (
-    <footer className="bg-blue-800 relative py-8 px-4 lg:px-8 z-50">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-4">
-          {/* Logo and Address Section */}
-          <div className="flex flex-col items-center lg:items-start lg:w-1/3">
-            <Link to="" className="mb-4">
-              <img
-                src={evangelistLogo}
-                alt="Church Logo"
-                className="w-[13rem] lg:w-[20rem]"
+    <footer className="bg-gradient-to-r from-blue-600 to-blue-500">
+      {/* Email Subscription */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 pt-8 md:pt-16 pb-4 md:pb-8 text-white">
+        {/* Subscription Box */}
+        <div className="bg-blue-400/30 backdrop-blur-sm rounded-2xl md:rounded-full max-w-3xl mx-auto p-4 md:p-8 -mt-8 md:-mt-24 mb-4 md:mb-16">
+          <div className="text-center">
+            <h2 className="text-lg md:text-2xl font-semibold mb-3 md:mb-4 text-white">
+              Get The Latest Updates
+            </h2>
+            <div className="flex flex-col gap-2 md:gap-3 w-full max-w-xl mx-auto">
+              <input
+                type="email"
+                placeholder="Enter Email"
+                className="w-full px-3 md:px-4 py-2 rounded-full bg-black/20 border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm md:text-base"
               />
-            </Link>
-            <p className="text-white text-sm text-center lg:text-left">
-              26 Ntreh Street, Adenta Municipality
-            </p>
+              <button className="w-full md:w-auto px-4 md:px-6 py-2 bg-white text-blue-500 rounded-full font-semibold hover:bg-opacity-90 transition-colors text-sm md:text-base whitespace-nowrap">
+                SUBSCRIBE
+              </button>
+            </div>
           </div>
+        </div>
 
-          {/* Quick Links Section */}
-          <div className="lg:w-1/3">
-            <div className="flex flex-col items-center lg:items-start">
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 mb-6">
-                {quickLinks.map((item) => (
-                  <Link
-                    to={item.link}
-                    key={item.id}
-                    className="text-white hover:font-bold transition-all duration-200"
+        {/* Footer Content */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+          {/* Follow Us */}
+          <div className="text-center sm:text-left">
+            <h3 className="text-lg md:text-xl font-semibold mb-4 ">
+              Follow Us
+            </h3>
+            <div className="flex gap-4 justify-center sm:justify-start">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="p-2 bg-white/10 rounded-full hover:bg-white/20 hover:text-yellow-500 transition-colors text-white"
                   >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <p className="text-white/80 text-sm text-center lg:text-left">
-                Copyright @ 2024
-              </p>
+                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Subscribe and Social Media Section */}
-          <div className="lg:w-1/3 space-y-6">
-            {/* Subscribe Section */}
-            <div className="flex flex-col items-center lg:items-start">
-              <h3 className="text-white mb-3">Subscribe To E-Bulletin</h3>
-              <div className="flex w-full max-w-xs gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 rounded-md"
-                />
-                <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
-                  Submit
-                </button>
-              </div>
-            </div>
+          {/* Useful Links */}
+          <div className="text-center sm:text-left">
+            <h3 className="text-lg md:text-xl font-semibold mb-4 text-white">
+              Useful Links
+            </h3>
+            <ul className="space-y-2 text-white text-sm md:text-base">
+              {usefulLinks.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="hover:underline text-white hover:text-yellow-500">
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Social Media Section */}
-            <div className="flex flex-col items-center lg:items-start">
-              <h3 className="text-white mb-3">Connect With Us</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://youtube.com/@stjohnadenta3396?si=krZXJDBWZ0e2joc8"
-                  target="_blank"
-                  className="opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  <img src={ytLogo} alt="YouTube" className="w-7" />
-                </a>
-                <a
-                  href="https://www.facebook.com/share/T8k93kDWK6DSmknt/?mibextid=LQQJ4d"
-                  target="_blank"
-                  className="opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  <img src={fbLogo} alt="Facebook" className="w-7" />
-                </a>
-                <a
-                  href="https://www.instagram.com/stjohntheevangelist_adenta?igsh=MTRzeTdoY3huOG95bg"
-                  target="_blank"
-                  className="opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  <img src={igLogo} alt="Instagram" className="w-7" />
-                </a>
-              </div>
+          {/* Contact Us */}
+          <div className="text-center sm:text-left">
+            <h3 className="text-lg md:text-xl font-semibold mb-4">
+              Contact Us
+            </h3>
+            <div className="space-y-3  text-sm md:text-base">
+              {contactInfo.map((info, index) => {
+                const Icon = info.icon;
+                return (
+                  <a
+                    key={index}
+                    href={info.href}
+                    className="flex items-center text-white hover:text-yellow-500 gap-2 justify-center sm:justify-start hover:underline"
+                  >
+                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                    <span>{info.text}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-white/10  pt-4 text-center text-xs md:text-sm text-white">
+          <p>CE Airport City ©. All rights reserved.</p>
         </div>
       </div>
     </footer>
