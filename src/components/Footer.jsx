@@ -198,9 +198,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-blue-600 to-blue-500">
+    <footer className="bg-gradient-to-r relative from-blue-900 to-blue-500">
       {/* Email Subscription */}
-      <div className="max-w-5xl mx-auto px-3 md:px-4 md:pt-12 pb-3 md:pb-6 text-white">
+      <div className="max-w-5xl mx-auto px-3 md:px-4 pt-12 md:pt-12 pb-3 md:pb-6 text-white">
         {/* Subscription Box */}
         <div className="bg-blue-400/30 backdrop-blur-sm rounded-[40px] max-w-2xl mx-auto p-3 -mt-6 md:-mt-20 mb-6">
           <div className="flex flex-col md:flex-row items-center gap-3">
