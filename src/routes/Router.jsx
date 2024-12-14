@@ -20,6 +20,8 @@ import ParishActivites from '../pages/ParishActivites.jsx'
 import ParishCalender from '../pages/ParishCalender.jsx'
 import DailyReadings from '../pages/DailyReadings.jsx'
 import OfficeHours from '../pages/OfficeHours.jsx'
+import ParishPastorialCouncil from '../pages/ParishPastorialCouncil.jsx'
+import ParishYouthCouncil from '../pages/ParishYouthCouncil.jsx'
 
 export const Router = () => {
   return useRoutes([
@@ -47,6 +49,8 @@ export const Router = () => {
               {element: <DailyReadings />, path:'daily-reading'},
               {element: <ParishCalender />, path:'parish-calender'},
               {element: <OfficeHours />, path:'office-hours'},
+              {element: <ParishYouthCouncil />, path:'parish-youth-council'},
+              {element: <ParishPastorialCouncil />, path:'parish-pastorial-council'},
 
           //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
          ],

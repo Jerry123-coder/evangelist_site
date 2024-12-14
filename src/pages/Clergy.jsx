@@ -20,7 +20,7 @@ const Clergy = () => {
     <div className="overflow-x-hidden">
       {/* Hero Section */}
       <div
-        className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] lg:py-[14rem] justify-between"
+        className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
         style={{
           backgroundImage: `url(${statImage})`,
         }}
@@ -113,7 +113,7 @@ const Clergy = () => {
             </div>
           </div>
         </div>
-{/*  */}
+        {/*  */}
       </div>
     </div>
   );

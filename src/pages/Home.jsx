@@ -165,7 +165,8 @@ const Home = () => {
         <div className="relative z-10 flex flex-col gap-10 p-8 justify-center items-center lg:px-[20rem]">
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Church Activities Card */}
-              <Link to={'/parish-activities'}
+            <Link
+              to={"/parish-activities"}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="0"
@@ -194,7 +195,8 @@ const Home = () => {
             </Link>
 
             {/* Daily Reading Card */}
-            <Link to={'/daily-reading'}
+            <Link
+              to={"/daily-reading"}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="200"
@@ -225,7 +227,8 @@ const Home = () => {
 
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Office Hours Card */}
-            <Link to={'/office-hours'}
+            <Link
+              to={"/office-hours"}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="400"
@@ -254,7 +257,8 @@ const Home = () => {
             </Link>
 
             {/* Parish Calendar Card */}
-            <Link to={'/parish-calender'}
+            <Link
+              to={"/parish-calender"}
               className="w-full lg:w-[30rem] text-black"
               data-aos="fade-up"
               data-aos-delay="600"
@@ -321,7 +325,7 @@ const Home = () => {
       >
         <div className="absolute z-2 inset-0 bg-black opacity-60"></div>
 
-        <div
+        {/* <div
           className="text-white z-10 flex flex-col justify-center m-auto"
           data-aos="fade-up"
         >
@@ -335,7 +339,7 @@ const Home = () => {
           >
             Click here to download
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Floating Image Bar */}
