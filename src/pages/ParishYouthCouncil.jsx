@@ -41,16 +41,16 @@ const ParishYouthCouncil = () => {
       type: "table",
       tableData: leadershipTable,
     },
-    {
-      title: "Youth Council Committees",
-      content:
-        "The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee, ensuring that its objectives align with the vision and goals of the Parish Youth Council. The committees work collaboratively under the general guidance of the council to deliver results effectively.",
-      extraContent: {
-        items: [
-          "The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations. The committees and their committees are as follows:",
-        ],
-      },
-    },
+    // {
+    //   title: "Youth Council Committees",
+    //   content:
+    //     "The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee, ensuring that its objectives align with the vision and goals of the Parish Youth Council. The committees work collaboratively under the general guidance of the council to deliver results effectively.",
+    //   extraContent: {
+    //     items: [
+    //       "The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations. The committees and their committees are as follows:",
+    //     ],
+    //   },
+    // },
     // {
     //   title: "Meetings",
     //   content:
