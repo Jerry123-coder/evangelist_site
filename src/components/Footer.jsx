@@ -170,8 +170,16 @@ import {
   FaPhone,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+  
+  // Don't render the footer if we're on a parish-activities page
+  if (location.pathname.includes('/parish-activities')) {
+    return null;
+  }
+
   const socialLinks = [
     { icon: FaInstagram, href: "https://www.instagram.com/stjohntheevangelist_adenta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
     { icon: FaYoutube, href: "https://www.youtube.com/@stjohnadenta3396", label: "Youtube" },

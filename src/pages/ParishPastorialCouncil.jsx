@@ -140,19 +140,19 @@ This collaborative leadership structure ensures that the council operates with t
 
       {/* Main Content */}
       <div className="w-[90%] max-w-7xl mx-auto py-8 md:py-12">
-        <div className="grid lg:grid-cols-3 gap-6">
+        {/* <div className="grid lg:grid-cols-3 gap-6"> */}
           <div className="lg:col-span-2 space-y-6">
             {mainContent.map((item, index) => (
               <ContentCard key={index} {...item} />
             ))}
           </div>
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             {sidebarContent.map((item, index) => (
               <ContentCard key={index} {...item} />
             ))}
-          </div>
+          </div> */}
         </div>
-      </div>
+      {/* </div> */}
     </main>
   );
 };
