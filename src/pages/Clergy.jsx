@@ -38,7 +38,7 @@ const Clergy = () => {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Mary Mother of Good Counsel Catholic Church
+              St John The Evangelist Catholic Church, Adenta
             </span>
           </span>
         </div>
