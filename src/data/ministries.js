@@ -10,7 +10,7 @@ export const ministries = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
   },
   {
-    name: "Knights and Ladies of the Alter",
+    name: "Knights and Ladies of the Altar",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
   },
