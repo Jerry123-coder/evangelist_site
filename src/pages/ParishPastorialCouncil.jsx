@@ -8,24 +8,40 @@ import statImage from "../assets/stn_image2.jpg";
 const ParishPastorialCouncil = () => {
   const mainContent = [
     {
-      title: "Youth Council Committees",
-      content:
-        "The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee, ensuring that its objectives align with the vision and goals of the Parish Youth Council. The committees work collaboratively under the general guidance of the council to deliver results effectively.",
+      title: "Overview",
+      content: (
+        <>
+          <p>
+          The Parish Pastoral Council (PPC) serves as the principal advisory body to the Parish Priest, who is the President of the Council. Under the guidance of the Parish Priest, the PPC plays a vital role in fostering the spiritual, pastoral, and developmental growth of our parish community.
+Chaired by the Council Chairperson, the PPC brings together a dedicated team of clergy, lay leaders, and ministry representatives to discuss and plan initiatives that support the mission and vision of the parish. The council works collaboratively to discern the needs of the parish, propose solutions, and implement strategies that enrich the faith and lives of parishioners.
+The Parish Pastoral Council operates with a two-year term of office, ensuring fresh ideas and perspectives contribute to the dynamic life of the parish. Through its advisory role, the council supports the Parish Priest in making decisions that reflect the spiritual and pastoral priorities of the community.
+Committed to serving the parish with dedication and integrity, the PPC remains a cornerstone of unity, leadership, and faith-driven action in our parish life.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Leadership/Executive",
+      content:(
+        <>
+          <p>
+          The leadership of the Parish Pastoral Council (PPC) is anchored by the Parish Priest, who serves as the President of the Council, and the Assisting Priest, who holds the position of Vice President. Together, they provide spiritual guidance and oversee the council's efforts to ensure alignment with the mission and vision of the parish.
+The Chairperson, Vice Chairperson, Secretary, and Assistant Secretary are elected executives of the council, entrusted with the responsibility of facilitating meetings, coordinating activities, and maintaining effective communication within the council and the parish community. Additionally, the Pastor appoints the Financial Secretary, who ensures proper stewardship of parish resources and supports the council's financial planning and reporting. These elected and appointed leaders, alongside the President and Vice President, constitute the core executive team of the PPC.
+This collaborative leadership structure ensures that the council operates with transparency, accountability, and a shared commitment to serving the parish.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Parish Pastoral Council Standing Committees",
+      content: "The Parish Pastoral Council (PPC) operates through various standing committees, each tasked with specific responsibilities that contribute to the spiritual, pastoral, and operational life of the parish. These committees are led by Conveners who are responsible for coordinating their respective committee’s activities, ensuring alignment with the council’s goals, and fostering collaboration among members. The committees and their Conveners are as follows:",
       extraContent: {
         items: [
-          "The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations. The committees and their committees are as follows:",
+          "This committee structure enables the PPC to address the diverse needs of the parish effectively and ensure active engagement from parishioners across different areas of ministry.",
         ],
       },
     },
-    {
-      title: "Meetings",
-      content:
-        "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at the at a different date communicated to council members.",
-    },
-    {
-      title: "Programmes",
-      content: "Details about programs and activities will be listed here...",
-    },
+    
   ];
 
   const sidebarContent = [
