@@ -51,11 +51,11 @@ const ParishYouthCouncil = () => {
         ],
       },
     },
-    {
-      title: "Meetings",
-      content:
-        "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at the at a different date communicated to council members.",
-    },
+    // {
+    //   title: "Meetings",
+    //   content:
+    //     "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at the at a different date communicated to council members.",
+    // },
     {
       title: "Meetings",
       content:
