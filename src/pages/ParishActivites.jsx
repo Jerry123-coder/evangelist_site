@@ -177,8 +177,8 @@ const ParishActivities = () => {
       icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
       content: (
         <div className="space-y-2">
-          <p>– 1st Mass – 6:30 AM</p>
-          <p>– 2nd Mass – 9:00 AM</p>
+          <p>– 1st Mass – 7:00 AM</p>
+          <p>– 2nd Mass – 9:30 AM</p>
           <p>– 2nd Sunday of every month (One Mass) 8:00 AM</p>
         </div>
       ),
@@ -192,15 +192,15 @@ const ParishActivities = () => {
       delay: 600,
     },
     {
-      title: "CATECHISM",
+      title: "CATECHISIS",
       icon: <IoBookOutline className="text-3xl text-blue-950" />,
       content: (
         <>
           <p>
-            Catechism class is done on Sundays after the second mass. For those
-            preparing for first communion, the catechumen should be 8 years or
-            more. For those preparing for confirmation, the catechumen should be
-            12 years and above.
+            Catechisis class is done on Sundays after the 1st mass. For those
+            preparing for first communion, the catechumen should be 10 years or
+            older. For those preparing for confirmation, the catechumen should be
+            13 years and above. 
           </p>
           <p className="mt-2">
             For more information kindly contact the parish office.
@@ -209,13 +209,13 @@ const ParishActivities = () => {
       ),
       delay: 800,
     },
-    {
-      title: "VISITATION OF THE SICK & HOMEBOUND",
-      icon: <IoPeopleOutline className="text-3xl text-blue-950" />,
-      content:
-        "Kindly inform the Parish Office of anyone who is sick or unable to attend Mass and arrangements will be made for them to receive Holy Communion at home.",
-      delay: 1000,
-    },
+    // {
+    //   title: "VISITATION OF THE SICK & HOMEBOUND",
+    //   icon: <IoPeopleOutline className="text-3xl text-blue-950" />,
+    //   content:
+    //     "Kindly inform the Parish Office of anyone who is sick or unable to attend Mass and arrangements will be made for them to receive Holy Communion at home.",
+    //   delay: 1000,
+    // },
   ];
 
   const rightColumnContent = [
@@ -223,23 +223,23 @@ const ParishActivities = () => {
       title: "INFANT BAPTISM",
       icon: <IoWaterOutline className="text-3xl text-blue-950" />,
       content:
-        "Infant baptism takes place every third Saturday of the month. Infant baptism is for babies to age 7. Teachings are done Thursday before the day of the infant baptism. Parents and godparents must attend. For more information kindly call the parish office",
+        "Infant baptism takes place every 3rd Saturday of the month. Infant baptism is for babies to age 7. Teachings are done Thursday before the day of the infant baptism. Parents and godparents must attend. For more information kindly call the parish office",
       delay: 200,
     },
-    {
-      title: "MARRIAGE COUNSELLING & MARRIAGE",
-      icon: <IoRibbonOutline className="text-3xl text-blue-950" />,
-      content:
-        "Marriage counseling is done by a team of experts trained by the church. It is group counseling. Marriage counseling is a six months period. Those who are preparing for the sacrament of Holy matrimony must always have that in mind. You can only choose a date after you have gone through the counseling. To qualify to register for the counseling you must have been a parishioner for six months consistently and beyond. For more information kindly contact the priest.",
-      delay: 400,
-    },
-    {
-      title: "ADORATION",
-      icon: <IoStarOutline className="text-3xl text-blue-950" />,
-      content:
-        "– First Friday of the month Adoration and Mass 6:30 P.M. Our adoration Chapel is open for personal prayer 24/7",
-      delay: 600,
-    },
+    // {
+    //   title: "MARRIAGE COUNSELLING & MARRIAGE",
+    //   icon: <IoRibbonOutline className="text-3xl text-blue-950" />,
+    //   content:
+    //     "Marriage counseling is done by a team of experts trained by the church. It is group counseling. Marriage counseling is a six months period. Those who are preparing for the sacrament of Holy matrimony must always have that in mind. You can only choose a date after you have gone through the counseling. To qualify to register for the counseling you must have been a parishioner for six months consistently and beyond. For more information kindly contact the priest.",
+    //   delay: 400,
+    // },
+    // {
+    //   title: "ADORATION",
+    //   icon: <IoStarOutline className="text-3xl text-blue-950" />,
+    //   content:
+    //     "– First Friday of the month Adoration and Mass 6:30 P.M. Our adoration Chapel is open for personal prayer 24/7",
+    //   delay: 600,
+    // },
   ];
 
   useEffect(() => {
