@@ -133,7 +133,7 @@ This collaborative leadership structure ensures that the council operates with t
             Parish Pastoral Council
           </h1>
           <p className="text-blue-200" data-aos="fade-up" data-aos-delay="100">
-            Youth Council 2023/2024
+            Pastoral Council 2023/2024
           </p>
         </div>
       </section>
