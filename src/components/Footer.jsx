@@ -173,9 +173,9 @@ import {
 
 const Footer = () => {
   const socialLinks = [
-    { icon: FaInstagram, href: "#instagram", label: "Instagram" },
-    { icon: FaYoutube, href: "#youtube", label: "Youtube" },
-    { icon: FaFacebook, href: "#facebook", label: "Facebook" },
+    { icon: FaInstagram, href: "https://www.instagram.com/stjohntheevangelist_adenta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+    { icon: FaYoutube, href: "https://www.youtube.com/@stjohnadenta3396", label: "Youtube" },
+    { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=100095031498641", label: "Facebook" },
     { icon: FaTiktok, href: "#tiktok", label: "Twitter" },
   ];
 
