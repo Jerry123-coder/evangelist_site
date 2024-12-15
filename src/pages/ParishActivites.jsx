@@ -167,14 +167,8 @@ import {
 const ParishActivities = () => {
   const middleColumnContent = [
     {
-      title: "WEEKDAY MASSES",
-      icon: <IoTimeOutline className="text-3xl text-blue-950" />,
-      content: "– Mondays to Saturdays – 6:30 AM",
-      delay: 200,
-    },
-    {
       title: "SUNDAY MASSES",
-      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      icon: <IoTimeOutline className="text-3xl text-blue-950" />,
       content: (
         <div className="space-y-2">
           <p>– 1st Mass – 7:00 AM</p>
@@ -182,13 +176,20 @@ const ParishActivities = () => {
           <p>– 2nd Sunday of every month (One Mass) 8:00 AM</p>
         </div>
       ),
+      delay: 200,
+    },
+    {
+      title: "GROTTO DEVOTIONS",
+      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      content: 
+      "1st Saturday of each month at 3pm",
       delay: 400,
     },
     {
-      title: "CONFESSIONS",
+      title: "HOLY HOUR",
       icon: <IoHeartOutline className="text-3xl text-blue-950" />,
       content:
-        "– Every Saturday Confessions: 5:00 PM to 6:00 PM and Also available on request",
+        "– The first Thursday of every month at 6pm.",
       delay: 600,
     },
     {
@@ -220,11 +221,30 @@ const ParishActivities = () => {
 
   const rightColumnContent = [
     {
+      title: "WEEKDAY MASSES",
+      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      content: (
+        <div className="space-y-2">
+          <p>– Tuesdays – 6:00 AM</p>
+          <p>– Wednesdays to Fridays – 7:00 PM</p>
+          <p>– Saturdays – 6:30 AM</p>
+        </div>
+      ),
+      delay: 200,
+    },
+    {
+      title: "ADORATION (HOUR OF GRACE)",
+      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      content: 
+      "1st Sunday of every month at 6pm",
+      delay: 400,
+    },
+    {
       title: "INFANT BAPTISM",
       icon: <IoWaterOutline className="text-3xl text-blue-950" />,
       content:
         "Infant baptism takes place every 3rd Saturday of the month. Infant baptism is for babies to age 7. Teachings are done Thursday before the day of the infant baptism. Parents and godparents must attend. For more information kindly call the parish office",
-      delay: 200,
+      delay: 600,
     },
     // {
     //   title: "MARRIAGE COUNSELLING & MARRIAGE",
