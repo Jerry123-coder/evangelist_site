@@ -24,6 +24,7 @@ import programme2 from "../assets/programme2.jpg";
 import programme3 from "../assets/programme3.jpg";
 import AOS from "aos";
 import { Link } from "react-router-dom";
+import HeroCarousel from "../components/HeroCarousel";
 
 import "aos/dist/aos.css";
 
@@ -54,55 +55,37 @@ const Home = () => {
     container.scrollLeft += event.deltaY;
   };
 
-  const static_bg = {
-    image: homeBg,
-    subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
-    emphasis: " Ghana",
-    maintext: "WELCOME HOME",
-  };
+  const slides = [
+    {
+      image: homeBg,
+      subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
+      maintext: "WELCOME HOME",
+      buttonText: "I'm New Here"
+    },
+    {
+      image: img1,
+      subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
+      maintext: "Experience A Great Sense Of Community",
+      buttonText: "Find Out More"
+    },
+    {
+      image: stn_image1,
+      subtext: "JOIN OUR COMMUNITY",
+      maintext: "Grow In Faith Together",
+      buttonText: "Learn More"
+    },
+    {
+      image: stn_image2,
+      subtext: "WORSHIP WITH US",
+      maintext: "Come As You Are",
+      buttonText: "Join Us"
+    }
+  ];
 
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-screen lg:h-[100vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${static_bg.image})` }}
-          data-aos="zoom-in"
-        >
-          <div className="absolute inset-0 bg-black opacity-60"></div>
-        </div>
-
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-white text-center z-10 w-[60rem] flex flex-col gap-5 p-8 lg:p-0">
-            <div
-              className="text-xs lg:text-2xl px-8 invisible lg:visible lg:mb-8 font-base"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              {static_bg.subtext}
-            </div>
-
-            <p
-              className="text-6xl lg:text-8xl font-bold w-full"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              {static_bg.maintext}
-            </p>
-
-            <div
-              className="flex space-x-10 justify-center mt-10"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <button className="bg-blue-500 w-[12rem] h-[3rem] text-lg text-white rounded-full hover:scale-105 hover:bg-blue-600 transition-all duration-300">
-                I'm New Here
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <HeroCarousel slides={slides} />
 
       {/* Pastor Section */}
       <div className="flex flex-col lg:flex-row h-[90vh] w-screen lg:pt-[3rem] px-8 lg:px-[10rem]">
@@ -154,7 +137,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Quick Links Section */}
       <div
         className="relative bg-cover bg-center z-10 py-20"
@@ -288,10 +271,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Theme Section */}
       <div className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-16 text-white text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2" data-aos="fade-up">THEME FOR THE YEAR</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2" data-aos="fade-up">
+          THEME FOR THE YEAR
+        </h2>
         <div className="max-w-4xl mx-auto px-4" data-aos="fade-up" data-aos-delay="200">
           <h3 className="text-xl md:text-2xl font-semibold mb-4">
             HELPING CHILDREN TO SEEK CHRIST: FROM<br />
@@ -300,7 +285,7 @@ const Home = () => {
           <p className="text-lg text-yellow-400">JOHN 12:21</p>
         </div>
       </div>
-      
+
       {/* Societies Section */}
       <div className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -315,17 +300,23 @@ const Home = () => {
             <div className="space-y-6" data-aos="fade-left">
               <h4 className="text-lg text-blue-600 font-medium">FELLOWSHIP</h4>
               <h2 className="text-2xl md:text-3xl font-bold">Societies</h2>
-              <p className="text-white-600">
+              <p className="text-white-600 mb-16">
                 At St John the Evangelist Catholic Church, we believe in the power of community and fellowship. Our diverse societies offer parishioners the opportunity to grow in their faith while serving others in meaningful ways. Whether you're looking to engage more deeply with your faith, participate in service projects, or simply connect with like-minded individuals, there's a place for you here.
+
+                
               </p>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">
-                JOIN A SOCIETY
-              </button>
+              <div className="mt-8">
+                <Link to="/societies">
+                  <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">
+                    JOIN A SOCIETY
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Mass Schedule Section */}
       <div className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-16 text-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -366,7 +357,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Latest Updates Section */}
       <div
         ref={newsContainerRef}
