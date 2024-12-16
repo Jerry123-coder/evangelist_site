@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { FaDownload, FaPhone, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import statImage from "../assets/stn_image2.jpg";
+import { IoPersonAddSharp } from "react-icons/io5";
 
 const ParishYouthCouncil = () => {
   const leadershipTable = [
@@ -86,8 +87,8 @@ const ParishYouthCouncil = () => {
       title: "Get Involved",
       type: "link",
       content: "Join Youth Council",
-      link: "/societies",
-      icon: <FaArrowRight />,
+      link: "/societies?category=Youth Council",
+      icon: <IoPersonAddSharp />,
     },
     {
       title: "Resources",
@@ -102,27 +103,6 @@ const ParishYouthCouncil = () => {
     },
   ];
 
-  // const sidebarContent = [
-  //   {
-  //     title: "Get Involved",
-  //     type: "link",
-  //     content: "Join Youth Council",
-  //     link: "/societies/youth-council",
-  //     icon: <FaArrowRight />
-  //   },
-  //   {
-  //     title: "Resources",
-  //     type: "button",
-  //     content: "Download Documents",
-  //     icon: <FaDownload />
-  //   },
-  //   {
-  //     title: "Contact Us",
-  //     type: "contacts",
-  //     content: ["0557200434", "0271053419", "0268182983"]
-  //   }
-  // ];
-
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -136,10 +116,10 @@ const ParishYouthCouncil = () => {
       {type === "link" ? (
         <Link
           to={link}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+          className="bg-blue-900 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-800 transition duration-300 ease-in-out flex items-center justify-center gap-2"
         >
-          <span>{content}</span>
           {icon}
+          <span>{content}</span>
         </Link>
       ) : type === "button" ? (
         <button className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-400">
@@ -197,10 +177,10 @@ const ParishYouthCouncil = () => {
                       {item.position}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-300">
-                      {item.name || "—"}
+                      {item.name || "—" }
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-300">
-                      {item.society || "—"}
+                      {item.society || "—" }
                     </td>
                   </tr>
                 ))}
@@ -240,18 +220,18 @@ const ParishYouthCouncil = () => {
 
       {/* Main Content */}
       <div className="w-[90%] max-w-7xl mx-auto py-8 md:py-12">
-        {/* <div className="grid lg:grid-cols-3 gap-6"> */}
-        <div className="lg:col-span-2 space-y-6">
-          {mainContent.map((item, index) => (
-            <ContentCard key={index} {...item} />
-          ))}
-        </div>
-        {/* <div className="space-y-6">
+        <div className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            {mainContent.map((item, index) => (
+              <ContentCard key={index} {...item} />
+            ))}
+          </div>
+          <div className="space-y-6">
             {sidebarContent.map((item, index) => (
               <ContentCard key={index} {...item} />
             ))}
-          </div> */}
-        {/* </div> */}
+          </div>
+        </div>
       </div>
     </main>
   );
