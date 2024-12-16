@@ -154,7 +154,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      
       {/* Quick Links Section */}
       <div
         className="relative bg-cover bg-center z-10 py-20"
@@ -288,7 +288,85 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      
+      {/* Theme Section */}
+      <div className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-16 text-white text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2" data-aos="fade-up">THEME FOR THE YEAR</h2>
+        <div className="max-w-4xl mx-auto px-4" data-aos="fade-up" data-aos-delay="200">
+          <h3 className="text-xl md:text-2xl font-semibold mb-4">
+            HELPING CHILDREN TO SEEK CHRIST: FROM<br />
+            DISCOVERY TO DISCIPLESHIP.
+          </h3>
+          <p className="text-lg text-yellow-400">JOHN 12:21</p>
+        </div>
+      </div>
+      
+      {/* Societies Section */}
+      <div className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative" data-aos="fade-right">
+              <img
+                src={stn_image2}
+                alt="Church Society"
+                className="w-full rounded-lg shadow-xl"
+              />
+            </div>
+            <div className="space-y-6" data-aos="fade-left">
+              <h4 className="text-lg text-blue-600 font-medium">FELLOWSHIP</h4>
+              <h2 className="text-2xl md:text-3xl font-bold">Societies</h2>
+              <p className="text-gray-600">
+                At St John the Evangelist Catholic Church, we believe in the power of community and fellowship. Our diverse societies offer parishioners the opportunity to grow in their faith while serving others in meaningful ways. Whether you're looking to engage more deeply with your faith, participate in service projects, or simply connect with like-minded individuals, there's a place for you here.
+              </p>
+              <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">
+                JOIN A SOCIETY
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Mass Schedule Section */}
+      <div className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-16 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8" data-aos="fade-right">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">Join Us For Mass</h2>
+              <p className="text-gray-200">
+                We warmly invite you to join us for Mass and experience the richness of our liturgical celebrations. Our Mass schedule is designed to accommodate the diverse needs of our community. Whether you prefer morning, midday, or evening services, you will find a time that suits you.
+              </p>
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-yellow-400">SUNDAY MASS SCHEDULE</h3>
+                <ul className="space-y-2">
+                  <li>• Early Morning Mass - 7:00am</li>
+                  <li>• Main Mass - 9:30am</li>
+                </ul>
+                <h3 className="text-xl font-semibold text-yellow-400 mt-6">DAILY MASS SCHEDULE</h3>
+                <ul className="space-y-2">
+                  <li>• Tuesdays - 6:00am</li>
+                  <li>• Wednesday to Friday - 7:00pm</li>
+                  <li>• Saturday - 6:30am</li>
+                </ul>
+              </div>
+            </div>
+            <div className="relative" data-aos="fade-left">
+              <img
+                src={stn_image3}
+                alt="Mass Celebration"
+                className="w-full h-[400px] object-cover rounded-lg shadow-xl"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900 p-6">
+                <h3 className="text-xl font-bold mb-2">Join Us</h3>
+                <p className="text-sm mb-4">Join us in the celebration of the Holy Mass and be part of our Mass schedule.</p>
+                <button className="bg-yellow-400 text-blue-900 px-6 py-2 rounded font-semibold hover:bg-yellow-500 transition-colors">
+                  LEARN MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       {/* Latest Updates Section */}
       <div
         ref={newsContainerRef}
