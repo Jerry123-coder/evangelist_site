@@ -97,27 +97,28 @@
 //             </div>
 //           </div>
 
-//           {/* Useful Links */}
-//           <div
-//             className="block text-center md:text-left"
-//             data-aos="fade-up"
-//             data-aos-delay="200"
-//           >
-//             <h3 className="text-lg md:text-xl font-semibold mb-4 text-white">
-//               Useful Links
-//             </h3>
-//             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-//               {usefulLinks.map((link, index) => (
-//                 <a
-//                   key={index}
-//                   href={link.href}
-//                   className="hover:underline text-white hover:text-yellow-500 text-sm md:text-base"
-//                   data-aos="fade-up"
-//                   data-aos-delay={250 + index * 50}
-//                 >
-//                   {link.title}
-//                 </a>
-//               ))}
+//           {/* Office Hours and Pastoral Staff */}
+//           <div className="block text-center md:text-left">
+//             <div className="mb-4">
+//               <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
+//                 Office Hours
+//               </h3>
+//               <p className="text-white text-sm">
+//                 Tuesdays to Fridays: 8:00am – 5:00pm
+//               </p>
+//             </div>
+//             <div>
+//               <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
+//                 Pastoral Staff
+//               </h3>
+//               <div className="space-y-1.5">
+//                 <p className="text-white text-sm">
+//                   Rev. Fr. Emmanuel Obeng Codjoe - Parish Priest
+//                 </p>
+//                 <p className="text-white text-sm">
+//                   Rev. Fr. Kenneth Donkoh - Associate Priest
+//                 </p>
+//               </div>
 //             </div>
 //           </div>
 
@@ -154,7 +155,7 @@
 //           data-aos="fade-up"
 //           data-aos-delay="400"
 //         >
-//           <p>CE Airport City ©. All rights reserved.</p>
+//           <p>CE Airport City . All rights reserved.</p>
 //         </div>
 //       </div>
 //     </footer>
@@ -185,15 +186,6 @@ const Footer = () => {
     { icon: FaYoutube, href: "https://www.youtube.com/@stjohnadenta3396", label: "Youtube" },
     { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=100095031498641", label: "Facebook" },
     { icon: FaTiktok, href: "https://www.tiktok.com/@st.john.the.evang8?_t=8sG6vwR2qEn&_r=1", label: "Tiktok" },
-  ];
-
-  const usefulLinks = [
-    { title: "Departments", href: "/departments" },
-    { title: "Home", href: "/" },
-    { title: "Churches", href: "/churches" },
-    { title: "Give", href: "/give" },
-    { title: "Join Us", href: "/join" },
-    { title: "Programs", href: "/programs" },
   ];
 
   const contactInfo = [
@@ -250,21 +242,28 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Useful Links */}
+          {/* Office Hours and Pastoral Staff */}
           <div className="block text-center md:text-left">
-            <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
-              Useful Links
-            </h3>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
-              {usefulLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="hover:underline text-white hover:text-yellow-500 text-sm"
-                >
-                  {link.title}
-                </a>
-              ))}
+            <div className="mb-4">
+              <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
+                Office Hours
+              </h3>
+              <p className="text-white text-sm">
+                Tuesdays to Fridays: 8:00am – 5:00pm
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base md:text-lg font-semibold mb-3 text-white">
+                Pastoral Staff
+              </h3>
+              <div className="space-y-1.5">
+                <p className="text-white text-sm">
+                  V. Rev. Fr. Edmund Donkor Baine 
+                </p>
+                <p className="text-white text-sm">
+                  Rev. Fr. Joseph Effah Siaw 
+                </p>
+              </div>
             </div>
           </div>
 
@@ -291,7 +290,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-3 text-center text-xs text-white">
-          <p>CE Airport City ©. All rights reserved.</p>
+          <p>CE Airport City . All rights reserved.</p>
         </div>
       </div>
     </footer>
