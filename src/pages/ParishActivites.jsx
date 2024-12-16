@@ -170,7 +170,7 @@ const ParishActivities = () => {
         <section className="hidden lg:block lg:w-1/3"></section>
 
         {/* Center Column */}
-        <section className="w-full lg:w-1/3 space-y-6  lg:space-y-8 mb-6 lg:mb-0">
+        <section className="w-full lg:w-1/3 space-y-6  lg:space-y-8 mb-6 lg:mb-0 border-r border-white/20">
           {middleColumnContent.map((item, index) => (
             <InfoCard key={index} {...item} isReversed={index % 2 !== 0} />
           ))}
