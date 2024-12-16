@@ -315,7 +315,7 @@ const Home = () => {
             <div className="space-y-6" data-aos="fade-left">
               <h4 className="text-lg text-blue-600 font-medium">FELLOWSHIP</h4>
               <h2 className="text-2xl md:text-3xl font-bold">Societies</h2>
-              <p className="text-gray-600">
+              <p className="text-white-600">
                 At St John the Evangelist Catholic Church, we believe in the power of community and fellowship. Our diverse societies offer parishioners the opportunity to grow in their faith while serving others in meaningful ways. Whether you're looking to engage more deeply with your faith, participate in service projects, or simply connect with like-minded individuals, there's a place for you here.
               </p>
               <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">
