@@ -28,7 +28,7 @@ const ParishActivities = () => {
     },
     {
       title: "GROTTO DEVOTIONS",
-      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      icon: <IoHeartOutline className="text-3xl text-blue-950" />,
       content: "1st Saturday of each month at 3pm",
       delay: 400,
     },
