@@ -176,15 +176,15 @@ const Footer = () => {
   const location = useLocation();
   
   // Don't render the footer if we're on a parish-activities page
-  if (location.pathname.includes('/parish-activities')) {
-    return null;
-  }
+  // if (location.pathname.includes('/parish-activities')) {
+  //   return null;
+  // }
 
   const socialLinks = [
     { icon: FaInstagram, href: "https://www.instagram.com/stjohntheevangelist_adenta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
     { icon: FaYoutube, href: "https://www.youtube.com/@stjohnadenta3396", label: "Youtube" },
     { icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=100095031498641", label: "Facebook" },
-    { icon: FaTiktok, href: "#tiktok", label: "Twitter" },
+    { icon: FaTiktok, href: "#tiktok", label: "https://www.tiktok.com/@st.john.the.evang8?_t=8sG6vwR2qEn&_r=1" },
   ];
 
   const usefulLinks = [
