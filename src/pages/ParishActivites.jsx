@@ -23,7 +23,6 @@ const ParishActivities = () => {
         <div className="space-y-2">
           <p>– 1st Mass – 7:00 AM</p>
           <p>– 2nd Mass – 9:30 AM</p>
-          <p>– 2nd Sunday of every month (One Mass) 8:00 AM</p>
         </div>
       ),
       delay: 200,
