@@ -28,6 +28,30 @@ const ParishYouthCouncil = () => {
     { position: "Assistant Financial Secretary", name: "Victor Mensah", society: "Christian Sons Association" },
   ];
 
+  // Youth Council committee table data structure
+  const committeeTable = [
+    {
+      committee: "Youth Holy Mass",
+      chairperson: "Etonam Dotse"
+    },
+    {
+      committee: "Evangelist Praise 2025",
+      chairperson: "Anthony Adu-Yeboah"
+    },
+    {
+      committee: "Socialization",
+      chairperson: "Sharon Dankyi"
+    },
+    {
+      committee: "Sports",
+      chairperson: "Victor Mensah"
+    },
+    {
+      committee: "School Visitation",
+      chairperson: "Juliana Yorke"
+    }
+  ];
+
   const mainContent = [
     {
       title: "Overview",
@@ -52,24 +76,54 @@ const ParishYouthCouncil = () => {
           <p>
           The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations.
           </p>
+
+          {/* Mobile view for committee table */}
+          <div className="md:hidden space-y-4">
+            {committeeTable.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/5 p-3 rounded-lg backdrop-blur-sm"
+              >
+                <div className="font-medium text-white mb-1">
+                  {item.committee}
+                </div>
+                <div className="text-gray-300">{item.chairperson || "—"}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop view for committee table */}
+          <div className="hidden md:block overflow-x-auto">
+            <table className="min-w-full divide-y divide-white/10">
+              <thead>
+                <tr>
+                  {["Committee", "Chairperson"].map((header) => (
+                    <th
+                      key={header}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/10">
+                {committeeTable.map((item, index) => (
+                  <tr key={index} className="hover:bg-white/5">
+                    <td className="px-6 py-4 text-sm font-medium text-white">
+                      {item.committee}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-300">
+                      {item.chairperson || "—" }
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
-      ),  
+      ),
     },
-    // {
-    //   title: "Youth Council Committees",
-    //   content:
-    //     "The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee, ensuring that its objectives align with the vision and goals of the Parish Youth Council. The committees work collaboratively under the general guidance of the council to deliver results effectively.",
-    //   extraContent: {
-    //     items: [
-    //       "The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations. The committees and their committees are as follows:",
-    //     ],
-    //   },
-    // },
-    // {
-    //   title: "Meetings",
-    //   content:
-    //     "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at the at a different date communicated to council members.",
-    // },
     {
       title: "Meetings",
       content:
@@ -79,7 +133,6 @@ const ParishYouthCouncil = () => {
       title: "Programmes",
       content: "Details about programs and activities will be listed here...",
     },
-    
   ];
 
   const sidebarContent = [
