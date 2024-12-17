@@ -9,6 +9,26 @@ const ParishPastorialCouncil = () => {
   const mainContent = [
     {
       title: "Overview",
+      leadershipTable: [
+        {
+          position: "Youth Chaplain",
+          name: "Rev. Fr. Joseph Effah Siaw",
+          society: "",
+        },
+        {
+          position: "PPC Youth and Vocations Convener",
+          name: "Mrs. Harriet Ayittey",
+          society: "",
+        },
+        { position: "Chairperson", name: "Thomas Kwegyir-Abaidoo", society: "Knights and Ladies of the Altar" },
+        { position: "Vice Chairperson", name: "Juliana Yorke", society: "Christian Daughters Association" },
+        { position: "Secretary", name: "Etonam Dotse", society: "Knights and Ladies of the Altar" },
+        { position: "Assistant Secretary", name: "Benedicta Nimnora", society: "Knights and Ladies of the Altar" },
+        { position: "Organizer", name: "Harriet Dougle", society: "Junior Auxiliary" },
+        { position: "Assistant Organiser", name: "Daniel Lamptey", society: "Junior Marshallans" },
+        { position: "Financial Secretary", name: "Seyram Awuye-Kpobi", society: "Knights and Ladies of the ALtar" },
+        { position: "Assistant Financial Secretary", name: "Victor Mensah", society: "Christian Sons Association" },
+      ],
       content: (
         <>
           <p>
@@ -30,11 +50,34 @@ The Chairperson, Vice Chairperson, Secretary, and Assistant Secretary are electe
 This collaborative leadership structure ensures that the council operates with transparency, accountability, and a shared commitment to serving the parish.
           </p>
         </>
-      )
+      ),
+      type: "table",
+      tableData: [
+        {
+          name: "V. Rev Fr. Edmund Donkor",
+          position: "Parish Priest/President",
+        },
+        {
+          name: "Rev. Fr. Joseph Effah Siaw",
+          position: "Assisting Priest/Vice President",
+        },
+        { name: "Dr. Benjamin Otchere Ankrah", position: "Chairperson" },
+        { name: "-", position: "Secretary" },
+        { name: "-", position: "Assistant Secretary" },
+        { name: "-", position: "Financial Secretary" },
+    ]
     },
     {
       title: "Parish Pastoral Council Standing Committees",
-      content: "The Parish Pastoral Council (PPC) operates through various standing committees, each tasked with specific responsibilities that contribute to the spiritual, pastoral, and operational life of the parish. These committees are led by Conveners who are responsible for coordinating their respective committee’s activities, ensuring alignment with the council’s goals, and fostering collaboration among members. The committees and their Conveners are as follows:",
+      content: "The Parish Pastoral Council (PPC) operates through various standing committees, each tasked with specific responsibilities that contribute to the spiritual, pastoral, and operational life of the parish. These committees are led by Conveners who are responsible for coordinating their respective committee's activities, ensuring alignment with the council's goals, and fostering collaboration among members.",
+      type: "table",
+      tableData: [
+        { position: "Finance", name: "-" },
+        { position: "Youth and Vocation", name: "-" },
+        { position: "Welfare", name: "-" },
+        { position: "Laity", name: "-" },
+        { position: "Fundraising", name: "-" },
+      ],
       extraContent: {
         items: [
           "This committee structure enables the PPC to address the diverse needs of the parish effectively and ensure active engagement from parishioners across different areas of ministry.",
@@ -69,7 +112,7 @@ This collaborative leadership structure ensures that the council operates with t
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  const ContentCard = ({ title, content, extraContent, type, link, icon }) => (
+  const ContentCard = ({ title, content, extraContent, type, link, icon, tableData }) => (
     <section
       className="backdrop-blur-sm bg-white/10 rounded-lg p-4 md:p-6 shadow-lg border border-white/20"
       data-aos="fade-up"
@@ -96,6 +139,28 @@ This collaborative leadership structure ensures that the council operates with t
               <span>{contact}</span>
             </p>
           ))}
+        </div>
+      ) : type === "table" ? (
+        <div className="overflow-x-auto">
+          <div className="text-gray-100 mb-6">{content}</div>
+          <div className="flex justify-center">
+            <table className="w-full max-w-2xl text-gray-100">
+              <thead className="bg-blue-900/30">
+                <tr>
+                  <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Committee" : "Position"}</th>
+                  <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Convener" : "Name"}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.map((row, i) => (
+                  <tr key={i} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                    <td className="px-3 py-2 text-sm">{row.position}</td>
+                    <td className="px-3 py-2 text-sm">{row.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <div className="text-gray-100">
