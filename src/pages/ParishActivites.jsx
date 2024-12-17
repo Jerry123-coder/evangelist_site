@@ -11,7 +11,11 @@ import {
   IoWaterOutline,
   IoRibbonOutline,
   IoStarOutline,
+  IoHourglassOutline,
 } from "react-icons/io5";
+import { FaPray } from "react-icons/fa";
+import { LiaPraySolid } from "react-icons/lia";
+import { TbClockHour10 } from "react-icons/tb";
 
 const ParishActivities = () => {
   const middleColumnContent = [
@@ -28,13 +32,13 @@ const ParishActivities = () => {
     },
     {
       title: "GROTTO DEVOTIONS",
-      icon: <IoHeartOutline className="text-3xl text-blue-950" />,
+      icon: <LiaPraySolid className="text-3xl text-blue-950" />,
       content: "1st Saturday of each month at 3pm",
       delay: 400,
     },
     {
       title: "HOLY HOUR",
-      icon: <IoHeartOutline className="text-3xl text-blue-950" />,
+      icon: <IoHourglassOutline className="text-3xl text-blue-950" />,
       content: "– The first Thursday of every month at 6pm.",
       delay: 600,
     },
@@ -46,8 +50,8 @@ const ParishActivities = () => {
           <p>
             Catechisis class is done on Sundays after the 1st mass. For those
             preparing for first communion, the catechumen should be 10 years or
-            older. For those preparing for confirmation, the catechumen should be
-            13 years and above. 
+            older. For those preparing for confirmation, the catechumen should
+            be 13 years and above.
           </p>
           <p className="mt-2">
             For more information kindly contact the parish office.
@@ -80,7 +84,7 @@ const ParishActivities = () => {
     },
     {
       title: "ADORATION (HOUR OF GRACE)",
-      icon: <IoCalendarOutline className="text-3xl text-blue-950" />,
+      icon: <TbClockHour10 className="text-3xl text-blue-950" />,
       content: "1st Sunday of every month at 6pm",
       delay: 400,
     },

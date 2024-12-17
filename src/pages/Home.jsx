@@ -8,11 +8,13 @@ import statImage from "../assets/stn_image2.jpg";
 import stanford from "../assets/stanford_bg.png";
 import Statistic from "../components/StatItem";
 import PartnerCarousel from "../components/PartnerCarousel";
-import VideoPlayer from "../components/VideoPlayer";
+import VideoPlayer from "../components/Home/VideoPlayer";
 import Testimonial from "../components/Testimonial";
 import { useNavigate } from "react-router-dom";
 import imgBar from "../assets/imageBar.svg";
 import { FaBible, FaCalendarAlt, FaChurch, FaUserClock } from "react-icons/fa";
+import { LiaWineGlassAltSolid } from "react-icons/lia";
+
 import { useRef, useState, useEffect } from "react";
 import ProgramCard from "../components/ProgramCard";
 import NewsCard from "../components/NewsCard";
@@ -27,6 +29,9 @@ import { Link } from "react-router-dom";
 import HeroCarousel from "../components/HeroCarousel";
 
 import "aos/dist/aos.css";
+import MassScheduleSection from "../components/Home/Mass";
+import YoutubeSection from "../components/Home/YoutubeSection";
+import PastorSection from "../components/Home/PastorSection";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -60,26 +65,26 @@ const Home = () => {
       image: homeBg,
       subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
       maintext: "WELCOME HOME",
-      buttonText: "I'm New Here"
+      buttonText: "I'm New Here",
     },
     {
       image: img1,
       subtext: "ST JOHN THE EVANGELIST CATHOLIC CHURCH, ADENTA",
       maintext: "Experience A Great Sense Of Community",
-      buttonText: "Find Out More"
+      buttonText: "Find Out More",
     },
     {
       image: stn_image1,
       subtext: "JOIN OUR COMMUNITY",
       maintext: "Grow In Faith Together",
-      buttonText: "Learn More"
+      buttonText: "Learn More",
     },
     {
       image: stn_image2,
       subtext: "WORSHIP WITH US",
       maintext: "Come As You Are",
-      buttonText: "Join Us"
-    }
+      buttonText: "Join Us",
+    },
   ];
 
   return (
@@ -88,56 +93,7 @@ const Home = () => {
       <HeroCarousel slides={slides} />
 
       {/* Pastor Section */}
-      <div className="flex flex-col lg:flex-row h-[90vh] w-screen lg:pt-[3rem] px-8 lg:px-[10rem]">
-        <div
-          className="hidden lg:relative lg:flex w-full lg:w-1/2 h-[40rem] z-30"
-          data-aos="fade-left"
-        >
-          <img
-            src={thePastor}
-            alt="Image of Pastor"
-            className="px-10 pt-10 h-full object-cover "
-          />
-        </div>
-
-        <div className="flex flex-col justify-center lg:justify-start items-center w-full lg:w-1/2 lg:pr-10 py-20">
-          <h3
-            className="text-3xl uppercase lg:text-3xl font-bold pb-5 lg:w-full text-white text-center flex flex-col lg:flex-row"
-            data-aos="fade-down"
-          >
-            <span>A Message From </span>
-            <span> The Pastor</span>
-          </h3>
-          <p
-            className="flex flex-col text-lg mb-5 text-justify lg:text-left"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <span>
-              I am delighted to warmly welcome you to our homepage. You have
-              come to the right place at the right time. Here, we are very
-              passionate about your eternal destiny and committed to your
-              spiritual welfare.
-            </span>
-            <span className="mt-5">
-              As you continue to explore and enjoy the riches of grace uncovered
-              through our numerous materials and online resources, may the Lord
-              continue to richly bless you (Amen).
-            </span>
-          </p>
-          <div
-            className="flex flex-col lg:w-full text-slate-900"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <span className="font-bold text-lg text-white/40">
-              Very Rev. Fr. Edmund Donkor-Baine
-            </span>
-            <span className="text-sm text-white/40">Parish Priest</span>
-          </div>
-        </div>
-      </div>
-
+      <PastorSection image={thePastor} />
       {/* Quick Links Section */}
       <div
         className="relative bg-cover bg-center z-10 py-20"
@@ -241,7 +197,7 @@ const Home = () => {
 
             {/* Parish Calendar Card */}
             <Link
-              to={"/parish-calender"}
+              to={"/sacrament"}
               className="w-full lg:w-[30rem] text-black"
               data-aos="fade-up"
               data-aos-delay="600"
@@ -256,11 +212,11 @@ const Home = () => {
                     isCalenderHovered ? "scale-125 text-white" : "text-blue-500"
                   } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
-                  <FaCalendarAlt />
+                  <LiaWineGlassAltSolid />
                 </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
-                    Parish Calendar
+                    Sacrament{" "}
                   </div>
                   <div className="text-sm lg:text-xl">
                     Highlights of important dates for the year
@@ -277,9 +233,14 @@ const Home = () => {
         <h2 className="text-2xl md:text-3xl font-bold mb-2" data-aos="fade-up">
           THEME FOR THE YEAR
         </h2>
-        <div className="max-w-4xl mx-auto px-4" data-aos="fade-up" data-aos-delay="200">
+        <div
+          className="max-w-4xl mx-auto px-4"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <h3 className="text-xl md:text-2xl font-semibold mb-4">
-            HELPING CHILDREN TO SEEK CHRIST: FROM<br />
+            HELPING CHILDREN TO SEEK CHRIST: FROM
+            <br />
             DISCOVERY TO DISCIPLESHIP.
           </h3>
           <p className="text-lg text-yellow-400">JOHN 12:21</p>
@@ -301,9 +262,13 @@ const Home = () => {
               <h4 className="text-lg text-blue-600 font-medium">FELLOWSHIP</h4>
               <h2 className="text-2xl md:text-3xl font-bold">Societies</h2>
               <p className="text-white-600 mb-16">
-                At St John the Evangelist Catholic Church, we believe in the power of community and fellowship. Our diverse societies offer parishioners the opportunity to grow in their faith while serving others in meaningful ways. Whether you're looking to engage more deeply with your faith, participate in service projects, or simply connect with like-minded individuals, there's a place for you here.
-
-                
+                At St John the Evangelist Catholic Church, we believe in the
+                power of community and fellowship. Our diverse societies offer
+                parishioners the opportunity to grow in their faith while
+                serving others in meaningful ways. Whether you&apos;re looking
+                to engage more deeply with your faith, participate in service
+                projects, or simply connect with like-minded individuals,
+                there&apos;s a place for you here.
               </p>
               <div className="mt-8">
                 <Link to="/societies">
@@ -317,151 +282,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Mass Schedule Section */}
-      <div className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-16 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8" data-aos="fade-right">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Join Us For Mass</h2>
-              <p className="text-gray-200">
-                We warmly invite you to join us for Mass and experience the richness of our liturgical celebrations. Our Mass schedule is designed to accommodate the diverse needs of our community. Whether you prefer morning, midday, or evening services, you will find a time that suits you.
-              </p>
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-yellow-400">SUNDAY MASS SCHEDULE</h3>
-                <ul className="space-y-2">
-                  <li>• Early Morning Mass - 7:00am</li>
-                  <li>• Main Mass - 9:30am</li>
-                </ul>
-                <h3 className="text-xl font-semibold text-yellow-400 mt-6">DAILY MASS SCHEDULE</h3>
-                <ul className="space-y-2">
-                  <li>• Tuesdays - 6:00am</li>
-                  <li>• Wednesday to Friday - 7:00pm</li>
-                  <li>• Saturday - 6:30am</li>
-                </ul>
-              </div>
-            </div>
-            <div className="relative" data-aos="fade-left">
-              <img
-                src={stn_image3}
-                alt="Mass Celebration"
-                className="w-full h-[400px] object-cover rounded-lg shadow-xl"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900 p-6">
-                <h3 className="text-xl font-bold mb-2">Join Us</h3>
-                <p className="text-sm mb-4">Join us in the celebration of the Holy Mass and be part of our Mass schedule.</p>
-                <button className="bg-yellow-400 text-blue-900 px-6 py-2 rounded font-semibold hover:bg-yellow-500 transition-colors">
-                  LEARN MORE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* YouTube Section */}
-      <div className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-red-600 text-4xl font-bold mb-2">YOUTUBE</h2>
-          <h3 className="text-3xl font-bold text-blue-900 mb-6">Stay Connected and Grow in Faith</h3>
-          
-          <p className="text-gray-700 mb-12 max-w-4xl mx-auto">
-            Welcome to St John the Evangelist Catholic Church's YouTube channel, your online resource for spiritual nourishment and growth. 
-            Our channel features a wide array of videos that bring the richness of our faith directly to you, wherever you are. From 
-            inspiring sermons to in-depth teachings, our content is designed to help you deepen your understanding of the Catholic faith 
-            and grow closer to God.
-          </p>
-
-          {/* Video Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {/* Video 1 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-1"
-                title="Monthly Blessings"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            {/* Video 2 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-2"
-                title="Bible Study"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            {/* Video 3 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-3"
-                title="Novena"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            {/* Video 4 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-4"
-                title="Picknick 2024"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            {/* Video 5 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-5"
-                title="Novena to Our Lady"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            {/* Video 6 */}
-            <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/your-video-id-6"
-                title="Bible Study Ephesians"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Subscribe Section */}
-          <div className="text-center mb-12">
-            <h4 className="text-blue-900 font-bold mb-4">STAY CONNECTED</h4>
-            <h3 className="text-2xl text-blue-900 font-bold mb-6">Subscribe and Stay Updated</h3>
-            <p className="text-gray-700 mb-8 max-w-3xl mx-auto">
-              Don't miss out on any of our new videos! Subscribe to our YouTube channel 
-              to receive notifications about the latest uploads. By subscribing, you ensure 
-              that you stay connected with the life of our parish and have access to a 
-              wealth of spiritual resources.
-            </p>
-            <a 
-              href="https://www.youtube.com/@your-channel" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="bg-red-600 text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition-colors inline-block"
-            >
-              SUBSCRIBE
-            </a>
-          </div>
-        </div>
-      </div>
+      <MassScheduleSection />
+      <YoutubeSection />
 
       {/* Latest Updates Section */}
       <div

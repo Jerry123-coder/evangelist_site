@@ -1,25 +1,27 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const HeroCarousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
+  }, [slides.length]);
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
+    );
+  }, [slides.length]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
-    }, 30000);
+    }, 3000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -44,10 +46,10 @@ const HeroCarousel = ({ slides }) => {
               <div className="text-xs lg:text-2xl px-8 invisible lg:visible lg:mb-8 font-base">
                 {slides[currentIndex].subtext}
               </div>
-              <p className="text-6xl lg:text-8xl font-bold w-full">
+              <p className="text-4xl md:text-6xl lg:text-8xl font-bold w-full">
                 {slides[currentIndex].maintext}
               </p>
-              <div className="flex space-x-10 justify-center mt-10">
+              <div className="flex space-x-10 justify-center md:mt-10">
                 <button className="bg-blue-500 w-[12rem] h-[3rem] text-lg text-white rounded-full hover:scale-105 hover:bg-blue-600 transition-all duration-300">
                   {slides[currentIndex].buttonText}
                 </button>
@@ -60,25 +62,25 @@ const HeroCarousel = ({ slides }) => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-1 z-20"
+        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20"
       >
-        <FaChevronLeft className="text-white text-sm" />
+        <FaChevronLeft className="text-white text-base" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-1 z-20"
+        className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20"
       >
-        <FaChevronRight className="text-white text-sm" />
+        <FaChevronRight className="text-white text-base" />
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-1 z-20">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-1.5 h-1.5 rounded-full ${
-              currentIndex === index ? 'bg-white' : 'bg-white/50'
+            className={`w-3 h-3 rounded-full ${
+              currentIndex === index ? "bg-white" : "bg-white/50"
             }`}
           />
         ))}

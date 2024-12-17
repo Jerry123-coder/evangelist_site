@@ -50,7 +50,6 @@ import { FaChurch } from "react-icons/fa6";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
-import "./NavBar.css";
 
 const Navbar = () => {
   const location = useLocation();
