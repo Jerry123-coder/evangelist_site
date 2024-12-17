@@ -89,11 +89,8 @@ const MassScheduleSection = () => {
                 SUNDAY MASS SCHEDULE
               </h3>
               <ul className="space-y-2">
-                <li>• Early Morning Mass : 6:30am</li>
-                <li>• Main Mass : 8:00am</li>
-                <li>• Youth Mass(Parish hall) : 8:00am</li>
-                <li>• Mid-Morning Mass : 10:30am</li>
-                <li>• Evening Mass : 6:00pm</li>
+                <li>• 1st Mass : 7:00am</li>
+                <li>• 2nd Mass : 9:30am</li>
               </ul>
             </div>
 
@@ -102,29 +99,28 @@ const MassScheduleSection = () => {
                 DAILY MASS SCHEDULE
               </h3>
               <ul className="space-y-2">
-                <li>• Daily Mass: 6:30am & 12:15pm</li>
-                <li>• Tuesday Masses: 6:30am, 12:15pm, & 6:30pm</li>
+                <li>• Tuesdays: 6:00am </li>
+                <li>• Wednesdays to Fridays: 7:00pm</li>
+                <li>• Saturdays: 6:30am </li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-blue-600 font-medium mb-4">
-                HOLY HOUR AND MASS
+                HOLY HOUR 
               </h3>
               <ul className="space-y-2">
                 <li>
-                  • Thursday preceding the 1st Friday: Holy Hour & Mass at
-                  6:00pm
+                  • The 1st Thursday of every month: 6:00pm
                 </li>
-                <li>• 1st Friday of the Month: Holy Hour & Mass at 6:00pm</li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-blue-600 font-medium mb-4">
-                SACRAMENT OF RECONCILIATION (CONFESSION)
+                ADORATION (HOUR OF GRACE)
               </h3>
-              <p>Saturdays: 5:00pm at Adoration Chapel</p>
+              <p>1st Sunday of every month at 6pm</p>
             </div>
           </div>
         </div>
