@@ -32,7 +32,7 @@ const WhatsAppButton = () => {
           <div className="flex items-center mt-4 bg-green-100 p-2 rounded">
             <FaWhatsapp className="text-green-500 text-3xl mr-2" />
             <div>
-              <h3 className="text-sm font-semibold text-gray-700">MMGC</h3>
+              <h3 className="text-sm font-semibold text-gray-700">SJECC</h3>
               <span className="text-xs text-gray-500">Online Chat</span>
             </div>
             <a
