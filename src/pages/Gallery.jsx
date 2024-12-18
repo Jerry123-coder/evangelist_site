@@ -54,11 +54,8 @@ import credit2 from "../assets/gallery/credit/credit2.jpeg";
 
 const Gallery = () => {
 
-  const [userEmail, setUserEmail] = useState("");
-  const [category, setCategory] = useState("View all");
   const [expandedSection, setExpandedSection] = useState(null);
-  const items = ["Upcoming", "Programs", "Gallery"];
-
+  
   // Gallery sections data structure
   const gallerySections = [
     {
@@ -111,11 +108,6 @@ const Gallery = () => {
     }
   ];
 
-  const handleUserEmailChange = () => {
-    setUserEmail('');
-    alert("Email service unavailbale")
-  };
-
   const toggleSection = (sectionId) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
@@ -136,24 +128,7 @@ const Gallery = () => {
         </div>
       </div>
 
-      <div className="flex flex-col space-y-5 w-full pb- px-8 lg:px-[20rem] mb-16">
-        <div className="border-b border-b-slate-300 my-10">
-          <ul className="flex md:gap-16 justify-between md:justify-start">
-            {items.map((item) => (
-              <div key={item}>
-                <li
-                  onClick={() => setCategory(item)}
-                  className={`font-bold cursor-pointer ${
-                    category === item ? "border-b-2 border-b-blue-500 text-blue-500" : ""
-                  }`}
-                >
-                  {item}
-                </li>
-              </div>
-            ))}
-          </ul>
-        </div>
-
+      <div className="flex flex-col space-y-5 w-full px-8 lg:px-[20rem] mb-16 mt-8">
         {/* Gallery Sections with Stacked Effect */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 p-8">
           {gallerySections.map((section) => (
