@@ -68,8 +68,8 @@ const Navbar = () => {
       { name: "Parish Youth Council", link: "parish-youth-council" },
     ],
     portals: [
-      { name: "EDA Voting", link: "eda-voting", icon: <FaVoteYea className="inline-block mr-2" /> },
-      { name: "Download Membership Form", link: "membership-form", icon: <HiDocumentDownload className="inline-block mr-2" /> },
+      { name: "EDA Voting", link: "eda-voting", icon: <FaVoteYea className="inline-block mr-1" /> },
+      { name: "Download Membership Form", link: "membership-form", icon: <HiDocumentDownload className="inline-block mr-0.5" /> },
     ],
     councils: [
       { name: "Christian sons", link: "christian-sons" },
