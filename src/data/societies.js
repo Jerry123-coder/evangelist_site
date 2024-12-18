@@ -5,11 +5,6 @@ export const societies = [
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Knights of Marshal",
-      details:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
-    },
-    {
       name: "Christian Mothers Association",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
@@ -34,11 +29,11 @@ export const societies = [
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
-    {
-      name: "Christian Sons Association",
-      details:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
-    },
+    // {
+    //   name: "Christian Sons Association",
+    //   details:
+    //     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
+    // },
     {
       name: "St. Joseph Society",
       details:
@@ -70,9 +65,9 @@ export const societies = [
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
-    {
-      name: "Christian Daughters Association",
-      details:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
-    },
+    // {
+    //   name: "Christian Daughters Association",
+    //   details:
+    //     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
+    // },
   ].sort((a, b) => a.name.localeCompare(b.name));
