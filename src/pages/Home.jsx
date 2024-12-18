@@ -13,7 +13,7 @@ import Testimonial from "../components/Testimonial";
 import { useNavigate } from "react-router-dom";
 import imgBar from "../assets/imageBar.svg";
 import { FaBible, FaCalendarAlt, FaChurch, FaUserClock, FaCross } from "react-icons/fa";
-import { LiaWineGlassAltSolid } from "react-icons/lia";
+import { IoDocumentTextSharp } from "react-icons/io5";
 
 import { useRef, useState, useEffect } from "react";
 import ProgramCard from "../components/ProgramCard";
@@ -168,9 +168,9 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-5">
-            {/* Office Hours Card */}
+            {/* Papers and Publication Card */}
             <Link
-              to={"/office-hours"}
+              to={"/papers-and-publication"}
               className="w-full lg:w-[30rem]"
               data-aos="fade-up"
               data-aos-delay="400"
@@ -183,16 +183,16 @@ const Home = () => {
                 <div
                   className={`${
                     isOfficeHovered ? "scale-125 text-white" : "text-blue-500"
-                  } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
+                  } text-[4.5rem] lg:text-[6rem] transition-all duration-300`}
                 >
-                  <FaUserClock />
+                  <IoDocumentTextSharp />
                 </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
-                    Office Hours
+                    Papers & Publication
                   </div>
                   <div className="text-sm lg:text-xl">
-                    Learn more about parish working hours
+                    Access church documents and publications
                   </div>
                 </div>
               </div>
