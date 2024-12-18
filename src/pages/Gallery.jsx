@@ -27,7 +27,6 @@ import statue1 from "../assets/gallery/patron/statue1.jpeg";
 import statue2 from "../assets/gallery/patron/statue2.jpeg";
 import statue3 from "../assets/gallery/patron/statue3.jpeg";
 
-
 import jhs1 from "../assets/gallery/jhs/jhs1.jpeg";
 import jhs2 from "../assets/gallery/jhs/jhs2.jpeg";
 import jhs3 from "../assets/gallery/jhs/jhs3.jpeg";
@@ -52,7 +51,6 @@ import groto3 from "../assets/gallery/grotto/groto3.jpeg";
 
 import credit1 from "../assets/gallery/credit/credit1.jpeg";
 import credit2 from "../assets/gallery/credit/credit2.jpeg";
-
 
 const Gallery = () => {
 
@@ -112,126 +110,126 @@ const Gallery = () => {
 </div> */}
 
 <div>
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">Chapel Interior</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={in1} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={in2} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={in3} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={in4} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={in5} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">Chapel Interior</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[in1, in2, in3, in4, in5].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="Church Interior Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">Chapel Exterior</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    
-    <img src={out3} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out4} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out5} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out15} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out8} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out7} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    
-    
-    <img src={out9} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out10} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    
-    <img src={out11} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out12} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out13} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-   
-    
-    <img src={out1} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={out2} alt="CHurch Exterior Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">Chapel Exterior</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[out3, out4, out5, out15, out8, out7, out9, out10, out11, out12, out13, out1, out2].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="Church Exterior Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">Statue of Patron Saint</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={statue1} alt="Statue of Patron Saint Gallery" class="w-full h-auto rounded-lg" />
-    <img src={statue3} alt="Statue of Patron Saint Gallery" class="w-full h-auto rounded-lg" />
-    <img src={statue2} alt="Statue of Patron Saint Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">Statue of Patron Saint</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[statue1, statue3, statue2].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="Statue of Patron Saint Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">Our Lady of Knock Grotto</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={groto1} alt="Our Lady of Knock Grotto Gallery" class="w-full h-auto rounded-lg" />
-    <img src={groto2} alt="Our Lady of Knock Grotto Gallery" class="w-full h-auto rounded-lg" />
-    <img src={groto3} alt="Our Lady of Knock Grotto Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">Our Lady of Knock Grotto</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[groto1, groto2, groto3].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="Our Lady of Knock Grotto Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">JHS Block</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={jhs1} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={jhs2} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
-    <img src={jhs3} alt="CHurch Interior Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">JHS Block</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[jhs1, jhs2, jhs3].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="JHS Block Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section mb-10">
-  <h2 class="text-2xl font-bold mb-4 mt-10">Credit Union</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={credit1} alt="Credit Union Gallery" class="w-full h-auto rounded-lg" />
-    <img src={credit2} alt="Credit Union Gallery" class="w-full h-auto rounded-lg" />
+<div className="gallery-section mb-10">
+  <h2 className="text-2xl font-bold mb-4 mt-10">Credit Union</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[credit1, credit2].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="Credit Union Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-    <div class="gallery-section mb-8">
-  <h2 class="text-2xl font-bold mb-4">JHS Block Construction</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your first set of 20 pictures here --> */} 
-    <img src={project1} alt="Credit Union Gallery" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
-    <img src={project2} alt="Credit Union Gallery" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
-    <img src={project3} alt="Credit Union Gallery" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
-    <img src={project4} alt="Credit Union Gallery" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
-    <img src={project5} alt="Credit Union Gallery" class="w-full h-auto rounded-lg hover:scale-1.3 cursor-pointer transition duration-200 ease-in " />
-    {/* <img src={project6} alt="Image 2" class="w-full h-auto rounded-lg" />
-    <img src={project7} alt="Image 2" class="w-full h-auto rounded-lg" />
-    <img src={project8} alt="Image 2" class="w-full h-auto rounded-lg" />
-    <img src={project9} alt="Image 2" class="w-full h-auto rounded-lg" />
-    <img src={project10} alt="Image 2" class="w-full h-auto rounded-lg" /> */}
-    {/* <!-- Add more images --> */}
+<div className="gallery-section mb-8">
+  <h2 className="text-2xl font-bold mb-4">JHS Block Construction</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[project1, project2, project3, project4, project5].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="JHS Construction Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 
-<div class="gallery-section">
-  <h2 class="text-2xl font-bold mb-4 mt-10">SHS Visitation</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
-    {/* <!-- Add your second set of 20 pictures here --> */}
-    <img src={school1} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school2} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school3} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school4} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school5} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school5} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school6} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school7} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school8} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school9} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school10} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school11} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school12} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school13} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    <img src={school14} alt="School Visitation Gallery" class="w-full h-auto rounded-lg" />
-    {/* <!-- Add more images --> */}
+<div className="gallery-section">
+  <h2 className="text-2xl font-bold mb-4 mt-10">SHS Visitation</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {[school1, school2, school3, school4, school5, school6, school7, school8, school9, school10, school11, school12, school13, school14].map((img, index) => (
+      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
+        <img 
+          src={img} 
+          alt="School Visitation Gallery" 
+          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+    ))}
   </div>
 </div>
 </div>
-
-
 
 <div className="lg:w-full flex justify-center">
 {/* <div 
