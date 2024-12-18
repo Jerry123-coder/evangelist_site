@@ -1,13 +1,124 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Statistic from "../components/StatItem";
-import statImage from "../assets/stn_image2.jpg";
 import thePastor from "../assets/thePastor.png";
 import assistantPriest from "../assets/Assistantpriest.jpg";
-import dr from "../assets/dr.jpeg";
+import pastorUp from "../assets/pastorUp.jpg";
+import reverend from "../assets/reverend.jpeg";
 import Footer from "../components/Footer";
+
 const Clergy = () => {
+  const [selectedPeriod, setSelectedPeriod] = useState("2020-Present");
+
+  const clergyData = {
+    "1997-2000": {
+      title: "Meet Our 1997-2000 Leadership",
+      priests: [
+        {
+          name: "Rev Fr. Fritz Hebben, SMA",
+          role: "Parochial Administrator",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2000-2002": {
+      title: "Meet Our 2000-2002 Leadership",
+      priests: [
+        {
+          name: "Rev Fr. Harrie Van Hoof, SMA",
+          role: "Parochial Administrator",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2002-2004": {
+      title: "Meet Our 2002-2004 Leadership",
+      priests: [
+        {
+          name: "V. Rev Fr. Anthony R. Oppong",
+          role: "Priest-in-charge",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2004-2015": {
+      title: "Meet Our 2004-2015 Leadership",
+      priests: [
+        {
+          name: "V. Rev Fr. Anthony R. Oppong",
+          role: "Parochial Administrator",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2015-2016": {
+      title: "Meet Our 2015-2016 Leadership",
+      priests: [
+        {
+          name: "V. Rev Fr. Anthony R. Oppong",
+          role: "Parish Priest",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2016-2020": {
+      title: "Meet Our 2016-2020 Leadership",
+      priests: [
+        {
+          name: "V. Rev Fr. John B. Mensah",
+          role: "Parish Priest",
+          image: pastorUp,
+        },
+        {
+          name: "Rev Fr. Assistant",
+          role: "Assistant Priest",
+          image: reverend,
+        },
+      ],
+    },
+    "2020-Present": {
+      title: "Meet Our Current Leadership",
+      priests: [
+        {
+          name: "V. Rev Fr. Edmund D. Baine",
+          role: "Parish Priest",
+          image: thePastor,
+        },
+        {
+          name: "Rev Fr. Joseph Effah Siaw",
+          role: "Assistant Priest",
+          image: assistantPriest,
+        },
+      ],
+    },
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -22,7 +133,7 @@ const Clergy = () => {
       <div
         className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
         style={{
-          backgroundImage: `url(${statImage})`,
+          backgroundImage: `url(${pastorUp})`,
         }}
       >
         <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
@@ -51,174 +162,157 @@ const Clergy = () => {
           data-aos="fade-right"
           data-aos-delay="200"
         >
-          Meet Our Leadership
+          {clergyData[selectedPeriod].title}
         </span>
 
         <div className="flex flex-col lg:flex-row w-full gap-8">
-          {/* Parish Priest Card */}
-          <div
-            className="relative flex-1 group"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
+          {clergyData[selectedPeriod].priests.map((priest, index) => (
             <div
-              className="bg-slate-200 sm:h-[40rem] h-[20rem] rounded-lg relative overflow-hidden transform transition-transform duration-500 hover:scale-105"
-              style={{
-                backgroundImage: `url(${thePastor})`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
+              key={index}
+              className="lg:w-1/2 mt-10"
+              data-aos="fade-up"
+              data-aos-delay={200 + index * 100}
             >
-              <div
-                className="absolute bottom-0 bg-black w-full text-yellow-500 opacity-0  transition-opacity duration-300 rounded-b-lg px-2"
-                data-aos="fade-up"
-                data-aos-delay="600"
-              >
-                <h2 className="font-bold text-lg pt-4">
-                  Very Rev. Fr. Edmund Donkor-Baine
-                </h2>
-                <p className="text-white pb-5">Parish Priest</p>
+              <div className="relative group cursor-pointer overflow-hidden rounded-2xl h-[40rem]">
+                <img
+                  src={priest.image}
+                  alt={priest.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-500"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                  <h3 className="text-xl font-semibold">{priest.name}</h3>
+                  <p className="text-gray-300">{priest.role}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Assistant Priest Card */}
-          <div
-            className="relative flex-1 group"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <div
-              className="bg-slate-200 sm:h-[40rem] h-[20rem] rounded-lg relative overflow-hidden transform transition-transform duration-500 hover:scale-105"
-              style={{
-                backgroundImage: `url(${assistantPriest})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            >
-              <div
-                className="absolute bottom-0 bg-black w-full text-yellow-500 opacity-0  transition-opacity duration-300 rounded-b-lg px-2"
-                data-aos="fade-up"
-                data-aos-delay="800"
-              >
-                <h2 className="font-bold text-lg pt-4">
-                  Rev. Fr. Joseph Effah Siaw
-                </h2>
-                <p className="text-white pb-5">
-                  Assisting Priest and Youth Chaplain
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-        {/*  */}
-      </div>
 
-      {/* Past Parish Priests Section */}
-      <div className="w-full mt-20 mb-24" data-aos="fade-up" data-aos-delay="200">
-        <h2 className="text-3xl font-bold mb-12 text-white text-center">Parish Leadership Timeline</h2>
-        
-        <div className="relative max-w-full mx-auto px-8">
-          {/* Timeline items */}
-          <div className="flex justify-between items-start relative">
-            {/* Timeline line - positioned to start and end at circles */}
-            <div className="absolute top-[3.1rem] left-0 right-0 h-[2px] bg-gray-300 z-20"></div>
+        {/* Past Parish Priests Section */}
+        <div className="w-full mt-20 mb-24" data-aos="fade-up" data-aos-delay="200">
+          <h2 className="text-3xl font-bold mb-12 text-white text-center">Parish Leadership Timeline</h2>
+          
+          <div className="relative max-w-full mx-auto px-8">
+            {/* Timeline items */}
+            <div className="flex justify-between items-start relative">
+              {/* Timeline line - positioned to start and end at circles */}
+              <div className="absolute top-[3.1rem] left-0 right-0 h-[2px] bg-gray-300 z-20"></div>
 
-            {/* Fritz Hebben - Earliest */}
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">1997 - 2000</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              {/* Fritz Hebben - Earliest */}
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">1997 - 2000</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("1997-2000")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "1997-2000" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "1997-2000" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                  <div className="text-sm font-semibold text-white mb-1">Rev Fr. Fritz Hebben, SMA</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
-                <div className="text-sm font-semibold text-white mb-1">Rev Fr. Fritz Hebben, SMA</div>
-              </div>
-            </div>
 
-            {/* Harrie Van Hoof */}
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2000 - 2002</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              {/* Harrie Van Hoof */}
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2000 - 2002</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2000-2002")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2000-2002" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2000-2002" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                  <div className="text-sm font-semibold text-white mb-1">Rev Fr. Harrie Van Hoof, SMA</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
-                <div className="text-sm font-semibold text-white mb-1">Rev Fr. Harrie Van Hoof, SMA</div>
-              </div>
-            </div>
 
-            {/* Anthony Richard Oppong - Multiple Positions */}
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2002 - 2004</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              {/* Anthony Richard Oppong - Multiple Positions */}
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2002 - 2004</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2002-2004")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2002-2004" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2002-2004" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Priest-in-charge</div>
+                  <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Priest-in-charge</div>
-                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
-              </div>
-            </div>
 
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2004 - 2015</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2004 - 2015</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2004-2015")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2004-2015" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2004-2015" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                  <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
-                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
-              </div>
-            </div>
 
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2015 - 2016</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2015 - 2016</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2015-2016")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2015-2016" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2015-2016" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                  <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
-                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
-              </div>
-            </div>
 
-            {/* John Benyah Mensah */}
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2016 - 2020</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              {/* John Benyah Mensah */}
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2016 - 2020</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2016-2020")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2016-2020" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2016-2020" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                  <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. John B. Mensah</div>
+                </div>
               </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
-                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. John B. Mensah</div>
-              </div>
-            </div>
 
-            {/* Current Priest */}
-            <div className="relative flex flex-col items-center w-40">
-              <div className="text-white/80 text-xs mb-2">2020 - Present</div>
-              <div className="w-6 h-6 rounded-full relative">
-                <div className="absolute inset-0 bg-blue-500 rounded-full"></div>
-                <div className="absolute inset-[2px] bg-white rounded-full"></div>
-                <div className="absolute inset-[4px] bg-blue-500 rounded-full"></div>
-              </div>
-              <div className="mt-4">
-                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
-                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Edmund D. Baine</div>
+              {/* Current Priest */}
+              <div className="relative flex flex-col items-center w-40">
+                <div className="text-white/80 text-xs mb-2">2020 - Present</div>
+                <div 
+                  className="w-6 h-6 rounded-full relative cursor-pointer hover:scale-110 transition-transform"
+                  onClick={() => setSelectedPeriod("2020-Present")}
+                >
+                  <div className={`absolute inset-0 ${selectedPeriod === "2020-Present" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                  <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                  <div className={`absolute inset-[4px] ${selectedPeriod === "2020-Present" ? "bg-blue-500" : "bg-gray-300"} rounded-full`}></div>
+                </div>
+                <div className="mt-4">
+                  <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                  <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Edmund D. Baine</div>
+                </div>
               </div>
             </div>
           </div>
