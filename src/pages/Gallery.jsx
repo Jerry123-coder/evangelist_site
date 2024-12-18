@@ -56,191 +56,195 @@ const Gallery = () => {
 
   const [userEmail, setUserEmail] = useState("");
   const [category, setCategory] = useState("View all");
+  const [expandedSection, setExpandedSection] = useState(null);
   const items = ["Upcoming", "Programs", "Gallery"];
 
+  // Gallery sections data structure
+  const gallerySections = [
+    {
+      id: 'chapel-interior',
+      title: 'Chapel Interior',
+      images: [in1, in2, in3, in4, in5],
+      alt: 'Church Interior Gallery'
+    },
+    {
+      id: 'chapel-exterior',
+      title: 'Chapel Exterior',
+      images: [out3, out4, out5, out15, out8, out7, out9, out10, out11, out12, out13, out1, out2],
+      alt: 'Church Exterior Gallery'
+    },
+    {
+      id: 'patron-saint',
+      title: 'Statue of Patron Saint',
+      images: [statue1, statue3, statue2],
+      alt: 'Statue of Patron Saint Gallery'
+    },
+    {
+      id: 'grotto',
+      title: 'Our Lady of Knock Grotto',
+      images: [groto1, groto2, groto3],
+      alt: 'Our Lady of Knock Grotto Gallery'
+    },
+    {
+      id: 'jhs-block',
+      title: 'JHS Block',
+      images: [jhs1, jhs2, jhs3],
+      alt: 'JHS Block Gallery'
+    },
+    {
+      id: 'credit-union',
+      title: 'Credit Union',
+      images: [credit1, credit2],
+      alt: 'Credit Union Gallery'
+    },
+    {
+      id: 'jhs-construction',
+      title: 'JHS Block Construction',
+      images: [project1, project2, project3, project4, project5],
+      alt: 'JHS Construction Gallery'
+    },
+    {
+      id: 'shs-visitation',
+      title: 'SHS Visitation',
+      images: [school1, school2, school3, school4, school5, school6, school7, school8, school9, school10, school11, school12, school13, school14],
+      alt: 'School Visitation Gallery'
+    }
+  ];
+
   const handleUserEmailChange = () => {
-       setUserEmail('');
-       alert("Email service unavailbale")
+    setUserEmail('');
+    alert("Email service unavailbale")
   };
 
+  const toggleSection = (sectionId) => {
+    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
 
   return (
-<>
-    <div
-    className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
-    style={{
-      backgroundImage: `url(${statImage})`,
-    }}
-  >
-    {/* Dark overlay */}
-    <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
-    <div className="text-white z-10 flex flex-col items-center">
-      <span className="text-2xl text-center w-full lg:text-left mb-10 lg:mb-2 font-semibold opacity-75">Welcome To Our</span>
-      <span className=" text-3xl text-center lg:text-left lg:text-6xl font-bold">Photo Gallery</span>
-    </div>
-  </div>
-  <div className="flex flex-col space-y-5 w-full pb- px-8 lg:px-[20rem] mb-16">
+    <>
+      <div
+        className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
+        style={{
+          backgroundImage: `url(${statImage})`,
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute z-2 inset-0 bg-black opacity-80"></div>
+        <div className="text-white z-10 flex flex-col items-center">
+          <span className="text-2xl text-center w-full lg:text-left mb-10 lg:mb-2 font-semibold opacity-75">Welcome To Our</span>
+          <span className="text-3xl text-center lg:text-left lg:text-6xl font-bold">Photo Gallery</span>
+        </div>
+      </div>
 
-<div className="border-b border-b-slate-300 my-10">
-<ul className="flex md:gap-16 justify-between md:justify-start">
-     {items.map((item) => (
-          <div key={item}>
-               <li
-                    onClick={() => {
-                         setCategory(item);
+      <div className="flex flex-col space-y-5 w-full pb- px-8 lg:px-[20rem] mb-16">
+        <div className="border-b border-b-slate-300 my-10">
+          <ul className="flex md:gap-16 justify-between md:justify-start">
+            {items.map((item) => (
+              <div key={item}>
+                <li
+                  onClick={() => setCategory(item)}
+                  className={`font-bold cursor-pointer ${
+                    category === item ? "border-b-2 border-b-blue-500 text-blue-500" : ""
+                  }`}
+                >
+                  {item}
+                </li>
+              </div>
+            ))}
+          </ul>
+        </div>
+
+        {/* Gallery Sections with Stacked Effect */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 p-8">
+          {gallerySections.map((section) => (
+            <div 
+              key={section.id}
+              className={`relative transition-all duration-500 ease-in-out ${
+                expandedSection === section.id ? 'col-span-full' : ''
+              }`}
+            >
+              {/* Stacked Images Preview */}
+              <div 
+                onClick={() => toggleSection(section.id)}
+                className={`relative cursor-pointer transition-all duration-500 h-[300px] ${
+                  expandedSection === section.id ? 'hidden' : 'block'
+                }`}
+              >
+                {/* Stack effect using first 3 images */}
+                {section.images.slice(0, 3).map((img, index) => (
+                  <div
+                    key={index}
+                    className="absolute w-full"
+                    style={{
+                      top: `${index * 15}px`,
+                      left: `${index * 15}px`,
+                      zIndex: 3 - index,
+                      transform: `rotate(${index * 3 - 3}deg)`,
                     }}
-                    className={`font-bold cursor-pointer ${category === item
-                              ? "border-b-2 border-b-blue-500 text-blue-500"
-                              : ""
-                         } `}
-               >
-                    {item}
-               </li>
-          </div>
-     ))}
-</ul>
-</div>
-{/* <div className='flex flex-wrap justify-center lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-x-auto w-full  py-2 px-0.5'>
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-<ProgramCard />
-</div> */}
+                  >
+                    <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg bg-white">
+                      <img
+                        src={img}
+                        alt={`${section.alt} ${index + 1}`}
+                        className="w-full h-full object-cover hover:opacity-95 transition-opacity"
+                      />
+                    </div>
+                  </div>
+                ))}
+                {/* Title overlay */}
+                <div 
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg z-10"
+                  style={{ transform: 'rotate(-3deg)' }}
+                >
+                  <h2 className="text-white text-xl font-bold tracking-wide">{section.title}</h2>
+                </div>
+              </div>
 
-<div>
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">Chapel Interior</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[in1, in2, in3, in4, in5].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="Church Interior Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
+              {/* Expanded View */}
+              <div
+                className={`bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-500 ${
+                  expandedSection === section.id 
+                    ? 'opacity-100 max-h-[2000px] mt-8' 
+                    : 'opacity-0 max-h-0'
+                }`}
+              >
+                {/* Header */}
+                <div className="p-6 bg-gradient-to-r from-gray-50 to-white border-b">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-bold text-gray-800">{section.title}</h2>
+                    <button 
+                      onClick={() => toggleSection(section.id)}
+                      className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Grid of all images */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6">
+                  {section.images.map((img, index) => (
+                    <div
+                      key={index}
+                      className="group aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md"
+                    >
+                      <img
+                        src={img}
+                        alt={`${section.alt} ${index + 1}`}
+                        className="w-full h-full object-cover transform transition-all duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
+    </>
+  );
+};
 
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">Chapel Exterior</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[out3, out4, out5, out15, out8, out7, out9, out10, out11, out12, out13, out1, out2].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="Church Exterior Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">Statue of Patron Saint</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[statue1, statue3, statue2].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="Statue of Patron Saint Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">Our Lady of Knock Grotto</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[groto1, groto2, groto3].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="Our Lady of Knock Grotto Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">JHS Block</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[jhs1, jhs2, jhs3].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="JHS Block Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section mb-10">
-  <h2 className="text-2xl font-bold mb-4 mt-10">Credit Union</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[credit1, credit2].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="Credit Union Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section mb-8">
-  <h2 className="text-2xl font-bold mb-4">JHS Block Construction</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[project1, project2, project3, project4, project5].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="JHS Construction Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
-<div className="gallery-section">
-  <h2 className="text-2xl font-bold mb-4 mt-10">SHS Visitation</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {[school1, school2, school3, school4, school5, school6, school7, school8, school9, school10, school11, school12, school13, school14].map((img, index) => (
-      <div key={index} className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg group">
-        <img 
-          src={img} 
-          alt="School Visitation Gallery" 
-          className="w-full h-full object-cover transform transition-all duration-[2000ms] ease-out group-hover:scale-125 group-hover:rotate-2"
-        />
-      </div>
-    ))}
-  </div>
-</div>
-</div>
-
-<div className="lg:w-full flex justify-center">
-{/* <div 
-
-className="bg-[#A61D37] hover:bg-[#d40d32] w-[10rem] h-[2.5rem] mt-10 rounded-full  text-white text-xl font-bold flex items-center justify-center cursor-pointer  hover:scale-105 transition-all duration-200 ease-in-out">
-See More
-</div> */}
-</div>
-</div>
-</>
-  )
-}
-
-export default Gallery
+export default Gallery;
