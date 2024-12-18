@@ -115,6 +115,115 @@ const Clergy = () => {
         </div>
         {/*  */}
       </div>
+
+      {/* Past Parish Priests Section */}
+      <div className="w-full mt-20 mb-24" data-aos="fade-up" data-aos-delay="200">
+        <h2 className="text-3xl font-bold mb-12 text-white text-center">Parish Leadership Timeline</h2>
+        
+        <div className="relative max-w-full mx-auto px-8">
+          {/* Timeline items */}
+          <div className="flex justify-between items-start relative">
+            {/* Timeline line - positioned to start and end at circles */}
+            <div className="absolute top-[3.1rem] left-0 right-0 h-[2px] bg-gray-300 z-20"></div>
+
+            {/* Fritz Hebben - Earliest */}
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">1997 - 2000</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                <div className="text-sm font-semibold text-white mb-1">Rev Fr. Fritz Hebben, SMA</div>
+              </div>
+            </div>
+
+            {/* Harrie Van Hoof */}
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2000 - 2002</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                <div className="text-sm font-semibold text-white mb-1">Rev Fr. Harrie Van Hoof, SMA</div>
+              </div>
+            </div>
+
+            {/* Anthony Richard Oppong - Multiple Positions */}
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2002 - 2004</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Priest-in-charge</div>
+                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+              </div>
+            </div>
+
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2004 - 2015</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parochial Administrator</div>
+                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+              </div>
+            </div>
+
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2015 - 2016</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Anthony R. Oppong</div>
+              </div>
+            </div>
+
+            {/* John Benyah Mensah */}
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2016 - 2020</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-gray-300 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-gray-300 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. John B. Mensah</div>
+              </div>
+            </div>
+
+            {/* Current Priest */}
+            <div className="relative flex flex-col items-center w-40">
+              <div className="text-white/80 text-xs mb-2">2020 - Present</div>
+              <div className="w-6 h-6 rounded-full relative">
+                <div className="absolute inset-0 bg-blue-500 rounded-full"></div>
+                <div className="absolute inset-[2px] bg-white rounded-full"></div>
+                <div className="absolute inset-[4px] bg-blue-500 rounded-full"></div>
+              </div>
+              <div className="mt-4">
+                <div className="text-white/90 font-medium text-xs mb-1">Parish Priest</div>
+                <div className="text-sm font-semibold text-white mb-1">V. Rev Fr. Edmund D. Baine</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
