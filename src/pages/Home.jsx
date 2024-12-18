@@ -189,7 +189,7 @@ const Home = () => {
                 </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
-                    Papers & Publication
+                    News & Publication
                   </div>
                   <div className="text-sm lg:text-xl">
                     Access church documents and publications
