@@ -48,7 +48,7 @@ const ParishYouthCouncil = () => {
     },
     {
       committee: "School Visitation",
-      chairperson: "Juliana Yorke"
+      chairperson: "Etonam Dotse"
     }
   ];
 
