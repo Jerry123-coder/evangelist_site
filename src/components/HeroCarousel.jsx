@@ -18,7 +18,7 @@ const HeroCarousel = ({ slides }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 30000);
 
     return () => clearInterval(timer);
   }, [nextSlide]);
@@ -35,8 +35,17 @@ const HeroCarousel = ({ slides }) => {
           transition={{ duration: 0.5 }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentIndex].image})` }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat flex items-center justify-center"
+            style={{
+              backgroundImage: `url(${slides[currentIndex].image})`,
+              backgroundSize: slides[currentIndex].maintext === "Come As You Are" ? '100% auto' : 'cover',
+              backgroundPosition: 'center',
+              backgroundColor: '#000',
+              width: '100%',
+              height: '100%',
+              minWidth: slides[currentIndex].maintext === "Come As You Are" ? '100vw' : 'auto',
+              minHeight: slides[currentIndex].maintext === "Come As You Are" ? '100%' : 'auto'
+            }}
           >
             <div className="absolute inset-0 bg-black opacity-60"></div>
           </div>
