@@ -22,6 +22,7 @@ import DailyReadings from "../pages/DailyReadings.jsx";
 import OfficeHours from "../pages/OfficeHours.jsx";
 import ParishPastorialCouncil from "../pages/ParishPastorialCouncil.jsx";
 import ParishYouthCouncil from "../pages/ParishYouthCouncil.jsx";
+import Sacraments from "../pages/Sacraments.jsx";
 
 export const Router = () => {
   return useRoutes([
@@ -45,9 +46,8 @@ export const Router = () => {
         { element: <Directory />, path: "directory" },
         { element: <Donate />, path: "donate" },
         { element: <ParishActivites />, path: "parish-activities" },
-        { element: <ParishCalender />, path: "sacrament" },
+        { element: <Sacraments />, path: "sacrament" },
         { element: <DailyReadings />, path: "daily-reading" },
-        { element: <ParishCalender />, path: "sacrament" },
         { element: <OfficeHours />, path: "office-hours" },
         { element: <ParishYouthCouncil />, path: "parish-youth-council" },
         {
