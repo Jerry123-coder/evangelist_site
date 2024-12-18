@@ -12,7 +12,7 @@ import VideoPlayer from "../components/Home/VideoPlayer";
 import Testimonial from "../components/Testimonial";
 import { useNavigate } from "react-router-dom";
 import imgBar from "../assets/imageBar.svg";
-import { FaBible, FaCalendarAlt, FaChurch, FaUserClock } from "react-icons/fa";
+import { FaBible, FaCalendarAlt, FaChurch, FaUserClock, FaCross } from "react-icons/fa";
 import { LiaWineGlassAltSolid } from "react-icons/lia";
 
 import { useRef, useState, useEffect } from "react";
@@ -130,7 +130,7 @@ const Home = () => {
                     Parish Activities
                   </div>
                   <div className="text-s lg:text-xl">
-                    Mass times, sacraments and other schedules
+                    Mass times and other schedules
                   </div>
                 </div>
               </div>
@@ -215,14 +215,14 @@ const Home = () => {
                     isCalenderHovered ? "scale-125 text-white" : "text-blue-500"
                   } text-[3.8rem] lg:text-[5rem] transition-all duration-300`}
                 >
-                  <LiaWineGlassAltSolid />
+                  <FaCross/>
                 </div>
                 <div>
                   <div className="text-xl lg:text-4xl font-bold">
-                    Sacrament{" "}
+                    Sacraments{" "}
                   </div>
                   <div className="text-sm lg:text-xl">
-                    Highlights of important dates for the year
+                    Overview of the Sacraments of the Church
                   </div>
                 </div>
               </div>
