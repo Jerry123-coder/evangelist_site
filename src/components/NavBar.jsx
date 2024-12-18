@@ -14,7 +14,7 @@
 //      ]
 
 //      return (
-//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0">
+//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0");
 
 //           {/* <div className='w-full flex justify-between items-center sticky top-0 bg-white'> */}
 //                <div className="logo">
@@ -50,6 +50,8 @@ import { FaChurch } from "react-icons/fa6";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
+import { FaVoteYea } from "react-icons/fa";
+import { HiDocumentDownload } from "react-icons/hi";
 
 const Navbar = () => {
   const location = useLocation();
@@ -65,7 +67,10 @@ const Navbar = () => {
       { name: "Parish Pastoral Council", link: "parish-pastorial-council" },
       { name: "Parish Youth Council", link: "parish-youth-council" },
     ],
-    portals: [],
+    portals: [
+      { name: "EDA Voting", link: "eda-voting", icon: <FaVoteYea className="inline-block mr-2" /> },
+      { name: "Download Membership Form", link: "membership-form", icon: <HiDocumentDownload className="inline-block mr-2" /> },
+    ],
     councils: [
       { name: "Christian sons", link: "christian-sons" },
       { name: "Christian daughters", link: "christian-daughters" },
@@ -188,8 +193,10 @@ const Navbar = () => {
                       <Link
                         key={index}
                         to={dropdownItem.link}
-                        className="block px-10 py-2 text-sm text-gray-700 rounded-xl bg-gray-50 hover:text-blue-500 transition-colors duration-150"
+                        className="block px-10 py-2 text-sm text-gray-700 rounded-xl bg-gray-50 hover:text-blue-500 transition-colors duration-150 flex items-center justify-center"
+                        onClick={() => setActiveDropdown(null)}
                       >
+                        {dropdownItem.icon}
                         {dropdownItem.name}
                       </Link>
                     )
@@ -285,8 +292,9 @@ const Navbar = () => {
                               key={index}
                               to={subItem.link}
                               onClick={() => setIsOpen(false)}
-                              className="block py-3 px-6 text-white/80 hover:border-y-2 hover:bg-white/20 hover:text-white transition-colors duration-200"
+                              className="block py-3 px-6 text-white/80 hover:border-y-2 hover:bg-white/20 hover:text-white transition-colors duration-200 flex items-center justify-center"
                             >
+                              {subItem.icon}
                               {subItem.name}
                             </Link>
                           )

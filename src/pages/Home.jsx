@@ -316,38 +316,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* E-Bulletin Section */}
-      <div
-        className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
-        style={{ backgroundImage: `url(${statImage})` }}
-      >
-        <div className="absolute z-2 inset-0 bg-black opacity-60"></div>
-
-        {/* <div
-          className="text-white z-10 flex flex-col justify-center m-auto"
-          data-aos="fade-up"
-        >
-          <div className="text-xl md:text-4xl text-center w-full mb-5 lg:mb-10 font-semibold flex items-center justify-center">
-            Download Church E-Bulletin
-          </div>
-
-          <button
-            onClick={handleBulletinDownload}
-            className="w-full md:w-[30rem] h-[4rem] bg-blue-500 items-center flex justify-center font-bold text-xl rounded-full cursor-pointer hover:scale-105 hover:bg-yellow-400 transition-all duration-300"
-          >
-            Click here to download
-          </button>
-        </div> */}
-      </div>
-
-      {/* Floating Image Bar */}
-      <img
-        src={imgBar}
-        className="absolute top-[30rem] -left-32 opacity-100 invisible lg:visible shrink"
-        data-aos="fade-right"
-        data-aos-delay="500"
-      />
     </div>
   );
 };

@@ -59,6 +59,12 @@ const Gallery = () => {
   // Gallery sections data structure
   const gallerySections = [
     {
+      id: 'youth-evangelism',
+      title: 'Youth Evangelism',
+      images: ['/g1.jpg', '/g2.jpg', '/g3.jpg', '/g4.jpg', '/g5.jpg', '/g6.jpg'],
+      alt: 'Youth Evangelism Gallery'
+    },
+    {
       id: 'chapel-interior',
       title: 'Chapel Interior',
       images: [in1, in2, in3, in4, in5],

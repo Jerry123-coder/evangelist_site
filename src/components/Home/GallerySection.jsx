@@ -80,7 +80,7 @@ const GallerySection = () => {
                     />
                   </div>
                 </div>
-            )}
+            )} 
           </div>
         </div>
 
@@ -101,6 +101,16 @@ const GallerySection = () => {
             <FaChevronRight className="w-6 h-6 text-gray-800" />
           </button>
         {/* )} */}
+      </div>
+
+      {/* View More Button */}
+      <div className="text-center mt-8">
+        <Link
+          to="/gallery"
+          className="inline-block px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/20 text-black font-semibold rounded-full hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1"
+        >
+          View More Photos
+        </Link>
       </div>
     </div>
   );

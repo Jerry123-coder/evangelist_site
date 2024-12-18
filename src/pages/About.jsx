@@ -91,8 +91,9 @@ const About = () => {
             className="bg-slate-200 h-[30rem] flex-1 rounded-lg relative"
             style={{
               backgroundImage: `url(${thePastor})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundSize: "contain",
+              backgroundPosition: "center 10%",
+              backgroundRepeat: "no-repeat"
             }}
           >
             <div className="absolute bottom-0 bg-black w-full text-yellow-500 opacity-70 rounded-b-lg px-2">
@@ -134,12 +135,6 @@ const About = () => {
               </p>
             </div>
           </div>
-        </div>
-        <div className="flex w-full gap-4">
-          <div className="bg-slate-200 h-[30rem] flex-1 rounded-lg"></div>
-          <div className="bg-slate-200 h-[30rem] flex-1 rounded-lg"></div>
-          <div className="bg-slate-200 h-[30rem] flex-1 rounded-lg"></div>
-          <div className="bg-slate-200 h-[30rem] flex-1 rounded-lg"></div>
         </div>
       </div>
     </div>
