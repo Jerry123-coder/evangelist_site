@@ -189,7 +189,7 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: FaPhone, text: "Tel no: +233 xxxxxxxxxxxxx", href: "tel:+1234567890" },
+    { icon: FaPhone, text: "Tel no: +233 549583231", href: "tel:+233549583231" },
     {
       icon: FaMapMarkerAlt,
       text: "St John the Evangelist Catholic Church, Adenta",

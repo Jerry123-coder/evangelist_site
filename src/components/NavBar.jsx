@@ -59,28 +59,13 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const dropdownMenus = {
-    // ministries: [
-    //   { name: "Knights & Ladies of the Altar", link: "knights-ladies-altar" },
-    //   { name: "Ave Maria Choir", link: "ave-maria-choir" },
-    //   {
-    //     name: "St. John the Evangelist Choir",
-    //     link: "st-john-evangelist-choir",
-    //   },
-    //   { name: "Lectors", link: "lectors" },
-    //   { name: "Ushers", link: "ushers" },
-    //   {
-    //     name: "Extra ordinary ministers of the holy Eucharist",
-    //     link: "ministers-holy-eucharist",
-    //   },
-    // ],
     about: [
       { name: "History", link: "about" },
       { name: "Clergy", link: "clergy" },
       { name: "Parish Pastoral Council", link: "parish-pastorial-council" },
-      { name: "Parish Youth Council", link: "parish-youth-council" },
+      { name: "Parish Youth Council", link: "parish-youth-council" },
     ],
-
-
+    portals: [],
     councils: [
       { name: "Christian sons", link: "christian-sons" },
       { name: "Christian daughters", link: "christian-daughters" },
@@ -98,26 +83,17 @@ const Navbar = () => {
   };
   const menuItems = [
     { id: 1, name: "Home", link: "" },
-    { id: 2, name: "About Us", link: "#", dropdownKey: "about"   ,   hasDropdown: true,
-    },
+    { id: 2, name: "About Us", link: "#", dropdownKey: "about", hasDropdown: true },
     { id: 3, name: "Societies", link: "societies" },
-    // {
-    //   id: 4,
-    //   name: "Ministries",
-    //   link: "#",
-    //   hasDropdown: true,
-    //   dropdownKey: "ministries",
-    // },
-
-    // {
-    //   id: 5,
-    //   name: "Youth Councils",
-    //   link: "#",
-    //   hasDropdown: true,
-    //   dropdownKey: "councils",
-    // },
     { id: 7, name: "Gallery", link: "gallery" },
     { id: 8, name: "Projects", link: "projects" },
+    { 
+      id: 4, 
+      name: "Portals", 
+      link: "#", 
+      dropdownKey: "portals",
+      hasDropdown: true 
+    },
     { id: 9, name: "Contact us", link: "contact" },
   ];
 
