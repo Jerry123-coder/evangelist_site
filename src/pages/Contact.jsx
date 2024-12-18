@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaPhone, FaChurch } from 'react-icons/fa';
+import { BsTelephoneFill } from 'react-icons/bs';
+import { FaChurch } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
 const Contact = () => {
@@ -24,7 +25,7 @@ const Contact = () => {
           {/* Phone */}
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
-              <FaPhone className="text-white text-2xl" />
+              <BsTelephoneFill className="text-white text-2xl" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Call Us</h3>
             <p className="text-gray-600">+233 302 321 4517</p>
@@ -37,9 +38,7 @@ const Contact = () => {
               <FaChurch className="text-white text-2xl" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Office Hours</h3>
-            <p className="text-gray-600">Monday-Friday: 9:00am - 5:00pm</p>
-            <p className="text-gray-600">Saturday: 9:00am - 12:00pm</p>
-            <p className="text-gray-600">Sunday: 8:00am - 1:00pm</p>
+            <p className="text-gray-600">Tuesday-Friday: 8:00am - 5:00pm</p>
           </div>
 
           {/* Email */}
