@@ -1,37 +1,39 @@
-export const dayBorns = [
+const dayBorns = [
     {
-      name: "Monday Borns",
+      name: "Monday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Tuesday Borns",
+      name: "Tuesday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Wednesday Borns",
+      name: "Wednesday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Thursday Borns",
+      name: "Thursday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Friday Borns",
+      name: "Friday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Saturday Borns",
+      name: "Saturday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
     {
-      name: "Sunday Borns",
+      name: "Sunday Born",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
     },
   ];
+
+export default dayBorns;

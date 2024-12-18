@@ -1,4 +1,4 @@
-export const youthCouncil = [
+const youthCouncil = [
     {
       name: "Christian Sons Association",
       details:
@@ -45,3 +45,5 @@ export const youthCouncil = [
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
       },
   ].sort((a, b) => a.name.localeCompare(b.name));
+
+export default youthCouncil;

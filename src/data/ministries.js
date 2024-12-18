@@ -1,4 +1,4 @@
-export const ministries = [
+const ministries = [
   {
     name: "Ave Maria Choir",
     details:
@@ -35,3 +35,5 @@ export const ministries = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
+
+export default ministries;
