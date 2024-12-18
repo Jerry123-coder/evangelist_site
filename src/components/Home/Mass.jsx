@@ -43,6 +43,7 @@
       </div> */
 }
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import stn_image3 from "../../assets/stn_image3.jpg";
@@ -148,9 +149,11 @@ const MassScheduleSection = () => {
               Join us in the celebration of the Holy Eucharist at any of our
               Mass Schedules.
             </p>
-            <button className="bg-white text-black px-6 py-2 font-medium hover:bg-gray-100 transition-colors">
-              LEARN MORE
-            </button>
+            <Link to="/parish-activities">
+              <button className="bg-white text-black px-6 py-2 font-medium hover:bg-gray-100 transition-colors">
+                LEARN MORE
+              </button>
+            </Link>
           </div>
         </div>
       </div>

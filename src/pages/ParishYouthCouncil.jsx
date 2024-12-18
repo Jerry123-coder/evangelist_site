@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaDownload, FaPhone, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import statImage from "../assets/stn_image2.jpg";
+import youth from "../assets/youth.jpg";
 import { IoPersonAddSharp } from "react-icons/io5";
 
 const ParishYouthCouncil = () => {
@@ -252,24 +252,21 @@ const ParishYouthCouncil = () => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-gray-900 to-black">
       {/* Hero Section */}
-      <section className="relative h-[15rem] md:h-[20rem]">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${statImage})` }}
+      <div className="relative h-[60vh] bg-black">
+        <img
+          src={youth}
+          alt="Youth Council"
+          className="w-full h-full object-cover opacity-80"
+          style={{ objectPosition: 'center top' }}
         />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-xs" />
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 text-white">
-          <h1
-            className="text-2xl md:text-4xl font-bold mb-2"
-            data-aos="fade-up"
-          >
-            Parish Youth Council
-          </h1>
-          <p className="text-blue-200" data-aos="fade-up" data-aos-delay="100">
-            Youth Council 2023/2024
-          </p>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 flex items-center justify-center text-white">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Parish Youth Council</h1>
+            <p className="text-xl md:text-2xl">Empowering Young Catholics in Faith and Service</p>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Main Content */}
       <div className="w-[90%] max-w-7xl mx-auto py-8 md:py-12">

@@ -20,6 +20,8 @@ import ProgramCard from "../components/ProgramCard";
 import NewsCard from "../components/NewsCard";
 import homeBg from "../assets/home-bg.jpg";
 import img1 from "../assets/img1.jpg";
+import img2 from "../assets/img2.jpg";
+import img3 from "../assets/img3.jpg";
 import programme from "../assets/programme.jpg";
 import programme1 from "../assets/programme1.jpg";
 import programme2 from "../assets/programme2.jpg";
@@ -30,7 +32,7 @@ import HeroCarousel from "../components/HeroCarousel";
 
 import "aos/dist/aos.css";
 import MassScheduleSection from "../components/Home/Mass";
-import YoutubeSection from "../components/Home/YoutubeSection";
+import TikTokSection from "../components/Home/TikTokSection";
 import PastorSection from "../components/Home/PastorSection";
 
 const Home = () => {
@@ -74,13 +76,13 @@ const Home = () => {
       buttonText: "Find Out More",
     },
     {
-      image: stn_image1,
+      image: img3,
       subtext: "JOIN OUR COMMUNITY",
       maintext: "Grow In Faith Together",
       buttonText: "Learn More",
     },
     {
-      image: stn_image2,
+      image: img2,
       subtext: "WORSHIP WITH US",
       maintext: "Come As You Are",
       buttonText: "Join Us",
@@ -283,7 +285,7 @@ const Home = () => {
       </div>
 
       <MassScheduleSection />
-      <YoutubeSection />
+      <TikTokSection />
 
       {/* Latest Updates Section */}
       <div
