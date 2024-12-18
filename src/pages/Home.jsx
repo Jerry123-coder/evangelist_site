@@ -34,6 +34,7 @@ import "aos/dist/aos.css";
 import MassScheduleSection from "../components/Home/Mass";
 import TikTokSection from "../components/Home/TikTokSection";
 import PastorSection from "../components/Home/PastorSection";
+import GallerySection from "../components/Home/GallerySection";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -286,7 +287,7 @@ const Home = () => {
 
       <MassScheduleSection />
       <TikTokSection />
-
+      <GallerySection />
       {/* Latest Updates Section */}
       <div
         ref={newsContainerRef}

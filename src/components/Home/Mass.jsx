@@ -80,7 +80,7 @@ const MassScheduleSection = () => {
       <div className="max-w-6xl mx-auto relative">
         {/* Schedule Section */}
         <div
-          className="static w-full lg:absolute lg:-left-32 lg:mt-20 z-10 bg-black/80 text-white p-6 lg:p-8 lg:max-w-md mb-6 lg:mb-0"
+          className="static w-1/2 lg:absolute  lg:mt-20 z-10 bg-black/80 text-white p-6 lg:p-8 lg:max-w-md mb-6 lg:mb-0"
           data-aos="fade-right"
           data-aos-delay="200"
         >
@@ -107,13 +107,9 @@ const MassScheduleSection = () => {
             </div>
 
             <div>
-              <h3 className="text-blue-600 font-medium mb-4">
-                HOLY HOUR 
-              </h3>
+              <h3 className="text-blue-600 font-medium mb-4">HOLY HOUR</h3>
               <ul className="space-y-2">
-                <li>
-                  • The 1st Thursday of every month: 6:00pm
-                </li>
+                <li>• The 1st Thursday of every month: 6:00pm</li>
               </ul>
             </div>
 
@@ -128,19 +124,19 @@ const MassScheduleSection = () => {
 
         {/* Image Section */}
         <div
-          className="relative lg:ml-0"
+          className=" flex justify-center items-center"
           data-aos="fade-left"
           data-aos-delay="400"
         >
           <img
             src={stn_image3}
             alt="Mass celebration"
-            className="w-full h-[300px] lg:h-[600px] object-cover"
+            className="w-2/3 h-2/3 object-cover"
           />
 
           {/* Join Us Overlay */}
           <div
-            className="static lg:absolute lg:top-1/3 lg:-right-32 bg-blue-600 text-white p-6 lg:p-8 mt-6 lg:mt-0 lg:max-w-sm"
+            className="static lg:absolute lg:top-1/3 lg:-right-10 bg-blue-600 text-white p-6 lg:p-8 mt-6 lg:mt-0 lg:max-w-sm"
             data-aos="fade-up"
             data-aos-delay="600"
           >
