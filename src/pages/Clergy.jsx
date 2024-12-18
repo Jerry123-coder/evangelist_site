@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import Statistic from "../components/StatItem";
 import statImage from "../assets/stn_image2.jpg";
 import thePastor from "../assets/thePastor.png";
-import reverend from "../assets/reverend.jpeg";
+import assistantPriest from "../assets/Assistantpriest.jpg";
 import dr from "../assets/dr.jpeg";
 import Footer from "../components/Footer";
 const Clergy = () => {
@@ -92,7 +92,7 @@ const Clergy = () => {
             <div
               className="bg-slate-200 sm:h-[40rem] h-[20rem] rounded-lg relative overflow-hidden transform transition-transform duration-500 hover:scale-105"
               style={{
-                backgroundImage: `url(${reverend})`,
+                backgroundImage: `url(${assistantPriest})`,
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

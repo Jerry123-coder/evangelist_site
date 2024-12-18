@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import stn_image1 from "../assets/stn_image1.jpg";
 import stn_image2 from "../assets/stn_image2.jpg";
-import stn_image4 from "../assets/societyimage.jpg";
 import stn_image3 from "../assets/stn_image3.jpg";
 import stanford_man from "../assets/stanford_man.png";
 import thePastor from "../assets/thePastor.png";
@@ -257,7 +256,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative" data-aos="fade-right">
               <img
-                src={stn_image4}
+                src={stn_image2}
                 alt="Church Society"
                 className="w-full rounded-lg shadow-xl"
               />
