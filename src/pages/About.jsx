@@ -1,7 +1,7 @@
 import Statistic from "../components/StatItem";
 import statImage from "../assets/stn_image2.jpg";
 import thePastor from "../assets/thePastor.png";
-import reverend from "../assets/reverend.jpeg";
+import assistantPriest from "../assets/Assistantpriest.jpg";
 import dr from "../assets/dr.jpeg";
 
 const About = () => {
@@ -107,7 +107,7 @@ const About = () => {
           <div
             className="bg-slate-200 h-[30rem] flex-1 rounded-lg relative"
             style={{
-              backgroundImage: `url(${reverend})`,
+              backgroundImage: `url(${assistantPriest})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

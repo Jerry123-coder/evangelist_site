@@ -8,6 +8,7 @@ import {
   FiCrosshair,
   FiUsers,
 } from "react-icons/fi";
+import eucharist from "../assets/eucharist.jpg";
 
 const Hero = () => (
   <div className="container mx-auto px-4 md:px-8">
@@ -120,7 +121,7 @@ const detailedSacraments = [
     title: "Holy Eucharist",
     description:
       "The Eucharist, or Holy Communion, is the source and summit of the Christian life. Catholics believe that during the Mass, the bread and wine become the actual Body and Blood of Jesus Christ through the process of transubstantiation.",
-    image: "/3.jpeg",
+    image: eucharist,
     reversed: true,
   },
   {
