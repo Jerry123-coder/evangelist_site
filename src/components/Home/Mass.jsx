@@ -46,6 +46,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import joinformass from "../../assets/joinformass.jpg";
 import stn_image3 from "../../assets/stn_image3.jpg";
 
 const MassScheduleSection = () => {
@@ -129,7 +130,7 @@ const MassScheduleSection = () => {
           data-aos-delay="400"
         >
           <img
-            src={stn_image3}
+            src={joinformass}
             alt="Mass celebration"
             className="w-2/3 h-2/3 object-cover"
           />

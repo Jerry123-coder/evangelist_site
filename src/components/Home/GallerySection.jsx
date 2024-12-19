@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import masspic from "../../assets/masspic.jpg";
+import masspic2 from "../../assets/masspic2.jpg";
 
 const GallerySection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,8 +15,8 @@ const GallerySection = () => {
     { url: "/g4.jpg", alt: "Parish event 4" },
     { url: "/g5.jpg", alt: "Parish event 5" },
     { url: "/g6.jpg", alt: "Parish event 6" },
-
-    // { isViewMore: false },
+    { url: masspic, alt: "Mass celebration" },
+    { url: masspic2, alt: "Mass celebration 2" },
   ];
 
 
