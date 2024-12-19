@@ -51,6 +51,7 @@ import groto3 from "../assets/gallery/grotto/groto3.jpeg";
 
 import credit1 from "../assets/gallery/credit/credit1.jpeg";
 import credit2 from "../assets/gallery/credit/credit2.jpeg";
+import galleryHeader from "../assets/galleryheader.jpg";
 
 const Gallery = () => {
 
@@ -61,7 +62,7 @@ const Gallery = () => {
     {
       id: 'youth-evangelism',
       title: 'Youth Evangelism',
-      images: ['/g1.jpg', '/g2.jpg', '/g3.jpg', '/g4.jpg', '/g5.jpg', '/g6.jpg'],
+      images: ['/g1.jpg', '/g2.jpg', '/g3.jpg', '/g4.jpg', '/g5.jpg', '/g6.jpg', galleryHeader],
       alt: 'Youth Evangelism Gallery'
     },
     {
@@ -123,7 +124,9 @@ const Gallery = () => {
       <div
         className="relative flex flex-col lg:flex-row bg-cover bg-center items-center gap-5 w-screen h-[20rem] px-8 lg:px-[20rem] justify-between"
         style={{
-          backgroundImage: `url(${statImage})`,
+          backgroundImage: `url(${galleryHeader})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
         }}
       >
         {/* Dark overlay */}
