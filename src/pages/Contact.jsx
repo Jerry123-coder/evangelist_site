@@ -48,8 +48,8 @@ const Contact = () => {
               <h3 className="text-xl font-semibold text-blue-900 mb-2">
                 Office Hours
               </h3>
-              <p className="text-gray-600">Saturday: 9:00am - 12:00pm</p>
-              <p className="text-gray-600">Sunday: 9:00am - 12:00pm</p>
+              <p className="text-gray-600">Tuesdays - Fridays: 10:00am - 12:00pm</p>
+              {/* <p className="text-gray-600">Sunday: 9:00am - 12:00pm</p> */}
             </div>
           </div>
 

@@ -249,7 +249,7 @@ const Footer = () => {
                 Office Hours
               </h3>
               <p className="text-white text-sm">
-                Tuesdays to Fridays: 8:00am – 5:00pm
+                Tuesdays to Fridays: 10:00am – 5:00pm
               </p>
             </div>
             <div>
