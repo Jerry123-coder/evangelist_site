@@ -1,5 +1,5 @@
 import Statistic from "../components/StatItem";
-import statImage from "../assets/stn_image2.jpg";
+import statImage from "../assets/home-bg.jpg";
 import thePastor from "../assets/thePastor.png";
 import assistantPriest from "../assets/Assistantpriest.jpg";
 import dr from "../assets/dr.jpeg";
