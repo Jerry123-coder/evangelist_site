@@ -1,6 +1,20 @@
 import { useState } from "react";
 import statImage from "../assets/stn_image2.jpg";
 import { project1, project2, project3, project4, project5 } from ".";
+import school1 from "../assets/gallery/shs/school1.jpeg";
+import school2 from "../assets/gallery/shs/school2.jpeg";
+import school3 from "../assets/gallery/shs/school3.jpeg";
+import school4 from "../assets/gallery/shs/school4.jpeg";
+import school5 from "../assets/gallery/shs/school5.jpeg";
+import school6 from "../assets/gallery/shs/school6.jpg";
+import school7 from "../assets/gallery/shs/school7.jpg";
+import school8 from "../assets/gallery/shs/school8.jpg";
+import school9 from "../assets/gallery/shs/school9.jpg";
+import school10 from "../assets/gallery/shs/school10.jpg";
+import school11 from "../assets/gallery/shs/school11.jpg";
+import school12 from "../assets/gallery/shs/school12.jpg";
+import school13 from "../assets/gallery/shs/school13.jpg";
+import school14 from "../assets/gallery/shs/school14.jpg";
 
 const Projects = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -13,6 +27,13 @@ const Projects = () => {
       description: 'Progress on the construction of our new Junior High School block',
       images: [project1, project2, project3, project4, project5],
       alt: 'JHS Construction Progress'
+    },
+    {
+      id: 'shs-visitation',
+      title: 'SHS Visitation Project',
+      description: 'Our ongoing initiative to reach out to and support Senior High School students in their faith journey',
+      images: [school1, school2, school3, school4, school5, school6, school7, school8, school9, school10, school11, school12, school13, school14],
+      alt: 'SHS Visitation Gallery'
     }
   ];
 
