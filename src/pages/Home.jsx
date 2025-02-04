@@ -243,11 +243,11 @@ const Home = () => {
           data-aos-delay="200"
         >
           <h3 className="text-xl md:text-2xl font-semibold mb-4">
-            HELPING CHILDREN TO SEEK CHRIST: FROM
+                Pilgrims Of Hope: A Year Of Discipleship.
             <br />
-            DISCOVERY TO DISCIPLESHIP.
+  
           </h3>
-          <p className="text-lg text-yellow-400">JOHN 12:21</p>
+          <p className="text-lg text-yellow-400">ROMANS 5:5</p>
         </div>
       </div>
 
