@@ -11,21 +11,53 @@ const ParishYouthCouncil = () => {
     {
       position: "Youth Chaplain",
       name: "Rev. Fr. Joseph Effah Siaw",
-      society: "",
+      society: "-",
     },
     {
-      position: "PPC Youth and Vocations Convener",
-      name: "Mrs. Harriet Ayittey",
-      society: "",
+      position: "PPC Youth Convener",
+      name: "Bridget A. Adjigbli",
+      society: "-",
     },
-    { position: "Chairperson", name: "Thomas Kwegyir-Abaidoo", society: "Knights and Ladies of the Altar" },
-    { position: "Vice Chairperson", name: "Juliana Yorke", society: "Christian Daughters Association" },
-    { position: "Secretary", name: "Etonam Dotse", society: "Knights and Ladies of the Altar" },
-    { position: "Assistant Secretary", name: "Benedicta Nimnora", society: "Knights and Ladies of the Altar" },
-    { position: "Organizer", name: "Harriet Dougle", society: "Junior Auxiliary" },
-    { position: "Assistant Organiser", name: "Daniel Lamptey", society: "Junior Marshallans" },
-    { position: "Financial Secretary", name: "Seyram Awuye-Kpobi", society: "Knights and Ladies of the ALtar" },
-    { position: "Assistant Financial Secretary", name: "Victor Mensah", society: "Christian Sons Association" },
+    { 
+      position: "Chairperson/ Youth President", 
+      name: "Thomas Kwegyir-Abaidoo Jnr.", 
+      society: "Word in Motion" 
+    },
+    { 
+      position: "Vice Chairperson/ Youth Vice President", 
+      name: "Etonam Dotse", 
+      society: "Knights and Ladies of the Altar" 
+    },
+    { 
+      position: "Youth Secretary", 
+      name: "Emilie Asante", 
+      society: "Lectors Ministry" 
+    },
+    { 
+      position: "Assistant Youth Secretary", 
+      name: "Benedicta Nimnora", 
+      society: "Word in Motion" 
+    },
+    { 
+      position: "Youth Organizer", 
+      name: "Thomas Apreku", 
+      society: "Christian Sons" 
+    },
+    { 
+      position: "Assistant Youth Organizer", 
+      name: "Daniel Lamptey", 
+      society: "Junior Marshallans" 
+    },
+    { 
+      position: "Youth Financial Secretary", 
+      name: "Seyram Awuye-Kpobi", 
+      society: "Knights and Ladies of the Altar" 
+    },
+    { 
+      position: "Assistant Youth Financial Secretary", 
+      name: "Anthony Naazig", 
+      society: "Catholic Youth Organization" 
+    },
   ];
 
   // Youth Council committee table data structure
