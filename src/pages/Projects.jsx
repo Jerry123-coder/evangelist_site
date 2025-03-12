@@ -1,5 +1,6 @@
 import { useState } from "react";
 import statImage from "../assets/stn_image2.jpg";
+import ImageLightbox from "../components/ImageLightbox";
 import { project1, project2, project3, project4, project5 } from ".";
 import school1 from "../assets/gallery/shs/school1.jpeg";
 import school2 from "../assets/gallery/shs/school2.jpeg";
@@ -18,6 +19,8 @@ import school14 from "../assets/gallery/shs/school14.jpg";
 
 const Projects = () => {
   const [expandedSection, setExpandedSection] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxAlt, setLightboxAlt] = useState('');
 
   // Project sections data structure
   const projectSections = [
@@ -40,6 +43,17 @@ const Projects = () => {
   // Toggle section expansion
   const toggleSection = (sectionId) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
+
+  // Open lightbox with selected image
+  const openLightbox = (image, alt) => {
+    setLightboxImage(image);
+    setLightboxAlt(alt);
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxImage(null);
   };
 
   return (
@@ -141,7 +155,8 @@ const Projects = () => {
                   {section.images.map((img, index) => (
                     <div
                       key={index}
-                      className="group aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md"
+                      className="group aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md cursor-pointer"
+                      onClick={() => openLightbox(img, `${section.alt} ${index + 1}`)}
                     >
                       <img
                         src={img}
@@ -156,6 +171,14 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      
+      {/* Lightbox component */}
+      <ImageLightbox 
+        image={lightboxImage}
+        alt={lightboxAlt}
+        isOpen={!!lightboxImage}
+        onClose={closeLightbox}
+      />
     </>
   );
 };

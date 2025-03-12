@@ -2,6 +2,7 @@ import { useState } from "react";
 import statImage from "../assets/stn_image2.jpg";
 import BlogCard from "../components/BlogCard";
 import ProgramCard from "../components/ProgramCard";
+import ImageLightbox from "../components/ImageLightbox";
 import { project1, project2, project3, project4, project5} from ".";
 import school1 from "../assets/gallery/shs/school1.jpeg";
 import school2 from "../assets/gallery/shs/school2.jpeg";
@@ -56,6 +57,8 @@ import galleryHeader from "../assets/galleryheader.jpg";
 const Gallery = () => {
 
   const [expandedSection, setExpandedSection] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxAlt, setLightboxAlt] = useState('');
   
   // Gallery sections data structure
   const gallerySections = [
@@ -115,8 +118,20 @@ const Gallery = () => {
     }
   ];
 
+  // Toggle section expansion
   const toggleSection = (sectionId) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
+
+  // Open lightbox with selected image
+  const openLightbox = (image, alt) => {
+    setLightboxImage(image);
+    setLightboxAlt(alt);
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxImage(null);
   };
 
   return (
@@ -212,7 +227,8 @@ const Gallery = () => {
                   {section.images.map((img, index) => (
                     <div
                       key={index}
-                      className="group aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md"
+                      className="group aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md cursor-pointer"
+                      onClick={() => openLightbox(img, `${section.alt} ${index + 1}`)}
                     >
                       <img
                         src={img}
@@ -227,6 +243,14 @@ const Gallery = () => {
           ))}
         </div>
       </div>
+      
+      {/* Lightbox component */}
+      <ImageLightbox 
+        image={lightboxImage}
+        alt={lightboxAlt}
+        isOpen={!!lightboxImage}
+        onClose={closeLightbox}
+      />
     </>
   );
 };
