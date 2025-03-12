@@ -2,19 +2,19 @@ const societies = [
   {
     name: "Knights of St. John International",
     details:
-      "The Knights of St. John International is a Catholic fraternal organization dedicated to serving the Church and community through charitable works and spiritual development of its members.",
-    whoCanJoin: "Catholic men in good standing with the Church who are at least 18 years old can join the Knights of St. John International. Candidates must be recommended by an existing member.",
-    meetingDays: "• We meet on the second Sunday of each month after the 10:00 AM Mass in the parish hall.",
-    howToJoin: "To join the Knights of St. John International, contact any member of the organization or speak with the Grand Knight after Mass. Prospective members will need to complete an application and participate in an initiation ceremony.",
-    contactInfo: "0234567890 // 0598765432"
+      "The Cadets are a dynamic group of young Catholic men dedicated to defending and taking responsibility for their faith, church, and community. Our membership is open to Catholic boys aged 6 years and above.",
+    whoCanJoin: "To join the Cadets, you must: 1. Be a baptized Catholic 2. Have received your First Communion 3. Be willing to undergo our initiation program. Non-Catholics interested in joining must undergo the necessary procedures to become Catholics before being eligible for membership.",
+    meetingDays: "• We meet on the 2nd Sunday of every month. Our uniform consists of: White shirt, Black trousers, Black shoes, Black socks.",
+    howToJoin: "To become a full member, you must complete our initiation program, which includes: 1. In depth knowledge about the pillars of our catholic faith \n 2. Learning about our aims and objectives \n 3. Learning about our core values and principles.",
+    contactInfo: "Cadet President: 0502573679 || Cadet Organizer: 0240945772"
   },
   {
     name: "Christian Mothers Association",
     details:
       "The Christian Mothers Association provides spiritual and social support to mothers in the parish, helping them to raise their children in the Catholic faith and strengthen family life.",
     whoCanJoin: "All mothers in the parish, both biological and adoptive, are welcome to join the Christian Mothers Association. There are no age restrictions.",
-    meetingDays: "• Our meetings are held on the first Saturday of each month at 3:00 PM in the parish hall.",
-    howToJoin: "To become a member of the Christian Mothers Association, attend one of our monthly meetings and speak with the chairperson. New members are welcomed with a special blessing during Mass.",
+    meetingDays: "• .",
+    howToJoin: ".",
     contactInfo: "0234567890 // 0598765432"
   },
   {
@@ -23,7 +23,7 @@ const societies = [
       "The St. Theresa of the Child Jesus Society promotes devotion to St. Theresa and her way of spiritual childhood, encouraging members to perform small acts of love and service.",
     whoCanJoin: "Membership is opened to Catholic Women, who do not belong to any other women's group within the catholic church and a few men who shall act as organisers.",
     meetingDays: "• Regular Meetings: First Wednesday of every month from 5:30pm to 7:00pm\n• General Meetings: Third Sunday of every month after the first mass\n• Executive Meetings: Second Sunday of every month after the first mass",
-    howToJoin: "One has to undergo a probational period of three (3) months before he/she is entered into the register as a full-fledged member. Member must be gainfully employed. Initiation will be conducted after a careful interview by the Archdiocesan Council before final admission.",
+    howToJoin: "One has to undergo a probational period of three (3) months before she is entered into the register as a full-fledged member. Member must be gainfully employed. Initiation will be conducted after a careful interview by the Archdiocesan Council before final admission.",
     contactInfo: "Opayin Margaret Kyeremeh (President): 0244759969 || Onua Roberta Tagoe (Secretary): 0244816931"
   },
   {
@@ -38,11 +38,11 @@ const societies = [
   {
     name: "Knights and Ladies of Marshal",
     details:
-      "The Knights and Ladies of Marshal is a Catholic fraternal organization that promotes Catholic values, supports the Church, and engages in charitable activities within the parish and wider community.",
-    whoCanJoin: "Catholic men and women in good standing with the Church who are at least 18 years old can join. Candidates must demonstrate commitment to Catholic principles.",
-    meetingDays: "• We hold meetings on the second Saturday of each month at 4:00 PM in the parish hall.",
-    howToJoin: "To join the Knights and Ladies of Marshal, contact the Grand Knight or Grand Lady. Prospective members must complete an application, be interviewed, and participate in an initiation ceremony.",
-    contactInfo: "0234567890 // 0598765432"
+      "The Knights and Ladies of Marshal are a dynamic group of Catholic men and women dedicated to defending and taking responsibility for their faith, church, and community. Our membership is open to practicing Catholics aged 18 years and above.",
+    whoCanJoin: "To join the Knights and Ladies of Marshal, you must: 1. Be a baptized Catholic 2. Have received your First Communion and Confirmation 3. Be willing to undergo our initiation program. Non-Catholics interested in joining must undergo the necessary procedures to become Catholics before being eligible for membership.",
+    meetingDays: "• We meet on the 2nd Saturday of every month at 4:00 PM. Our uniform consists of: White shirt/blouse, Black trousers/skirt, Black shoes, Black socks/stockings.",
+    howToJoin: "To become a full member, you must complete our initiation program, which includes: 1. In depth knowledge about the pillars of our catholic faith \n 2. Learning about our aims and objectives \n 3. Learning about our core values and principles.",
+    contactInfo: "Cadet President: 0502573679 || Cadet Organizer: 0240945772"
   },
   {
     name: "St. Joseph Society",
@@ -83,11 +83,11 @@ const societies = [
   {
     name: "Catholic Charismatic Renewal",
     details:
-      "The Catholic Charismatic Renewal promotes an awareness of the gifts of the Holy Spirit and encourages a personal relationship with Jesus Christ through prayer, worship, and community.",
-    whoCanJoin: "All parishioners seeking a deeper experience of the Holy Spirit in their lives are welcome to join the Catholic Charismatic Renewal.",
-    meetingDays: "• We gather every Friday at 6:00 PM for praise and worship, prayer, and teaching.",
-    howToJoin: "Anyone interested in joining should simply attend one of our Friday gatherings. New members are welcomed and introduced to the community's prayer practices.",
-    contactInfo: "0234567890 // 0598765432"
+      "We are a movement within the Church as compared to other societies and groups and our activities are open to all Catholics of sound mind.",
+    whoCanJoin: "There are no rigid requirements, we encourage regular prayer meetings and attendance.",
+    meetingDays: "•Every Sunday at 4pm.\n • Mondays at 6pm  ",
+    howToJoin: "Anyone interested in joining should simply attend one of our gatherings. New members are welcomed and introduced to the community's prayer practices.",
+    contactInfo: "Gabriel K. Bonney (Leader): 0244518759 || Richard Sowokey (Assistant Leader): 0275051462 || Mary D. Degbe (Secretary): 0249967906"
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
