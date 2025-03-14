@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import churchIcon from '../assets/churchicon.jpg';
+import countries from '../data/countries';
 
 const MembershipForm = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -148,22 +149,22 @@ const MembershipForm = () => {
     doc.text('Region/State:', 14, 225);
     doc.rect(70, 221, 120, 8);
     
-    doc.text('Additional Description:', 14, 235);
+    doc.text('Country:', 14, 235);
     doc.rect(70, 231, 120, 8);
-    doc.setFontSize(8);
-    doc.text('(e.g., "The second curve from the Mallam junction, immediately after the traffic light...")', 14, 245);
-    doc.setFontSize(12);
+    
+    doc.text('Additional Description:', 14, 245);
+    doc.rect(14, 251, 176, 20);
     
     // Status Section
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
-    doc.text('Status Information', 14, 260);
+    doc.text('Status Information', 14, 280);
     
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
     
-    doc.text('Marital Status:', 14, 270);
-    doc.rect(70, 266, 120, 8);
+    doc.text('Marital Status:', 14, 290);
+    doc.rect(70, 286, 120, 8);
     
     // Add a new page for employment and religious info
     doc.addPage();
@@ -241,25 +242,21 @@ const MembershipForm = () => {
     doc.rect(70, 181, 8, 8); // Checkbox
     doc.text('Yes', 82, 185);
     
-    // Add submission instructions
-    doc.setFontSize(14);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Submission Instructions', 14, 200);
-    
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Please complete this form and submit it to the church office in one of the following ways:', 14, 210);
-    doc.text('1. Email the completed form to: stjohnevangelist@church.org', 14, 220);
-    doc.text('2. Print and deliver to the church office during office hours', 14, 230);
-    doc.text('3. Submit online through our website at www.stjohnevangelist.org', 14, 240);
+    // Add submission instructions at the bottom of the page
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'italic');
+    doc.text('SUBMISSION INSTRUCTIONS:', 14, 250);
+    doc.text('1. Fill out all required fields in this form', 14, 260);
+    doc.text('2. Submit the completed form to the church office or email to stjohnevangelist@church.org', 14, 270);
+    doc.text('3. For inquiries, contact the church office at +233 20 123 4567', 14, 280);
     
     // Add footer with date
     const today = new Date();
     const dateStr = today.toLocaleDateString();
     doc.setFontSize(10);
     doc.setTextColor(100, 100, 100);
-    doc.text(`Generated on: ${dateStr}`, 14, 280);
-    doc.text('St John the Evangelist Catholic Church, Adenta', 105, 280, { align: 'center' });
+    doc.text(`Generated on: ${dateStr}`, 14, 300);
+    doc.text('St John the Evangelist Catholic Church, Adenta', 105, 300, { align: 'center' });
     
     // Save the PDF
     doc.save('St_John_Evangelist_Membership_Form.pdf');

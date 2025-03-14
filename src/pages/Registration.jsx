@@ -4,6 +4,7 @@ import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import churchIcon from '../assets/churchicon.jpg';
+import countries from '../data/countries';
 
 const Registration = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -23,6 +24,7 @@ const Registration = () => {
     location: '',
     houseNumber: '',
     region: '',
+    country: 'GH', // Default to Ghana
     description: '',
     
     // Status
@@ -85,103 +87,108 @@ const Registration = () => {
   const generatePDF = () => {
     const doc = new jsPDF();
     
-    // Add church name and title
-    doc.setFontSize(18);
-    doc.setFont('helvetica', 'bold');
-    doc.text('St John the Evangelist Catholic Church, Adenta', 105, 15, { align: 'center' });
-    
-    // Add subheading
-    doc.setFontSize(14);
-    doc.setFont('helvetica', 'italic');
-    doc.text('Membership Registration Form', 105, 25, { align: 'center' });
-    
     // Add church logo
     const img = new Image();
     img.src = churchIcon;
     
-    // Convert the image to base64 and add it to the PDF
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = img.width;
-    canvas.height = img.height;
+    try {
+      // Add church name and title
+      doc.setFontSize(18);
+      doc.text('St John the Evangelist Catholic Church, Adenta', 105, 15, { align: 'center' });
+      doc.setFontSize(14);
+      doc.text('MEMBERSHIP REGISTRATION FORM', 105, 25, { align: 'center' });
+      
+      // Try to add the logo
+      img.onload = function() {
+        doc.addImage(img, 'JPEG', 10, 10, 30, 30);
+        
+        // Continue with the rest of the PDF generation
+        addPDFContent(doc);
+        
+        // Save the PDF
+        doc.save('membership_form.pdf');
+      };
+      
+      img.onerror = function() {
+        console.error('Error loading church logo');
+        // Continue without the logo
+        addPDFContent(doc);
+        doc.save('membership_form.pdf');
+      };
+      
+      // Set a timeout in case the image loading takes too long
+      setTimeout(() => {
+        if (!img.complete) {
+          console.warn('Image loading timeout, continuing without logo');
+          addPDFContent(doc);
+          doc.save('membership_form.pdf');
+        }
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      // Continue without the logo
+      addPDFContent(doc);
+      doc.save('membership_form.pdf');
+    }
     
-    // Create a function to add the image once it's loaded
-    img.onload = function() {
-      // Draw image on canvas
-      ctx.drawImage(img, 0, 0, img.width, img.height);
-      
-      // Get base64 representation
-      const imgData = canvas.toDataURL('image/jpeg');
-      
-      // Add image to PDF (centered, with appropriate sizing)
-      doc.addImage(imgData, 'JPEG', 90, 30, 25, 25);
-      
-      // Add divider line
-      doc.setDrawColor(0, 0, 0);
-      doc.setLineWidth(0.5);
-      doc.line(14, 60, 196, 60);
-      
-      // Basic Info
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Basic Information', 14, 70);
-      
+    function addPDFContent(doc) {
+      // Personal Information
       doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Name: ${formData.firstName} ${formData.lastName}`, 14, 80);
-      doc.text(`Email: ${formData.email}`, 14, 90);
-      doc.text(`Phone: ${formData.phone}`, 14, 100);
+      doc.text('PERSONAL INFORMATION:', 20, 40);
       
-      // Address
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Address Information', 14, 115);
+      doc.setFontSize(10);
+      doc.text(`Full Name: ${formData.firstName} ${formData.lastName}`, 20, 50);
+      doc.text(`Email: ${formData.email}`, 20, 60);
+      doc.text(`Phone: ${formData.phone}`, 20, 70);
       
+      // Address Information
       doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Location: ${formData.location}`, 14, 125);
-      doc.text(`House Number: ${formData.houseNumber}`, 14, 135);
-      doc.text(`Region: ${formData.region}`, 14, 145);
+      doc.text('ADDRESS INFORMATION:', 20, 85);
+      
+      doc.setFontSize(10);
+      doc.text(`Residential Location: ${formData.location}`, 20, 95);
+      doc.text(`House Number: ${formData.houseNumber}`, 20, 105);
+      doc.text(`Region/State: ${formData.region}`, 20, 115);
+      
+      // Add country with flag
+      const selectedCountry = countries.find(c => c.code === formData.country);
+      doc.text(`Country: ${selectedCountry ? `${selectedCountry.flag} ${selectedCountry.name}` : formData.country}`, 20, 125);
+      
       if (formData.description) {
-        doc.text(`Additional Description: ${formData.description}`, 14, 155, { maxWidth: 180 });
+        doc.text(`Additional Description: ${formData.description}`, 20, 135);
       }
       
       // Status
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Status Information', 14, 170);
-      
       doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Marital Status: ${formData.maritalStatus}`, 14, 180);
-      doc.text(`Employment Status: ${formData.employmentStatus}`, 14, 190);
+      doc.text('STATUS INFORMATION:', 20, 155);
+      
+      doc.setFontSize(10);
+      doc.text(`Marital Status: ${formData.maritalStatus}`, 20, 165);
+      doc.text(`Employment Status: ${formData.employmentStatus}`, 20, 175);
       
       // Religious Info
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Religious Information', 14, 205);
-      
       doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Baptism: ${formData.baptism ? 'Yes' : 'No'}`, 14, 215);
-      doc.text(`First Communion: ${formData.firstCommunion ? 'Yes' : 'No'}`, 14, 225);
-      doc.text(`Confirmation: ${formData.confirmation ? 'Yes' : 'No'}`, 14, 235);
-      doc.text(`Holy Matrimony: ${formData.matrimony ? 'Yes' : 'No'}`, 14, 245);
-      doc.text(`Holy Order: ${formData.holyOrder ? 'Yes' : 'No'}`, 14, 255);
+      doc.text('RELIGIOUS INFORMATION:', 20, 195);
+      
+      doc.setFontSize(10);
+      doc.text(`Baptism: ${formData.baptism ? 'Yes' : 'No'}`, 20, 205);
+      doc.text(`First Communion: ${formData.firstCommunion ? 'Yes' : 'No'}`, 20, 215);
+      doc.text(`Confirmation: ${formData.confirmation ? 'Yes' : 'No'}`, 20, 225);
+      doc.text(`Holy Matrimony: ${formData.matrimony ? 'Yes' : 'No'}`, 20, 235);
+      doc.text(`Holy Order: ${formData.holyOrder ? 'Yes' : 'No'}`, 20, 245);
       
       // Add a new page for family information
       doc.addPage();
       
       // Add the church logo to the second page as well (smaller)
-      doc.addImage(imgData, 'JPEG', 14, 10, 15, 15);
+      doc.addImage(img, 'JPEG', 14, 10, 15, 15);
       
       // Continue with Family Info on the new page
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Family Information', 40, 20);
-      
       doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
+      doc.text('FAMILY INFORMATION:', 40, 20);
+      
+      doc.setFontSize(10);
       doc.text(`Father's Name: ${formData.fatherName || 'N/A'}`, 14, 35);
       doc.text(`Father is a member: ${formData.fatherMember ? 'Yes' : 'No'}`, 14, 45);
       doc.text(`Father's Place of Worship: ${formData.fatherChurch || 'N/A'}`, 14, 55);
@@ -199,10 +206,7 @@ const Registration = () => {
       doc.setTextColor(100, 100, 100);
       doc.text(`Generated on: ${dateStr}`, 14, 280);
       doc.text('St John the Evangelist Catholic Church, Adenta', 105, 280, { align: 'center' });
-      
-      // Save the PDF
-      doc.save(`${formData.firstName}_${formData.lastName}_Membership_Form.pdf`);
-    };
+    }
   };
 
   const renderStep = () => {
@@ -262,6 +266,10 @@ const Registration = () => {
           <div>
             <p className="text-gray-600">Region/State:</p>
             <p className="font-medium text-gray-800">{formData.region}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Country:</p>
+            <p className="font-medium text-gray-800">{formData.country}</p>
           </div>
           {formData.description && (
             <div className="md:col-span-2">
@@ -671,6 +679,29 @@ const Address = ({ formData, updateFormData }) => (
           onChange={(e) => updateFormData('region', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
         />
+      </div>
+
+      <div>
+        <label htmlFor="country" className="block text-gray-700 mb-2">
+          <span className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
+            </svg>
+            Country
+          </span>
+        </label>
+        <select
+          id="country"
+          value={formData.country}
+          onChange={(e) => updateFormData('country', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+        >
+          {countries.map((country) => (
+            <option key={country.code} value={country.code}>
+              {country.flag} {country.name}
+            </option>
+          ))}
+        </select>
       </div>
       
       <div className="md:col-span-2">
