@@ -27,222 +27,245 @@ const MembershipForm = () => {
     doc.setFont('helvetica', 'italic');
     doc.text('Membership Registration Form', 105, 25, { align: 'center' });
     
-    // Add church logo
+    // Preload the church logo image
     const img = new Image();
+    img.crossOrigin = "Anonymous";  // Handle potential CORS issues
     img.src = churchIcon;
     
-    // Convert the image to base64 and add it to the PDF
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    
-    // Create a function to add the image once it's loaded
     img.onload = function() {
-      // Draw image on canvas
-      ctx.drawImage(img, 0, 0, img.width, img.height);
-      
-      // Get base64 representation
-      const imgData = canvas.toDataURL('image/jpeg');
-      
-      // Add image to PDF (centered, with appropriate sizing)
-      doc.addImage(imgData, 'JPEG', 90, 30, 25, 25);
-      
-      // Add divider line
-      doc.setDrawColor(0, 0, 0);
-      doc.setLineWidth(0.5);
-      doc.line(14, 60, 196, 60);
-      
-      // Basic Info Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Basic Information', 14, 70);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      // Add form fields
-      doc.text('First Name:', 14, 80);
-      doc.setDrawColor(0, 0, 0);
-      doc.setLineWidth(0.1);
-      doc.rect(70, 76, 120, 8);
-      
-      doc.text('Last Name:', 14, 90);
-      doc.rect(70, 86, 120, 8);
-      
-      doc.text('Email:', 14, 100);
-      doc.rect(70, 96, 120, 8);
-      
-      doc.text('Phone:', 14, 110);
-      doc.rect(70, 106, 120, 8);
-      
-      // Birth Details Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Birth Details', 14, 125);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Date of Birth:', 14, 135);
-      // Day field
-      doc.rect(70, 131, 25, 8);
-      // Month field
-      doc.rect(100, 131, 50, 8);
-      // Year field
-      doc.rect(155, 131, 35, 8);
-      
-      doc.text('Gender:', 14, 145);
-      doc.rect(70, 141, 120, 8);
-      
-      // Nationality Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Nationality Information', 14, 160);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Citizen of:', 14, 170);
-      doc.rect(70, 166, 120, 8);
-      
-      doc.text('Home Town:', 14, 180);
-      doc.rect(70, 176, 120, 8);
-      
-      // Address Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Residential Location', 14, 195);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Location/Town:', 14, 205);
-      doc.rect(70, 201, 120, 8);
-      
-      doc.text('House Number:', 14, 215);
-      doc.rect(70, 211, 120, 8);
-      
-      doc.text('Region/State:', 14, 225);
-      doc.rect(70, 221, 120, 8);
-      
-      doc.text('Additional Description:', 14, 235);
-      doc.rect(70, 231, 120, 8);
-      doc.setFontSize(8);
-      doc.text('(e.g., "The second curve from the Mallam junction, immediately after the traffic light...")', 14, 245);
-      doc.setFontSize(12);
-      
-      // Status Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Status Information', 14, 260);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Marital Status:', 14, 270);
-      doc.rect(70, 266, 120, 8);
-      
-      // Add a new page for employment and religious info
-      doc.addPage();
-      
-      // Add the church logo to the second page as well (smaller)
-      doc.addImage(imgData, 'JPEG', 14, 10, 15, 15);
-      
-      // Continue with Status Info on the new page
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Employment Status:', 14, 35);
-      doc.rect(70, 31, 120, 8);
-      
-      // Religious Info Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Religious Information', 14, 50);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      // Checkboxes for sacraments
-      doc.text('Baptism:', 14, 60);
-      doc.rect(70, 56, 8, 8);
-      doc.text('Yes', 82, 60);
-      
-      doc.text('First Communion:', 14, 70);
-      doc.rect(70, 66, 8, 8);
-      doc.text('Yes', 82, 70);
-      
-      doc.text('Confirmation:', 14, 80);
-      doc.rect(70, 76, 8, 8);
-      doc.text('Yes', 82, 80);
-      
-      doc.text('Holy Matrimony:', 14, 90);
-      doc.rect(70, 86, 8, 8);
-      doc.text('Yes', 82, 90);
-      
-      doc.text('Holy Order:', 14, 100);
-      doc.rect(70, 96, 8, 8);
-      doc.text('Yes', 82, 100);
-      
-      // Family Info Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Family Information', 14, 115);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      doc.text('Father\'s Name:', 14, 125);
-      doc.rect(70, 121, 120, 8);
-      
-      doc.text('Father is a member:', 14, 135);
-      doc.rect(70, 131, 8, 8); // Checkbox
-      doc.text('Yes', 82, 135);
-      
-      doc.text('Father\'s Place of Worship:', 14, 145);
-      doc.rect(70, 141, 120, 8);
-      
-      doc.text('Mother\'s Name:', 14, 155);
-      doc.rect(70, 151, 120, 8);
-      
-      doc.text('Mother is a member:', 14, 165);
-      doc.rect(70, 161, 8, 8); // Checkbox
-      doc.text('Yes', 82, 165);
-      
-      doc.text('Mother\'s Place of Worship:', 14, 175);
-      doc.rect(70, 171, 120, 8);
-      
-      doc.text('Has Children:', 14, 185);
-      doc.rect(70, 181, 8, 8); // Checkbox
-      doc.text('Yes', 82, 185);
-      
-      // Add submission instructions
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Submission Instructions', 14, 200);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text('Please complete this form and submit it to the church office in one of the following ways:', 14, 210);
-      doc.text('1. Email the completed form to: stjohnevangelist@church.org', 14, 220);
-      doc.text('2. Print and deliver to the church office during office hours', 14, 230);
-      doc.text('3. Submit online through our website at www.stjohnevangelist.org', 14, 240);
-      
-      // Add footer with date
-      const today = new Date();
-      const dateStr = today.toLocaleDateString();
-      doc.setFontSize(10);
-      doc.setTextColor(100, 100, 100);
-      doc.text(`Generated on: ${dateStr}`, 14, 280);
-      doc.text('St John the Evangelist Catholic Church, Adenta', 105, 280, { align: 'center' });
-      
-      // Save the PDF
-      doc.save('St_John_Evangelist_Membership_Form.pdf');
-      
-      setIsGenerating(false);
-      setIsGenerated(true);
+      try {
+        // Create a canvas element
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas dimensions to match the image
+        canvas.width = img.width;
+        canvas.height = img.height;
+        
+        // Draw the image on the canvas
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        
+        // Get base64 representation
+        const imgData = canvas.toDataURL('image/jpeg');
+        
+        // Add image to PDF (centered, with appropriate sizing)
+        doc.addImage(imgData, 'JPEG', 90, 30, 25, 25);
+        
+        // Continue with the rest of the PDF generation
+        completePDFGeneration(doc, imgData);
+      } catch (error) {
+        console.error("Error processing image:", error);
+        // Continue with PDF generation without the image
+        completePDFGeneration(doc, null);
+      }
     };
+    
+    // Handle image loading errors
+    img.onerror = function() {
+      console.error("Failed to load church icon image");
+      // Continue with PDF generation without the image
+      completePDFGeneration(doc, null);
+    };
+  };
+  
+  // Function to complete the PDF generation after image handling
+  const completePDFGeneration = (doc, imgData) => {
+    // Add divider line
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.5);
+    doc.line(14, 60, 196, 60);
+    
+    // Basic Info Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Basic Information', 14, 70);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    // Add form fields
+    doc.text('First Name:', 14, 80);
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.1);
+    doc.rect(70, 76, 120, 8);
+    
+    doc.text('Last Name:', 14, 90);
+    doc.rect(70, 86, 120, 8);
+    
+    doc.text('Email:', 14, 100);
+    doc.rect(70, 96, 120, 8);
+    
+    doc.text('Phone:', 14, 110);
+    doc.rect(70, 106, 120, 8);
+    
+    // Birth Details Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Birth Details', 14, 125);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Date of Birth:', 14, 135);
+    // Day field
+    doc.rect(70, 131, 25, 8);
+    // Month field
+    doc.rect(100, 131, 50, 8);
+    // Year field
+    doc.rect(155, 131, 35, 8);
+    
+    doc.text('Gender:', 14, 145);
+    doc.rect(70, 141, 120, 8);
+    
+    // Nationality Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Nationality Information', 14, 160);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Citizen of:', 14, 170);
+    doc.rect(70, 166, 120, 8);
+    
+    doc.text('Home Town:', 14, 180);
+    doc.rect(70, 176, 120, 8);
+    
+    // Address Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Residential Location', 14, 195);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Location/Town:', 14, 205);
+    doc.rect(70, 201, 120, 8);
+    
+    doc.text('House Number:', 14, 215);
+    doc.rect(70, 211, 120, 8);
+    
+    doc.text('Region/State:', 14, 225);
+    doc.rect(70, 221, 120, 8);
+    
+    doc.text('Additional Description:', 14, 235);
+    doc.rect(70, 231, 120, 8);
+    doc.setFontSize(8);
+    doc.text('(e.g., "The second curve from the Mallam junction, immediately after the traffic light...")', 14, 245);
+    doc.setFontSize(12);
+    
+    // Status Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Status Information', 14, 260);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Marital Status:', 14, 270);
+    doc.rect(70, 266, 120, 8);
+    
+    // Add a new page for employment and religious info
+    doc.addPage();
+    
+    // Add the church logo to the second page as well (smaller)
+    if (imgData) {
+      doc.addImage(imgData, 'JPEG', 14, 10, 15, 15);
+    }
+    
+    // Continue with Status Info on the new page
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Employment Status:', 14, 35);
+    doc.rect(70, 31, 120, 8);
+    
+    // Religious Info Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Religious Information', 14, 50);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    // Checkboxes for sacraments
+    doc.text('Baptism:', 14, 60);
+    doc.rect(70, 56, 8, 8);
+    doc.text('Yes', 82, 60);
+    
+    doc.text('First Communion:', 14, 70);
+    doc.rect(70, 66, 8, 8);
+    doc.text('Yes', 82, 70);
+    
+    doc.text('Confirmation:', 14, 80);
+    doc.rect(70, 76, 8, 8);
+    doc.text('Yes', 82, 80);
+    
+    doc.text('Holy Matrimony:', 14, 90);
+    doc.rect(70, 86, 8, 8);
+    doc.text('Yes', 82, 90);
+    
+    doc.text('Holy Order:', 14, 100);
+    doc.rect(70, 96, 8, 8);
+    doc.text('Yes', 82, 100);
+    
+    // Family Info Section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Family Information', 14, 115);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    doc.text('Father\'s Name:', 14, 125);
+    doc.rect(70, 121, 120, 8);
+    
+    doc.text('Father is a member:', 14, 135);
+    doc.rect(70, 131, 8, 8); // Checkbox
+    doc.text('Yes', 82, 135);
+    
+    doc.text('Father\'s Place of Worship:', 14, 145);
+    doc.rect(70, 141, 120, 8);
+    
+    doc.text('Mother\'s Name:', 14, 155);
+    doc.rect(70, 151, 120, 8);
+    
+    doc.text('Mother is a member:', 14, 165);
+    doc.rect(70, 161, 8, 8); // Checkbox
+    doc.text('Yes', 82, 165);
+    
+    doc.text('Mother\'s Place of Worship:', 14, 175);
+    doc.rect(70, 171, 120, 8);
+    
+    doc.text('Has Children:', 14, 185);
+    doc.rect(70, 181, 8, 8); // Checkbox
+    doc.text('Yes', 82, 185);
+    
+    // Add submission instructions
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Submission Instructions', 14, 200);
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Please complete this form and submit it to the church office in one of the following ways:', 14, 210);
+    doc.text('1. Email the completed form to: stjohnevangelist@church.org', 14, 220);
+    doc.text('2. Print and deliver to the church office during office hours', 14, 230);
+    doc.text('3. Submit online through our website at www.stjohnevangelist.org', 14, 240);
+    
+    // Add footer with date
+    const today = new Date();
+    const dateStr = today.toLocaleDateString();
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`Generated on: ${dateStr}`, 14, 280);
+    doc.text('St John the Evangelist Catholic Church, Adenta', 105, 280, { align: 'center' });
+    
+    // Save the PDF
+    doc.save('St_John_Evangelist_Membership_Form.pdf');
+    
+    setIsGenerating(false);
+    setIsGenerated(true);
   };
 
   return (
