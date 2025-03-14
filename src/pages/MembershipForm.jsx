@@ -65,121 +65,169 @@ const MembershipForm = () => {
       doc.text('First Name:', 14, 80);
       doc.setDrawColor(0, 0, 0);
       doc.setLineWidth(0.1);
-      doc.rect(60, 76, 130, 8);
+      doc.rect(70, 76, 120, 8);
       
       doc.text('Last Name:', 14, 90);
-      doc.rect(60, 86, 130, 8);
+      doc.rect(70, 86, 120, 8);
       
       doc.text('Email:', 14, 100);
-      doc.rect(60, 96, 130, 8);
+      doc.rect(70, 96, 120, 8);
       
       doc.text('Phone:', 14, 110);
-      doc.rect(60, 106, 130, 8);
+      doc.rect(70, 106, 120, 8);
+      
+      // Birth Details Section
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Birth Details', 14, 125);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      
+      doc.text('Date of Birth:', 14, 135);
+      // Day field
+      doc.rect(70, 131, 25, 8);
+      // Month field
+      doc.rect(100, 131, 50, 8);
+      // Year field
+      doc.rect(155, 131, 35, 8);
+      
+      doc.text('Gender:', 14, 145);
+      doc.rect(70, 141, 120, 8);
+      
+      // Nationality Section
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Nationality Information', 14, 160);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      
+      doc.text('Citizen of:', 14, 170);
+      doc.rect(70, 166, 120, 8);
+      
+      doc.text('Home Town:', 14, 180);
+      doc.rect(70, 176, 120, 8);
       
       // Address Section
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
-      doc.text('Address Information', 14, 125);
+      doc.text('Residential Location', 14, 195);
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
       
-      doc.text('Location/Town:', 14, 135);
-      doc.rect(60, 131, 130, 8);
+      doc.text('Location/Town:', 14, 205);
+      doc.rect(70, 201, 120, 8);
       
-      doc.text('House Number:', 14, 145);
-      doc.rect(60, 141, 130, 8);
+      doc.text('House Number:', 14, 215);
+      doc.rect(70, 211, 120, 8);
       
-      doc.text('Region/State:', 14, 155);
-      doc.rect(60, 151, 130, 8);
+      doc.text('Region/State:', 14, 225);
+      doc.rect(70, 221, 120, 8);
       
-      doc.text('Additional Description:', 14, 165);
-      doc.rect(60, 161, 130, 8);
+      doc.text('Additional Description:', 14, 235);
+      doc.rect(70, 231, 120, 8);
+      doc.setFontSize(8);
+      doc.text('(e.g., "The second curve from the Mallam junction, immediately after the traffic light...")', 14, 245);
+      doc.setFontSize(12);
       
       // Status Section
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
-      doc.text('Status Information', 14, 180);
+      doc.text('Status Information', 14, 260);
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
       
-      doc.text('Marital Status:', 14, 190);
-      doc.rect(60, 186, 130, 8);
+      doc.text('Marital Status:', 14, 270);
+      doc.rect(70, 266, 120, 8);
       
-      doc.text('Employment Status:', 14, 200);
-      doc.rect(60, 196, 130, 8);
-      
-      // Religious Info Section
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Religious Information', 14, 215);
-      
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      
-      // Checkboxes for sacraments
-      doc.text('Baptism:', 14, 225);
-      doc.rect(60, 221, 8, 8);
-      
-      doc.text('First Communion:', 14, 235);
-      doc.rect(60, 231, 8, 8);
-      
-      doc.text('Confirmation:', 14, 245);
-      doc.rect(60, 241, 8, 8);
-      
-      doc.text('Holy Matrimony:', 14, 255);
-      doc.rect(60, 251, 8, 8);
-      
-      doc.text('Holy Order:', 14, 265);
-      doc.rect(60, 261, 8, 8);
-      
-      // Add a new page for family information
+      // Add a new page for employment and religious info
       doc.addPage();
       
       // Add the church logo to the second page as well (smaller)
       doc.addImage(imgData, 'JPEG', 14, 10, 15, 15);
       
-      // Continue with Family Info on the new page
+      // Continue with Status Info on the new page
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      
+      doc.text('Employment Status:', 14, 35);
+      doc.rect(70, 31, 120, 8);
+      
+      // Religious Info Section
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
-      doc.text('Family Information', 40, 20);
+      doc.text('Religious Information', 14, 50);
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
       
-      doc.text('Father\'s Name:', 14, 35);
-      doc.rect(60, 31, 130, 8);
+      // Checkboxes for sacraments
+      doc.text('Baptism:', 14, 60);
+      doc.rect(70, 56, 8, 8);
+      doc.text('Yes', 82, 60);
       
-      doc.text('Father is a member:', 14, 45);
-      doc.rect(60, 41, 8, 8); // Checkbox
+      doc.text('First Communion:', 14, 70);
+      doc.rect(70, 66, 8, 8);
+      doc.text('Yes', 82, 70);
       
-      doc.text('Father\'s Place of Worship:', 14, 55);
-      doc.rect(60, 51, 130, 8);
+      doc.text('Confirmation:', 14, 80);
+      doc.rect(70, 76, 8, 8);
+      doc.text('Yes', 82, 80);
       
-      doc.text('Mother\'s Name:', 14, 70);
-      doc.rect(60, 66, 130, 8);
+      doc.text('Holy Matrimony:', 14, 90);
+      doc.rect(70, 86, 8, 8);
+      doc.text('Yes', 82, 90);
       
-      doc.text('Mother is a member:', 14, 80);
-      doc.rect(60, 76, 8, 8); // Checkbox
+      doc.text('Holy Order:', 14, 100);
+      doc.rect(70, 96, 8, 8);
+      doc.text('Yes', 82, 100);
       
-      doc.text('Mother\'s Place of Worship:', 14, 90);
-      doc.rect(60, 86, 130, 8);
+      // Family Info Section
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Family Information', 14, 115);
       
-      doc.text('Has Children:', 14, 105);
-      doc.rect(60, 101, 8, 8); // Checkbox
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      
+      doc.text('Father\'s Name:', 14, 125);
+      doc.rect(70, 121, 120, 8);
+      
+      doc.text('Father is a member:', 14, 135);
+      doc.rect(70, 131, 8, 8); // Checkbox
+      doc.text('Yes', 82, 135);
+      
+      doc.text('Father\'s Place of Worship:', 14, 145);
+      doc.rect(70, 141, 120, 8);
+      
+      doc.text('Mother\'s Name:', 14, 155);
+      doc.rect(70, 151, 120, 8);
+      
+      doc.text('Mother is a member:', 14, 165);
+      doc.rect(70, 161, 8, 8); // Checkbox
+      doc.text('Yes', 82, 165);
+      
+      doc.text('Mother\'s Place of Worship:', 14, 175);
+      doc.rect(70, 171, 120, 8);
+      
+      doc.text('Has Children:', 14, 185);
+      doc.rect(70, 181, 8, 8); // Checkbox
+      doc.text('Yes', 82, 185);
       
       // Add submission instructions
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
-      doc.text('Submission Instructions', 14, 125);
+      doc.text('Submission Instructions', 14, 200);
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
-      doc.text('Please complete this form and submit it to the church office in one of the following ways:', 14, 135);
-      doc.text('1. Email the completed form to: stjohnevangelist@church.org', 14, 145);
-      doc.text('2. Print and deliver to the church office during office hours', 14, 155);
-      doc.text('3. Submit online through our website at www.stjohnevangelist.org', 14, 165);
+      doc.text('Please complete this form and submit it to the church office in one of the following ways:', 14, 210);
+      doc.text('1. Email the completed form to: stjohnevangelist@church.org', 14, 220);
+      doc.text('2. Print and deliver to the church office during office hours', 14, 230);
+      doc.text('3. Submit online through our website at www.stjohnevangelist.org', 14, 240);
       
       // Add footer with date
       const today = new Date();
