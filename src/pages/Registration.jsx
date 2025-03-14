@@ -1,11 +1,924 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
+import { FaChevronLeft, FaChevronRight, FaFilePdf, FaPrint } from 'react-icons/fa';
+import { useReactToPrint } from 'react-to-print';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const Registration = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const [currentStep, setCurrentStep] = useState(1);
+  const [progress, setProgress] = useState(15);
+  const [showSummary, setShowSummary] = useState(false);
+  const formRef = useRef();
+  const [formData, setFormData] = useState({
+    // Basic Info
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    
+    // Address
+    location: '',
+    houseNumber: '',
+    region: '',
+    description: '',
+    
+    // Status
+    maritalStatus: '',
+    employmentStatus: '',
+    
+    // Religious Info
+    baptism: false,
+    firstCommunion: false,
+    confirmation: false,
+    matrimony: false,
+    holyOrder: false,
+    
+    // Family Info
+    fatherMember: false,
+    fatherName: '',
+    fatherChurch: '',
+    motherMember: false,
+    motherName: '',
+    motherChurch: '',
+    hasChildren: false
+  });
 
-export default Registration
+  const updateFormData = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value
+    });
+  };
+
+  const nextStep = () => {
+    const newStep = currentStep + 1;
+    setCurrentStep(newStep);
+    setProgress(calculateProgress(newStep));
+  };
+
+  const prevStep = () => {
+    const newStep = currentStep - 1;
+    setCurrentStep(newStep);
+    setProgress(calculateProgress(newStep));
+  };
+
+  const calculateProgress = (step) => {
+    const totalSteps = 5;
+    const progressPerStep = 100 / totalSteps;
+    return Math.min(Math.round(step * progressPerStep), 100);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowSummary(true);
+    setProgress(100);
+  };
+
+  const handlePrint = useReactToPrint({
+    content: () => formRef.current,
+    documentTitle: `${formData.firstName}_${formData.lastName}_Membership_Form`,
+  });
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    
+    // Add title
+    doc.setFontSize(20);
+    doc.text('Membership Registration Form', 105, 15, { align: 'center' });
+    
+    // Basic Info
+    doc.setFontSize(16);
+    doc.text('Basic Information', 14, 30);
+    
+    doc.setFontSize(12);
+    doc.text(`Name: ${formData.firstName} ${formData.lastName}`, 14, 40);
+    doc.text(`Email: ${formData.email}`, 14, 50);
+    doc.text(`Phone: ${formData.phone}`, 14, 60);
+    
+    // Address
+    doc.setFontSize(16);
+    doc.text('Address Information', 14, 75);
+    
+    doc.setFontSize(12);
+    doc.text(`Location: ${formData.location}`, 14, 85);
+    doc.text(`House Number: ${formData.houseNumber}`, 14, 95);
+    doc.text(`Region: ${formData.region}`, 14, 105);
+    if (formData.description) {
+      doc.text(`Additional Description: ${formData.description}`, 14, 115);
+    }
+    
+    // Status
+    doc.setFontSize(16);
+    doc.text('Status Information', 14, 130);
+    
+    doc.setFontSize(12);
+    doc.text(`Marital Status: ${formData.maritalStatus}`, 14, 140);
+    doc.text(`Employment Status: ${formData.employmentStatus}`, 14, 150);
+    
+    // Religious Info
+    doc.setFontSize(16);
+    doc.text('Religious Information', 14, 165);
+    
+    doc.setFontSize(12);
+    doc.text(`Baptism: ${formData.baptism ? 'Yes' : 'No'}`, 14, 175);
+    doc.text(`First Communion: ${formData.firstCommunion ? 'Yes' : 'No'}`, 14, 185);
+    doc.text(`Confirmation: ${formData.confirmation ? 'Yes' : 'No'}`, 14, 195);
+    doc.text(`Holy Matrimony: ${formData.matrimony ? 'Yes' : 'No'}`, 14, 205);
+    doc.text(`Holy Order: ${formData.holyOrder ? 'Yes' : 'No'}`, 14, 215);
+    
+    // Family Info
+    doc.setFontSize(16);
+    doc.text('Family Information', 14, 230);
+    
+    doc.setFontSize(12);
+    doc.text(`Father's Name: ${formData.fatherName}`, 14, 240);
+    doc.text(`Father is a member: ${formData.fatherMember ? 'Yes' : 'No'}`, 14, 250);
+    doc.text(`Father's Church: ${formData.fatherChurch}`, 14, 260);
+    
+    // Add a new page for mother's info
+    doc.addPage();
+    doc.text(`Mother's Name: ${formData.motherName}`, 14, 20);
+    doc.text(`Mother is a member: ${formData.motherMember ? 'Yes' : 'No'}`, 14, 30);
+    doc.text(`Mother's Church: ${formData.motherChurch}`, 14, 40);
+    doc.text(`Has Children: ${formData.hasChildren ? 'Yes' : 'No'}`, 14, 50);
+    
+    // Add footer with date
+    const date = new Date().toLocaleDateString();
+    doc.setFontSize(10);
+    doc.text(`Generated on: ${date}`, 14, 280);
+    
+    // Save the PDF
+    doc.save(`${formData.firstName}_${formData.lastName}_Membership_Form.pdf`);
+  };
+
+  const renderStep = () => {
+    switch(currentStep) {
+      case 1:
+        return <BasicInfo formData={formData} updateFormData={updateFormData} />;
+      case 2:
+        return <Address formData={formData} updateFormData={updateFormData} />;
+      case 3:
+        return <Status formData={formData} updateFormData={updateFormData} />;
+      case 4:
+        return <ReligiousInfo formData={formData} updateFormData={updateFormData} />;
+      case 5:
+        return <Family formData={formData} updateFormData={updateFormData} />;
+      default:
+        return <BasicInfo formData={formData} updateFormData={updateFormData} />;
+    }
+  };
+
+  const FormSummary = () => (
+    <div className="space-y-8" ref={formRef}>
+      <h2 className="text-2xl font-bold text-center mb-6">Membership Form Summary</h2>
+      
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4">Basic Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-gray-600">Full Name:</p>
+            <p className="font-medium">{formData.firstName} {formData.lastName}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Email Address:</p>
+            <p className="font-medium">{formData.email}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Phone Number:</p>
+            <p className="font-medium">{formData.phone}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4">Address Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-gray-600">Location/Town:</p>
+            <p className="font-medium">{formData.location}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">House Number:</p>
+            <p className="font-medium">{formData.houseNumber}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Region/State:</p>
+            <p className="font-medium">{formData.region}</p>
+          </div>
+          {formData.description && (
+            <div className="md:col-span-2">
+              <p className="text-gray-600">Additional Description:</p>
+              <p className="font-medium">{formData.description}</p>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4">Status Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-gray-600">Marital Status:</p>
+            <p className="font-medium">{formData.maritalStatus}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Employment Status:</p>
+            <p className="font-medium">{formData.employmentStatus}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4">Religious Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-gray-600">Baptism:</p>
+            <p className="font-medium">{formData.baptism ? 'Yes' : 'No'}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">First Communion:</p>
+            <p className="font-medium">{formData.firstCommunion ? 'Yes' : 'No'}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Confirmation:</p>
+            <p className="font-medium">{formData.confirmation ? 'Yes' : 'No'}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Holy Matrimony:</p>
+            <p className="font-medium">{formData.matrimony ? 'Yes' : 'No'}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Holy Order:</p>
+            <p className="font-medium">{formData.holyOrder ? 'Yes' : 'No'}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4">Family Information</h3>
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-lg font-medium mb-2">Father's Information</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-gray-600">Father's Name:</p>
+                <p className="font-medium">{formData.fatherName}</p>
+              </div>
+              <div>
+                <p className="text-gray-600">Father is a member:</p>
+                <p className="font-medium">{formData.fatherMember ? 'Yes' : 'No'}</p>
+              </div>
+              <div>
+                <p className="text-gray-600">Father's Place of Worship:</p>
+                <p className="font-medium">{formData.fatherChurch}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-medium mb-2">Mother's Information</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-gray-600">Mother's Name:</p>
+                <p className="font-medium">{formData.motherName}</p>
+              </div>
+              <div>
+                <p className="text-gray-600">Mother is a member:</p>
+                <p className="font-medium">{formData.motherMember ? 'Yes' : 'No'}</p>
+              </div>
+              <div>
+                <p className="text-gray-600">Mother's Place of Worship:</p>
+                <p className="font-medium">{formData.motherChurch}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <p className="text-gray-600">Has Children:</p>
+            <p className="font-medium">{formData.hasChildren ? 'Yes' : 'No'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen pb-16">
+      {/* Hero Section with Background Image */}
+      <div 
+        className="relative h-80 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url('/src/assets/forms-image.jpg')`,
+          backgroundSize: 'cover'
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="relative z-10 text-white text-center md:text-left w-full max-w-[65rem] mx-auto px-4">
+            <span className="text-lg md:text-2xl block mb-3 md:mb-2 font-semibold opacity-75">
+              Join Our Community
+            </span>
+            <span className="text-2xl md:text-3xl lg:text-6xl font-bold block">
+              Membership Registration
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Form Container */}
+      <div className="w-full max-w-[65rem] mx-auto px-4 md:px-8 -mt-10 relative z-20">
+        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-800">Welcome Evangelist!</h2>
+            <p className="text-gray-600">Kindly update your profile, this wouldn't take much time.</p>
+          </div>
+
+          {!showSummary ? (
+            <>
+              {/* Progress Steps */}
+              <div className="flex justify-center mb-8">
+                <div className="flex space-x-4 md:space-x-8">
+                  <button 
+                    onClick={() => setCurrentStep(1)} 
+                    className={`px-4 py-2 rounded-full ${currentStep === 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  >
+                    BASIC INFO
+                  </button>
+                  <button 
+                    onClick={() => setCurrentStep(2)} 
+                    className={`px-4 py-2 rounded-full ${currentStep === 2 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  >
+                    ADDRESS
+                  </button>
+                  <button 
+                    onClick={() => setCurrentStep(3)} 
+                    className={`px-4 py-2 rounded-full ${currentStep === 3 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  >
+                    STATUS
+                  </button>
+                  <button 
+                    onClick={() => setCurrentStep(4)} 
+                    className={`px-4 py-2 rounded-full ${currentStep === 4 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  >
+                    RELIGIOUS INFO
+                  </button>
+                  <button 
+                    onClick={() => setCurrentStep(5)} 
+                    className={`px-4 py-2 rounded-full ${currentStep === 5 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  >
+                    FAMILY
+                  </button>
+                </div>
+              </div>
+
+              {/* Form Content */}
+              <form onSubmit={handleSubmit}>
+                {renderStep()}
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between mt-8">
+                  {currentStep > 1 && (
+                    <button 
+                      type="button"
+                      onClick={prevStep}
+                      className="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg flex items-center"
+                    >
+                      <FaChevronLeft className="mr-2" /> PREVIOUS
+                    </button>
+                  )}
+                  
+                  {currentStep < 5 ? (
+                    <button 
+                      type="button"
+                      onClick={nextStep}
+                      className="bg-green-500 text-white px-6 py-2 rounded-lg flex items-center ml-auto"
+                    >
+                      NEXT <FaChevronRight className="ml-2" />
+                    </button>
+                  ) : (
+                    <button 
+                      type="submit"
+                      className="bg-green-500 text-white px-6 py-2 rounded-lg ml-auto"
+                    >
+                      FINISH
+                    </button>
+                  )}
+                </div>
+              </form>
+            </>
+          ) : (
+            <>
+              <FormSummary />
+              
+              <div className="flex justify-center mt-8 space-x-4">
+                <button 
+                  onClick={handlePrint}
+                  className="bg-blue-500 text-white px-6 py-2 rounded-lg flex items-center"
+                >
+                  <FaPrint className="mr-2" /> Print Form
+                </button>
+                <button 
+                  onClick={generatePDF}
+                  className="bg-red-500 text-white px-6 py-2 rounded-lg flex items-center"
+                >
+                  <FaFilePdf className="mr-2" /> Download PDF
+                </button>
+                <button 
+                  onClick={() => {
+                    setShowSummary(false);
+                    setCurrentStep(1);
+                  }}
+                  className="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg"
+                >
+                  Edit Form
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-600 text-white p-2">
+        <div className="w-full max-w-[65rem] mx-auto">
+          <div className="flex items-center">
+            <span className="mr-4">Completion Progress ({progress}%):</span>
+            <div className="flex-1 bg-blue-300 rounded-full h-4">
+              <div 
+                className="bg-blue-100 h-4 rounded-full" 
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Placeholder components for each form step
+const BasicInfo = ({ formData, updateFormData }) => (
+  <div className="space-y-6">
+    <h3 className="text-xl font-semibold mb-4">Basic Information</h3>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label htmlFor="firstName" className="block text-gray-700 mb-2">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          value={formData.firstName}
+          onChange={(e) => updateFormData('firstName', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          required
+        />
+      </div>
+      
+      <div>
+        <label htmlFor="lastName" className="block text-gray-700 mb-2">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          value={formData.lastName}
+          onChange={(e) => updateFormData('lastName', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          required
+        />
+      </div>
+      
+      <div>
+        <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          value={formData.email}
+          onChange={(e) => updateFormData('email', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          required
+        />
+      </div>
+      
+      <div>
+        <label htmlFor="phone" className="block text-gray-700 mb-2">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          value={formData.phone}
+          onChange={(e) => updateFormData('phone', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          required
+        />
+      </div>
+    </div>
+  </div>
+);
+
+const Address = ({ formData, updateFormData }) => (
+  <div className="space-y-6">
+    <h3 className="text-xl font-semibold mb-4">Address Information</h3>
+    <p className="text-gray-600 mb-4">Are you close or a bit farther from us?</p>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="md:col-span-2">
+        <label htmlFor="location" className="block text-gray-700 mb-2">
+          <span className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+            </svg>
+            Residential Location / Town
+          </span>
+        </label>
+        <input
+          type="text"
+          id="location"
+          value={formData.location}
+          onChange={(e) => updateFormData('location', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          required
+        />
+      </div>
+      
+      <div>
+        <label htmlFor="houseNumber" className="block text-gray-700 mb-2">
+          <span className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            House Number
+          </span>
+        </label>
+        <input
+          type="text"
+          id="houseNumber"
+          value={formData.houseNumber}
+          onChange={(e) => updateFormData('houseNumber', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+        />
+      </div>
+      
+      <div>
+        <label htmlFor="region" className="block text-gray-700 mb-2">
+          <span className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z" />
+            </svg>
+            Region / State
+          </span>
+        </label>
+        <input
+          type="text"
+          id="region"
+          value={formData.region}
+          onChange={(e) => updateFormData('region', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+        />
+      </div>
+      
+      <div className="md:col-span-2">
+        <label htmlFor="description" className="block text-gray-700 mb-2">Any extra description about where you live? (optional)</label>
+        <textarea
+          id="description"
+          value={formData.description}
+          onChange={(e) => updateFormData('description', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 text-gray-800"
+          placeholder="Example: 'The second curve from the Mallam junction, immediately after the traffic light, the second house from the left'"
+        ></textarea>
+      </div>
+    </div>
+    
+    <p className="text-red-500 text-sm mt-4">* Kindly fill all fields marked in red</p>
+  </div>
+);
+
+const Status = ({ formData, updateFormData }) => (
+  <div className="space-y-6">
+    <h3 className="text-xl font-semibold mb-4">Status Information</h3>
+    
+    <div className="mb-8">
+      <p className="text-gray-700 font-medium mb-4">What's your marital status?</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="single"
+            name="maritalStatus"
+            value="Single"
+            checked={formData.maritalStatus === 'Single'}
+            onChange={(e) => updateFormData('maritalStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="single" className="text-gray-700">Single</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="married"
+            name="maritalStatus"
+            value="Married"
+            checked={formData.maritalStatus === 'Married'}
+            onChange={(e) => updateFormData('maritalStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="married" className="text-gray-700">Married</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="separated"
+            name="maritalStatus"
+            value="Separated"
+            checked={formData.maritalStatus === 'Separated'}
+            onChange={(e) => updateFormData('maritalStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="separated" className="text-gray-700">Separated</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="divorced"
+            name="maritalStatus"
+            value="Divorced"
+            checked={formData.maritalStatus === 'Divorced'}
+            onChange={(e) => updateFormData('maritalStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="divorced" className="text-gray-700">Divorced</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="widowed"
+            name="maritalStatus"
+            value="Widowed"
+            checked={formData.maritalStatus === 'Widowed'}
+            onChange={(e) => updateFormData('maritalStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="widowed" className="text-gray-700">Widowed</label>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <p className="text-gray-700 font-medium mb-4">What's your employment status?</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="employed"
+            name="employmentStatus"
+            value="Employed"
+            checked={formData.employmentStatus === 'Employed'}
+            onChange={(e) => updateFormData('employmentStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="employed" className="text-gray-700">Employed</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="unemployed"
+            name="employmentStatus"
+            value="Unemployed"
+            checked={formData.employmentStatus === 'Unemployed'}
+            onChange={(e) => updateFormData('employmentStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="unemployed" className="text-gray-700">Unemployed</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="student"
+            name="employmentStatus"
+            value="Student"
+            checked={formData.employmentStatus === 'Student'}
+            onChange={(e) => updateFormData('employmentStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="student" className="text-gray-700">Student</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="retired"
+            name="employmentStatus"
+            value="Retired"
+            checked={formData.employmentStatus === 'Retired'}
+            onChange={(e) => updateFormData('employmentStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="retired" className="text-gray-700">Retired</label>
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="selfEmployed"
+            name="employmentStatus"
+            value="Self Employed"
+            checked={formData.employmentStatus === 'Self Employed'}
+            onChange={(e) => updateFormData('employmentStatus', e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="selfEmployed" className="text-gray-700">Self Employed</label>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ReligiousInfo = ({ formData, updateFormData }) => (
+  <div className="space-y-6">
+    <h3 className="text-xl font-semibold mb-4">Religious Information</h3>
+    <p className="text-gray-700 mb-6">Have you had any of the following sacraments?</p>
+    
+    <div className="space-y-4">
+      <div className="flex items-center justify-between border-b pb-3">
+        <span className="text-gray-700">Baptism</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.baptism}
+            onChange={(e) => updateFormData('baptism', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="flex items-center justify-between border-b pb-3">
+        <span className="text-gray-700">First Communion</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.firstCommunion}
+            onChange={(e) => updateFormData('firstCommunion', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="flex items-center justify-between border-b pb-3">
+        <span className="text-gray-700">Confirmation</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.confirmation}
+            onChange={(e) => updateFormData('confirmation', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="flex items-center justify-between border-b pb-3">
+        <span className="text-gray-700">Holy Matrimony</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.matrimony}
+            onChange={(e) => updateFormData('matrimony', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="flex items-center justify-between border-b pb-3">
+        <span className="text-gray-700">Holy Order</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.holyOrder}
+            onChange={(e) => updateFormData('holyOrder', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+    </div>
+  </div>
+);
+
+const Family = ({ formData, updateFormData }) => (
+  <div className="space-y-6">
+    <h3 className="text-xl font-semibold mb-4">Family Information</h3>
+    <p className="text-gray-700 mb-6">Let's continue with Parents information</p>
+    
+    <div className="border-b pb-6 mb-6">
+      <h4 className="text-lg font-medium mb-4">Father's information</h4>
+      
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-gray-700">Is your father a member of this church?</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.fatherMember}
+            onChange={(e) => updateFormData('fatherMember', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="fatherName" className="block text-gray-700 mb-2">Father's Full Name</label>
+          <input
+            type="text"
+            id="fatherName"
+            value={formData.fatherName}
+            onChange={(e) => updateFormData('fatherName', e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="fatherChurch" className="block text-gray-700 mb-2">Father's Place of worship</label>
+          <input
+            type="text"
+            id="fatherChurch"
+            value={formData.fatherChurch}
+            onChange={(e) => updateFormData('fatherChurch', e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          />
+        </div>
+      </div>
+    </div>
+    
+    <div className="border-b pb-6 mb-6">
+      <h4 className="text-lg font-medium mb-4">Mother's information</h4>
+      
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-gray-700">Is your mother a member of this church?</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.motherMember}
+            onChange={(e) => updateFormData('motherMember', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="motherName" className="block text-gray-700 mb-2">Mother's Full Name</label>
+          <input
+            type="text"
+            id="motherName"
+            value={formData.motherName}
+            onChange={(e) => updateFormData('motherName', e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="motherChurch" className="block text-gray-700 mb-2">Mother's Place of worship</label>
+          <input
+            type="text"
+            id="motherChurch"
+            value={formData.motherChurch}
+            onChange={(e) => updateFormData('motherChurch', e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          />
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h4 className="text-lg font-medium mb-4">Let's conclude with your Children's information</h4>
+      
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-gray-700">Do you have children?</span>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input 
+            type="checkbox" 
+            className="sr-only peer"
+            checked={formData.hasChildren}
+            onChange={(e) => updateFormData('hasChildren', e.target.checked)}
+          />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      
+      {formData.hasChildren && (
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <p className="text-gray-600 mb-4">You can add your children's information in the next step.</p>
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+export default Registration;

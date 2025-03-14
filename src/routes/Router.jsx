@@ -23,6 +23,7 @@ import OfficeHours from "../pages/OfficeHours.jsx";
 import ParishPastorialCouncil from "../pages/ParishPastorialCouncil.jsx";
 import ParishYouthCouncil from "../pages/ParishYouthCouncil.jsx";
 import Sacraments from "../pages/Sacraments.jsx";
+import Registration from "../pages/Registration";
 
 export const Router = () => {
   return useRoutes([
@@ -54,6 +55,7 @@ export const Router = () => {
           element: <ParishPastorialCouncil />,
           path: "parish-pastorial-council",
         },
+        { element: <Registration />, path: "membership" },
 
         //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
       ],
