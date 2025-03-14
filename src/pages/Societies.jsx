@@ -98,7 +98,7 @@ const Societies = () => {
     <main className="min-h-screen pb-6 md:pb-10">
       {/* Hero Section - Mobile Friendly */}
       <div className="relative flex flex-col bg-cover bg-center items-center w-full min-h-[12rem] md:h-[20rem] px-4 md:px-8 lg:px-[20rem] justify-center">
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-blue-600 opacity-70"></div>
         <div className="relative z-10 text-white text-center md:text-left w-full max-w-[65rem] mx-auto px-4">
           <span className="text-lg md:text-2xl block mb-3 md:mb-2 font-semibold opacity-75">
             All You Need To Know About
@@ -181,8 +181,8 @@ const Societies = () => {
           {/* Main Content Area */}
           <div className="md:w-3/4">
             {/* Content Header */}
-            <div className="bg-blue-950 p-4 md:p-8">
-              <div className="text-white text-center md:text-left">
+            <div className="bg-blue-100 p-4 md:p-8">
+              <div className="text-blue-900 text-center md:text-left">
                 <h2 className="text-2xl md:text-3xl font-bold mb-2">
                   {isActive}
                 </h2>
@@ -197,7 +197,7 @@ const Societies = () => {
               </div>
             </div>
 
-            <div className="bg-blue-950 w-full p-10 flex flex-col space-y-20 px-14">
+            <div className="bg-blue-50 w-full p-10 flex flex-col space-y-20 px-14">
               <div className="flex  md:flex w-full ">
                 <div className=" w-full md:w-1/3 flex md:items-center md:justify-center">
                   <span className="flex items-center justify-center md:w-[7rem] md:h-[7rem] w-[4rem] h-[4rem] rounded-full text-5xl bg-yellow-500 text-blue-950  ">
@@ -205,7 +205,7 @@ const Societies = () => {
                   </span>
                 </div>
 
-                <span className="text-white w-full border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-full border-b-2 border-blue-200 pb-5">
                   <p className="text-sm md:text-xl font-bold">Who can join?</p>
                   {currentItems.map(
                     (item) =>
@@ -219,7 +219,7 @@ const Societies = () => {
               </div>
 
               <div className="flex w-full ">
-                <span className="text-white w-2/3 border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
                   <p className="text-xl font-bold">Our Meeting days</p>
                   {currentItems.map(
                     (item) =>
@@ -244,7 +244,7 @@ const Societies = () => {
                   </span>
                 </div>
 
-                <span className="text-white w-2/3 border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
                   <p className="text-xl font-bold">
                     How you can become a part of us
                   </p>
@@ -259,7 +259,7 @@ const Societies = () => {
                 </span>
               </div>
 
-              <div className="py-3 px-[3rem] border-t-2 rounded-full bg-white text-slate-900  text-sm text-center">
+              <div className="py-3 px-[3rem] border-t-2 rounded-full bg-blue-600 text-white text-sm text-center">
                 {currentItems.map(
                   (item) =>
                     item.name === isActive && (
