@@ -1,14 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaFilePdf, FaPrint } from 'react-icons/fa';
 import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import churchIcon from '../assets/churchicon.jpg';
 
 const Registration = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [progress, setProgress] = useState(15);
+  const [progress, setProgress] = useState(0);
   const [showSummary, setShowSummary] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const formRef = useRef();
+  const summaryRef = useRef(null);
   const [formData, setFormData] = useState({
     // Basic Info
     firstName: '',
@@ -82,73 +85,124 @@ const Registration = () => {
   const generatePDF = () => {
     const doc = new jsPDF();
     
-    // Add title
-    doc.setFontSize(20);
-    doc.text('Membership Registration Form', 105, 15, { align: 'center' });
+    // Add church name and title
+    doc.setFontSize(18);
+    doc.setFont('helvetica', 'bold');
+    doc.text('St John the Evangelist Catholic Church, Adenta', 105, 15, { align: 'center' });
     
-    // Basic Info
-    doc.setFontSize(16);
-    doc.text('Basic Information', 14, 30);
+    // Add subheading
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'italic');
+    doc.text('Membership Registration Form', 105, 25, { align: 'center' });
     
-    doc.setFontSize(12);
-    doc.text(`Name: ${formData.firstName} ${formData.lastName}`, 14, 40);
-    doc.text(`Email: ${formData.email}`, 14, 50);
-    doc.text(`Phone: ${formData.phone}`, 14, 60);
+    // Add church logo
+    const img = new Image();
+    img.src = churchIcon;
     
-    // Address
-    doc.setFontSize(16);
-    doc.text('Address Information', 14, 75);
+    // Convert the image to base64 and add it to the PDF
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
     
-    doc.setFontSize(12);
-    doc.text(`Location: ${formData.location}`, 14, 85);
-    doc.text(`House Number: ${formData.houseNumber}`, 14, 95);
-    doc.text(`Region: ${formData.region}`, 14, 105);
-    if (formData.description) {
-      doc.text(`Additional Description: ${formData.description}`, 14, 115);
-    }
-    
-    // Status
-    doc.setFontSize(16);
-    doc.text('Status Information', 14, 130);
-    
-    doc.setFontSize(12);
-    doc.text(`Marital Status: ${formData.maritalStatus}`, 14, 140);
-    doc.text(`Employment Status: ${formData.employmentStatus}`, 14, 150);
-    
-    // Religious Info
-    doc.setFontSize(16);
-    doc.text('Religious Information', 14, 165);
-    
-    doc.setFontSize(12);
-    doc.text(`Baptism: ${formData.baptism ? 'Yes' : 'No'}`, 14, 175);
-    doc.text(`First Communion: ${formData.firstCommunion ? 'Yes' : 'No'}`, 14, 185);
-    doc.text(`Confirmation: ${formData.confirmation ? 'Yes' : 'No'}`, 14, 195);
-    doc.text(`Holy Matrimony: ${formData.matrimony ? 'Yes' : 'No'}`, 14, 205);
-    doc.text(`Holy Order: ${formData.holyOrder ? 'Yes' : 'No'}`, 14, 215);
-    
-    // Family Info
-    doc.setFontSize(16);
-    doc.text('Family Information', 14, 230);
-    
-    doc.setFontSize(12);
-    doc.text(`Father's Name: ${formData.fatherName}`, 14, 240);
-    doc.text(`Father is a member: ${formData.fatherMember ? 'Yes' : 'No'}`, 14, 250);
-    doc.text(`Father's Church: ${formData.fatherChurch}`, 14, 260);
-    
-    // Add a new page for mother's info
-    doc.addPage();
-    doc.text(`Mother's Name: ${formData.motherName}`, 14, 20);
-    doc.text(`Mother is a member: ${formData.motherMember ? 'Yes' : 'No'}`, 14, 30);
-    doc.text(`Mother's Church: ${formData.motherChurch}`, 14, 40);
-    doc.text(`Has Children: ${formData.hasChildren ? 'Yes' : 'No'}`, 14, 50);
-    
-    // Add footer with date
-    const date = new Date().toLocaleDateString();
-    doc.setFontSize(10);
-    doc.text(`Generated on: ${date}`, 14, 280);
-    
-    // Save the PDF
-    doc.save(`${formData.firstName}_${formData.lastName}_Membership_Form.pdf`);
+    // Create a function to add the image once it's loaded
+    img.onload = function() {
+      // Draw image on canvas
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      
+      // Get base64 representation
+      const imgData = canvas.toDataURL('image/jpeg');
+      
+      // Add image to PDF (centered, with appropriate sizing)
+      doc.addImage(imgData, 'JPEG', 90, 30, 25, 25);
+      
+      // Add divider line
+      doc.setDrawColor(0, 0, 0);
+      doc.setLineWidth(0.5);
+      doc.line(14, 60, 196, 60);
+      
+      // Basic Info
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Basic Information', 14, 70);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Name: ${formData.firstName} ${formData.lastName}`, 14, 80);
+      doc.text(`Email: ${formData.email}`, 14, 90);
+      doc.text(`Phone: ${formData.phone}`, 14, 100);
+      
+      // Address
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Address Information', 14, 115);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Location: ${formData.location}`, 14, 125);
+      doc.text(`House Number: ${formData.houseNumber}`, 14, 135);
+      doc.text(`Region: ${formData.region}`, 14, 145);
+      if (formData.description) {
+        doc.text(`Additional Description: ${formData.description}`, 14, 155, { maxWidth: 180 });
+      }
+      
+      // Status
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Status Information', 14, 170);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Marital Status: ${formData.maritalStatus}`, 14, 180);
+      doc.text(`Employment Status: ${formData.employmentStatus}`, 14, 190);
+      
+      // Religious Info
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Religious Information', 14, 205);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Baptism: ${formData.baptism ? 'Yes' : 'No'}`, 14, 215);
+      doc.text(`First Communion: ${formData.firstCommunion ? 'Yes' : 'No'}`, 14, 225);
+      doc.text(`Confirmation: ${formData.confirmation ? 'Yes' : 'No'}`, 14, 235);
+      doc.text(`Holy Matrimony: ${formData.matrimony ? 'Yes' : 'No'}`, 14, 245);
+      doc.text(`Holy Order: ${formData.holyOrder ? 'Yes' : 'No'}`, 14, 255);
+      
+      // Add a new page for family information
+      doc.addPage();
+      
+      // Add the church logo to the second page as well (smaller)
+      doc.addImage(imgData, 'JPEG', 14, 10, 15, 15);
+      
+      // Continue with Family Info on the new page
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Family Information', 40, 20);
+      
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Father's Name: ${formData.fatherName || 'N/A'}`, 14, 35);
+      doc.text(`Father is a member: ${formData.fatherMember ? 'Yes' : 'No'}`, 14, 45);
+      doc.text(`Father's Place of Worship: ${formData.fatherChurch || 'N/A'}`, 14, 55);
+      
+      doc.text(`Mother's Name: ${formData.motherName || 'N/A'}`, 14, 70);
+      doc.text(`Mother is a member: ${formData.motherMember ? 'Yes' : 'No'}`, 14, 80);
+      doc.text(`Mother's Place of Worship: ${formData.motherChurch || 'N/A'}`, 14, 90);
+      
+      doc.text(`Has Children: ${formData.hasChildren ? 'Yes' : 'No'}`, 14, 105);
+      
+      // Add footer with date
+      const today = new Date();
+      const dateStr = today.toLocaleDateString();
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text(`Generated on: ${dateStr}`, 14, 280);
+      doc.text('St John the Evangelist Catholic Church, Adenta', 105, 280, { align: 'center' });
+      
+      // Save the PDF
+      doc.save(`${formData.firstName}_${formData.lastName}_Membership_Form.pdf`);
+    };
   };
 
   const renderStep = () => {
@@ -169,141 +223,187 @@ const Registration = () => {
   };
 
   const FormSummary = () => (
-    <div className="space-y-8" ref={formRef}>
-      <h2 className="text-2xl font-bold text-center mb-6">Membership Form Summary</h2>
+    <div ref={formRef} className="space-y-6 text-gray-800">
+      <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">Registration Summary</h3>
       
       <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Basic Information</h3>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Basic Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="text-gray-600">Full Name:</p>
-            <p className="font-medium">{formData.firstName} {formData.lastName}</p>
+            <p className="text-gray-600">First Name:</p>
+            <p className="font-medium text-gray-800">{formData.firstName}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Last Name:</p>
+            <p className="font-medium text-gray-800">{formData.lastName}</p>
           </div>
           <div>
             <p className="text-gray-600">Email Address:</p>
-            <p className="font-medium">{formData.email}</p>
+            <p className="font-medium text-gray-800">{formData.email}</p>
           </div>
           <div>
             <p className="text-gray-600">Phone Number:</p>
-            <p className="font-medium">{formData.phone}</p>
+            <p className="font-medium text-gray-800">{formData.phone}</p>
           </div>
         </div>
       </div>
       
       <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Address Information</h3>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Address Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+          <div className="md:col-span-2">
             <p className="text-gray-600">Location/Town:</p>
-            <p className="font-medium">{formData.location}</p>
+            <p className="font-medium text-gray-800">{formData.location}</p>
           </div>
           <div>
             <p className="text-gray-600">House Number:</p>
-            <p className="font-medium">{formData.houseNumber}</p>
+            <p className="font-medium text-gray-800">{formData.houseNumber}</p>
           </div>
           <div>
             <p className="text-gray-600">Region/State:</p>
-            <p className="font-medium">{formData.region}</p>
+            <p className="font-medium text-gray-800">{formData.region}</p>
           </div>
           {formData.description && (
             <div className="md:col-span-2">
               <p className="text-gray-600">Additional Description:</p>
-              <p className="font-medium">{formData.description}</p>
+              <p className="font-medium text-gray-800">{formData.description}</p>
             </div>
           )}
         </div>
       </div>
       
       <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Status Information</h3>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Status Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-gray-600">Marital Status:</p>
-            <p className="font-medium">{formData.maritalStatus}</p>
+            <p className="font-medium text-gray-800">{formData.maritalStatus}</p>
           </div>
           <div>
             <p className="text-gray-600">Employment Status:</p>
-            <p className="font-medium">{formData.employmentStatus}</p>
+            <p className="font-medium text-gray-800">{formData.employmentStatus}</p>
           </div>
         </div>
       </div>
       
       <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Religious Information</h3>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Religious Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-gray-600">Baptism:</p>
-            <p className="font-medium">{formData.baptism ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.baptism ? 'Yes' : 'No'}</p>
           </div>
           <div>
             <p className="text-gray-600">First Communion:</p>
-            <p className="font-medium">{formData.firstCommunion ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.firstCommunion ? 'Yes' : 'No'}</p>
           </div>
           <div>
             <p className="text-gray-600">Confirmation:</p>
-            <p className="font-medium">{formData.confirmation ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.confirmation ? 'Yes' : 'No'}</p>
           </div>
           <div>
             <p className="text-gray-600">Holy Matrimony:</p>
-            <p className="font-medium">{formData.matrimony ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.matrimony ? 'Yes' : 'No'}</p>
           </div>
           <div>
             <p className="text-gray-600">Holy Order:</p>
-            <p className="font-medium">{formData.holyOrder ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.holyOrder ? 'Yes' : 'No'}</p>
           </div>
         </div>
       </div>
       
       <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Family Information</h3>
+        <h3 className="text-xl font-semibold mb-4 text-gray-800">Family Information</h3>
         <div className="space-y-6">
           <div>
-            <h4 className="text-lg font-medium mb-2">Father's Information</h4>
+            <h4 className="text-lg font-medium mb-2 text-gray-800">Father's Information</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <p className="text-gray-600">Father's Name:</p>
-                <p className="font-medium">{formData.fatherName}</p>
+                <p className="font-medium text-gray-800">{formData.fatherName}</p>
               </div>
               <div>
                 <p className="text-gray-600">Father is a member:</p>
-                <p className="font-medium">{formData.fatherMember ? 'Yes' : 'No'}</p>
+                <p className="font-medium text-gray-800">{formData.fatherMember ? 'Yes' : 'No'}</p>
               </div>
               <div>
                 <p className="text-gray-600">Father's Place of Worship:</p>
-                <p className="font-medium">{formData.fatherChurch}</p>
+                <p className="font-medium text-gray-800">{formData.fatherChurch}</p>
               </div>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-medium mb-2">Mother's Information</h4>
+            <h4 className="text-lg font-medium mb-2 text-gray-800">Mother's Information</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <p className="text-gray-600">Mother's Name:</p>
-                <p className="font-medium">{formData.motherName}</p>
+                <p className="font-medium text-gray-800">{formData.motherName}</p>
               </div>
               <div>
                 <p className="text-gray-600">Mother is a member:</p>
-                <p className="font-medium">{formData.motherMember ? 'Yes' : 'No'}</p>
+                <p className="font-medium text-gray-800">{formData.motherMember ? 'Yes' : 'No'}</p>
               </div>
               <div>
                 <p className="text-gray-600">Mother's Place of Worship:</p>
-                <p className="font-medium">{formData.motherChurch}</p>
+                <p className="font-medium text-gray-800">{formData.motherChurch}</p>
               </div>
             </div>
           </div>
           
           <div>
             <p className="text-gray-600">Has Children:</p>
-            <p className="font-medium">{formData.hasChildren ? 'Yes' : 'No'}</p>
+            <p className="font-medium text-gray-800">{formData.hasChildren ? 'Yes' : 'No'}</p>
           </div>
         </div>
       </div>
     </div>
   );
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentProgress = window.scrollY;
+      setScrollProgress(currentProgress / totalScroll);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const interpolateColor = (progress) => {
+    // Using a blue color palette
+    const startColor = { r: 239, g: 246, b: 255 }; // blue-50
+    const midColor = { r: 147, g: 197, b: 253 }; // blue-300
+    const endColor = { r: 30, g: 58, b: 138 }; // blue-900
+
+    let r, g, b;
+    if (progress < 0.5) {
+      // Interpolate between start and mid color
+      const t = progress * 2;
+      r = startColor.r + (midColor.r - startColor.r) * t;
+      g = startColor.g + (midColor.g - startColor.g) * t;
+      b = startColor.b + (midColor.b - startColor.b) * t;
+    } else {
+      // Interpolate between mid and end color
+      const t = (progress - 0.5) * 2;
+      r = midColor.r + (endColor.r - midColor.r) * t;
+      g = midColor.g + (endColor.g - midColor.g) * t;
+      b = midColor.b + (endColor.b - midColor.b) * t;
+    }
+
+    return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+  };
+
   return (
-    <div className="min-h-screen pb-16">
+    <div className="min-h-screen pb-16"
+      style={{ 
+        backgroundColor: interpolateColor(scrollProgress),
+        backgroundImage: `radial-gradient(rgba(30, 58, 138, 0.15) 0.5px, transparent 0.5px)`,
+        backgroundSize: '16px 16px',
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-transparent pointer-events-none" />
       {/* Hero Section with Background Image */}
       <div 
         className="relative h-80 bg-cover bg-center"
@@ -328,7 +428,7 @@ const Registration = () => {
       <div className="w-full max-w-[65rem] mx-auto px-4 md:px-8 -mt-10 relative z-20">
         <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-800">Welcome Evangelist!</h2>
+            <h2 className="text-2xl font-bold text-gray-800">Welcome {formData.firstName ? formData.firstName : 'Evangelist'}!</h2>
             <p className="text-gray-600">Kindly update your profile, this wouldn't take much time.</p>
           </div>
 
@@ -438,13 +538,13 @@ const Registration = () => {
       </div>
 
       {/* Progress Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-blue-600 text-white p-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-600 text-white p-2 z-50">
         <div className="w-full max-w-[65rem] mx-auto">
           <div className="flex items-center">
             <span className="mr-4">Completion Progress ({progress}%):</span>
             <div className="flex-1 bg-blue-300 rounded-full h-4">
               <div 
-                className="bg-blue-100 h-4 rounded-full" 
+                className="bg-green-500 h-4 rounded-full" 
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
