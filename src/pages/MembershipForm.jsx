@@ -126,30 +126,30 @@ const MembershipForm = () => {
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
     
-    doc.text('Citizen of:', 14, 170);
+    doc.text('Country:', 14, 170);
     doc.rect(70, 166, 120, 8);
     
-    doc.text('Home Town:', 14, 180);
+    doc.text('Citizen of:', 14, 180);
     doc.rect(70, 176, 120, 8);
+    
+    doc.text('Home Town:', 14, 190);
+    doc.rect(70, 186, 120, 8);
     
     // Address Section
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
-    doc.text('Residential Location', 14, 195);
+    doc.text('Residential Location', 14, 205);
     
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
     
-    doc.text('Location/Town:', 14, 205);
-    doc.rect(70, 201, 120, 8);
-    
-    doc.text('House Number:', 14, 215);
+    doc.text('Location/Town:', 14, 215);
     doc.rect(70, 211, 120, 8);
     
-    doc.text('Region/State:', 14, 225);
+    doc.text('House Number:', 14, 225);
     doc.rect(70, 221, 120, 8);
     
-    doc.text('Country:', 14, 235);
+    doc.text('Region/State:', 14, 235);
     doc.rect(70, 231, 120, 8);
     
     doc.text('Additional Description:', 14, 245);

@@ -147,13 +147,10 @@ const Registration = () => {
       doc.text('ADDRESS INFORMATION:', 20, 85);
       
       doc.setFontSize(10);
-      doc.text(`Residential Location: ${formData.location}`, 20, 95);
-      doc.text(`House Number: ${formData.houseNumber}`, 20, 105);
-      doc.text(`Region/State: ${formData.region}`, 20, 115);
-      
-      // Add country with flag
-      const selectedCountry = countries.find(c => c.code === formData.country);
-      doc.text(`Country: ${selectedCountry ? `${selectedCountry.flag} ${selectedCountry.name}` : formData.country}`, 20, 125);
+      doc.text(`Country: ${countries.find(c => c.code === formData.country)?.name || formData.country}`, 20, 95);
+      doc.text(`Residential Location: ${formData.location}`, 20, 105);
+      doc.text(`House Number: ${formData.houseNumber}`, 20, 115);
+      doc.text(`Region/State: ${formData.region}`, 20, 125);
       
       if (formData.description) {
         doc.text(`Additional Description: ${formData.description}`, 20, 135);
@@ -255,8 +252,12 @@ const Registration = () => {
       <div className="bg-gray-50 p-6 rounded-lg">
         <h3 className="text-xl font-semibold mb-4 text-gray-800">Address Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="md:col-span-2">
-            <p className="text-gray-600">Location/Town:</p>
+          <div>
+            <p className="text-gray-600">Country:</p>
+            <p className="font-medium text-gray-800">{countries.find(c => c.code === formData.country)?.name || formData.country}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">Residential Location:</p>
             <p className="font-medium text-gray-800">{formData.location}</p>
           </div>
           <div>
@@ -266,10 +267,6 @@ const Registration = () => {
           <div>
             <p className="text-gray-600">Region/State:</p>
             <p className="font-medium text-gray-800">{formData.region}</p>
-          </div>
-          <div>
-            <p className="text-gray-600">Country:</p>
-            <p className="font-medium text-gray-800">{formData.country}</p>
           </div>
           {formData.description && (
             <div className="md:col-span-2">
@@ -626,6 +623,29 @@ const Address = ({ formData, updateFormData }) => (
     <p className="text-gray-600 mb-4">Are you close or a bit farther from us?</p>
     
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label htmlFor="country" className="block text-gray-700 mb-2">
+          <span className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
+            </svg>
+            Country
+          </span>
+        </label>
+        <select
+          id="country"
+          value={formData.country}
+          onChange={(e) => updateFormData('country', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+        >
+          {countries.map((country) => (
+            <option key={country.code} value={country.code}>
+              {country.flag} {country.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      
       <div className="md:col-span-2">
         <label htmlFor="location" className="block text-gray-700 mb-2">
           <span className="flex items-center">
@@ -679,29 +699,6 @@ const Address = ({ formData, updateFormData }) => (
           onChange={(e) => updateFormData('region', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
         />
-      </div>
-
-      <div>
-        <label htmlFor="country" className="block text-gray-700 mb-2">
-          <span className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
-            </svg>
-            Country
-          </span>
-        </label>
-        <select
-          id="country"
-          value={formData.country}
-          onChange={(e) => updateFormData('country', e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
-        >
-          {countries.map((country) => (
-            <option key={country.code} value={country.code}>
-              {country.flag} {country.name}
-            </option>
-          ))}
-        </select>
       </div>
       
       <div className="md:col-span-2">
