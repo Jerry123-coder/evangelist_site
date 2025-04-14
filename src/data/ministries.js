@@ -1,11 +1,11 @@
 const ministries = [
   {
     name: "Ave Maria Choir",
-    details: "[Official information pending] This ministry has not yet submitted their official information. If you are a member of this ministry, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the ministry leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the ministry leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+    details: "The Ave Maria Choir is dedicated to enhancing the liturgical experience through sacred music at St. John the Evangelist Catholic Church.",
+    whoCanJoin: "Membership of Ave Maria Choir is open to all Parishioners of St. John the Evangelist Catholic Church above 15 years of age.",
+    meetingDays: "• Mondays - 7pm - 9pm\n• Fridays - 7:45pm - 9pm",
+    howToJoin: "Every Parishioner who wishes to be a member shall complete a form provided by the secretary upon approval by the Executives.",
+    contactInfo: "President: 0548769229\nSecretary: 0246143269, 0507068300"
   },
   {
     name: "Extraordinary ministers of Holy Eucharist",
@@ -16,12 +16,12 @@ const ministries = [
     contactInfo: "[Official contact information pending]"
   },
   {
-    name: "Knights and Ladies of the Altar",
-    details: "[Official information pending] This ministry has not yet submitted their official information. If you are a member of this ministry, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the ministry leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the ministry leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+    name: "Knights and Ladies of the Altar (KNOLTA)",
+    details: "The Knights and Ladies of the Altar (KNOLTA) is a society for altar servers who assist the priest during liturgical celebrations at St. John the Evangelist Catholic Church.",
+    whoCanJoin: "Our society is open to communicants from the age of 7.",
+    meetingDays: "• Meetings are held on Saturdays at 3:00pm",
+    howToJoin: "Interested parishioners are required to undergo a minimum of 6 months of training, during which a series of tests will be undertaken to ensure their readiness and commitment to serving at the altar.",
+    contactInfo: "Etonam Yao Dotse (President): +233 26 177 5431 || Corwin Addo (Secretary): +233 0 247139178 / +233 0 260876412"
   },
   {
     name: "Lectors",

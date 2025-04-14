@@ -14,39 +14,57 @@
 const mockEvents = [
   {
     id: "event-1",
-    title: "Easter Sunday Mass",
-    date: "April 17, 2025",
+    title: "Palm Sunday",
+    date: "April 13th, 2025",
     location: "Main Church",
-    description: "Join us for Easter Sunday Mass as we celebrate the resurrection of our Lord Jesus Christ.",
+    description: "Mass begins at ROWI - 7:00AM",
     isHighPriority: true,
-    category: "Liturgical"
+    category: "Holy Week"
   },
   {
     id: "event-2",
-    title: "Parish Council Meeting",
-    date: "April 20, 2025",
-    location: "Parish Hall",
-    description: "Monthly meeting of the Parish Council to discuss upcoming activities and initiatives.",
-    isHighPriority: false,
-    category: "Administrative"
+    title: "Holy Thursday",
+    date: "April 17th, 2025",
+    location: "Main Church",
+    description: "Mass of the Lord's Supper - 7:00PM",
+    isHighPriority: true,
+    category: "Holy Week"
   },
   {
     id: "event-3",
-    title: "Youth Group Gathering",
-    date: "April 22, 2025",
-    location: "Youth Center",
-    description: "Weekly gathering for the youth of our parish. All teenagers are welcome to join for faith formation and fellowship.",
-    isHighPriority: false,
-    category: "Youth"
+    title: "Good Friday",
+    date: "April 18th, 2025",
+    location: "Main Church",
+    description: "7:00AM - Stations of the Cross\n2:30PM - Divine Mercy Novena\n3:00PM - Veneration of the Cross",
+    isHighPriority: true,
+    category: "Holy Week"
   },
   {
     id: "event-4",
-    title: "First Communion Preparation",
-    date: "April 24, 2025",
-    location: "Catechetical Center",
-    description: "Preparation class for children receiving their First Holy Communion.",
+    title: "Holy Saturday",
+    date: "April 19th, 2025",
+    location: "Main Church",
+    description: "Mass of Easter Vigil - 7:00PM",
     isHighPriority: true,
-    category: "Sacramental"
+    category: "Holy Week"
+  },
+  {
+    id: "event-5",
+    title: "Easter Sunday",
+    date: "April 20th, 2025",
+    location: "Main Church",
+    description: "Easter Sunday Masses at 7:00AM & 9:30AM",
+    isHighPriority: true,
+    category: "Holy Week"
+  },
+  {
+    id: "event-6",
+    title: "Easter Picnic",
+    date: "April 21st, 2025",
+    location: "Church Grounds",
+    description: "Begins with Holy Mass - 12:00PM",
+    isHighPriority: true,
+    category: "Holy Week"
   }
 ];
 

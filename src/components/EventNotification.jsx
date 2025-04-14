@@ -5,6 +5,7 @@ import { IoIosNotifications } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 import { getUpcomingEvents, getUnreadCount, markEventsAsRead } from "../services/notificationService";
 import "../styles/scrollbar.css";
+import EasterPopup from "./EasterPopup";
 
 // This component is meant to be used within the NavBar
 const EventNotification = ({ className }) => {
@@ -13,6 +14,10 @@ const EventNotification = ({ className }) => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showEasterPopup, setShowEasterPopup] = useState(false);
+  const [showBellIcon, setShowBellIcon] = useState(false);
+  const [bellPosition, setBellPosition] = useState({ top: 0, left: 0 });
+  const notificationRef = React.useRef(null);
   const navigate = useNavigate();
   
   // Fetch upcoming events and unread count on component mount
@@ -35,6 +40,17 @@ const EventNotification = ({ className }) => {
     };
     
     fetchData();
+    
+    // Check if we're on the homepage and if the user hasn't seen the popup before
+    const isHomePage = location.pathname === '' || location.pathname === '/';
+    const hasSeenPopup = localStorage.getItem('hasSeenEasterPopup');
+  
+    if (isHomePage && !hasSeenPopup) {
+      const timer = setTimeout(() => {
+        setShowEasterPopup(true);
+      }, 1000); // Show popup after 1 second
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   // Handle click outside to close the popup
@@ -80,26 +96,70 @@ const EventNotification = ({ className }) => {
       }
     }
   };
+  
+  // Get bell position for animation
+  useEffect(() => {
+    if (notificationRef.current) {
+      const rect = notificationRef.current.getBoundingClientRect();
+      setBellPosition({
+        top: rect.top,
+        left: rect.left + rect.width / 2
+      });
+    }
+  }, []);
+  
+  // Handle Easter popup close
+  const handleClosePopup = () => {
+    setShowEasterPopup(false);
+    localStorage.setItem('hasSeenEasterPopup', 'true');
+    
+    // Show bell icon after popup is closed
+    setTimeout(() => {
+      setShowBellIcon(true);
+    }, 300);
+  };
+  
+  // Handle Easter bell click
+  const handleEasterBellClick = (e) => {
+    e.stopPropagation();
+    setShowEasterPopup(true);
+  };
 
 
 
   return (
-    <div className={`notification-container relative ${className}`}>
+    <>
+      <EasterPopup 
+        isOpen={showEasterPopup} 
+        onClose={handleClosePopup}
+        bellPosition={bellPosition}
+      />
+      <div className={`notification-container relative ${className}`} ref={notificationRef}>
       {/* Bell icon with notification indicator */}
-      <button
-        onClick={toggleNotification}
-        className="relative p-1 rounded-full bg-white hover:bg-gray-800 transition-colors duration-200 focus:outline-none group"
-        aria-label="Notifications"
-      >
+      {showBellIcon || !showEasterPopup ? (
+        <motion.button
+          initial={!showBellIcon ? { scale: 0, rotate: -45 } : false}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20
+          }}
+          onClick={toggleNotification}
+          onDoubleClick={handleEasterBellClick}
+          className="relative p-1 rounded-full bg-white hover:bg-gray-800 transition-colors duration-200 focus:outline-none group"
+          aria-label="Notifications"
+        >
         <IoIosNotifications className="text-blue-600 group-hover:text-white text-2xl transition-colors duration-200" />
         
         {/* Notification badge */}
-        {unreadCount > 0 && (
+        {(unreadCount > 0 || localStorage.getItem('hasSeenEasterPopup')) && (
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-            {unreadCount}
+            {unreadCount > 0 ? unreadCount : '!'}
           </span>
         )}
-      </button>
+      </motion.button>
+      ) : null}
 
       {/* Notification popup */}
       <AnimatePresence>
@@ -189,6 +249,7 @@ const EventNotification = ({ className }) => {
         )}
       </AnimatePresence>
     </div>
+    </>
   );
 };
 

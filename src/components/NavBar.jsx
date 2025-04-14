@@ -39,7 +39,7 @@
 
 // export default Navbar
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from "../assets/evangelist_logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -54,6 +54,7 @@ import { FaVoteYea } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
 import EventNotification from "./EventNotification";
 import { motion } from "framer-motion";
+import EasterPopup from "./EasterPopup";
 
 const Navbar = () => {
   const location = useLocation();
@@ -108,8 +109,12 @@ const Navbar = () => {
   const toggleDropdown = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
   };
+  
+
   return (
-    <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
+    <>
+
+      <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
       <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
         <div className="logo">
           <Link to="">
@@ -340,6 +345,8 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+  );
+    </>
   );
 };
 
