@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaCalendarAlt, FaUser, FaMapMarkerAlt } from "react-icons/fa";
 
 const EnhancedBlogCard = ({ post }) => {
-  const { title, date, category, image, author, summary, url, featured } = post;
+  const { title, date, category, image, author, summary, url, featured, isEvent, location } = post;
 
   return (
     <motion.div 
@@ -30,20 +32,46 @@ const EnhancedBlogCard = ({ post }) => {
         )}
       </div>
 
-      <div className="p-5">
-        {/* Date and Author */}
-        <div className="flex justify-between items-center mb-3 text-sm text-gray-500">
-          <div className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+      <div className="p-5 flex flex-col flex-grow">
+        {/* Category and Event Badge */}
+        <div className="flex justify-between items-start mb-2">
+          <div className="flex flex-wrap gap-2">
+            <span className={`text-xs font-semibold px-2 py-1 rounded-full ${category === 'Announcements' ? 'bg-yellow-500' : 'bg-blue-600'} text-white`}>
+              {category}
+            </span>
+            {isEvent && (
+              <span className="text-xs font-semibold px-2 py-1 rounded-full bg-red-500 text-white">
+                Event
+              </span>
+            )}
+          </div>
+        </div>
+        
+        {/* Date, Location and Author */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {/* Date */}
+          <div className="flex items-center text-xs text-gray-500 bg-gray-100 rounded-full px-2 py-1">
+            <FaCalendarAlt className="h-3 w-3 mr-1" />
             <span>{date}</span>
           </div>
-          <span className="text-blue-600 font-medium">{author}</span>
+          
+          {/* Location - Only shown for events */}
+          {isEvent && location && (
+            <div className="flex items-center text-xs text-blue-600 bg-blue-50 rounded-full px-2 py-1">
+              <FaMapMarkerAlt className="h-3 w-3 mr-1" />
+              <span>{location}</span>
+            </div>
+          )}
+          
+          {/* Author */}
+          <div className="flex items-center text-xs text-gray-500 bg-gray-100 rounded-full px-2 py-1">
+            <FaUser className="h-3 w-3 mr-1" />
+            <span>{author}</span>
+          </div>
         </div>
 
         {/* Title */}
-        <h2 className={`text-xl font-bold mb-2 line-clamp-2 ${category === 'Announcements' ? 'text-yellow-700' : 'text-gray-800'}`}>{title}</h2>
+        <h2 className={`text-xl font-bold mb-2 line-clamp-2 ${isEvent ? 'text-red-700' : category === 'Announcements' ? 'text-yellow-700' : 'text-gray-800'}`}>{title}</h2>
 
         {/* Summary */}
         <p className="text-gray-600 mb-4 line-clamp-4">{summary}</p>

@@ -5,6 +5,30 @@ import formImage from "../assets/forms-image.jpg";
 import assistantPriest from "../assets/Assistantpriest.jpg";
 import churchIcon from "../assets/churchicon.jpg";
 
+// Import the events from the notification service to ensure consistency
+import { getUpcomingEvents } from "../services/notificationService";
+
+// This will be populated with notification events in the blog service
+let notificationEvents = [];
+
+// Initialize notification events
+getUpcomingEvents().then(events => {
+  // Convert notification events to blog post format
+  notificationEvents = events.map(event => ({
+    id: `event-${event.id}`,
+    title: event.title,
+    date: event.date,
+    category: "Announcements",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: event.description,
+    location: event.location,
+    url: `/blog/event-${event.id}`,
+    featured: event.isHighPriority,
+    isEvent: true
+  }));
+});
+
 const catholicNews = [
   // Announcements Section - Upcoming Programs
   {

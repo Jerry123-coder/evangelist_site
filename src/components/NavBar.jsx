@@ -53,6 +53,7 @@ import { BiSolidDonateHeart } from "react-icons/bi";
 import { FaVoteYea } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
 import EventNotification from "./EventNotification";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const location = useLocation();
@@ -156,7 +157,7 @@ const Navbar = () => {
                   </p>
                 </div>
               ) : (
-                <Link to={item.link}>
+                <Link to={item.link} className="relative group overflow-hidden">
                   <p
                     className={`${
                       "/" + item.link === location.pathname
@@ -165,6 +166,7 @@ const Navbar = () => {
                     } text-md font-semibold transition-all duration-200 ease-in-out py-2`}
                   >
                     {item.name}
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                   </p>
                 </Link>
               )}

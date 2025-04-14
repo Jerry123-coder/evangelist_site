@@ -3,12 +3,39 @@ import { useNavigate } from "react-router-dom";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
+import { getUpcomingEvents, getUnreadCount, markEventsAsRead } from "../services/notificationService";
+import "../styles/scrollbar.css";
 
 // This component is meant to be used within the NavBar
 const EventNotification = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(2); // Number of unread notifications
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  
+  // Fetch upcoming events and unread count on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const [eventsData, unreadCountData] = await Promise.all([
+          getUpcomingEvents(),
+          getUnreadCount()
+        ]);
+        setEvents(eventsData);
+        setUnreadCount(unreadCountData);
+        setIsLoading(false);
+      } catch (err) {
+        console.error("Error fetching notification data:", err);
+        setError("Failed to load notifications");
+        setIsLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   // Handle click outside to close the popup
   useEffect(() => {
@@ -23,36 +50,38 @@ const EventNotification = ({ className }) => {
   }, [isOpen]);
 
   // Navigate to blog page when notification is clicked
-  const handleNotificationClick = () => {
-    navigate("/blog");
-    setIsOpen(false);
-    setUnreadCount(0); // Mark as read when clicked
+  const handleNotificationClick = async () => {
+    try {
+      // Mark all events as read in the backend
+      await markEventsAsRead(events.map(event => event.id));
+      setUnreadCount(0);
+      navigate("/blog");
+      setIsOpen(false);
+    } catch (err) {
+      console.error("Error marking notifications as read:", err);
+      // Still navigate even if marking as read fails
+      navigate("/blog");
+      setIsOpen(false);
+    }
   };
 
   // Toggle notification popup
-  const toggleNotification = (e) => {
+  const toggleNotification = async (e) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
-    if (!isOpen) {
-      // When opening, don't reset unread count yet
-    } else {
-      setUnreadCount(0); // Mark as read when closing
+    
+    if (isOpen && unreadCount > 0) {
+      try {
+        // Mark all events as read when closing the popup
+        await markEventsAsRead(events.map(event => event.id));
+        setUnreadCount(0);
+      } catch (err) {
+        console.error("Error marking notifications as read:", err);
+      }
     }
   };
 
-  // Sample upcoming events - replace with actual data from your CMS or API
-  const upcomingEvents = [
-    {
-      title: "Easter Sunday Mass",
-      date: "April 17, 2025",
-      location: "Main Church",
-    },
-    {
-      title: "Parish Council Meeting",
-      date: "April 20, 2025",
-      location: "Parish Hall",
-    }
-  ];
+
 
   return (
     <div className={`notification-container relative ${className}`}>
@@ -89,30 +118,59 @@ const EventNotification = ({ className }) => {
                 <IoIosNotifications className="mr-2 text-yellow-300" />
                 <h3 className="font-semibold text-sm">Upcoming Events</h3>
               </div>
-              <span className="text-xs bg-blue-700/30 px-2 py-1 rounded-full text-blue-50">Click for details</span>
+              <span className="text-xs bg-blue-700/30 px-2 py-1 rounded-full text-blue-50">
+                {isLoading ? 'Loading...' : 'Click for details'}
+              </span>
             </div>
 
             {/* Events list with enhanced styling */}
-            <div className="max-h-[250px] overflow-y-auto px-2 py-2">
-              {upcomingEvents.map((event, index) => (
-                <div 
-                  key={index}
-                  onClick={handleNotificationClick}
-                  className="p-3 mb-2 rounded-lg border border-blue-50 hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow"
-                >
-                  <h4 className="font-semibold text-sm text-gray-800">{event.title}</h4>
-                  <div className="flex flex-wrap items-center text-xs text-gray-500 mt-2">
-                    <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mr-2 mb-1">
-                      <FaCalendarAlt className="mr-1 text-blue-500" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mb-1">
-                      <FaMapMarkerAlt className="mr-1 text-blue-500" />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
+            <div className="max-h-[250px] overflow-y-auto px-2 py-2 scrollbar-hide">
+              {isLoading ? (
+                <div className="flex justify-center items-center py-6">
+                  <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-500"></div>
                 </div>
-              ))}
+              ) : error ? (
+                <div className="p-3 text-center text-red-500">
+                  <p className="text-sm">{error}</p>
+                  <button 
+                    onClick={() => window.location.reload()} 
+                    className="mt-2 text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                  >
+                    Retry
+                  </button>
+                </div>
+              ) : events.length === 0 ? (
+                <div className="p-3 text-center text-gray-500">
+                  <p className="text-sm">No upcoming events</p>
+                </div>
+              ) : (
+                events.map((event) => (
+                  <div 
+                    key={event.id}
+                    onClick={handleNotificationClick}
+                    className="p-3 mb-2 rounded-lg border border-blue-50 hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow"
+                  >
+                    <h4 className="font-semibold text-sm text-gray-800">{event.title}</h4>
+                    <div className="flex flex-wrap items-center text-xs text-gray-500 mt-2">
+                      <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mr-2 mb-1">
+                        <FaCalendarAlt className="mr-1 text-blue-500" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mb-1">
+                        <FaMapMarkerAlt className="mr-1 text-blue-500" />
+                        <span>{event.location}</span>
+                      </div>
+                    </div>
+                    {event.isHighPriority && (
+                      <div className="mt-1 flex">
+                        <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">
+                          Important
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))
+              )}
             </div>
 
             {/* Enhanced Footer */}
