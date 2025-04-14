@@ -52,6 +52,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
 import { FaVoteYea } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
+import EventNotification from "./EventNotification";
 
 const Navbar = () => {
   const location = useLocation();
@@ -207,10 +208,11 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <div className="hidden lg:flex flex-col justify-center">
+        <div className="hidden lg:flex items-center space-x-4">
+          <EventNotification className="mr-2" />
           <button
             onClick={() => navigate("/donate")}
-            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white  hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
+            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
           >
             <span>Donate</span>
             <span className="w-5">
