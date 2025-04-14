@@ -53,7 +53,7 @@ const EventNotification = ({ className }) => {
     }
   }, []);
 
-  // Handle click outside to close the popup
+  // Handle click/touch outside to close the popup
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && !event.target.closest('.notification-container')) {
@@ -61,8 +61,13 @@ const EventNotification = ({ className }) => {
       }
     };
 
+    // Add both mouse and touch event listeners for mobile compatibility
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, [isOpen]);
 
   // Navigate to blog page when notification is clicked
@@ -97,15 +102,29 @@ const EventNotification = ({ className }) => {
     }
   };
   
-  // Get bell position for animation
+  // Get bell position for animation with improved mobile compatibility
   useEffect(() => {
-    if (notificationRef.current) {
-      const rect = notificationRef.current.getBoundingClientRect();
-      setBellPosition({
-        top: rect.top,
-        left: rect.left + rect.width / 2
-      });
-    }
+    const updateBellPosition = () => {
+      if (notificationRef.current) {
+        const rect = notificationRef.current.getBoundingClientRect();
+        setBellPosition({
+          top: rect.top,
+          left: rect.left + rect.width / 2
+        });
+      }
+    };
+    
+    // Update position initially
+    updateBellPosition();
+    
+    // Update position on resize and orientation change for mobile
+    window.addEventListener('resize', updateBellPosition);
+    window.addEventListener('orientationchange', updateBellPosition);
+    
+    return () => {
+      window.removeEventListener('resize', updateBellPosition);
+      window.removeEventListener('orientationchange', updateBellPosition);
+    };
   }, []);
   
   // Handle Easter popup close

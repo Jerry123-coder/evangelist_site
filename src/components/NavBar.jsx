@@ -14,7 +14,7 @@
 //      ]
 
 //      return (
-//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0");
+//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0">
 
 //           {/* <div className='w-full flex justify-between items-center sticky top-0 bg-white'> */}
 //                <div className="logo">
@@ -112,9 +112,7 @@ const Navbar = () => {
   
 
   return (
-    <>
-
-      <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
+    <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
       <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
         <div className="logo">
           <Link to="">
@@ -345,8 +343,6 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  );
-    </>
   );
 };
 

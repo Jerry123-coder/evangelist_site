@@ -29,10 +29,10 @@ const EasterPopup = ({ isOpen, onClose, bellPosition }) => {
           <motion.div
             initial={{ scale: 0.8, opacity: 0, y: -50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={bellPosition.top ? { 
+            exit={bellPosition.top && typeof window !== 'undefined' ? { 
               scale: 0.1, 
               opacity: 0,
-              x: bellPosition.left - window.innerWidth/2,
+              x: bellPosition.left - (typeof window !== 'undefined' ? window.innerWidth/2 : 0),
               y: bellPosition.top - 70,
               transition: { duration: 0.6, ease: "easeInOut" }
             } : {
@@ -50,7 +50,9 @@ const EasterPopup = ({ isOpen, onClose, bellPosition }) => {
               zIndex: 10000,
               width: '90%',
               maxWidth: '600px',
-              margin: '0 auto'
+              margin: '0 auto',
+              WebkitTransform: 'translateX(-50%)', /* For iOS Safari */
+              touchAction: 'manipulation' /* Improves touch handling */
             }}
             className="bg-white rounded-xl overflow-hidden shadow-2xl"
 
