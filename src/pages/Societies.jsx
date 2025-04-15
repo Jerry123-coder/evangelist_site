@@ -1,7 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-// import animation from '../assets/animation/'
-import lottie from "lottie-web";
-import animationData from "../assets/animation/data.json";
+import React, { useState } from "react";
 import {
   ministries,
   societies,
@@ -19,7 +16,6 @@ import {
 } from "react-icons/fa";
 
 const Societies = () => {
-  const animationContainer = useRef(null);
   const [isActive, setIsActive] = useState("Ave Maria Choir");
   const items = [
     "Ministries",
@@ -35,39 +31,6 @@ const Societies = () => {
   const handleItemDisplay = (item) => {
     setIsActive(item.name);
   };
-
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      border: "none",
-    },
-    overlay: {
-      backgroundColor: "rgba(255, 255, 255, 1)",
-    },
-  };
-
-  useEffect(() => {
-    // Initialize Lottie animation
-    const anim = lottie.loadAnimation({
-      container: animationContainer.current,
-      renderer: "svg", // Use 'svg' or 'canvas'
-      loop: true, // Set to true for loop, false for no loop
-      autoplay: true, // Set to true to start playing automatically
-      animationData: animationData, // Your animation JSON data
-    });
-
-    return () => {
-      // Cleanup on unmount
-      anim.destroy();
-    };
-  }, []);
-
-  useEffect(() => {}, []);
 
   const handleCategorySelection = (selectedCategory) => {
     setCategory(selectedCategory);
@@ -123,11 +86,19 @@ const Societies = () => {
       currentItems = ministries;
   }
 
+  // Helper function to render meeting days with line breaks
+  const renderMeetingDays = (text) => {
+    if (!text) return null;
+    return text.split('\n').map((line, index) => (
+      <div key={index} className="mb-1">{line}</div>
+    ));
+  };
+
   return (
     <main className="min-h-screen pb-6 md:pb-10">
       {/* Hero Section - Mobile Friendly */}
       <div className="relative flex flex-col bg-cover bg-center items-center w-full min-h-[12rem] md:h-[20rem] px-4 md:px-8 lg:px-[20rem] justify-center">
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-blue-600 opacity-70"></div>
         <div className="relative z-10 text-white text-center md:text-left w-full max-w-[65rem] mx-auto px-4">
           <span className="text-lg md:text-2xl block mb-3 md:mb-2 font-semibold opacity-75">
             All You Need To Know About
@@ -199,7 +170,7 @@ const Societies = () => {
                     isActive === item.name
                       ? "bg-blue-900 text-white"
                       : "hover:bg-blue-900/30"
-                  } ${index !== 0 && "border-t border-slate-950/10"}`}
+                  }`}
                 >
                   {item.name}
                 </div>
@@ -207,29 +178,26 @@ const Societies = () => {
             </div>
           </div>
 
-          {/* Content Area */}
-          <div className="w-full md:w-3/4 bg-slate-100 rounded-lg">
+          {/* Main Content Area */}
+          <div className="md:w-3/4">
             {/* Content Header */}
-            <div className="p-4 md:p-6 border-b border-slate-900/10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                {currentItems.find((item) => item.name === isActive)?.name}
-              </h2>
+            <div className="bg-blue-100 p-4 md:p-8">
+              <div className="text-blue-900 text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                  {isActive}
+                </h2>
+                {currentItems.map(
+                  (item) =>
+                    item.name === isActive && (
+                      <div key={item.name} className="text-base font-medium">
+                        {item.details}
+                      </div>
+                    )
+                )}
+              </div>
             </div>
 
-            {/* Content Details */}
-            <div className="p-4 md:p-6">
-              {currentItems.map(
-                (item) =>
-                  item.name === isActive && (
-                    <div key={item.name} className="prose max-w-none">
-                      {item.details}
-                    </div>
-                  )
-              )}
-            </div>
-            {/* Info Sections */}
-
-            <div className="bg-blue-950 w-full p-10 flex flex-col space-y-20 px-14">
+            <div className="bg-blue-50 w-full p-10 flex flex-col space-y-20 px-14">
               <div className="flex  md:flex w-full ">
                 <div className=" w-full md:w-1/3 flex md:items-center md:justify-center">
                   <span className="flex items-center justify-center md:w-[7rem] md:h-[7rem] w-[4rem] h-[4rem] rounded-full text-5xl bg-yellow-500 text-blue-950  ">
@@ -237,13 +205,13 @@ const Societies = () => {
                   </span>
                 </div>
 
-                <span className="text-white w-full border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-full border-b-2 border-blue-200 pb-5">
                   <p className="text-sm md:text-xl font-bold">Who can join?</p>
                   {currentItems.map(
                     (item) =>
                       item.name === isActive && (
                         <div key={item.name} className="text-base font-medium">
-                          {item.details}
+                          {item.whoCanJoin || item.details}
                         </div>
                       )
                   )}
@@ -251,13 +219,13 @@ const Societies = () => {
               </div>
 
               <div className="flex w-full ">
-                <span className="text-white w-2/3 border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
                   <p className="text-xl font-bold">Our Meeting days</p>
                   {currentItems.map(
                     (item) =>
                       item.name === isActive && (
                         <div key={item.name} className="text-base font-medium">
-                          {item.details}
+                          {renderMeetingDays(item.meetingDays || item.details)}
                         </div>
                       )
                   )}
@@ -276,7 +244,7 @@ const Societies = () => {
                   </span>
                 </div>
 
-                <span className="text-white w-2/3 border-b-2 border-white/40 pb-5">
+                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
                   <p className="text-xl font-bold">
                     How you can become a part of us
                   </p>
@@ -284,15 +252,22 @@ const Societies = () => {
                     (item) =>
                       item.name === isActive && (
                         <div key={item.name} className="text-base font-medium">
-                          {item.details}
+                          {item.howToJoin || item.details}
                         </div>
                       )
                   )}
                 </span>
               </div>
 
-              <div className="py-3 px-[3rem] border-t-2 rounded-full bg-white text-slate-900  text-sm text-center">
-                For More details kindly contact: 0234567890 // 0598765432
+              <div className="py-3 px-[3rem] border-t-2 rounded-full bg-blue-600 text-white text-sm text-center">
+                {currentItems.map(
+                  (item) =>
+                    item.name === isActive && (
+                      <div key={item.name}>
+                        For More details kindly contact: {item.contactInfo || "0234567890 // 0598765432"}
+                      </div>
+                    )
+                )}
               </div>
             </div>
           </div>

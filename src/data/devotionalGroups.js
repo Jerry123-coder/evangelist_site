@@ -1,11 +1,19 @@
 const devotionalGroups = [
   {
     name: "Sacred Heart Confraternity",
-    details: "The Sacred Heart Confraternity is a devotional group dedicated to promoting devotion to the Sacred Heart of Jesus. Members participate in special prayers, adorations, and activities that deepen their love and understanding of Christ's love as symbolized by His Sacred Heart.",
+    details: "[Official information pending] This devotional group has not yet submitted their official information. If you are a member of this group, please contact the parish office to provide updated details.",
+    whoCanJoin: "[Official information pending] Please contact the group leadership for accurate membership requirements.",
+    meetingDays: "• [Official meeting schedule pending]",
+    howToJoin: "[Official information pending] Please contact the group leadership for accurate joining procedures.",
+    contactInfo: "[Official contact information pending]"
   },
   {
     name: "Legion of Mary",
-    details: "The Legion of Mary is a lay apostolic association of Catholics who serve the Church and their neighbor on a voluntary basis. With devotion to Mary at its core, members participate in the life of the parish through visitation of families, the sick, and through collaboration in apostolic and missionary undertakings sponsored by the parish.",
+    details: "[Official information pending] This devotional group has not yet submitted their official information. If you are a member of this group, please contact the parish office to provide updated details.",
+    whoCanJoin: "[Official information pending] Please contact the group leadership for accurate membership requirements.",
+    meetingDays: "• [Official meeting schedule pending]",
+    howToJoin: "[Official information pending] Please contact the group leadership for accurate joining procedures.",
+    contactInfo: "[Official contact information pending]"
   },
 ];
 

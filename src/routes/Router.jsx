@@ -23,6 +23,8 @@ import Sacraments from "../pages/Sacraments.jsx";
 import AdminDashboard from "../pages/admin/AdminDashboard.jsx";
 import LoginPage from "../pages/admin/Login.jsx";
 import ProtectedRoute from "../pages/admin/ProtectedRoute.jsx";
+import Registration from "../pages/Registration";
+import MembershipForm from "../pages/MembershipForm";
 
 
 export const Router = () => {
@@ -59,6 +61,12 @@ export const Router = () => {
             </ProtectedRoute>
           ),
         },
+
+        { element: <Registration />, path: "membership" },
+        { element: <MembershipForm />, path: "membership-form" },
+
+        //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
+
       ],
     },
     {

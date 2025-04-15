@@ -1,10 +1,13 @@
 const childrenMinistries = [
-    {
-      name: "Children Ministry",
-      details:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore officia iste maxime! Dolorem perferendis odio corporis voluptatum corrupti, molestiae fugiat pariatur similique expedita, quas obcaecati ab at, aut non sunt?",
-    },
-
-  ];
+  {
+    name: "Children Ministry",
+    details:
+      "[Official information pending] This ministry has not yet submitted their official information. If you are a member of this ministry, please contact the parish office to provide updated details.",
+    whoCanJoin: "[Official information pending] Please contact the ministry leadership for accurate membership requirements.",
+    meetingDays: "• [Official meeting schedule pending]",
+    howToJoin: "[Official information pending] Please contact the ministry leadership for accurate joining procedures.",
+    contactInfo: "[Official contact information pending]"
+  },
+];
 
 export default childrenMinistries;

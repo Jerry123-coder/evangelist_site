@@ -290,7 +290,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-3 text-center text-xs text-white">
-          <p>CE Airport City . All rights reserved.</p>
+          <p>St. John The Evangelist Catholic Church. All rights reserved.</p>
         </div>
       </div>
     </footer>

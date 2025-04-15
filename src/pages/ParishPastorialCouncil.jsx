@@ -61,10 +61,11 @@ This collaborative leadership structure ensures that the council operates with t
           name: "Rev. Fr. Joseph Effah Siaw",
           position: "Assisting Priest/Vice President",
         },
-        { name: "Dr. Benjamin Otchere Ankrah", position: "Chairperson" },
-        { name: "-", position: "Secretary" },
-        { name: "-", position: "Assistant Secretary" },
-        { name: "-", position: "Financial Secretary" },
+        { name: "Dr. Benjamin Otchere Ankrah", position: "Chairman" },
+        { name: "John K. Amihere Mensah", position: "Vice Chairman" },
+        { name: "Patricia Alberta Osei Esq.", position: "Secretary" },
+        { name: "Emmanuel Yeleyoung", position: "Assistant Secretary" },
+        { name: "Kingsley Arthur", position: "Financial Secretary" },
     ]
     },
     {
@@ -72,17 +73,37 @@ This collaborative leadership structure ensures that the council operates with t
       content: "The Parish Pastoral Council (PPC) operates through various standing committees, each tasked with specific responsibilities that contribute to the spiritual, pastoral, and operational life of the parish. These committees are led by Conveners who are responsible for coordinating their respective committee's activities, ensuring alignment with the council's goals, and fostering collaboration among members.",
       type: "table",
       tableData: [
-        { position: "Finance", name: "-" },
-        { position: "Youth and Vocation", name: "-" },
-        { position: "Welfare", name: "-" },
-        { position: "Laity", name: "-" },
-        { position: "Fundraising", name: "-" },
+        { position: "Finance", name: "Kingsley Arthur" },
+        { position: "Youth", name: "Bridget A. Adjigbli" },
+        { position: "Welfare", name: "Thomas Abaidoo Jnr" },
+        { position: "Laity", name: "Ansong Dankyi" },
+        { position: "Fundraising / Harvest", name: "P. V Yeboah Assiamah" },
+        { position: "Education", name: "Felicia Asizem Tankia" },
+        { position: "Liturgical", name: "Fifii Ghartey" },
+        { position: "Security", name: "Major Mathais Yeli-Ahig" },
+        { position: "Projects", name: "John K. Amihere Mensah" },
       ],
       extraContent: {
         items: [
           "This committee structure enables the PPC to address the diverse needs of the parish effectively and ensure active engagement from parishioners across different areas of ministry.",
         ],
       },
+    },
+    {
+      title: "Members",
+      type: "table",
+      tableData: [
+        { name: "Shirley Ama Mawuli"},
+        { name: "Sybil Decker"},
+        { name: "Hope K. Dordunu"},
+        { name: "Thomas Apreku" },
+        { name: "Henry Benya"},
+        { name: "Priscilla Enyonam Abotsi Esq"},
+        { name: "Seibik Bugri"},
+        { name: "Rosemary Asuka" },
+        { name: "Charity Sena Amartey"},
+        { name: "Kingsley Arthur" },
+    ]
     },
     
   ];
@@ -147,15 +168,27 @@ This collaborative leadership structure ensures that the council operates with t
             <table className="w-full max-w-2xl text-gray-100">
               <thead className="bg-blue-900/30">
                 <tr>
-                  <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Committee" : "Position"}</th>
-                  <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Convener" : "Name"}</th>
+                  {title === "Members" ? (
+                    <th className="px-3 py-2 text-left text-sm">Name</th>
+                  ) : (
+                    <>
+                      <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Committee" : "Position"}</th>
+                      <th className="px-3 py-2 text-left text-sm">{title === "Parish Pastoral Council Standing Committees" ? "Convener" : "Name"}</th>
+                    </>
+                  )}
                 </tr>
               </thead>
               <tbody>
                 {tableData.map((row, i) => (
                   <tr key={i} className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                    <td className="px-3 py-2 text-sm">{row.position}</td>
-                    <td className="px-3 py-2 text-sm">{row.name}</td>
+                    {title === "Members" ? (
+                      <td className="px-3 py-2 text-sm">{row.name}</td>
+                    ) : (
+                      <>
+                        <td className="px-3 py-2 text-sm">{row.position}</td>
+                        <td className="px-3 py-2 text-sm">{row.name}</td>
+                      </>
+                    )}
                   </tr>
                 ))}
               </tbody>
