@@ -1,41 +1,39 @@
-import { motion } from "framer-motion";
-import stn_image1 from "../assets/stn_image1.jpg";
-import stn_image2 from "../assets/stn_image2.jpg";
-import stn_image3 from "../assets/stn_image3.jpg";
-import stn_image4 from "../assets/societyimage.jpg";
-import stanford_man from "../assets/stanford_man.png";
-import thePastor from "../assets/thePastor.png";
-import statImage from "../assets/stn_image2.jpg";
-import stanford from "../assets/stanford_bg.png";
-import Statistic from "../components/StatItem";
-import PartnerCarousel from "../components/PartnerCarousel";
-import VideoPlayer from "../components/Home/VideoPlayer";
-import Testimonial from "../components/Testimonial";
+import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useState, useEffect, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
-import imgBar from "../assets/imageBar.svg";
+import { Link } from "react-router-dom";
 import { FaBible, FaCalendarAlt, FaChurch, FaUserClock, FaCross } from "react-icons/fa";
 import { IoDocumentTextSharp } from "react-icons/io5";
 
-import { useRef, useState, useEffect } from "react";
-import ProgramCard from "../components/ProgramCard";
-import NewsCard from "../components/NewsCard";
+// Import critical images directly
 import homeBg from "../assets/home-bg.jpg";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
+import thePastor from "../assets/thePastor.png";
+import stn_image4 from "../assets/societyimage.jpg";
 import programme from "../assets/programme.jpg";
 import programme1 from "../assets/programme1.jpg";
 import programme2 from "../assets/programme2.jpg";
 import programme3 from "../assets/programme3.jpg";
-import AOS from "aos";
-import { Link } from "react-router-dom";
-import HeroCarousel from "../components/HeroCarousel";
 
+// Lazy load components
+const HeroCarousel = lazy(() => import("../components/HeroCarousel"));
+const ProgramCard = lazy(() => import("../components/ProgramCard"));
+const MassScheduleSection = lazy(() => import("../components/Home/Mass"));
+const PastorSection = lazy(() => import("../components/Home/PastorSection"));
+const GallerySection = lazy(() => import("../components/Home/GallerySection"));
+const TikTokSection = lazy(() => import("../components/Home/TikTokSection"));
+
+// Import AOS with reduced motion preference
+import AOS from "aos";
 import "aos/dist/aos.css";
-import MassScheduleSection from "../components/Home/Mass";
-import TikTokSection from "../components/Home/TikTokSection";
-import PastorSection from "../components/Home/PastorSection";
-import GallerySection from "../components/Home/GallerySection";
+// Create a loading placeholder component
+const LoadingPlaceholder = () => (
+  <div className="flex justify-center items-center py-20">
+    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+  </div>
+);
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,14 +42,23 @@ const Home = () => {
   const [isOfficeHovered, setIsOfficeHovered] = useState(false);
   const [isCalenderHovered, setIsCalenderHovered] = useState(false);
   const newsContainerRef = useRef(null);
-
+  const prefersReducedMotion = useReducedMotion();
+  const [imagesLoaded, setImagesLoaded] = useState({});
+  
+  // Optimize AOS for performance
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: prefersReducedMotion ? 0 : 800,
       once: true,
-      easing: "ease-in-out",
+      easing: "ease-out",
+      disable: window.innerWidth < 640, // Disable animations on small screens
     });
-  }, []);
+    
+    // Clean up AOS on component unmount
+    return () => {
+      AOS.refresh();
+    };
+  }, [prefersReducedMotion]);
 
   const handleBulletinDownload = () => {
     const pdfUrl =
@@ -64,6 +71,7 @@ const Home = () => {
     container.scrollLeft += event.deltaY;
   };
 
+  // Define slides directly with imported images
   const slides = [
     {
       image: homeBg,
@@ -94,13 +102,17 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <HeroCarousel slides={slides} />
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <HeroCarousel slides={slides} />
+      </Suspense>
 
-      {/* Pastor Section */}
-      <PastorSection image={thePastor} />
+      {/* Pastor Section - Lazy loaded */}
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <PastorSection image={thePastor} />
+      </Suspense>
       {/* Quick Links Section */}
       <div
-        className="relative bg-cover bg-center z-10 py-20"
+        className="relative bg-cover bg-center z-10 py-12 sm:py-20"
         style={{ backgroundImage: `url(${img1})` }}
       >
         <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -243,11 +255,11 @@ const Home = () => {
           data-aos-delay="200"
         >
           <h3 className="text-xl md:text-2xl font-semibold mb-4">
-            HELPING CHILDREN TO SEEK CHRIST: FROM
+                Pilgrims Of Hope: A Year Of Discipleship.
             <br />
-            DISCOVERY TO DISCIPLESHIP.
+  
           </h3>
-          <p className="text-lg text-yellow-400">JOHN 12:21</p>
+          <p className="text-lg text-yellow-400">ROMANS 5:5</p>
         </div>
       </div>
 
@@ -286,34 +298,53 @@ const Home = () => {
         </div>
       </div>
 
-      <MassScheduleSection />
-      <TikTokSection />
-      <GallerySection />
-      {/* Latest Updates Section */}
+      {/* Lazy loaded sections */}
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <MassScheduleSection />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <TikTokSection />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>  
+        <GallerySection />
+      </Suspense>
+      {/* Latest Updates Section - Optimized for mobile */}
       <div
         ref={newsContainerRef}
-        onWheel={handleScroll}
-        className="flex flex-col w-screen py-20 px-[2rem]  md:px-[5rem]"
+        className="flex flex-col w-full py-12 sm:py-20 px-4 sm:px-[2rem] md:px-[5rem]"
       >
-        <div className="text-2xl font-bold w-full" data-aos="fade-up">
+        <div className="text-xl sm:text-2xl font-bold w-full mb-6" data-aos="fade-up">
           Latest Updates
         </div>
 
-        <div className="flex flex-wrap justify-center flex-col lg:flex-row lg:justify-center gap-x-[2%] gap-y-8 overflow-hidden w-full py-2 px-0.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
           <div data-aos="fade-up" data-aos-delay="0">
-            <ProgramCard programme={programme} title="25th Anniversary" />
+            <Suspense fallback={<LoadingPlaceholder />}>
+              <ProgramCard programme={programme} title="25th Anniversary" />
+            </Suspense>
           </div>
+          
+          <div data-aos="fade-up" data-aos-delay="100">
+            <Suspense fallback={<LoadingPlaceholder />}>
+              <ProgramCard
+                programme={programme1}
+                title="Evangelist School Visitation"
+              />
+            </Suspense>
+          </div>
+          
           <div data-aos="fade-up" data-aos-delay="200">
-            <ProgramCard
-              programme={programme1}
-              title="Evangelist School Visitation"
-            />
+            <Suspense fallback={<LoadingPlaceholder />}>
+              <ProgramCard programme={programme2} title="Pentecost Novena" />
+            </Suspense>
           </div>
-          <div data-aos="fade-up" data-aos-delay="400">
-            <ProgramCard programme={programme2} title="Pentecost Novena" />
-          </div>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <ProgramCard programme={programme3} title="Youth Quiz" />
+          
+          <div data-aos="fade-up" data-aos-delay="300">
+            <Suspense fallback={<LoadingPlaceholder />}>
+              <ProgramCard programme={programme3} title="Youth Quiz" />
+            </Suspense>
           </div>
         </div>
       </div>

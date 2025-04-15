@@ -1,9 +1,17 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const HeroCarousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  // Preload the next image
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    const img = new Image();
+    img.src = slides[nextIndex].image;
+  }, [currentIndex, slides]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -19,12 +27,11 @@ const HeroCarousel = ({ slides }) => {
     const timer = setInterval(() => {
       nextSlide();
     }, 30000);
-
     return () => clearInterval(timer);
   }, [nextSlide]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div ref={carouselRef} className="relative h-screen w-full overflow-hidden">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
@@ -43,23 +50,21 @@ const HeroCarousel = ({ slides }) => {
               backgroundColor: '#000',
               width: '100%',
               height: '100%',
-              minWidth: slides[currentIndex].maintext === "Come As You Are" ? '100vw' : 'auto',
-              minHeight: slides[currentIndex].maintext === "Come As You Are" ? '100%' : 'auto'
             }}
           >
             <div className="absolute inset-0 bg-black opacity-60"></div>
           </div>
 
           <div className="relative h-full flex items-center justify-center">
-            <div className="text-white text-center z-10 w-[60rem] flex flex-col gap-5 p-8 lg:p-0">
-              <div className="text-xs lg:text-2xl px-8 invisible lg:visible lg:mb-8 font-base">
+            <div className="text-white text-center z-10 w-full max-w-[60rem] flex flex-col gap-5 p-4 sm:p-8 lg:p-0">
+              <div className="text-xs sm:text-sm lg:text-2xl px-4 sm:px-8 lg:visible lg:mb-8 font-base">
                 {slides[currentIndex].subtext}
               </div>
-              <p className="text-4xl md:text-6xl lg:text-8xl font-bold w-full">
+              <p className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold w-full">
                 {slides[currentIndex].maintext}
               </p>
-              <div className="flex space-x-10 justify-center md:mt-10">
-                <button className="bg-blue-500 w-[12rem] h-[3rem] text-lg text-white rounded-full hover:scale-105 hover:bg-blue-600 transition-all duration-300">
+              <div className="flex justify-center md:mt-10">
+                <button className="bg-blue-500 w-[10rem] sm:w-[12rem] h-[2.5rem] sm:h-[3rem] text-base sm:text-lg text-white rounded-full hover:scale-105 hover:bg-blue-600 transition-all duration-300">
                   {slides[currentIndex].buttonText}
                 </button>
               </div>
@@ -68,29 +73,32 @@ const HeroCarousel = ({ slides }) => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on small screens */}
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20"
+        className="hidden sm:block absolute left-2 sm:left-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-1 sm:p-2 z-20"
+        aria-label="Previous slide"
       >
-        <FaChevronLeft className="text-white text-base" />
+        <FaChevronLeft className="text-white text-sm sm:text-base" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20"
+        className="hidden sm:block absolute right-2 sm:right-5 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-1 sm:p-2 z-20"
+        aria-label="Next slide"
       >
-        <FaChevronRight className="text-white text-base" />
+        <FaChevronRight className="text-white text-sm sm:text-base" />
       </button>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      {/* Slide Indicators - Smaller on mobile */}
+      <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
               currentIndex === index ? "bg-white" : "bg-white/50"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

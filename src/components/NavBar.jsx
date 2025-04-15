@@ -14,7 +14,7 @@
 //      ]
 
 //      return (
-//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0");
+//           <div className="flex flex-row items-center justify-between text-center bg-white px-8 py-5  -ml-8 lg:px-32 w-screen lg:-ml-32 sticky top-0">
 
 //           {/* <div className='w-full flex justify-between items-center sticky top-0 bg-white'> */}
 //                <div className="logo">
@@ -39,7 +39,7 @@
 
 // export default Navbar
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import STNLogo from "../assets/stn_logo.svg";
 import evangelistLogo from "../assets/evangelist_logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -52,6 +52,9 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
 import { FaVoteYea } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
+import EventNotification from "./EventNotification";
+import { motion } from "framer-motion";
+import EasterPopup from "./EasterPopup";
 
 const Navbar = () => {
   const location = useLocation();
@@ -70,6 +73,7 @@ const Navbar = () => {
     portals: [
       { name: "EDA Voting", link: "eda-voting", icon: <FaVoteYea className="inline-block mr-1" /> },
       { name: "Download Membership Form", link: "membership-form", icon: <HiDocumentDownload className="inline-block mr-0.5" /> },
+      { name: "Online Membership Registration", link: "membership", icon: <BiGroup className="inline-block mr-1" /> },
     ],
     councils: [
       { name: "Christian sons", link: "christian-sons" },
@@ -105,6 +109,8 @@ const Navbar = () => {
   const toggleDropdown = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
   };
+  
+
   return (
     <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
       <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
@@ -154,7 +160,7 @@ const Navbar = () => {
                   </p>
                 </div>
               ) : (
-                <Link to={item.link}>
+                <Link to={item.link} className="relative group overflow-hidden">
                   <p
                     className={`${
                       "/" + item.link === location.pathname
@@ -163,6 +169,7 @@ const Navbar = () => {
                     } text-md font-semibold transition-all duration-200 ease-in-out py-2`}
                   >
                     {item.name}
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                   </p>
                 </Link>
               )}
@@ -206,10 +213,11 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <div className="hidden lg:flex flex-col justify-center">
+        <div className="hidden lg:flex items-center space-x-4">
+          <EventNotification className="mr-2" />
           <button
             onClick={() => navigate("/donate")}
-            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white  hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
+            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
           >
             <span>Donate</span>
             <span className="w-5">
