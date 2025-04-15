@@ -34,8 +34,8 @@ const Contact = () => {
               <h3 className="text-xl font-semibold text-blue-900 mb-2">
                 Call Us
               </h3>
-              <p className="text-gray-600">+233 302 321 4517</p>
-              <p className="text-gray-600">+233 302 321 4517</p>
+              <p className="text-gray-600">+233 (0) 302 321 4517</p>
+              <p className="text-gray-600">+233 (0) 302 321 4517</p>
             </div>
           </div>
 
