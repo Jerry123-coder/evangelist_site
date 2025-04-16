@@ -15,12 +15,12 @@ const ParishYouthCouncil = () => {
     },
     {
       position: "PPC Youth Convener",
-      name: "Bridget A. Adjigbli",
+      name: "Mrs. Bridget A. Adjigbli",
       society: "-",
     },
     { 
       position: "Chairperson/ Youth President", 
-      name: "Thomas Kwegyir-Abaidoo Jnr.", 
+      name: "Thomas Kwegyir-Abaidoo jnr.", 
       society: "Word in Motion" 
     },
     { 
@@ -30,7 +30,7 @@ const ParishYouthCouncil = () => {
     },
     { 
       position: "Youth Secretary", 
-      name: "Emilie Asante", 
+      name: "Emily Asante", 
       society: "Lectors Ministry" 
     },
     { 
