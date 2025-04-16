@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
-import { getUpcomingEvents, getUnreadCount, markEventsAsRead } from "../services/notificationService";
+import { getUnreadCount, markEventsAsRead } from "../services/notificationService";
+import { getAnnouncementPosts } from "../services/blogService";
 import "../styles/scrollbar.css";
 import EasterPopup from "./EasterPopup";
 
@@ -25,11 +26,20 @@ const EventNotification = ({ className }) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const [eventsData, unreadCountData] = await Promise.all([
-          getUpcomingEvents(),
+        const [announcementPosts, unreadCountData] = await Promise.all([
+          getAnnouncementPosts(),
           getUnreadCount()
         ]);
-        setEvents(eventsData);
+        // Filter out past events (only show today or future)
+        const today = new Date("2025-04-16");
+        const upcoming = announcementPosts.filter(event => {
+          if (!event.date) return false;
+          // Acceptable date formats: 'April 21, 2025', etc.
+          const eventDate = new Date(event.date);
+          // If event has multiple times (e.g., '7:00AM and 9:30AM'), still just compare the date
+          return eventDate >= today;
+        });
+        setEvents(upcoming);
         setUnreadCount(unreadCountData);
         setIsLoading(false);
       } catch (err) {
@@ -223,32 +233,47 @@ const EventNotification = ({ className }) => {
                   <p className="text-sm">No upcoming events</p>
                 </div>
               ) : (
-                events.map((event) => (
-                  <div 
-                    key={event.id}
-                    onClick={handleNotificationClick}
-                    className="p-3 mb-2 rounded-lg border border-blue-50 hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow"
-                  >
-                    <h4 className="font-semibold text-sm text-gray-800">{event.title}</h4>
-                    <div className="flex flex-wrap items-center text-xs text-gray-500 mt-2">
-                      <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mr-2 mb-1">
-                        <FaCalendarAlt className="mr-1 text-blue-500" />
-                        <span>{event.date}</span>
+                events.map((event) => {
+                  const isEaster =
+                    event.title?.toLowerCase().includes("easter") ||
+                    event.summary?.toLowerCase().includes("easter") ||
+                    event.category?.toLowerCase().includes("easter");
+                  return (
+                    <div
+                      key={event.id}
+                      onClick={handleNotificationClick}
+                      className={`p-3 mb-2 rounded-lg border border-blue-50 hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow ${isEaster ? 'bg-yellow-50 border-yellow-300' : ''}`}
+                    >
+                      <h4 className={`font-semibold text-sm ${isEaster ? 'text-yellow-700' : 'text-gray-800'}`}>{event.title}</h4>
+                      <div className="flex flex-wrap items-center text-xs text-gray-500 mt-2">
+                        <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mr-2 mb-1">
+                          <FaCalendarAlt className="mr-1 text-blue-500" />
+                          <span>{event.date}</span>
+                        </div>
+                        {event.location && (
+                          <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mb-1">
+                            <FaMapMarkerAlt className="mr-1 text-blue-500" />
+                            <span>{event.location}</span>
+                          </div>
+                        )}
                       </div>
-                      <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mb-1">
-                        <FaMapMarkerAlt className="mr-1 text-blue-500" />
-                        <span>{event.location}</span>
-                      </div>
+                      {isEaster && (
+                        <div className="mt-1 flex">
+                          <span className="text-xs bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded-full mr-2">
+                            Easter Event
+                          </span>
+                        </div>
+                      )}
+                      {event.isHighPriority && (
+                        <div className="mt-1 flex">
+                          <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">
+                            Important
+                          </span>
+                        </div>
+                      )}
                     </div>
-                    {event.isHighPriority && (
-                      <div className="mt-1 flex">
-                        <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">
-                          Important
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
 

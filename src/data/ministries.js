@@ -24,12 +24,12 @@ const ministries = [
     contactInfo: "Etonam Yao Dotse (President): +233 26 177 5431 || Corwin Addo (Secretary): +233 0 247139178 / +233 0 260876412"
   },
   {
-    name: "Lectors",
-    details: "[Official information pending] This ministry has not yet submitted their official information. If you are a member of this ministry, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the ministry leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the ministry leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+    name: "Lector's Ministry",
+    details: "The Lector's Ministry plays a vital role in the Church's liturgy, as members are entrusted with the sacred duty of proclaiming the Word of God to the congregation. Their task is to present the scriptures clearly and meaningfully, helping the faithful to understand and reflect on God’s message. Being a lector is both a calling and a significant responsibility. While it is the lector’s voice that is heard, it is ultimately God's Word being spoken. As illustrated in Luke 4:16-20, even Jesus read the Scriptures aloud to the people in the synagogue, setting an example for all who take on this ministry.",
+    whoCanJoin: "Membership is open to all parishioners, regardless of nationality or tribe. Prospective members must be baptized Catholics, active communicants, and at least 18 years of age.",
+    meetingDays: "• Every Saturday at 4:00 p.m. on the church premises (except the first Saturday of each month, which is reserved for Grotto Mass)",
+    howToJoin: "Kindly contact the ministry numbers below to join.",
+    contactInfo: "Patricia: 0244482764 || Anthony: 0202336699"
   },
   {
     name: "Media Team",

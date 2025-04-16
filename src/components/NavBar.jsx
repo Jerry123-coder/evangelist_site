@@ -113,13 +113,15 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-row items-center justify-center text-center bg-white py-3 w-screen sticky shadow-md top-0 z-50">
-      <div className="flex w-full items-center justify-between px-6 lg:justify-evenly">
-        <div className="logo">
+      <div className="flex w-full items-center justify-between px-4 lg:px-6 lg:justify-evenly">
+        {/* Logo always visible on all devices */}
+        <div className="logo flex-shrink-0">
           <Link to="">
             <img
               src={evangelistLogo}
-              alt=""
-              className="w-[9rem] lg:w-[15rem] flex items-center"
+              alt="Evangelist Logo"
+              className="w-[7rem] sm:w-[9rem] lg:w-[15rem] flex items-center"
+              style={{ minWidth: '80px' }}
             />
           </Link>
         </div>
@@ -213,20 +215,10 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <div className="hidden lg:flex items-center space-x-4">
-          <EventNotification className="mr-2" />
-          <button
-            onClick={() => navigate("/donate")}
-            className="w-[6rem] bg-blue-500 hover:bg-blue-600 text-white hover:scale-105 rounded-full border-none focus:outline-none transition-all duration-200 ease-in-out gap-1 flex items-center justify-center h-[2rem]"
-          >
-            <span>Donate</span>
-            <span className="w-5">
-              <BiSolidDonateHeart />
-            </span>
-          </button>
-        </div>
-        {/* Mobile Menu */}
-        <div className=" lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-200 ease-in items-center">
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          <EventNotification className="mr-1" />
+          {/* Mobile Menu Toggle: only visible on mobile/tablet */}
+          <div className="lg:hidden cursor-pointer font-extrabold text-2xl border-1 border-[#A61D37] hover:bg-[#d40d32]/20 rounded-full p-2 transition duration-200 ease-in items-center">
           {!isOpen ? (
             <div
               className="transition duration-400 ease-in-out text-black"
@@ -265,7 +257,11 @@ const Navbar = () => {
             />
           </div>
 
-          <ul className="py-6 mt-10">
+          {/* Notification bell for mobile */}
+            <div className="flex justify-center mb-6 lg:hidden">
+              <EventNotification className="mx-auto" />
+            </div>
+            <ul className="py-6 mt-10">
             {menuItems.map((item) => (
               <div key={item.id} className="relative">
                 {item.hasDropdown ? (
@@ -342,8 +338,9 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Navbar;

@@ -1,0 +1,134 @@
+.login-input{
+  color:black;
+}
+
+.login-form-container{
+  height: 100vh;
+  background-image: url('../../assets/img2.jpg');
+  background-size: cover;
+  background-position: 20% 80%;
+  padding-top: 15vh;
+}
+
+.login-form{
+  /* margin-top: 10vh; */
+  padding: 2%;
+  background-color: rgba(12, 91, 175, 0.9);
+  height: 75%;
+  width: 35%;
+  margin-left: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-radius: 15px;
+}
+
+.form-image-container{
+  width: 25%;
+  align-self: center;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 5%;
+}
+
+.form-image{
+  padding: 8%;
+  width: 98%;
+}
+
+.form-header, .form-button{
+  /* background-color: black; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-header-text{
+  font-size: 28px;
+  text-decoration: solid;
+}
+
+.login-form-inputs{
+  /* background-color: yellowgreen; */
+  height: 50%;
+  margin-top: 5%;
+  width: 80%;
+  margin-left: 10%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+
+.login-input{
+  margin-bottom: 30px;
+  width: 100%;
+  color: white; /* Text color */
+}
+
+input{
+  width: 100%;
+}
+
+
+/* Style both email and password input fields */
+.email-input,
+.password-input {
+  background-color: transparent !important;  /* Transparent background */
+  border: none !important;                   /* Remove default borders */
+  border-bottom: 1px solid #ccc !important;   /* Add only a bottom border */
+  padding: 8px 4px;               /* Adjust padding as needed */
+  width: 100%;                    /* Full width if desired */
+  outline: none !important;                  /* Remove focus outline (optional, add custom focus if needed) */
+  font-size: 16px;                /* Set font size */                  
+
+}
+
+.remember-me{
+  /* background-color: aquamarine; */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20%;
+}
+
+/* Optional: Change the bottom border color on focus */
+.email-input:focus,
+.password-input:focus {
+  border-bottom: 1px solid #ccc !important;/* Change to your desired focus color */
+}
+
+
+/* Modern browsers */
+::placeholder {
+  color: white !important;       /* Change the placeholder text color */
+  font-style: italic;/* Example: italicize the placeholder */
+  opacity: 1;        /* Adjust the opacity (Firefox requires setting opacity to 1) */
+}
+
+/* For WebKit browsers (Chrome, Safari, Opera) */
+::-webkit-input-placeholder {
+  color: white !important;
+  font-style: italic;
+}
+
+/* For Mozilla Firefox (older versions) */
+:-moz-placeholder {
+  color: white !important;
+  font-style: italic;
+  opacity: 1;
+}
+
+/* For Internet Explorer 10-11 */
+:-ms-input-placeholder {
+  color: white !important;
+  font-style: italic;
+}
+
+
+.login-submit-button{
+  background-color: white !important;
+  color: black;
+  width: 30%;
+  border-radius: 20px;
+  margin-top: 10px;
+}
