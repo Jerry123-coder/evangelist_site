@@ -1,0 +1,21 @@
+.popupCenter {
+  position: fixed;
+  top: 150px;
+  left: 35%;
+  transform: translateX(-65%);
+  z-index: 10000;
+  width: 95vw;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .popupCenter {
+    left: 19%;
+    transform: translateX(-81%);
+    max-width: 260px;
+    width: 90vw;
+  }
+}
