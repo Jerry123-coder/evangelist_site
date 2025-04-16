@@ -32,11 +32,16 @@ export const getAllPosts = async () => {
       }));
       
       // Combine regular posts with event posts
-      const allPosts = [...catholicNews, ...eventPosts];
-      
+      let allPosts = [...catholicNews, ...eventPosts];
+
+      // Deduplicate by title and date
+      allPosts = allPosts.filter((post, index, self) =>
+        index === self.findIndex(p => p.title === post.title && p.date === post.date)
+      );
+
       // Sort by date (newest first)
       allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      
+
       setTimeout(() => {
         resolve(allPosts);
       }, 500);
@@ -81,8 +86,11 @@ export const getPostsByCategory = async (category) => {
         // Get regular announcements
         const regularAnnouncements = catholicNews.filter(post => post.category === category);
         
-        // Combine and sort by date
-        const allAnnouncements = [...regularAnnouncements, ...eventPosts];
+        // Combine and deduplicate by title and date
+        let allAnnouncements = [...regularAnnouncements, ...eventPosts];
+        allAnnouncements = allAnnouncements.filter((post, index, self) =>
+          index === self.findIndex(p => p.title === post.title && p.date === post.date)
+        );
         allAnnouncements.sort((a, b) => new Date(b.date) - new Date(a.date));
         
         setTimeout(() => {
