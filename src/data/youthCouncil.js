@@ -29,7 +29,7 @@ const youthCouncil = [
   {
     name: "Junior Auxiliary",
     details:
-      "[Official information pending] This youth group has not yet submitted their official information. If you are a member of this group, please contact the parish office to provide updated details.",
+      "We are a Catholic friendly society that helps to nurture young individuals to serve and honor the Catholic faith. We stand for unity, honesty and bravery. Our motto is Service, Charity and Fraternity.",
     whoCanJoin: "[Official information pending] Please contact the group leadership for accurate membership requirements.",
     meetingDays: "• [Official meeting schedule pending]",
     howToJoin: "[Official information pending] Please contact the group leadership for accurate joining procedures.",
@@ -39,10 +39,10 @@ const youthCouncil = [
     name: "Junior Marshallans",
     details:
       "[Official information pending] This youth group has not yet submitted their official information. If you are a member of this group, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the group leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the group leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+    whoCanJoin: "Children from ages 7 and above and preparing to take their first communion.",
+    meetingDays: "• Every Third Saturday of every month at 9:00 am.",
+    howToJoin: "Please contact the group leadership for accurate joining procedures.",
+    contactInfo: "Daniel Lamptey (Junior Grand Knight): +233 59 622 0960 || Junior Noble Lady: +233 59 300 8828 ||  Chairman Of organizers: +233 24 422 5154 || Co-chair: +233 24 454 3785 "
   },
   {
     name: "Knights and Ladies of the Altar (KNOLTA)",
@@ -75,10 +75,10 @@ const youthCouncil = [
     name: "Word in Motion",
     details:
       "[Official information pending] This youth group has not yet submitted their official information. If you are a member of this group, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the group leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the group leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+    whoCanJoin: "Our society is opened  to anyone (Communicant or not) from age 10 and above.",
+    meetingDays: "• Sundays at 4pm ",
+    howToJoin: "Contact any of the executives to express interest and attend the meeting after which they would be introduced to other members.",
+    contactInfo: "Gabriel K.V Seshie (President): +233 20 815 8371 || Benedicta Nimnora (Secretary): +233 54 793 6507 "
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
