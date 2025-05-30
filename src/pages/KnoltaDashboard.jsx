@@ -52,7 +52,7 @@ const KnoltaDashboard = () => {
             <span className="ml-1">Home</span>
           </Link>
           <span className="text-gray-400">/</span>
-          <span className="ml-4 text-gray-600">Knolta Monthly Tests</span>
+          <span className="ml-4 text-gray-600">Knolta Monthly Challenge</span>
         </div>
 
         <motion.div 
@@ -62,8 +62,8 @@ const KnoltaDashboard = () => {
           className="bg-white shadow rounded-lg overflow-hidden"
         >
           <div className="px-6 py-5 border-b border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-800">Monthly Tests</h2>
-            <p className="mt-1 text-sm text-gray-500">View and take your monthly tests</p>
+            <h2 className="text-2xl font-semibold text-gray-800">Monthly Challenges</h2>
+            <p className="mt-1 text-sm text-gray-500">View and participate in monthly challenges</p>
           </div>
 
           <div className="bg-white overflow-hidden">
@@ -194,7 +194,7 @@ const KnoltaDashboard = () => {
       <footer className="bg-white border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Knolta Monthly Tests. All rights reserved.
+            &copy; {new Date().getFullYear()} Knolta Monthly Challenge. All rights reserved.
           </p>
         </div>
       </footer>

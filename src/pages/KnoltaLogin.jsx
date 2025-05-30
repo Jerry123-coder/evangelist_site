@@ -81,7 +81,7 @@ const KnoltaLogin = () => {
           className="bg-white rounded-xl shadow-2xl p-8"
         >
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-blue-900 mb-2">Knolta Monthly Tests</h1>
+            <h1 className="text-3xl font-bold text-blue-900 mb-2">Knolta Monthly Challenge</h1>
             <p className="text-gray-600">Sign in to access your test portal</p>
           </div>
 
