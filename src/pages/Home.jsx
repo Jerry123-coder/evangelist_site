@@ -195,8 +195,8 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Papers and Publication Card */}
             <Link
-              to={"/papers-and-publication"}
-              className="w-full lg:w-[30rem]"
+              to={"/blog"}
+              className="w-full lg:w-[30rem] text-black"
               data-aos="fade-up"
               data-aos-delay="400"
             >

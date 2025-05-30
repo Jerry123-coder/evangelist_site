@@ -111,22 +111,24 @@ const Societies = () => {
       {/* Main Content */}
       <div className="w-full max-w-[65rem] mx-auto px-4 md:px-8">
         {/* Navigation Tabs */}
-        <div className="mt-6 md:mt-10 mb-5 ">
-          <ul className="flex whitespace-nowrap md:gap-16 min-w-max md:min-w-0 pb-2 md:pb-0">
-            {items.map((item) => (
-              <li
-                key={item}
-                onClick={() => handleCategorySelection(item)}
-                className={`font-bold cursor-pointer px-3 md:px-0 py-2 md:py-0 ${
-                  category === item
-                    ? "border-b-2 border-b-blue-500 text-blue-500"
-                    : "text-gray-600"
-                }`}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-6 md:mt-10 mb-5 overflow-x-auto w-full">
+          <div className="w-max min-w-full md:w-full">
+            <ul className="flex space-x-4 md:space-x-0 md:gap-16 w-max min-w-full md:w-full md:min-w-0 pb-2 md:pb-0 px-4 md:px-0">
+              {items.map((item) => (
+                <li
+                  key={item}
+                  onClick={() => handleCategorySelection(item)}
+                  className={`whitespace-nowrap font-bold cursor-pointer px-3 py-2 md:px-0 md:py-0 ${
+                    category === item
+                      ? "border-b-2 border-b-blue-500 text-blue-500"
+                      : "text-gray-600"
+                  }`}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Content Layout */}
@@ -142,7 +144,7 @@ const Societies = () => {
             </button>
 
             {isMenuOpen && (
-              <div className="absolute left-0 right-0 mt-2 mx-4 bg-blue-900 rounded-lg shadow-lg z-50">
+              <div className="absolute left-0 right-0 mt-1 mx-4 bg-white dark:bg-gray-800 border border-blue-200 dark:border-gray-600 rounded-lg shadow-lg z-50 overflow-hidden">
                 {currentItems.map((item) => (
                   <button
                     key={item.name}
@@ -150,7 +152,11 @@ const Societies = () => {
                       handleItemDisplay(item);
                       setIsMenuOpen(false);
                     }}
-                    className="w-full text-left px-4 py-3 text-white hover:bg-blue-800 first:rounded-t-lg last:rounded-b-lg"
+                    className={`w-full text-left px-4 py-3 
+                      text-gray-800 dark:text-gray-200 
+                      hover:bg-blue-100 dark:hover:bg-gray-700 
+                      transition-colors 
+                      ${isActive === item.name ? 'bg-blue-50 dark:bg-gray-700 font-semibold' : ''}`}
                   >
                     {item.name}
                   </button>
@@ -197,69 +203,70 @@ const Societies = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 w-full p-10 flex flex-col space-y-20 px-14">
-              <div className="flex  md:flex w-full ">
-                <div className=" w-full md:w-1/3 flex md:items-center md:justify-center">
-                  <span className="flex items-center justify-center md:w-[7rem] md:h-[7rem] w-[4rem] h-[4rem] rounded-full text-5xl bg-yellow-500 text-blue-950  ">
+            <div className="bg-blue-50 w-full p-4 md:p-10 flex flex-col space-y-10 md:space-y-20">
+              {/* First Section - Who can join */}
+              <div className="flex flex-col md:flex-row w-full items-center gap-4 pb-5 border-b-2 border-blue-200">
+                <div className="w-16 h-16 md:w-28 md:h-28 flex-shrink-0 flex items-center justify-center">
+                  <span className="flex items-center justify-center w-full h-full rounded-full text-3xl md:text-5xl bg-yellow-500 text-blue-950">
                     <IoPersonAddSharp />
                   </span>
                 </div>
-
-                <span className="text-blue-900 w-full border-b-2 border-blue-200 pb-5">
-                  <p className="text-sm md:text-xl font-bold">Who can join?</p>
+                <div className="text-blue-900 w-full">
+                  <p className="text-lg md:text-xl font-bold text-center md:text-left">Who can join?</p>
                   {currentItems.map(
                     (item) =>
                       item.name === isActive && (
-                        <div key={item.name} className="text-base font-medium">
+                        <div key={item.name} className="text-sm md:text-base font-medium text-center md:text-left">
                           {item.whoCanJoin || item.details}
                         </div>
                       )
                   )}
-                </span>
+                </div>
               </div>
 
-              <div className="flex w-full ">
-                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
-                  <p className="text-xl font-bold">Our Meeting days</p>
+              {/* Second Section - Meeting Days */}
+              <div className="flex flex-col-reverse md:flex-row w-full items-center gap-4 pb-5 border-b-2 border-blue-200">
+                <div className="text-blue-900 w-full">
+                  <p className="text-lg md:text-xl font-bold text-center md:text-left">Our Meeting days</p>
                   {currentItems.map(
                     (item) =>
                       item.name === isActive && (
-                        <div key={item.name} className="text-base font-medium">
+                        <div key={item.name} className="text-sm md:text-base font-medium text-center md:text-left">
                           {renderMeetingDays(item.meetingDays || item.details)}
                         </div>
                       )
                   )}
-                </span>
-                <div className="w-1/3 flex md:items-center md:justify-center">
-                  <span className="flex items-center justify-center md:w-[7rem] md:h-[7rem] w-[4rem] h-[4rem] rounded-full text-5xl bg-yellow-500 text-blue-950  ">
+                </div>
+                <div className="w-16 h-16 md:w-28 md:h-28 flex-shrink-0 flex items-center justify-center">
+                  <span className="flex items-center justify-center w-full h-full rounded-full text-3xl md:text-5xl bg-yellow-500 text-blue-950">
                     <FaCalendarAlt />
                   </span>
                 </div>
               </div>
 
-              <div className="flex w-full">
-                <div className="w-1/3  flex md:items-center md:justify-center">
-                  <span className="flex items-center justify-center md:w-[7rem] md:h-[7rem] w-[4rem] h-[4rem] rounded-full text-5xl bg-yellow-500 text-blue-950 ">
+              {/* Third Section - How to join */}
+              <div className="flex flex-col md:flex-row w-full items-center gap-4 pb-5 border-b-2 border-blue-200">
+                <div className="w-16 h-16 md:w-28 md:h-28 flex-shrink-0 flex items-center justify-center">
+                  <span className="flex items-center justify-center w-full h-full rounded-full text-3xl md:text-5xl bg-yellow-500 text-blue-950">
                     <FaAddressBook />
                   </span>
                 </div>
-
-                <span className="text-blue-900 w-2/3 border-b-2 border-blue-200 pb-5">
-                  <p className="text-xl font-bold">
+                <div className="text-blue-900 w-full">
+                  <p className="text-lg md:text-xl font-bold text-center md:text-left">
                     How you can become a part of us
                   </p>
                   {currentItems.map(
                     (item) =>
                       item.name === isActive && (
-                        <div key={item.name} className="text-base font-medium">
+                        <div key={item.name} className="text-sm md:text-base font-medium text-center md:text-left">
                           {item.howToJoin || item.details}
                         </div>
                       )
                   )}
-                </span>
+                </div>
               </div>
 
-              <div className="py-3 px-[3rem] border-t-2 rounded-full bg-blue-600 text-white text-sm text-center">
+              <div className="py-3 px-4 md:px-12 border-t-2 rounded-full bg-blue-600 text-white text-xs md:text-sm text-center">
                 {currentItems.map(
                   (item) =>
                     item.name === isActive && (
