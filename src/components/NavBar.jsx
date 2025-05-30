@@ -50,8 +50,9 @@ import { FaChurch } from "react-icons/fa6";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSolidDonateHeart } from "react-icons/bi";
-import { FaVoteYea } from "react-icons/fa";
+import { FaVoteYea, FaClipboardList } from "react-icons/fa";
 import { HiDocumentDownload } from "react-icons/hi";
+import { FaClipboardQuestion } from "react-icons/fa6";
 import EventNotification from "./EventNotification";
 import { motion } from "framer-motion";
 import EasterPopup from "./EasterPopup";
@@ -74,6 +75,7 @@ const Navbar = () => {
       { name: "EDA Voting", link: "eda-voting", icon: <FaVoteYea className="inline-block mr-1" /> },
       { name: "Download Membership Form", link: "membership-form", icon: <HiDocumentDownload className="inline-block mr-0.5" /> },
       { name: "Online Membership Registration", link: "membership", icon: <BiGroup className="inline-block mr-1" /> },
+      { name: "Knolta Monthly Tests", link: "knolta-tests", icon: <FaClipboardQuestion className="inline-block mr-1" /> },
     ],
     councils: [
       { name: "Christian sons", link: "christian-sons" },

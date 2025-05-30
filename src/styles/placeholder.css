@@ -1,0 +1,13 @@
+/* Global placeholder styles */
+input::placeholder {
+  color: #6B7280 !important;
+  opacity: 1 !important;
+}
+
+input:-ms-input-placeholder {
+  color: #6B7280 !important;
+}
+
+input::-ms-input-placeholder {
+  color: #6B7280 !important;
+}

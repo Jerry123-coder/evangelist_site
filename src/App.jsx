@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import "./styles/placeholder.css";
 
 // Lazy load components that aren't needed immediately
 const Router = lazy(() => import("./routes/Router").then(module => ({ default: module.Router })));

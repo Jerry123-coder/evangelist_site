@@ -25,53 +25,53 @@ import LoginPage from "../pages/admin/Login.jsx";
 import ProtectedRoute from "../pages/admin/ProtectedRoute.jsx";
 import Registration from "../pages/Registration";
 import MembershipForm from "../pages/MembershipForm";
+import KnoltaLogin from "../pages/KnoltaLogin";
+import KnoltaDashboard from "../pages/KnoltaDashboard";
 
+
+const routes = [
+  {
+    path: "/",
+    element: <Container />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "clergy", element: <Clergy /> },
+      { path: "programs", element: <Programs /> },
+      { path: "societies", element: <Societies /> },
+      { path: "gallery", element: <Gallery /> },
+      { path: "projects", element: <Projects /> },
+      { path: "blog", element: <Blog /> },
+      { path: "contact", element: <Contact /> },
+      { path: "directory", element: <Directory /> },
+      { path: "donate", element: <Donate /> },
+      { path: "parish-activities", element: <ParishActivites /> },
+      { path: "sacrament", element: <Sacraments /> },
+      { path: "daily-reading", element: <DailyReadings /> },
+      { path: "office-hours", element: <OfficeHours /> },
+      { path: "parish-youth-council", element: <ParishYouthCouncil /> },
+      { path: "parish-pastorial-council", element: <ParishPastorialCouncil /> },
+      { path: "login", element: <LoginPage /> },
+      {
+        path: "admin",
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "membership", element: <Registration /> },
+      { path: "membership-form", element: <MembershipForm /> },
+      { path: "knolta-tests", element: <KnoltaLogin /> },
+      { path: "knolta-tests/dashboard", element: <KnoltaDashboard /> },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+];
 
 export const Router = () => {
-  return useRoutes([
-    {
-      path: "",
-      element: <Container />,
-      children: [
-        { element: <Home />, index: true },
-        { element: <About />, path: "about" },
-        { element: <Clergy />, path: "clergy" },
-        { element: <Programs />, path: "programs" },
-        { element: <Societies />, path: "societies" },
-        { element: <Gallery />, path: "gallery" },
-        { element: <Projects />, path: "projects" },
-        { element: <Blog />, path: "blog" },
-        { element: <Contact />, path: "contact" },
-        { element: <Directory />, path: "directory" },
-        { element: <Donate />, path: "donate" },
-        { element: <ParishActivites />, path: "parish-activities" },
-        { element: <Sacraments />, path: "sacrament" },
-        { element: <DailyReadings />, path: "daily-reading" },
-        { element: <OfficeHours />, path: "office-hours" },
-        { element: <ParishYouthCouncil />, path: "parish-youth-council" },
-        { element: <ParishPastorialCouncil />, path: "parish-pastorial-council" },
-        { element: <LoginPage />, path: "login" },
-
-        // Protect the Admin Dashboard Route
-        {
-          path: "admin",
-          element: (
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          ),
-        },
-
-        { element: <Registration />, path: "membership" },
-        { element: <MembershipForm />, path: "membership-form" },
-
-        //     {element: <DirectoryDetails />, path:'directory/:direcotryDetails'},
-
-      ],
-    },
-    {
-      path: "*",
-      element: <NotFound />,
-    },
-  ]);
+  return useRoutes(routes);
 };
