@@ -78,79 +78,169 @@ const MassScheduleSection = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="max-w-6xl mx-auto relative mt-4 lg:mt-6">
-        {/* Schedule Section */}
-        <div
-          className="static w-1/2 lg:absolute  lg:mt-20 z-10 bg-black/80 text-white p-6 lg:p-8 lg:max-w-md mb-6 lg:mb-0"
-          data-aos="fade-right"
-          data-aos-delay="200"
-        >
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-blue-600 font-medium mb-4">
-                SUNDAY MASS SCHEDULE
-              </h3>
-              <ul className="space-y-2">
-                <li>• 1st Mass : 7:00am</li>
-                <li>• 2nd Mass : 9:30am</li>
-              </ul>
-            </div>
+      <div className="max-w-6xl mx-auto mt-4 lg:mt-6">
+        {/* Mobile Cards Layout */}
+        <div className="lg:hidden space-y-6">
+          {/* Mass Schedule Card */}
+          <div 
+            className="bg-black/80 text-white p-6 rounded-lg shadow-lg"
+            data-aos="fade-up"
+          >
+            <h3 className="text-blue-400 text-xl font-bold mb-4">Mass Schedule</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-2">
+                  SUNDAY MASS
+                </h4>
+                <ul className="space-y-1">
+                  <li className="flex items-center">
+                    <span className="text-blue-400 mr-2">•</span>
+                    <span>1st Mass: 7:00am</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-400 mr-2">•</span>
+                    <span>2nd Mass: 9:30am</span>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="text-blue-600 font-medium mb-4">
-                DAILY MASS SCHEDULE
-              </h3>
-              <ul className="space-y-2">
-                <li>• Tuesdays: 6:00am </li>
-                <li>• Wednesdays to Fridays: 7:00pm</li>
-                <li>• Saturdays: 6:30am </li>
-              </ul>
-            </div>
+              <div>
+                <h4 className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-2">
+                  WEEKDAY MASS
+                </h4>
+                <ul className="space-y-1">
+                  <li className="flex items-center">
+                    <span className="text-blue-400 mr-2">•</span>
+                    <span>Tuesdays: 6:00am</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-400 mr-2">•</span>
+                    <span>Wed-Fri: 7:00pm</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-400 mr-2">•</span>
+                    <span>Saturdays: 6:30am</span>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="text-blue-600 font-medium mb-4">HOLY HOUR</h3>
-              <ul className="space-y-2">
-                <li>• The 1st Thursday of every month: 6:00pm</li>
-              </ul>
-            </div>
+              <div>
+                <h4 className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-2">
+                  HOLY HOUR
+                </h4>
+                <p>1st Thursday of every month at 6:00pm</p>
+              </div>
 
-            <div>
-              <h3 className="text-blue-600 font-medium mb-4">
-                ADORATION (HOUR OF GRACE)
-              </h3>
-              <p>1st Sunday of every month at 6pm</p>
+
+              <div>
+                <h4 className="text-blue-500 font-medium text-sm uppercase tracking-wider mb-2">
+                  ADORATION
+                </h4>
+                <p>1st Sunday of every month at 6:00pm</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Image Section */}
-        <div
-          className=" flex justify-center items-center"
-          data-aos="fade-left"
-          data-aos-delay="400"
-        >
-          <img
-            src={joinformass}
-            alt="Mass celebration"
-            className="w-2/3 h-2/3 object-cover"
-          />
 
-          {/* Join Us Overlay */}
-          <div
-            className="static lg:absolute lg:top-1/3 lg:-right-10 bg-blue-600 text-white p-6 lg:p-8 mt-6 lg:mt-0 lg:max-w-sm"
+          {/* Image Card */}
+          <div className="relative rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src={joinformass}
+              alt="Mass celebration"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+
+          {/* Join Us Card */}
+          <div 
+            className="bg-blue-600 text-white p-6 rounded-lg shadow-lg"
             data-aos="fade-up"
-            data-aos-delay="600"
+            data-aos-delay="200"
           >
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">Join Us</h2>
+            <h2 className="text-2xl font-bold mb-4">Join Us</h2>
             <p className="mb-6">
               Join us in the celebration of the Holy Eucharist at any of our
               Mass Schedules.
             </p>
             <Link to="/parish-activities">
-              <button className="bg-white text-black px-6 py-2 font-medium hover:bg-gray-100 transition-colors">
+              <button className="bg-white text-blue-600 px-6 py-2 font-medium rounded hover:bg-gray-100 transition-colors w-full sm:w-auto">
                 LEARN MORE
               </button>
             </Link>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:block relative">
+          {/* Schedule Section */}
+          <div
+            className="absolute left-0 top-0 z-10 bg-black/80 text-white p-8 max-w-md"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-blue-400 font-medium mb-4">
+                  SUNDAY MASS SCHEDULE
+                </h3>
+                <ul className="space-y-2">
+                  <li>• 1st Mass : 7:00am</li>
+                  <li>• 2nd Mass : 9:30am</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-blue-400 font-medium mb-4">
+                  DAILY MASS SCHEDULE
+                </h3>
+                <ul className="space-y-2">
+                  <li>• Tuesdays: 6:00am </li>
+                  <li>• Wednesdays to Fridays: 7:00pm</li>
+                  <li>• Saturdays: 6:30am </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-blue-400 font-medium mb-4">HOLY HOUR</h3>
+                <ul className="space-y-2">
+                  <li>• The 1st Thursday of every month: 6:00pm</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-blue-400 font-medium mb-4">
+                  ADORATION (HOUR OF GRACE)
+                </h3>
+                <p>1st Sunday of every month at 6pm</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="flex justify-end" data-aos="fade-left" data-aos-delay="400">
+            <img
+              src={joinformass}
+              alt="Mass celebration"
+              className="w-2/3 h-auto object-cover"
+            />
+
+            {/* Join Us Overlay */}
+            <div
+              className="absolute top-1/3 -right-10 bg-blue-600 text-white p-8 max-w-sm"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <h2 className="text-3xl font-bold mb-4">Join Us</h2>
+              <p className="mb-6">
+                Join us in the celebration of the Holy Eucharist at any of our
+                Mass Schedules.
+              </p>
+              <Link to="/parish-activities">
+                <button className="bg-white text-black px-6 py-2 font-medium hover:bg-gray-100 transition-colors">
+                  LEARN MORE
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

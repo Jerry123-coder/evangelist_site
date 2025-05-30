@@ -11,15 +11,15 @@ const TikTokSection = () => {
           content that brings our faith to life.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-          {/* Video 1 - Original */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-5xl mx-auto">
+          {/* Video 1 */}
+          <div className="w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
+            <div className="w-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
               <iframe
                 src="https://www.tiktok.com/embed/v2/7386954496368233733"
                 style={{ 
                   width: '100%', 
-                  height: '100%', 
+                  minHeight: '500px',
                   border: 'none',
                   margin: '-1px',
                   background: 'transparent'
@@ -32,13 +32,13 @@ const TikTokSection = () => {
           </div>
 
           {/* Video 2 */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
+          <div className="w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
+            <div className="w-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
               <iframe
                 src="https://www.tiktok.com/embed/v2/7392920389686463749"
                 style={{ 
                   width: '100%', 
-                  height: '100%', 
+                  minHeight: '500px',
                   border: 'none',
                   margin: '-1px',
                   background: 'transparent'
@@ -51,70 +51,13 @@ const TikTokSection = () => {
           </div>
 
           {/* Video 3 */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
+          <div className="w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
+            <div className="w-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
               <iframe
                 src="https://www.tiktok.com/embed/v2/7386643236988701957"
                 style={{ 
                   width: '100%', 
-                  height: '100%', 
-                  border: 'none',
-                  margin: '-1px',
-                  background: 'transparent'
-                }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                scrolling="no"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Video 4 */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
-              <iframe
-                src="https://www.tiktok.com/embed/v2/7448702904245996806"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  border: 'none',
-                  margin: '-1px',
-                  background: 'transparent'
-                }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                scrolling="no"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Video 5 */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
-              <iframe
-                src="https://www.tiktok.com/embed/v2/7433104307634900229"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  border: 'none',
-                  margin: '-1px',
-                  background: 'transparent'
-                }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                scrolling="no"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Video 6 */}
-          <div className="aspect-video w-full max-w-[300px] mx-auto rounded-lg shadow-md bg-gradient-to-br from-blue-900 via-gray-900 to-black p-[1px] hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 via-gray-900 to-black">
-              <iframe
-                src="https://www.tiktok.com/embed/v2/7431244255886118150"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
+                  minHeight: '500px',
                   border: 'none',
                   margin: '-1px',
                   background: 'transparent'
