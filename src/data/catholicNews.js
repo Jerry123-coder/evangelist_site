@@ -30,40 +30,75 @@ getUpcomingEvents().then(events => {
 });
 
 const catholicNews = [
-  // Announcements Section - Upcoming Programs
+  // Announcements Section - Holy Week & Easter Schedule
   {
-    id: 101,
-    title: "IMPORTANT: Easter Triduum Schedule for Holy Week 2025",
-    date: "April 14, 2025",
+    id: 201,
+    title: "Palm Sunday",
+    date: "April 13, 2025",
     category: "Announcements",
     image: churchIcon,
     author: "Parish Office",
-    summary: "Holy Thursday: Mass of the Lord's Supper at 7:00 PM. Good Friday: Celebration of the Lord's Passion at 3:00 PM. Holy Saturday: Easter Vigil at 8:00 PM. Easter Sunday: Masses at 7:00 AM, 9:00 AM, and 11:00 AM. Please join us for these sacred celebrations.",
-    url: "/blog/easter-triduum-schedule",
+    summary: "Mass begins at ROWI.",
+    url: "/blog/palm-sunday-2025",
     featured: true
   },
   {
-    id: 102,
-    title: "First Communion Preparation Classes Starting May 1st",
-    date: "April 13, 2025",
+    id: 202,
+    title: "Holy Thursday - Mass of the Lord's Supper",
+    date: "April 17, 2025",
     category: "Announcements",
-    image: eucharistImg,
-    author: "Religious Education",
-    summary: "Registration is now open for First Holy Communion preparation classes beginning May 1st. Classes will be held every Saturday from 10:00 AM to 11:30 AM. Children must be at least 7 years old. Please register at the parish office by April 25th.",
-    url: "/blog/first-communion-classes",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: "Mass of the Lord's Supper.",
+    url: "/blog/holy-thursday-2025",
     featured: true
   },
   {
-    id: 103,
-    title: "Parish Fundraising Dinner - May 15th",
-    date: "April 12, 2025",
+    id: 203,
+    title: "Good Friday - Stations of the Cross",
+    date: "April 18, 2025",
     category: "Announcements",
-    image: churchImg2,
-    author: "Fundraising Committee",
-    summary: "Join us for our annual Parish Fundraising Dinner on May 15th at 6:00 PM in the Parish Hall. Tickets are $25 per person and include dinner, dessert, and entertainment. All proceeds will support our church renovation project. Contact the parish office to purchase tickets.",
-    url: "/blog/fundraising-dinner",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: "Stations of the Cross at 7:00AM. Divine Mercy Novena at 2:30PM. Veneration of the Cross at 3:00PM.",
+    url: "/blog/good-friday-2025",
     featured: true
   },
+  {
+    id: 204,
+    title: "Holy Saturday - Easter Vigil",
+    date: "April 19, 2025",
+    category: "Announcements",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: "Mass of Easter Vigil at 7:00PM.",
+    url: "/blog/holy-saturday-2025",
+    featured: true
+  },
+  {
+    id: 205,
+    title: "Easter Sunday",
+    date: "April 20, 2025",
+    category: "Announcements",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: "Masses at 7:00AM and 9:30AM.",
+    url: "/blog/easter-sunday-2025",
+    featured: true
+  },
+  {
+    id: 206,
+    title: "Easter Picnic",
+    date: "April 21, 2025",
+    category: "Announcements",
+    image: churchIcon,
+    author: "Parish Office",
+    summary: "Begins with Holy Mass at 12:00PM.",
+    url: "/blog/easter-picnic-2025",
+    featured: true
+  },
+  // Announcements Section - Upcoming Programs
+
   {
     id: 1,
     title: "Record Number of Adult Baptisms Shows Surge Among Youth",

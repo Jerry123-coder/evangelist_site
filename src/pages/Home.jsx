@@ -25,6 +25,9 @@ const PastorSection = lazy(() => import("../components/Home/PastorSection"));
 const GallerySection = lazy(() => import("../components/Home/GallerySection"));
 const TikTokSection = lazy(() => import("../components/Home/TikTokSection"));
 
+// Easter popup
+const EasterPopup = lazy(() => import("../components/EasterPopup"));
+
 // Import AOS with reduced motion preference
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -44,7 +47,12 @@ const Home = () => {
   const newsContainerRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
   const [imagesLoaded, setImagesLoaded] = useState({});
-  
+  // Easter popup state
+  const [showEasterPopup, setShowEasterPopup] = useState(true);
+
+  // Easter popup bell position fallback
+  const bellPosition = { top: 100, left: (typeof window !== 'undefined' ? window.innerWidth / 2 : 0) };
+
   // Optimize AOS for performance
   useEffect(() => {
     AOS.init({
@@ -101,6 +109,10 @@ const Home = () => {
 
   return (
     <div>
+      {/* Easter Popup */}
+      <Suspense fallback={null}>
+        <EasterPopup isOpen={showEasterPopup} onClose={() => setShowEasterPopup(false)} bellPosition={bellPosition} />
+      </Suspense>
       {/* Hero Section */}
       <Suspense fallback={<LoadingPlaceholder />}>
         <HeroCarousel slides={slides} />
