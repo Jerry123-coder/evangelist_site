@@ -310,44 +310,6 @@ const Home = () => {
       <Suspense fallback={<LoadingPlaceholder />}>  
         <GallerySection />
       </Suspense>
-      {/* Latest Updates Section - Optimized for mobile */}
-      <div
-        ref={newsContainerRef}
-        className="flex flex-col w-full py-12 sm:py-20 px-4 sm:px-[2rem] md:px-[5rem]"
-      >
-        <div className="text-xl sm:text-2xl font-bold w-full mb-6" data-aos="fade-up">
-          Latest Updates
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
-          <div data-aos="fade-up" data-aos-delay="0">
-            <Suspense fallback={<LoadingPlaceholder />}>
-              <ProgramCard programme={programme} title="25th Anniversary" />
-            </Suspense>
-          </div>
-          
-          <div data-aos="fade-up" data-aos-delay="100">
-            <Suspense fallback={<LoadingPlaceholder />}>
-              <ProgramCard
-                programme={programme1}
-                title="Evangelist School Visitation"
-              />
-            </Suspense>
-          </div>
-          
-          <div data-aos="fade-up" data-aos-delay="200">
-            <Suspense fallback={<LoadingPlaceholder />}>
-              <ProgramCard programme={programme2} title="Pentecost Novena" />
-            </Suspense>
-          </div>
-          
-          <div data-aos="fade-up" data-aos-delay="300">
-            <Suspense fallback={<LoadingPlaceholder />}>
-              <ProgramCard programme={programme3} title="Youth Quiz" />
-            </Suspense>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

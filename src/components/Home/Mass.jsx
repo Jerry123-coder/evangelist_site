@@ -59,10 +59,10 @@ const MassScheduleSection = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white p-4 lg:p-8">
+    <div className="bg-white py-6 lg:py-8 px-4 lg:px-8 pb-16 lg:pb-24">
       {/* Header Section */}
       <div
-        className="max-w-4xl mx-auto text-center mb-8 lg:mb-16"
+        className="max-w-4xl mx-auto text-center mb-6 lg:mb-10"
         data-aos="fade-down"
       >
         <h1 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4 lg:mb-6">
@@ -78,7 +78,7 @@ const MassScheduleSection = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative mt-4 lg:mt-6">
         {/* Schedule Section */}
         <div
           className="static w-1/2 lg:absolute  lg:mt-20 z-10 bg-black/80 text-white p-6 lg:p-8 lg:max-w-md mb-6 lg:mb-0"
