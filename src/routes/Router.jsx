@@ -20,7 +20,8 @@ import OfficeHours from "../pages/OfficeHours.jsx";
 import ParishPastorialCouncil from "../pages/ParishPastorialCouncil.jsx";
 import ParishYouthCouncil from "../pages/ParishYouthCouncil.jsx";
 import Sacraments from "../pages/Sacraments.jsx";
-import AdminDashboard from "../pages/admin/AdminDashboard.jsx";
+import Admin from "../pages/knolta-tests/admin";
+import AdminDashboard from "../pages/knolta-tests/admin/Dashboard";
 import LoginPage from "../pages/admin/Login.jsx";
 import ProtectedRoute from "../pages/admin/ProtectedRoute.jsx";
 import Registration from "../pages/Registration";
@@ -64,6 +65,14 @@ const routes = [
       { path: "membership-form", element: <MembershipForm /> },
       { path: "knolta-tests", element: <KnoltaLogin /> },
       { path: "knolta-tests/dashboard", element: <KnoltaDashboard /> },
+      { 
+        path: "knolta-tests/admin/*", 
+        element: <Admin />,
+        children: [
+          { index: true, element: <AdminDashboard /> },
+          // Add other admin routes here as needed
+        ]
+      },
     ],
   },
   {

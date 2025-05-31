@@ -41,15 +41,24 @@ const KnoltaLogin = () => {
     
     // Simulate API call
     setTimeout(() => {
-      // TODO: Replace with actual authentication logic
-      if (formData.username && formData.password) {
-        // Navigate to the test page on successful login
+      // Check for admin login
+      if (formData.username === 'admin' && formData.password === 'admin123') {
+        // Store admin authentication state
+        localStorage.setItem('knoltaAdmin', 'true');
+        // Navigate to admin dashboard
+        navigate('/knolta-tests/admin/dashboard');
+      } 
+      // Check for regular user login
+      else if (formData.username && formData.password) {
+        // Clear any existing admin session
+        localStorage.removeItem('knoltaAdmin');
+        // Navigate to the regular user dashboard
         navigate('/knolta-tests/dashboard');
       } else {
-        setError('Please enter both username and password');
+        setError('Invalid username or password');
       }
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -179,17 +188,18 @@ const KnoltaLogin = () => {
             </motion.div>
           </form>
 
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Need help?
-                </span>
-              </div>
-            </div>
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600">
+              Admin?{' '}
+              <button 
+                onClick={() => {
+                  setFormData({ username: 'admin', password: 'admin123' });
+                }}
+                className="font-medium text-blue-600 hover:text-blue-500"
+              >
+                Click here to login as admin
+              </button>
+            </p>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
