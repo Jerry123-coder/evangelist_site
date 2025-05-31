@@ -56,11 +56,11 @@ const societies = [
   {
     name: "Ladies Auxiliary",
     details:
-      "[Official information pending] This society has not yet submitted their official information. If you are a member of this society, please contact the parish office to provide updated details.",
-    whoCanJoin: "[Official information pending] Please contact the society leadership for accurate membership requirements.",
-    meetingDays: "• [Official meeting schedule pending]",
-    howToJoin: "[Official information pending] Please contact the society leadership for accurate joining procedures.",
-    contactInfo: "[Official contact information pending]"
+      "The Ladies Auxiliary is a dedicated group of Catholic women who support the Knights of St. John International through charitable works and spiritual growth. Our members are committed to serving the church and community while fostering strong bonds of sisterhood.",
+    whoCanJoin: "1. Any practicing Catholic lady between the ages of 18 and 60 years\n2. A communicant\n3. Must have the desire to be charitable",
+    meetingDays: "• Every second Saturday of the month at 7:30 AM",
+    howToJoin: "1. Make a formal application by picking up a membership form\n2. Complete the form and present it to the President, Secretary, Trustee, or any officer of the Ladies Auxiliary",
+    contactInfo: "Noble Sister Diana Dery (President): 0244485948\n || Sister Esther Seshie (R&C Secretary): 0241288043\n || Noble Sister Henrietta Dankyi (Trustee): 0244635505"
   },
   {
     name: "Michael Society",
