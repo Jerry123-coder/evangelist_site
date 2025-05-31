@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FaUser, FaLock, FaSignInAlt, FaArrowLeft } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import evangelistLogo from '../assets/evangelist_logo.png';
+// Using public URL for HEIC file
+const knoltaBackground = '/assets/Knolta-Monthly-Challenge.heic';
 
 const KnoltaLogin = () => {
   // Add styles for input placeholders
@@ -61,8 +63,22 @@ const KnoltaLogin = () => {
     }, 500);
   };
 
+  const backgroundStyle = {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${knoltaBackground})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    minHeight: '100vh',
+    width: '100%',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div style={backgroundStyle}></div>
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -190,25 +206,11 @@ const KnoltaLogin = () => {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Admin?{' '}
-              <button 
-                onClick={() => {
-                  setFormData({ username: 'admin', password: 'admin123' });
-                }}
-                className="font-medium text-blue-600 hover:text-blue-500"
-              >
-                Click here to login as admin
-              </button>
+              Don't have an account?{' '}
+              <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                Contact administrator
+              </a>
             </p>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                  Contact administrator
-                </a>
-              </p>
-            </div>
           </div>
         </motion.div>
 
