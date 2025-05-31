@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
+import { FaArrowRight, FaTimes } from "react-icons/fa";
+import { usePopup } from "../contexts/PopupContext";
 import { getUnreadCount, markEventsAsRead } from "../services/notificationService";
 import { getAnnouncementPosts } from "../services/blogService";
 import "../styles/scrollbar.css";
@@ -15,9 +19,9 @@ const EventNotification = ({ className }) => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showEasterPopup, setShowEasterPopup] = useState(false);
   const [showBellIcon, setShowBellIcon] = useState(false);
   const [bellPosition, setBellPosition] = useState({ top: 0, left: 0 });
+  const { showEasterPopup, closePopup } = usePopup();
   const notificationRef = React.useRef(null);
   const navigate = useNavigate();
   
@@ -68,15 +72,10 @@ const EventNotification = ({ className }) => {
     
     fetchData();
     
-    // Check if we're on the homepage and if the user hasn't seen the popup before
-    const isHomePage = location.pathname === '' || location.pathname === '/';
+    // Show bell icon if user has seen the popup
     const hasSeenPopup = localStorage.getItem('hasSeenEasterPopup');
-  
-    if (isHomePage && !hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setShowEasterPopup(true);
-      }, 1000); // Show popup after 1 second
-      return () => clearTimeout(timer);
+    if (hasSeenPopup) {
+      setShowBellIcon(true);
     }
   }, []);
 
@@ -156,18 +155,14 @@ const EventNotification = ({ className }) => {
   
   // Handle Easter popup close
   const handleClosePopup = () => {
-    setShowEasterPopup(false);
-    localStorage.setItem('hasSeenEasterPopup', 'true');
-    
-    // Show bell icon after popup is closed
-    setTimeout(() => {
-      setShowBellIcon(true);
-    }, 300);
+    closePopup();
+    setShowBellIcon(true);
   };
   
   // Handle Easter bell click
   const handleEasterBellClick = (e) => {
     e.stopPropagation();
+    showEasterPopup();
     setShowEasterPopup(true);
   };
 

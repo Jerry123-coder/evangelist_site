@@ -47,8 +47,8 @@ const Home = () => {
   const newsContainerRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
   const [imagesLoaded, setImagesLoaded] = useState({});
-  // Easter popup state
-  const [showEasterPopup, setShowEasterPopup] = useState(true);
+  // Easter popup state is now managed by EventNotification component
+  const [showEasterPopup, setShowEasterPopup] = useState(false);
 
   // Easter popup bell position fallback
   const bellPosition = { top: 100, left: (typeof window !== 'undefined' ? window.innerWidth / 2 : 0) };
@@ -109,10 +109,6 @@ const Home = () => {
 
   return (
     <div>
-      {/* Easter Popup */}
-      <Suspense fallback={null}>
-        <EasterPopup isOpen={showEasterPopup} onClose={() => setShowEasterPopup(false)} bellPosition={bellPosition} />
-      </Suspense>
       {/* Hero Section */}
       <Suspense fallback={<LoadingPlaceholder />}>
         <HeroCarousel slides={slides} />

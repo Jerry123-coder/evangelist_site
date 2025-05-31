@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoMdClose } from 'react-icons/io';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { usePopup } from '../contexts/PopupContext';
+import styles from './EasterPopup.module.css';
 
 const EasterPopup = ({ isOpen, onClose, bellPosition }) => {
+  const { closePopup } = usePopup();
+  
   const [isClosing, setIsClosing] = useState(false);
   
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      onClose();
+      closePopup();
+      onClose?.();
       setIsClosing(false);
     }, 300); // Animation duration
   };
