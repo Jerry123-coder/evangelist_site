@@ -71,9 +71,7 @@ const MassScheduleSection = () => {
         <p className="text-gray-800 leading-relaxed">
           We warmly invite you to join us for Mass and experience the richness
           of our liturgical celebrations. Our Mass schedule is designed to
-          accommodate the diverse needs of our community. Whether you prefer
-          morning, midday, or evening services, you will find a time that suits
-          you.
+          accommodate the diverse needs of our community.
         </p>
       </div>
 

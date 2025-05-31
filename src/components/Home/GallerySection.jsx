@@ -53,11 +53,7 @@ const GallerySection = () => {
           Experience the Life of Our Parish Through Photos
         </h1>
         <p className="text-gray-700 max-w-3xl mx-auto">
-          Welcome to the St John The Evangelist Catholic Church Gallery! Here, you can
-          explore moments of faith, fellowship, and community captured through
-          the lens. Our gallery showcases the vibrant life of our parish, from
-          joyous celebrations to meaningful acts of service. Dive in and witness
-          the spirit of Christ the King Catholic Church.
+          Welcome to the Church Gallery! Explore the moments of faith, fellowship, and community captured through the lens.
         </p>
       </div>
 
