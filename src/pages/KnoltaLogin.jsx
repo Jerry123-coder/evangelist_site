@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { FaUser, FaLock, FaSignInAlt, FaArrowLeft } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import evangelistLogo from '../assets/evangelist_logo.png';
-// Using public URL for HEIC file
-const knoltaBackground = '/assets/Knolta-Monthly-Challenge.heic';
+// Using public URL for background image
+const knoltaBackground = '/assets/Knolta-Monthly-Challenge.jpg';
 
 const KnoltaLogin = () => {
   // Add styles for input placeholders
