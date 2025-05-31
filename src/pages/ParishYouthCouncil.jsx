@@ -63,38 +63,42 @@ const ParishYouthCouncil = () => {
   // Youth Council committee table data structure
   const committeeTable = [
     {
+      committee: "Youth Month",
+      chairperson: "Juliana Yorke"
+    },
+    {
+      committee: "Youth Retreat",
+      chairperson: "Anthony Modesto Adu Yeboah"
+    },
+    {
+      committee: "Evangelist Praise",
+      chairperson: "Anthony Modesto Adu Yeboah"
+    },
+    {
       committee: "Youth Holy Mass",
-      chairperson: "Etonam Dotse"
+      chairperson: "Stephanie Amlanu"
     },
     {
-      committee: "Evangelist Praise 2025",
-      chairperson: "Anthony Adu-Yeboah"
+      committee: "Youth Media Committee",
+      chairperson: "Thomas Apreku"
     },
     {
-      committee: "Socialization",
-      chairperson: "Sharon Dankyi"
-    },
-    {
-      committee: "Sports",
-      chairperson: "Victor Mensah"
-    },
-    {
-      committee: "School Visitation",
+      committee: "Evangelist School Visitation",
       chairperson: "Etonam Dotse"
     }
   ];
 
   const mainContent = [
     {
-      title: "Overview",
+      title: "Overview of Parish Youth Council (PYC)",
       content:
-        "The Parish Youth Council serves as the central decision-making body for all youth-related activities and initiatives within the parish. It is composed of representatives from all recognized youth groups in the parish, including society leaders and elected officers, who work together to foster spiritual growth, community engagement, and youth development. The council is responsible for planning and overseeing programmes, managing resources, and ensuring alignment with the overall mission of the Church.Guided by its constitution and the oversight of the Parish Pastoral Council and the parish priest, the Youth Council ensures inclusivity, collaboration, and accountability in all its decisions and operations. Through regular meetings, annual reviews, and active committees, it provides a platform for the youth to contribute meaningfully to the parish's vision and mission. This body plays a critical role in shaping a vibrant and united youth community, rooted in Catholic values and service.",
+        "The Parish Youth Council serves as the central decision-making body for all youth-related activities and initiatives within the parish. It is composed of representatives from all recognized youth groups in the parish, including society leaders and elected officers, who work together to foster spiritual growth, community engagement, and youth development. The council is responsible for planning and overseeing programmes, managing resources, and ensuring alignment with the overall mission of the Church.",
       type: "text",
     },
     {
       title: "Leadership",
       content:
-        "The leadership of the Parish Youth Council is spearheaded by the Youth Chaplain, who provides spiritual guidance and ensures that all council activities align with the mission of the Church. Supporting this role is the Parish Pastoral Council (PPC) Youth and Vocations Convener, who bridges the gap between the Parish Youth Council and the PPC, offering oversight and facilitating communication between the youth and the broader parish community. The council’s elected executives, including the Chairperson, Vice-Chairperson, Secretary, Financial Secretary, and other key officers, work collaboratively to execute decisions and oversee the daily operations of the council. Together, this leadership team ensures that the council remains effective, organized, and united in its mission to serve the parish youth.",
+        "The leadership of the Parish Youth Council is spearheaded by the Youth Chaplain, who provides spiritual guidance and ensures that all council activities align with the mission of the Church. Supporting this role is the Parish Pastoral Council (PPC) Youth and Vocations Convener, who bridges the gap between the Parish Youth Council and the PPC, offering oversight and facilitating communication between the youth and the broader parish community. The council's elected executives, work collaboratively to execute decisions and oversee the daily operations of the council.",
       type: "table",
       tableData: leadershipTable,
     },
@@ -103,14 +107,11 @@ const ParishYouthCouncil = () => {
       content: (
         <>
           <p>
-          The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee, ensuring that its objectives align with the vision and goals of the Parish Youth Council. The committees work collaboratively under the general guidance of the council to deliver results effectively. 
-          </p>
-          <p>
-          The Youth Council Organizer and Financial Secretary are automatic members of all committees. The Organizer plays a critical role in providing coordination oversight, acting as the main link between the Executive Team and each committee to ensure smooth communication and alignment of activities. Additionally, the Organizer assists in resolving challenges and ensures that the work of the committees integrates seamlessly into the overall operations of the council. The Financial Secretary, on the other hand, oversees committee finances, ensuring proper budgetary planning, expenditure monitoring, and reporting in line with the council’s financial policies. This structure fosters accountability, transparency, and efficiency in all committee operations.
+            The Parish Youth Council operates through various committees, which are vital in organizing and executing specific programs, activities, and initiatives of the youth. Each committee is headed by a chairperson, who is appointed or elected to lead and manage the affairs of the committee. The committees work collaboratively under the general guidance of the council to deliver results effectively.
           </p>
 
           {/* Mobile view for committee table */}
-          <div className="md:hidden space-y-4">
+          <div className="md:hidden space-y-4 mt-4">
             {committeeTable.map((item, index) => (
               <div
                 key={index}
@@ -125,18 +126,16 @@ const ParishYouthCouncil = () => {
           </div>
 
           {/* Desktop view for committee table */}
-          <div className="hidden md:block overflow-x-auto">
+          <div className="hidden md:block overflow-x-auto mt-4">
             <table className="min-w-full divide-y divide-white/10">
               <thead>
                 <tr>
-                  {["Committee", "Chairperson"].map((header) => (
-                    <th
-                      key={header}
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
-                    >
-                      {header}
-                    </th>
-                  ))}
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Committee
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    Chairperson
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
@@ -146,7 +145,7 @@ const ParishYouthCouncil = () => {
                       {item.committee}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-300">
-                      {item.chairperson || "—" }
+                      {item.chairperson || "—"}
                     </td>
                   </tr>
                 ))}
@@ -159,7 +158,7 @@ const ParishYouthCouncil = () => {
     {
       title: "Meetings",
       content:
-        "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at the at a different date communicated to council members.",
+        "The youth Council meets on the first Sunday of every month after the first Mass. The Youth Council may also meet at a different date communicated to council members.",
     },
     {
       title: "Programmes",
@@ -214,10 +213,14 @@ const ParishYouthCouncil = () => {
       ) : type === "contacts" ? (
         <div className="space-y-3">
           {content.map((contact, i) => (
-            <p key={i} className="flex items-center gap-2 text-gray-100">
-              <FaPhone className="text-blue-400" />
+            <a 
+              key={i} 
+              href={`tel:${contact}`}
+              className="flex items-center gap-2 text-gray-100 hover:text-blue-300 transition-colors"
+            >
+              <FaPhone className="text-blue-400 transform scale-x-[-1]" />
               <span>{contact}</span>
-            </p>
+            </a>
           ))}
         </div>
       ) : type === "table" ? (

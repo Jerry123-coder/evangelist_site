@@ -52,10 +52,12 @@ const EventNotification = ({ className }) => {
           isPentecost: true
         };
         
-        // Add Pentecost Novena at the beginning of the events array
-        setEvents([pentecostNovena, ...upcoming]);
-        // Always show 1 unread notification for the Pentecost Novena
-        setUnreadCount(1);
+        // Combine Pentecost Novena with upcoming events
+        const allUpcomingEvents = [pentecostNovena, ...upcoming];
+        setEvents(allUpcomingEvents);
+        
+        // Set unread count to the number of upcoming events (should be 1 for Pentecost Novena)
+        setUnreadCount(allUpcomingEvents.length);
         setIsLoading(false);
       } catch (err) {
         console.error("Error fetching notification data:", err);
