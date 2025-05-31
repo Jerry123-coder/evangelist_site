@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import EnhancedBlogCard from "../components/EnhancedBlogCard";
 import WaveBackground from "../components/WaveBackground";
-import HolyWeekAnnouncement from "../components/HolyWeekAnnouncement";
+import PentecostNovenaAnnouncement from "../components/PentecostNovenaAnnouncement";
 import { getAllPosts, getPostsByCategory, getAnnouncementPosts, searchPosts, subscribeToNewsletter } from "../services/blogService";
 import "../styles/waveAnimation.css";
 
@@ -117,9 +117,9 @@ const Blog = () => {
         </div>
       </div>
       
-      {/* Holy Week Announcement */}
+      {/* Pentecost Novena Announcement */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <HolyWeekAnnouncement />
+        <PentecostNovenaAnnouncement />
       </div>
 
       {/* Search and Filter Section */}
