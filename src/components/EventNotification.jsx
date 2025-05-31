@@ -11,7 +11,7 @@ import EasterPopup from "./EasterPopup";
 // This component is meant to be used within the NavBar
 const EventNotification = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(0);
+  const [unreadCount, setUnreadCount] = useState(1); // Set to 1 for Pentecost Novena
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,7 +31,7 @@ const EventNotification = ({ className }) => {
           getUnreadCount()
         ]);
         // Filter out past events (only show today or future)
-        const today = new Date("2025-04-16");
+        const today = new Date();
         const upcoming = announcementPosts.filter(event => {
           if (!event.date) return false;
           // Acceptable date formats: 'April 21, 2025', etc.
@@ -39,8 +39,23 @@ const EventNotification = ({ className }) => {
           // If event has multiple times (e.g., '7:00AM and 9:30AM'), still just compare the date
           return eventDate >= today;
         });
-        setEvents(upcoming);
-        setUnreadCount(unreadCountData);
+        
+        // Add Pentecost Novena as a static event
+        const pentecostNovena = {
+          id: 'pentecost-novena-2025',
+          title: 'Pentecost Novena',
+          date: 'May 30 - June 7, 2025',
+          time: '6:30 PM Daily',
+          location: 'St. John the Evangelist Church',
+          summary: 'Join us for our 9-day Novena to the Holy Spirit',
+          isHighPriority: true,
+          isPentecost: true
+        };
+        
+        // Add Pentecost Novena at the beginning of the events array
+        setEvents([pentecostNovena, ...upcoming]);
+        // Always show 1 unread notification for the Pentecost Novena
+        setUnreadCount(1);
         setIsLoading(false);
       } catch (err) {
         console.error("Error fetching notification data:", err);
@@ -234,25 +249,42 @@ const EventNotification = ({ className }) => {
                 </div>
               ) : (
                 events.map((event) => {
-                  const isEaster =
-                    event.title?.toLowerCase().includes("easter") ||
+                  const isEaster = event.title?.toLowerCase().includes("easter") ||
                     event.summary?.toLowerCase().includes("easter") ||
                     event.category?.toLowerCase().includes("easter");
+                  const isPentecost = event.isPentecost || 
+                    event.title?.toLowerCase().includes("pentecost") ||
+                    event.summary?.toLowerCase().includes("pentecost");
                   return (
                     <div
                       key={event.id}
                       onClick={handleNotificationClick}
-                      className={`p-3 mb-2 rounded-lg border border-blue-50 hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow ${isEaster ? 'bg-yellow-50 border-yellow-300' : ''}`}
+                      className={`p-3 mb-2 rounded-lg border hover:border-blue-200 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 shadow-sm hover:shadow ${
+                        isEaster ? 'bg-yellow-50 border-yellow-300' : 
+                        isPentecost ? 'bg-purple-50 border-purple-300' : 
+                        'border-blue-50'
+                      }`}
                     >
-                      <h4 className={`font-semibold text-sm ${isEaster ? 'text-yellow-700' : 'text-gray-800'}`}>{event.title}</h4>
+                      <h4 className={`font-semibold text-sm ${
+                        isEaster ? 'text-yellow-700' : 
+                        isPentecost ? 'text-purple-700' : 
+                        'text-gray-800'
+                      }`}>
+                        {event.title}
+                      </h4>
                       <div className="flex flex-wrap items-center text-xs text-gray-500 mt-2">
-                        <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mr-2 mb-1">
-                          <FaCalendarAlt className="mr-1 text-blue-500" />
+                        <div className={`flex items-center rounded-full px-2 py-1 mr-2 mb-1 ${
+                          isPentecost ? 'bg-purple-100' : 'bg-blue-50'
+                        }`}>
+                          <FaCalendarAlt className={`mr-1 ${isPentecost ? 'text-purple-500' : 'text-blue-500'}`} />
                           <span>{event.date}</span>
+                          {event.time && <span className="ml-1">• {event.time}</span>}
                         </div>
                         {event.location && (
-                          <div className="flex items-center bg-blue-50 rounded-full px-2 py-1 mb-1">
-                            <FaMapMarkerAlt className="mr-1 text-blue-500" />
+                          <div className={`flex items-center rounded-full px-2 py-1 mb-1 ${
+                            isPentecost ? 'bg-purple-100' : 'bg-blue-50'
+                          }`}>
+                            <FaMapMarkerAlt className={`mr-1 ${isPentecost ? 'text-purple-500' : 'text-blue-500'}`} />
                             <span>{event.location}</span>
                           </div>
                         )}
@@ -261,6 +293,13 @@ const EventNotification = ({ className }) => {
                         <div className="mt-1 flex">
                           <span className="text-xs bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded-full mr-2">
                             Easter Event
+                          </span>
+                        </div>
+                      )}
+                      {isPentecost && (
+                        <div className="mt-1 flex">
+                          <span className="text-xs bg-purple-200 text-purple-800 px-2 py-0.5 rounded-full mr-2">
+                            Pentecost Novena
                           </span>
                         </div>
                       )}
