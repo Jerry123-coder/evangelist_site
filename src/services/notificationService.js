@@ -13,58 +13,103 @@
 // Sample upcoming events - replace with actual API calls
 const mockEvents = [
   {
-    id: "event-1",
-    title: "Palm Sunday",
-    date: "April 13th, 2025",
-    location: "Main Church",
-    description: "Mass begins at ROWI - 7:00AM",
+    id: "youth-1",
+    title: "Youth Month Launch",
+    date: "July 13th, 2025",
+    location: "Parish",
+    description: "Theme: Youth: Pillars of Universal Hope\nDuring First & Second Mass",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
   },
   {
-    id: "event-2",
-    title: "Holy Thursday",
-    date: "April 17th, 2025",
-    location: "Main Church",
-    description: "Mass of the Lord's Supper - 7:00PM",
+    id: "youth-2",
+    title: "Clean Up Exercise & Waakye Party",
+    date: "August 2nd, 2025",
+    location: "Parish",
+    description: "Theme: Hope in Service\nTime: 7:00 AM\nGrotto Mass",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
   },
   {
-    id: "event-3",
-    title: "Good Friday",
-    date: "April 18th, 2025",
-    location: "Main Church",
-    description: "7:00AM - Stations of the Cross\n2:30PM - Divine Mercy Novena\n3:00PM - Veneration of the Cross",
+    id: "youth-3",
+    title: "Rep Your School & Gari Soakings",
+    date: "August 3rd, 2025",
+    location: "Parish",
+    description: "Sunday Hour of Grace\nTheme: Sent Forth in Hope Light of Hope\nTime: 3:00 PM - 6:00 PM",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
   },
   {
-    id: "event-4",
-    title: "Holy Saturday",
-    date: "April 19th, 2025",
-    location: "Main Church",
-    description: "Mass of Easter Vigil - 7:00PM",
+    id: "youth-4",
+    title: "Peduase Work-Out Experience",
+    date: "August 9th, 2025",
+    location: "Ayi Mensah - Peduase",
+    description: "Theme: Hope in Action\nTime: 6:00 AM",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
   },
   {
-    id: "event-5",
-    title: "Easter Sunday",
-    date: "April 20th, 2025",
-    location: "Main Church",
-    description: "Easter Sunday Masses at 7:00AM & 9:30AM",
+    id: "youth-5",
+    title: "Rep Your Jersey Sunday",
+    date: "August 10th, 2025",
+    location: "Parish",
+    description: "Theme: Light of Hope\nTime: 7:00 AM",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
   },
   {
-    id: "event-6",
-    title: "Easter Picnic",
-    date: "April 21st, 2025",
-    location: "Church Grounds",
-    description: "Begins with Holy Mass - 12:00PM",
+    id: "youth-6",
+    title: "Mass & Fireside Chat",
+    date: "August 15th, 2025",
+    location: "Parish",
+    description: "With Rev. Father Joseph Effah Siaw\nTheme: Ignite the fire within\nTime: 7:00 PM",
     isHighPriority: true,
-    category: "Holy Week"
+    category: "Youth Month"
+  },
+  {
+    id: "youth-7",
+    title: "Youth Mass & Inter-Societal Fair",
+    date: "August 17th, 2025",
+    location: "Parish",
+    description: "Theme: Sent forth in Hope\nTime: 7:00 AM",
+    isHighPriority: true,
+    category: "Youth Month"
+  },
+  {
+    id: "youth-8",
+    title: "Evangelist Youth Retreat",
+    date: "August 23rd, 2025",
+    location: "Franciscan Valley, Saltpond Parish",
+    description: "Theme: Faith in Action\nTime: 4:00 AM",
+    isHighPriority: true,
+    category: "Youth Month"
+  },
+  {
+    id: "youth-9",
+    title: "Cultural Sunday",
+    date: "August 24th, 2025",
+    location: "Parish",
+    description: "Theme: Light of Hope\nTime: 7:00 AM",
+    isHighPriority: true,
+    category: "Youth Month"
+  },
+  {
+    id: "youth-10",
+    title: "Orphanage Donation",
+    date: "August 30th, 2025",
+    location: "Kressner Handmaids Children Home-Ofankor",
+    description: "Theme: Hope in Service\nTime: 6:00 AM",
+    isHighPriority: true,
+    category: "Youth Month"
+  },
+  {
+    id: "youth-11",
+    title: "All White Sunday",
+    date: "August 31st, 2025",
+    location: "Parish",
+    description: "Theme: Light of Hope\nTime: 7:00 AM",
+    isHighPriority: true,
+    category: "Youth Month"
   }
 ];
 

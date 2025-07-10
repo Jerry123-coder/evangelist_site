@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import EnhancedBlogCard from "../components/EnhancedBlogCard";
 import WaveBackground from "../components/WaveBackground";
-import PentecostNovenaAnnouncement from "../components/PentecostNovenaAnnouncement";
+import YouthMonthSchedule from "../components/YouthMonthSchedule";
 import { getAllPosts, getPostsByCategory, getAnnouncementPosts, searchPosts, subscribeToNewsletter } from "../services/blogService";
 import "../styles/waveAnimation.css";
 
@@ -119,7 +119,7 @@ const Blog = () => {
       
       {/* Announcements */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <PentecostNovenaAnnouncement />
+        <YouthMonthSchedule />
       </div>
 
       {/* Search and Filter Section */}

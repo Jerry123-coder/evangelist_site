@@ -7,7 +7,7 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { FaArrowRight, FaTimes } from "react-icons/fa";
 import { usePopup } from "../contexts/PopupContext";
-import { getUnreadCount, markEventsAsRead } from "../services/notificationService";
+import { getUnreadCount, markEventsAsRead, getHighPriorityEvents } from "../services/notificationService";
 import { getAnnouncementPosts } from "../services/blogService";
 import "../styles/scrollbar.css";
 import EasterPopup from "./EasterPopup";
@@ -15,7 +15,7 @@ import EasterPopup from "./EasterPopup";
 // This component is meant to be used within the NavBar
 const EventNotification = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(1); // Set to 1 for Pentecost Novena
+  const [unreadCount, setUnreadCount] = useState(0); // Will be updated with actual count from API
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,24 +44,13 @@ const EventNotification = ({ className }) => {
           return eventDate >= today;
         });
         
-        // Add Pentecost Novena as a static event
-        const pentecostNovena = {
-          id: 'pentecost-novena-2025',
-          title: 'Pentecost Novena',
-          date: 'May 30 - June 7, 2025',
-          time: '6:30 PM Daily',
-          location: 'St. John the Evangelist Church',
-          summary: 'Join us for our 9-day Novena to the Holy Spirit',
-          isHighPriority: true,
-          isPentecost: true
-        };
-        
-        // Combine Pentecost Novena with upcoming events
-        const allUpcomingEvents = [pentecostNovena, ...upcoming];
+        // Set events from the notification service
+        const highPriorityEvents = await getHighPriorityEvents();
+        const allUpcomingEvents = [...highPriorityEvents, ...upcoming];
         setEvents(allUpcomingEvents);
         
-        // Set unread count to the number of upcoming events (should be 1 for Pentecost Novena)
-        setUnreadCount(allUpcomingEvents.length);
+        // Set unread count to the number of high priority events
+        setUnreadCount(highPriorityEvents.length);
         setIsLoading(false);
       } catch (err) {
         console.error("Error fetching notification data:", err);
