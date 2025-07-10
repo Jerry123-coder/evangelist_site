@@ -76,7 +76,7 @@ const PentecostNovenaAnnouncement = () => {
       className="bg-gradient-to-r from-purple-800 to-red-800 rounded-xl overflow-hidden shadow-xl mb-12"
     >
       <div className="p-6 text-white">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        {/* <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-yellow-300 mb-2">PENTECOST NOVENA</h2>
             <p className="text-lg text-white">May 30th - June 7th, 2025</p>
@@ -93,8 +93,9 @@ const PentecostNovenaAnnouncement = () => {
           <p className="text-center text-lg font-medium text-yellow-100 mb-2">
             Come and experience the indwelling of the Holy Spirit! 🔥💦
           </p>
-        </div>
+        </div> */}
 
+        {/* Table commented out as requested
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white bg-opacity-10 rounded-lg overflow-hidden">
             <thead>
@@ -119,6 +120,7 @@ const PentecostNovenaAnnouncement = () => {
             </tbody>
           </table>
         </div>
+        */}
       </div>
     </motion.div>
   );

@@ -75,15 +75,15 @@ const EasterPopup = ({ isOpen, onClose, bellPosition }) => {
                 </motion.button>
               </div>
               <div className="p-4 text-center bg-gradient-to-b from-blue-50 to-white">
-                <h3 className="text-xl font-bold text-blue-600 mb-2">Pentecost Novena</h3>
-                <p className="text-gray-700">Our 9-day Novena to the Holy Spirit begins this <strong>Friday, May 30th, to June 7th</strong>, every day at 6:30 pm at the St. John the Evangelist Church premises</p>
+                <h3 className="text-xl font-bold text-blue-600 mb-2">Youth Holy Mass</h3>
+                <p className="text-gray-700">Join the St. John the Evangelist Parish Youth Council for a special Youth Holy Mass with the World Youth Day Cross. <strong>Friday, 11th July at 7:00 PM</strong> at St. John the Evangelist Cath. Church.</p>
                 <Link to="/blog">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-3 px-6 py-2 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
                   >
-                    Read More
+                    Event Details
                   </motion.button>
                 </Link>
               </div>
